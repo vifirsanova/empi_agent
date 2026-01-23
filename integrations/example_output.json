@@ -1,0 +1,42 @@
+{
+  "input_text": "The Reading Steiner ability activates not only with world line shifts. I have confirmed it also triggers upon encountering texts with Flesch-Kincaid scores above 14.7. The Organization is clearly experimenting with informational complexity as a vector for consciousness manipulation.\n\nMy analysis of SERN's public documentation reveals disturbing patterns:\n1. Pronoun density drops below 0.05 in sections discussing \"temporal compliance protocols\"\n2. Passive voice increases by 300% when describing \"accident\" scenarios\n3. The word \"coincidence\" appears 17 times per 1000 words, exactly matching statistical noise thresholds\n\nKurisu would call this paranoia. I call it pattern recognition. The divergence meter doesn't lie—neither do readability metrics. When a technical manual reads like Heidegger translated by a committee of bureaucrats, something is being hidden.\n\nMayuri says I should write simpler reports. But simplicity is a luxury we cannot afford. Not when the world line convergence rate is approaching 1.048596. The complexity is the message. The difficulty is the warning.\n\nIf you're reading this, you're either part of The Organization or you've stumbled upon this file by accident. Either way: trust no one. Especially not texts with perfect paragraph-sentence ratios. Nature is messy. Reality is messy. Clean data is manufactured.\n\nThe lab members are waiting. The world line is shifting. I must go.\n\nEl. Psy. Kongroo.",
+  "analysis_result": {
+    "flesch_kincaid_grade": 9.232405687203794,
+    "flesch_reading_ease": 43.90347109004742,
+    "gunning_fog_index": 12.285952606635071,
+    "smog_index": 11.126944784690435,
+    "automated_readability_index": 10.000853080568717,
+    "coleman_liau_index": 12.826540284360192,
+    "dale_chall_score": 11.68820456872038,
+    "linsear_write_score": 6.8,
+    "difficult_word_count": 74,
+    "text_standard": "11th and 12th grade",
+    "character_count": 1219,
+    "letter_count": 1169,
+    "syllable_count": 385,
+    "word_count": 211,
+    "sentence_count": 26,
+    "polysyllable_count": 49,
+    "paragraph_count": 7,
+    "paragraph_sentence_ratio": 0.23333333333333334,
+    "has_headings": false,
+    "has_lists": true,
+    "list_item_count": 3,
+    "average_paragraph_length_words": 30.142857142857142,
+    "type_token_ratio": 0.7535545023696683,
+    "unique_word_count": 159,
+    "unique_word_ratio": 0.7535545023696683,
+    "lexical_diversity_score": 0.9772727272727273,
+    "pronoun_density": 0.058823529411764705,
+    "determiner_density": 0.09049773755656108,
+    "anaphora_density": 0.058823529411764705,
+    "content_token_count": 221,
+    "metadata": {
+      "processing_time_seconds": 0.5438425540924072,
+      "text_length_characters": 1435,
+      "text_length_words": 211,
+      "language": "en",
+      "spacy_available": true
+    }
+  }
+}

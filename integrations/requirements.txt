@@ -1,0 +1,6 @@
+textacy
+spacy
+transformers
+torch
+tomli
+pytest
