@@ -1,0 +1,269 @@
+
+============================================================
+          EMPI TEXTANALYZER TEST SUITE
+============================================================
+
+=== TEST: Agent Creation
+[INFO] Creating TextAnalyzer...
+[OK] Default constructor succeeded
+[INFO] Agent ID: text_analyzer
+[OK] Constructor with Python path succeeded
+
+=== TEST: EMPI Protocol Compliance
+[TEXT] Input (60 chars): "This is a simple test sentence for EMPI protocol validation."
+[JSON] Request:
+{
+  "language": "en",
+  "meta": {
+    "test_id": "protocol_test_001"
+  },
+  "text": "This is a simple test sentence for EMPI protocol validation."
+}
+[INFO] Processing time: 973ms
+[JSON] Response:
+{
+  "header": {
+    "agent_id": "text_analyzer",
+    "message_id": "msg_1769370686_text_analyzer",
+    "protocol": "EMPI/1.0",
+    "task_type": "text_metrics",
+    "timestamp": "1769370686",
+    "version": "1.0"
+  },
+  "payload": {
+    "data": {
+      "accessibility_level": "medium",
+      "analysis_id": "analyze_1",
+      "complexity_label": "moderate",
+      "metrics": {
+        "automated_readability_index": 7.5909999999999975,
+        "average_paragraph_length_words": 10.0,
+        "character_count": 51,
+        "coleman_liau_index": 10.239999999999998,
+        "dale_chall_score": 8.8695,
+        "difficult_word_count": 3,
+        "flesch_kincaid_grade": 9.55,
+        "flesch_reading_ease": 44.405,
+        "gunning_fog_index": 12.0,
+        "has_headings": false,
+        "has_lists": false,
+        "letter_count": 50,
+        "linsear_write_score": 6.0,
+        "list_item_count": 0,
+        "metadata": {
+          "language": "en",
+          "processing_time_seconds": 0.35227036476135254,
+          "spacy_available": false,
+          "text_length_characters": 60,
+          "text_length_words": 10
+        },
+        "paragraph_count": 1,
+        "paragraph_sentence_ratio": 1.0,
+        "polysyllable_count": 2,
+        "sentence_count": 1,
+        "smog_index": 11.20814326018867,
+        "syllable_count": 18,
+        "text_standard": "9th and 10th grade",
+        "type_token_ratio": 1.0,
+        "unique_word_count": 10,
+        "unique_word_ratio": 1.0,
+        "word_count": 10
+      },
+      "status": "success"
+    },
+    "metadata": {
+      "processing_start": "1769370686",
+      "source": "text_analyzer"
+    }
+  }
+}
+[OK] Text analysis succeeded!
+
+=== TEST: Error Handling
+[INFO] Testing error conditions...
+[INFO] Test 1: Empty JSON
+[OK] Correctly handled empty input
+[INFO] Test 2: Empty text
+[OK] Correctly handled empty text
+[INFO] Test 3: Whitespace-only
+[OK] Correctly handled whitespace-only text
+[INFO] Test 4: Text in 'content' field
+[OK] Found text in 'content' field
+
+=== TEST: Sample Text File Analysis
+[INFO] Loading: integrations/sample_text.txt
+[TEXT] Sample text (1438 chars): "The Reading Steiner ability activates not only with world line shifts. I have confirmed it also triggers upon encountering texts with Flesch-Kincaid scores above 14.7. The Organization is clearly expe..."
+[INFO] Length: 1438 chars
+[JSON] Request:
+{
+  "language": "en",
+  "meta": {
+    "source": "integrations/sample_text.txt"
+  },
+  "text": "The Reading Steiner ability activates not only with world line shifts. I have confirmed it also triggers upon encountering texts with Flesch-Kincaid scores above 14.7. The Organization is clearly experimenting with informational complexity as a vector for consciousness manipulation.\n\nMy analysis of SERN's public documentation reveals disturbing patterns:\n1. Pronoun density drops below 0.05 in sections discussing \"temporal compliance protocols\"\n2. Passive voice increases by 300% when describing \"accident\" scenarios\n3. The word \"coincidence\" appears 17 times per 1000 words, exactly matching statistical noise thresholds\n\nKurisu would call this paranoia. I call it pattern recognition. The divergence meter doesn't lie—neither do readability metrics. When a technical manual reads like Heidegger translated by a committee of bureaucrats, something is being hidden.\n\nMayuri says I should write simpler reports. But simplicity is a luxury we cannot afford. Not when the world line convergence rate is approaching 1.048596. The complexity is the message. The difficulty is the warning.\n\nIf you're reading this, you're either part of The Organization or you've stumbled upon this file by accident. Either way: trust no one. Especially not texts with perfect paragraph-sentence ratios. Nature is messy. Reality is messy. Clean data is manufactured.\n\nThe lab members are waiting. The world line is shifting. I must go.\n\nEl. Psy. Kongroo.\n"
+}
+[INFO] Processing time: 872ms
+[JSON] Response:
+{
+  "header": {
+    "agent_id": "text_analyzer",
+    "message_id": "msg_1769370688_text_analyzer",
+    "protocol": "EMPI/1.0",
+    "task_type": "text_metrics",
+    "timestamp": "1769370688",
+    "version": "1.0"
+  },
+  "payload": {
+    "data": {
+      "accessibility_level": "medium",
+      "analysis_id": "analyze_1",
+      "complexity_label": "moderate",
+      "metrics": {
+        "automated_readability_index": 10.000853080568717,
+        "average_paragraph_length_words": 30.142857142857142,
+        "character_count": 1219,
+        "coleman_liau_index": 12.826540284360192,
+        "dale_chall_score": 11.68820456872038,
+        "difficult_word_count": 74,
+        "flesch_kincaid_grade": 9.232405687203794,
+        "flesch_reading_ease": 43.90347109004742,
+        "gunning_fog_index": 12.285952606635071,
+        "has_headings": false,
+        "has_lists": true,
+        "letter_count": 1169,
+        "lexical_diversity_score": 0.9772727272727273,
+        "linsear_write_score": 6.8,
+        "list_item_count": 3,
+        "metadata": {
+          "language": "en",
+          "processing_time_seconds": 0.2957797050476074,
+          "spacy_available": false,
+          "text_length_characters": 1436,
+          "text_length_words": 211
+        },
+        "paragraph_count": 7,
+        "paragraph_sentence_ratio": 0.23333333333333334,
+        "polysyllable_count": 49,
+        "sentence_count": 25,
+        "smog_index": 11.126944784690435,
+        "syllable_count": 385,
+        "text_standard": "11th and 12th grade",
+        "type_token_ratio": 0.7535545023696683,
+        "unique_word_count": 159,
+        "unique_word_ratio": 0.7535545023696683,
+        "word_count": 211
+      },
+      "status": "success"
+    },
+    "metadata": {
+      "processing_start": "1769370688",
+      "source": "text_analyzer"
+    }
+  }
+}
+[OK] Sample text analysis successful
+[INFO] Complexity: moderate, Accessibility: medium
+
+=== TEST: Actual Text Analysis
+[INFO] Test 1: Simple text
+[TEXT] Input (44 chars): "The quick brown fox jumps over the lazy dog."
+[JSON] Request:
+{
+  "language": "en",
+  "text": "The quick brown fox jumps over the lazy dog."
+}
+[JSON] Response:
+{
+  "header": {
+    "agent_id": "text_analyzer",
+    "message_id": "msg_1769370689_text_analyzer",
+    "protocol": "EMPI/1.0",
+    "task_type": "text_metrics",
+    "timestamp": "1769370689",
+    "version": "1.0"
+  },
+  "payload": {
+    "data": {
+      "accessibility_level": "high",
+      "analysis_id": "analyze_1",
+      "complexity_label": "simple",
+      "metrics": {
+        "automated_readability_index": 1.9100000000000001,
+        "average_paragraph_length_words": 9.0,
+        "character_count": 36,
+        "coleman_liau_index": 3.466666666666665,
+        "dale_chall_score": 5.837344444444444,
+        "difficult_word_count": 0,
+        "flesch_kincaid_grade": 2.342222222222226,
+        "flesch_reading_ease": 94.30000000000001,
+        "gunning_fog_index": 3.6,
+        "has_headings": false,
+        "has_lists": false,
+        "letter_count": 35,
+        "linsear_write_score": 3.5,
+        "list_item_count": 0,
+        "metadata": {
+          "language": "en",
+          "processing_time_seconds": 0.2954094409942627,
+          "spacy_available": false,
+          "text_length_characters": 44,
+          "text_length_words": 9
+        },
+        "paragraph_count": 1,
+        "paragraph_sentence_ratio": 1.0,
+        "polysyllable_count": 0,
+        "sentence_count": 1,
+        "smog_index": 3.1291,
+        "syllable_count": 11,
+        "text_standard": "2nd and 3rd grade",
+        "type_token_ratio": 0.8888888888888888,
+        "unique_word_count": 8,
+        "unique_word_ratio": 0.8888888888888888,
+        "word_count": 9
+      },
+      "status": "success"
+    },
+    "metadata": {
+      "processing_start": "1769370689",
+      "source": "text_analyzer"
+    }
+  }
+}
+[OK] Simple text analysis successful
+[INFO] Test 2: Text without language
+[TEXT] Input (26 chars): "Ce texte est en français."
+[JSON] Request:
+{
+  "text": "Ce texte est en français."
+}
+[OK] Analysis succeeded without language
+
+=== TEST: Agent State Management
+[INFO] Processing 3 texts...
+[INFO] After text 1: 1 processed
+[INFO] After text 2: 2 processed
+[INFO] After text 3: 3 processed
+[OK] State reset successful
+
+=== TEST: Edge Cases
+[INFO] Test 1: Very short text
+[TEXT] Input (3 chars): "Hi!"
+[OK] Short text processed
+[INFO] Test 2: Special characters
+[TEXT] Input (45 chars): "Text with spéçïål chãràctërs @#$% 😀"
+[OK] Special chars handled
+[INFO] Test 3: Long text
+[INFO] Generated: 741 chars
+[OK] Long text processed in 851ms
+
+============================================================
+                 TEST SUMMARY
+============================================================
+Total tests:  7
+Passed:       7
+Failed:       0
+Total time:   9736ms
+============================================================
+ALL TESTS PASSED SUCCESSFULLY!
+============================================================
+
