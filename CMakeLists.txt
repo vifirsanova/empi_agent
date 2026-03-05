@@ -1,22 +1,18 @@
 cmake_minimum_required(VERSION 3.15)
 project(EMPI CXX)
 
-# ==================== ОСНОВНЫЕ НАСТРОЙКИ ====================
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# ==================== LLAMA INTEGRATION ====================
 option(EMPI_BUILD_LLAMA_TOOLS "Build llama-based dialog recorder" ON)
 
 if(EMPI_BUILD_LLAMA_TOOLS)
-    # Отключаем всё лишнее в форке
     set(LLAMA_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
     set(LLAMA_BUILD_TESTS OFF CACHE BOOL "" FORCE) 
     set(LLAMA_BUILD_TOOLS OFF CACHE BOOL "" FORCE)
     set(LLAMA_BUILD_SERVER OFF CACHE BOOL "" FORCE)
     set(LLAMA_BUILD_COMMON OFF CACHE BOOL "" FORCE)
     
-    # Добавляем форк как подпроект
     add_subdirectory(llama-dynamic-context)
     
     message(STATUS "Llama integration enabled")
@@ -24,7 +20,6 @@ else()
     message(STATUS "Llama integration disabled")
 endif()
 
-# ==================== PYTHON CONFIG ====================
 find_package(Python3 COMPONENTS Interpreter QUIET)
 if(Python3_Interpreter_FOUND)
     message(STATUS "Python found: ${Python3_EXECUTABLE}")
@@ -32,10 +27,11 @@ else()
     message(WARNING "Python not found - TextAnalyzer will not work at runtime")
 endif()
 
-# ==================== EMPI CORE LIBRARY ====================
 add_library(empi_agents
     src/agents/TextAnalyzer.cpp
     src/core/UniversalAgent.cpp
+    src/agents/FeedbackAgent.cpp
+    src/agents/InterfaceGenerator.cpp
 )
 
 target_include_directories(empi_agents
@@ -44,7 +40,6 @@ target_include_directories(empi_agents
         ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-# ==================== JSON DEPENDENCY ====================
 find_package(nlohmann_json 3.2.0 QUIET)
 if(nlohmann_json_FOUND)
     target_link_libraries(empi_agents PRIVATE nlohmann_json::nlohmann_json)
@@ -61,14 +56,24 @@ else()
     message(STATUS "Using downloaded nlohmann/json")
 endif()
 
-# ==================== COMPILER-SPECIFIC SETTINGS ====================
+if(EMPI_BUILD_LLAMA_TOOLS)
+    target_include_directories(empi_agents PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/llama-dynamic-context/include
+    )
+
+    target_link_libraries(empi_agents PRIVATE
+        llama
+        ggml
+        pthread
+    )
+endif()
+
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.0")
     target_link_libraries(empi_agents PRIVATE stdc++fs)
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.0")
     target_link_libraries(empi_agents PRIVATE c++fs)
 endif()
 
-# ==================== PYTHON INTEGRATIONS COPY ====================
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/integrations)
 add_custom_command(
     TARGET empi_agents POST_BUILD
@@ -78,7 +83,6 @@ add_custom_command(
     COMMENT "Copying Python integrations to binary directory"
 )
 
-# ==================== DIALOG RECORDER (ЕДИНСТВЕННЫЙ ИНСТРУМЕНТ) ====================
 if(EMPI_BUILD_LLAMA_TOOLS AND TARGET llama)
     # Проверяем существование файла
     if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/tools/dialog_recorder.cpp)
@@ -113,7 +117,6 @@ elseif(EMPI_BUILD_LLAMA_TOOLS)
     message(WARNING "Llama integration requested but llama target not found")
 endif()
 
-# ==================== TESTS ====================
 if(BUILD_TESTS)
     enable_testing()
     add_executable(test_text_analyzer tests/test_text_analyzer.cpp)
@@ -121,7 +124,6 @@ if(BUILD_TESTS)
     add_test(NAME TextAnalyzerTest COMMAND test_text_analyzer)
 endif()
 
-# ==================== INSTALLATION ====================
 install(TARGETS empi_agents
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
@@ -132,3 +134,6 @@ install(DIRECTORY src/
     DESTINATION include/empi
     FILES_MATCHING PATTERN "*.hpp"
 )
+
+add_executable(test_orchestration tests/test_orchestration.cpp)
+target_link_libraries(test_orchestration PRIVATE empi_agents)
