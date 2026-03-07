@@ -1,0 +1,404 @@
+{
+  "texts": [
+    {
+      "id": "text_0001",
+      "content": "The water cycle, also known as the hydrologic cycle, describes the continuous movement of water on, above, and below the surface of the Earth. Water evaporates from oceans, lakes, and rivers due to heat from the sun, rises into the atmosphere, cools and condenses into clouds, and falls back to earth as precipitation. This process is essential for all forms of life and influences weather patterns globally."
+    },
+    {
+      "id": "text_0002",
+      "content": "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize nutrients from carbon dioxide and water. In plants, photosynthesis generally takes place in the leaves, which contain chloroplasts filled with chlorophyll. This green pigment absorbs light energy, which is then used to convert carbon dioxide and water into glucose and oxygen. The glucose provides energy for the plant, while oxygen is released into the atmosphere."
+    },
+    {
+      "id": "text_0003",
+      "content": "The Pythagorean theorem is a fundamental relation in Euclidean geometry among the three sides of a right triangle. It states that the square of the hypotenuse is equal to the sum of the squares of the other two sides. This theorem has numerous applications in mathematics, physics, engineering, and even in everyday life situations where calculating distances or constructing right angles is required."
+    },
+    {
+      "id": "text_0004",
+      "content": "Cell theory is one of the fundamental principles of biology. It states that all living organisms are composed of cells, that the cell is the basic unit of life, and that all cells arise from pre-existing cells. This theory was developed in the mid-19th century based on observations made by scientists like Schleiden, Schwann, and Virchow, and it remains central to our understanding of life processes."
+    },
+    {
+      "id": "text_0005",
+      "content": "The Industrial Revolution was a period of major industrialization and innovation that took place during the late 1700s and early 1800s. It began in Great Britain and quickly spread throughout the world. The American Industrial Revolution, commonly referred to as the Second Industrial Revolution, started sometime between 1820 and 1870. This period saw the mechanization of agriculture and textile manufacturing and a revolution in power, including steam ships and railroads, which affected social, cultural and economic conditions."
+    },
+    {
+      "id": "text_0006",
+      "content": "Newton's laws of motion are three physical laws that, together, laid the foundation for classical mechanics. The first law states that an object at rest stays at rest and an object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force. The second law states that the acceleration of an object is directly proportional to the net force acting on it and inversely proportional to its mass. The third law states that for every action, there is an equal and opposite reaction."
+    },
+    {
+      "id": "text_0007",
+      "content": "Plate tectonics is the scientific theory that Earth's outer shell is divided into several plates that glide over the mantle. The theory explains the occurrence of earthquakes, volcanic activity, mountain-building, and oceanic trench formation. It also provides a framework for understanding the distribution of fossils and the movement of continents over geological time. The plates are constantly moving at rates of a few centimeters per year, about as fast as fingernails grow."
+    },
+    {
+      "id": "text_0008",
+      "content": "The periodic table is a tabular arrangement of the chemical elements, organized by their atomic number, electron configuration, and recurring chemical properties. Elements are presented in order of increasing atomic number, typically listed along with their symbol and atomic mass. The table has seven rows, called periods, and eighteen columns, called groups. Elements in the same group tend to exhibit similar chemical behavior, making the table an invaluable tool for predicting chemical reactions and understanding elemental relationships."
+    },
+    {
+      "id": "text_0009",
+      "content": "The American Civil War was fought between 1861 and 1865, pitting the northern states loyal to the Union against the southern states that had seceded to form the Confederate States of America. The war began primarily over the issues of slavery and states' rights. Major battles included Gettysburg, Antietam, and Bull Run. The conflict resulted in approximately 620,000 deaths and ended with the surrender of the Confederate forces and the abolition of slavery through the 13th Amendment."
+    },
+    {
+      "id": "text_0010",
+      "content": "DNA, or deoxyribonucleic acid, is the hereditary material in humans and almost all other organisms. Nearly every cell in a person's body has the same DNA. Most DNA is located in the cell nucleus, but a small amount can also be found in the mitochondria. The information in DNA is stored as a code made up of four chemical bases: adenine, guanine, cytosine, and thymine. The sequence of these bases determines the instructions for building and maintaining an organism."
+    },
+    {
+      "id": "text_0011",
+      "content": "The human circulatory system, also known as the cardiovascular system, is responsible for delivering oxygen, nutrients, and hormones to cells throughout the body and removing waste products like carbon dioxide. It consists of the heart, blood vessels, and blood. The heart pumps blood through a network of arteries, veins, and capillaries. This system is essential for maintaining homeostasis and supporting the functions of all other organ systems in the body."
+    },
+    {
+      "id": "text_0012",
+      "content": "Algebra is a branch of mathematics that deals with symbols and the rules for manipulating those symbols to solve equations and understand relationships between quantities. It involves operations such as addition, subtraction, multiplication, and division applied to variables and constants. Algebra provides a foundation for more advanced mathematics, including calculus and linear algebra, and has applications in science, engineering, economics, and computer science."
+    },
+    {
+      "id": "text_0013",
+      "content": "The Roman Empire was the post-Republican period of ancient Rome, characterized by a vast territory ruled by emperors. It began in 27 BC with the reign of Augustus and lasted until the fall of the Western Roman Empire in 476 AD. At its height, the empire controlled territory spanning Europe, North Africa, and the Middle East. Roman achievements included advanced engineering, law, literature, and the spread of Christianity, which had a lasting impact on Western civilization."
+    },
+    {
+      "id": "text_0014",
+      "content": "Ecosystems are communities of living organisms interacting with each other and their physical environment. They can be as large as a forest or as small as a pond. Energy flows through ecosystems via food chains and food webs, while nutrients cycle between biotic and abiotic components. Key processes include photosynthesis, decomposition, and nutrient cycling. Human activities such as pollution and deforestation can disrupt ecosystem balance and biodiversity."
+    },
+    {
+      "id": "text_0015",
+      "content": "The Great Depression was a severe worldwide economic depression that took place during the 1930s. It began in the United States after the stock market crash in October 1929, which sent Wall Street into a panic and wiped out millions of investors. Over the next several years, consumer spending and investment dropped, causing steep declines in industrial output and rising levels of unemployment as companies laid off workers. By 1933, unemployment in the U.S. peaked at 25%."
+    },
+    {
+      "id": "text_0016",
+      "content": "Mitosis is the process by which a single cell divides to produce two identical daughter cells. It is essential for growth, repair, and asexual reproduction in multicellular organisms. The process consists of several phases: prophase, metaphase, anaphase, and telophase, followed by cytokinesis. During mitosis, the chromosomes are duplicated and evenly distributed to ensure that each new cell receives a complete set of genetic information identical to the parent cell."
+    },
+    {
+      "id": "text_0017",
+      "content": "The solar system consists of the Sun and the celestial objects that are bound to it by gravity, including eight planets, dwarf planets, moons, asteroids, comets, and meteoroids. The four inner planets are rocky: Mercury, Venus, Earth, and Mars. The four outer planets are gas giants: Jupiter, Saturn, Uranus, and Neptune. The solar system formed about 4.6 billion years ago from the gravitational collapse of a giant molecular cloud, with the Sun forming in the center and the planets forming from the surrounding disk of material."
+    },
+    {
+      "id": "text_0018",
+      "content": "The French Revolution was a period of radical social and political change in France that lasted from 1789 to 1799. It overthrew the monarchy, established a republic, and fundamentally altered the structure of French society. Causes included widespread inequality, financial crisis, and Enlightenment ideas promoting liberty and equality. Key events included the storming of the Bastille, the Reign of Terror, and the rise of Napoleon Bonaparte. The revolution inspired similar movements worldwide."
+    },
+    {
+      "id": "text_0019",
+      "content": "Chemical reactions involve the transformation of one or more substances into new substances with different properties. Reactants are the starting materials, and products are the substances formed. Reactions are represented by chemical equations that show the reactants on the left and products on the right, with an arrow indicating the direction of the reaction. Types include synthesis, decomposition, single displacement, and combustion. Factors affecting reaction rates include temperature, concentration, and catalysts."
+    },
+    {
+      "id": "text_0020",
+      "content": "World War II was a global conflict that lasted from 1939 to 1945, involving most of the world's nations divided into two opposing alliances: the Allies and the Axis. It was the deadliest conflict in human history, resulting in 70-85 million fatalities. Major events included the invasion of Poland, the Holocaust, the attack on Pearl Harbor, the D-Day landings, and the atomic bombings of Hiroshima and Nagasaki. The war ended with the defeat of the Axis powers and the establishment of the United Nations."
+    },
+    {
+      "id": "text_0021",
+      "content": "The nervous system is the complex network of nerves and cells that carry messages to and from the brain and spinal cord to various parts of the body. It is divided into the central nervous system (brain and spinal cord) and the peripheral nervous system (nerves outside the CNS). Neurons are the basic functional units that transmit electrical signals. The nervous system controls voluntary actions like walking and involuntary functions like breathing and heartbeat."
+    },
+    {
+      "id": "text_0022",
+      "content": "Geometry is a branch of mathematics concerned with the properties and relations of points, lines, surfaces, and solids. It deals with concepts such as angles, shapes, sizes, and positions of figures. Euclidean geometry, based on the work of the ancient Greek mathematician Euclid, forms the foundation for much of modern geometry. Applications range from architecture and engineering to computer graphics and navigation systems."
+    },
+    {
+      "id": "text_0023",
+      "content": "The Renaissance was a period of cultural, artistic, political, and economic rebirth following the Middle Ages, generally described as taking place from the 14th to the 17th century. It promoted the rediscovery of classical philosophy, literature, and art. Beginning in Italy, it spread to the rest of Europe. Key figures included Leonardo da Vinci, Michelangelo, and Galileo. The Renaissance also saw the development of printing, which allowed ideas to spread more rapidly."
+    },
+    {
+      "id": "text_0024",
+      "content": "Atoms are the basic building blocks of matter, consisting of a nucleus surrounded by electrons. The nucleus contains protons and neutrons. Protons have a positive charge, electrons have a negative charge, and neutrons are neutral. The number of protons determines the element, while the number of electrons determines chemical behavior. Atoms can combine to form molecules through chemical bonds, which involve sharing or transferring electrons."
+    },
+    {
+      "id": "text_0025",
+      "content": "The Cold War was a period of geopolitical tension between the Soviet Union and the United States and their respective allies from 1947 to 1991. It was characterized by ideological conflict, nuclear arms race, proxy wars, and espionage, but no direct large-scale fighting between the two superpowers. Major events included the Berlin Blockade, the Cuban Missile Crisis, and the Space Race. The Cold War ended with the dissolution of the Soviet Union in 1991."
+    },
+    {
+      "id": "text_0026",
+      "content": "Digestion is the process by which the body breaks down food into small nutrient molecules that can be absorbed and used for energy, growth, and repair. It begins in the mouth with chewing and saliva, continues in the stomach where acids and enzymes break down food, and finishes in the small intestine where nutrients are absorbed into the bloodstream. The large intestine then absorbs water and compacts waste for elimination."
+    },
+    {
+      "id": "text_0027",
+      "content": "The Earth's atmosphere is a layer of gases surrounding the planet, retained by gravity. It consists mainly of nitrogen and oxygen, with smaller amounts of argon, carbon dioxide, and other gases. The atmosphere protects life by absorbing ultraviolet solar radiation, warming the surface through heat retention (greenhouse effect), and reducing temperature extremes between day and night. It is divided into layers: troposphere, stratosphere, mesosphere, thermosphere, and exosphere."
+    },
+    {
+      "id": "text_0028",
+      "content": "Calculus is a branch of mathematics that studies continuous change, divided into differential calculus and integral calculus. Differential calculus deals with rates of change and slopes of curves, while integral calculus deals with accumulation of quantities and areas under curves. Developed independently by Newton and Leibniz in the 17th century, calculus is fundamental to physics, engineering, economics, and many other fields."
+    },
+    {
+      "id": "text_0029",
+      "content": "The Russian Revolution of 1917 was a pair of revolutions that dismantled the Tsarist autocracy and led to the rise of the Soviet Union. The February Revolution overthrew Tsar Nicholas II and established a provisional government. The October Revolution, led by the Bolshevik Party under Vladimir Lenin, overthrew the provisional government and established a socialist state. The revolution led to a brutal civil war and the establishment of a communist government that lasted until 1991."
+    },
+    {
+      "id": "text_0030",
+      "content": "Viruses are microscopic infectious agents that replicate only inside living cells of organisms. They consist of genetic material (DNA or RNA) surrounded by a protein coat called a capsid. Some viruses also have an outer envelope. Viruses infect all types of life forms, from animals and plants to bacteria. They cause diseases such as influenza, HIV/AIDS, and COVID-19. Unlike bacteria, viruses are not considered living organisms because they cannot reproduce independently."
+    },
+    {
+      "id": "text_0031",
+      "content": "The Constitution of the United States is the supreme law of the land, establishing the framework of the federal government and guaranteeing certain rights to citizens. It was drafted in 1787 and ratified in 1788. The Constitution creates three branches of government: legislative (Congress), executive (President), and judicial (Supreme Court). It includes amendments, with the first ten known as the Bill of Rights, which protect individual liberties such as freedom of speech and religion."
+    },
+    {
+      "id": "text_0032",
+      "content": "Electromagnetism is a branch of physics that studies the interaction between electrically charged particles. It encompasses electricity, magnetism, and their relationship. Key concepts include electric charge, electric fields, magnetic fields, and electromagnetic waves. James Clerk Maxwell unified electricity and magnetism in the 19th century with his famous equations. Electromagnetism explains phenomena like light, radio waves, and X-rays, and is fundamental to modern technology including motors, generators, and telecommunications."
+    },
+    {
+      "id": "text_0033",
+      "content": "The Middle Ages in Europe lasted from the 5th to the late 15th century, beginning with the fall of the Western Roman Empire and merging into the Renaissance. It is often divided into the Early, High, and Late Middle Ages. Key features included feudalism, the rise of Christianity, the Crusades, the growth of towns and universities, and significant cultural and technological developments. The period ended with events such as the Black Death and the Hundred Years' War."
+    },
+    {
+      "id": "text_0034",
+      "content": "Genetics is the study of genes, genetic variation, and heredity in living organisms. It is based on the work of Gregor Mendel, who first described patterns of inheritance in pea plants. Genes, made of DNA, are passed from parents to offspring and determine traits. Modern genetics includes the study of gene function, gene expression, and genetic disorders. Advances in genetic engineering and DNA sequencing have revolutionized medicine, agriculture, and biology."
+    },
+    {
+      "id": "text_0035",
+      "content": "The water cycle involves several key processes: evaporation, transpiration, condensation, precipitation, and collection. Evaporation occurs when the sun heats water in rivers, lakes, or oceans and turns it into vapor. Transpiration is similar but from plants. Condensation happens when water vapor rises and cools, forming clouds. Precipitation occurs when clouds become heavy and water falls as rain, snow, or hail. Collection happens when water gathers in bodies of water, starting the cycle again."
+    },
+    {
+      "id": "text_0036",
+      "content": "Trigonometry is a branch of mathematics that studies relationships between side lengths and angles of triangles. The field emerged in the Hellenistic world during the 3rd century BC from applications of geometry to astronomy. Key functions include sine, cosine, and tangent. Trigonometry is used in many fields, including physics, engineering, navigation, and computer graphics, to solve problems involving angles and distances."
+    },
+    {
+      "id": "text_0037",
+      "content": "The ancient Egyptians were a civilization of ancient North Africa, concentrated along the lower reaches of the Nile River. They are known for their monumental architecture, including pyramids and temples, a writing system using hieroglyphs, and advanced knowledge of mathematics and medicine. Egyptian civilization flourished for over 3000 years, from around 3100 BC until its conquest by Alexander the Great in 332 BC. Their achievements had a lasting influence on later cultures."
+    },
+    {
+      "id": "text_0038",
+      "content": "Metabolism refers to all the chemical reactions that occur in an organism to maintain life. It is divided into two categories: catabolism, which breaks down molecules to release energy, and anabolism, which uses energy to build cellular components. Enzymes play a crucial role in regulating these reactions. Metabolic rate is influenced by factors like age, gender, body size, and physical activity. Disorders of metabolism can lead to diseases such as diabetes."
+    },
+    {
+      "id": "text_0039",
+      "content": "The moon is Earth's only natural satellite and the fifth largest moon in the solar system. It orbits Earth at an average distance of about 384,400 kilometers. The moon's phases, including new moon, first quarter, full moon, and last quarter, result from its changing position relative to Earth and the sun. The moon's gravitational pull causes tides on Earth. It was first reached by a human-made object in 1959 and by humans in 1969 during the Apollo 11 mission."
+    },
+    {
+      "id": "text_0040",
+      "content": "Probability is a branch of mathematics that quantifies the likelihood of events occurring. It is expressed as a number between 0 and 1, where 0 indicates impossibility and 1 indicates certainty. Key concepts include experiments, outcomes, events, and sample spaces. Probability theory is used in fields like statistics, finance, science, and philosophy. It forms the basis for understanding risk, making predictions, and analyzing random phenomena."
+    },
+    {
+      "id": "text_0041",
+      "content": "The Byzantine Empire was the continuation of the Roman Empire in its eastern provinces during Late Antiquity and the Middle Ages, with its capital at Constantinople. It survived the fall of the Western Roman Empire and continued for nearly a thousand years until Constantinople fell to the Ottoman Turks in 1453. The Byzantine Empire preserved Greek and Roman knowledge, developed Orthodox Christianity, and influenced art, law, and culture throughout Eastern Europe and the Middle East."
+    },
+    {
+      "id": "text_0042",
+      "content": "The immune system is a complex network of cells, tissues, and organs that work together to defend the body against harmful invaders like bacteria, viruses, and parasites. It includes physical barriers like skin, white blood cells, antibodies, and lymphatic organs. The immune system can distinguish between self and non-self, and it has memory, allowing it to respond more quickly to previously encountered pathogens. Disorders include allergies, autoimmune diseases, and immunodeficiencies."
+    },
+    {
+      "id": "text_0043",
+      "content": "The theory of evolution by natural selection, proposed by Charles Darwin, explains how species change over time. Individuals with traits better suited to their environment are more likely to survive and reproduce, passing those advantageous traits to offspring. Over generations, this process leads to adaptation and the emergence of new species. Evidence for evolution includes the fossil record, comparative anatomy, and DNA analysis."
+    },
+    {
+      "id": "text_0044",
+      "content": "Statistics is the science of collecting, analyzing, interpreting, presenting, and organizing data. It involves methods for summarizing data (descriptive statistics) and drawing conclusions from samples (inferential statistics). Key concepts include mean, median, mode, standard deviation, correlation, and probability distributions. Statistics is used in virtually all fields, including science, business, economics, medicine, and social sciences, to make informed decisions based on data."
+    },
+    {
+      "id": "text_0045",
+      "content": "The Mongol Empire was the largest contiguous land empire in history, founded by Genghis Khan in 1206. At its peak, it stretched from Eastern Europe to the Sea of Japan, covering large parts of Siberia, Central Asia, China, and the Middle East. The Mongols were known for their skilled cavalry, effective military strategies, and ability to adapt and incorporate technologies from conquered peoples. The empire facilitated trade and cultural exchange along the Silk Road."
+    },
+    {
+      "id": "text_0046",
+      "content": "The respiratory system is responsible for taking in oxygen and expelling carbon dioxide. It includes the nose, pharynx, larynx, trachea, bronchi, and lungs. Air enters through the nose or mouth, travels down the trachea, and reaches the alveoli in the lungs, where gas exchange occurs. Oxygen diffuses into the blood, and carbon dioxide diffuses out. Breathing is controlled by the diaphragm and rib muscles. Respiratory diseases include asthma, bronchitis, and pneumonia."
+    },
+    {
+      "id": "text_0047",
+      "content": "Magnetism is a force exerted by magnets, objects that produce fields that attract or repel certain materials like iron. It results from the motion of electric charges. Every magnet has a north and south pole; opposite poles attract, while like poles repel. Earth itself acts as a giant magnet, with a magnetic field that protects us from solar radiation and enables compass navigation. Electromagnets, created by running electricity through coils, have many practical applications."
+    },
+    {
+      "id": "text_0048",
+      "content": "The Ottoman Empire was a state that controlled much of Southeast Europe, Western Asia, and North Africa between the 14th and early 20th centuries. Founded by Osman I, it grew from a small principality in Anatolia to a major power, culminating in the conquest of Constantinople in 1453. The empire was a center of interaction between Eastern and Western worlds for over six centuries. It dissolved after its defeat in World War I, leading to the establishment of modern Turkey."
+    },
+    {
+      "id": "text_0049",
+      "content": "Enzymes are proteins that act as biological catalysts, speeding up chemical reactions in living organisms without being consumed. They are highly specific, each enzyme catalyzing a particular reaction. Enzymes work by lowering the activation energy needed for a reaction to occur. Their activity is influenced by factors such as temperature, pH, and the concentration of substrate. Enzymes are essential for digestion, metabolism, DNA replication, and many other biological processes."
+    },
+    {
+      "id": "text_0050",
+      "content": "The Reformation was a major 16th-century religious movement in Western Christianity that challenged the authority of the Catholic Church and led to the creation of Protestant churches. It began in 1517 when Martin Luther published his Ninety-five Theses criticizing church practices. Key figures included Luther, John Calvin, and Henry VIII. The Reformation had profound political, social, and cultural consequences, including religious wars, the spread of literacy, and the rise of individualism."
+    },
+    {
+      "id": "text_0051",
+      "content": "Sound is a vibration that travels through a medium, such as air, water, or solids, as a mechanical wave. It is produced by vibrating objects and is perceived by the ear when it reaches the eardrum. The speed of sound depends on the medium, being fastest in solids and slowest in gases. Key characteristics include frequency (pitch), amplitude (loudness), and timbre (quality). Applications range from music and communication to medical ultrasound and sonar."
+    },
+    {
+      "id": "text_0052",
+      "content": "The Aztec Empire was a Mesoamerican civilization that flourished in central Mexico from the 14th to the 16th centuries. Their capital, Tenochtitlan, was built on an island in Lake Texcoco and became one of the largest cities in the world. The Aztecs had a complex social structure, advanced agriculture (chinampas), a rich mythology, and a calendar system. The empire fell after the Spanish conquest led by Hernán Cortés in 1521."
+    },
+    {
+      "id": "text_0053",
+      "content": "Acids and bases are chemical substances with opposite properties. Acids taste sour, turn litmus red, and release hydrogen ions in water. Bases taste bitter, feel slippery, turn litmus blue, and release hydroxide ions. The pH scale measures how acidic or basic a solution is, ranging from 0 (strongly acidic) to 14 (strongly basic), with 7 being neutral. Strong acids and bases can be corrosive. Neutralization reactions between acids and bases produce salt and water."
+    },
+    {
+      "id": "text_0054",
+      "content": "The Silk Road was an ancient network of trade routes connecting East Asia and Southeast Asia with South Asia, Persia, the Arabian Peninsula, East Africa, and Southern Europe. It flourished from about 114 BCE to the 1450s CE. The routes facilitated not only the exchange of goods like silk, spices, and precious metals, but also the transmission of ideas, technologies, religions, and cultures between civilizations. It played a key role in the development of many great societies."
+    },
+    {
+      "id": "text_0055",
+      "content": "The endocrine system is a collection of glands that produce and secrete hormones, chemical messengers that regulate various body functions. Key glands include the pituitary, thyroid, parathyroid, adrenal, and pancreas, as well as the ovaries and testes. Hormones control metabolism, growth, reproduction, mood, and other processes. Disorders can result from hormone imbalances, leading to conditions like diabetes, thyroid disease, and growth disorders."
+    },
+    {
+      "id": "text_0056",
+      "content": "Light is electromagnetic radiation that can be detected by the human eye. It exhibits both wave-like and particle-like properties (wave-particle duality). Visible light is a small part of the electromagnetic spectrum, which also includes radio waves, microwaves, infrared, ultraviolet, X-rays, and gamma rays. Light travels at about 300,000 kilometers per second in a vacuum. It can be reflected, refracted, absorbed, and scattered. Optics is the study of light and its interactions."
+    },
+    {
+      "id": "text_0057",
+      "content": "The Inca Empire was the largest empire in pre-Columbian America, centered in the Andes of South America from the early 15th century until the Spanish conquest in 1572. Its capital was Cusco. The Incas had advanced engineering, building extensive road networks, suspension bridges, and stone structures like Machu Picchu. They had a centralized economy, a complex social hierarchy, and a unique record-keeping system using knotted strings called quipus."
+    },
+    {
+      "id": "text_0058",
+      "content": "Chemical bonding is the process by which atoms combine to form molecules or crystals. There are two main types: ionic bonding, where electrons are transferred from one atom to another, and covalent bonding, where electrons are shared between atoms. Metallic bonding occurs in metals, where electrons are delocalized among a lattice of atoms. The type of bond determines the properties of the resulting compound, such as melting point, conductivity, and solubility."
+    },
+    {
+      "id": "text_0059",
+      "content": "The Age of Exploration was a period from the early 15th century to the 17th century during which European ships explored the world, searching for new trade routes, wealth, and knowledge. Key motivations were summarized by the phrase 'God, gold, and glory.' Portuguese explorers like Vasco da Gama reached India, while Spanish expeditions led by Columbus reached the Americas. This era led to the Columbian Exchange, colonization, and the globalization of trade, but also to the exploitation of indigenous peoples."
+    },
+    {
+      "id": "text_0060",
+      "content": "Electricity is the flow of electric charge, typically carried by electrons in a conductor. It can be produced by various methods, including chemical reactions in batteries, friction, and electromagnetic induction. Key concepts include voltage (electrical pressure), current (flow rate), and resistance (opposition to flow). Circuits allow electricity to power devices. Electricity is essential for modern life, used for lighting, heating, communication, and powering countless appliances and machines."
+    },
+    {
+      "id": "text_0061",
+      "content": "The Maya civilization was a Mesoamerican civilization known for its sophisticated writing system, art, architecture, mathematics, and astronomical system. It developed in an area that encompasses southeastern Mexico, all of Guatemala and Belize, and parts of Honduras and El Salvador. The Classic period (250-900 AD) saw the construction of great city-states like Tikal and Palenque. The Maya developed a complex calendar and were one of the few ancient civilizations to develop the concept of zero."
+    },
+    {
+      "id": "text_0062",
+      "content": "Thermodynamics is the branch of physics that deals with heat, work, temperature, and their relation to energy and matter. It is governed by four laws: Zeroth law defines thermal equilibrium; First law states energy conservation; Second law says entropy increases in isolated systems; Third law states entropy approaches zero as temperature approaches absolute zero. Thermodynamics applies to engines, refrigerators, chemical reactions, and even biological processes."
+    },
+    {
+      "id": "text_0063",
+      "content": "The Persian Empire, also known as the Achaemenid Empire, was an ancient Iranian empire founded by Cyrus the Great in the 6th century BC. At its height, it stretched from the Balkans and Eastern Europe to the Indus Valley, making it the largest empire the world had yet seen. It was known for its efficient administration, road system (including the Royal Road), and tolerance of conquered peoples' cultures. It was eventually conquered by Alexander the Great."
+    },
+    {
+      "id": "text_0064",
+      "content": "The skeletal system provides structure and support for the body, protects internal organs, allows movement by providing attachment points for muscles, stores minerals like calcium and phosphorus, and produces blood cells in the bone marrow. An adult human has 206 bones, which are connected by joints. Bones are living tissues that can repair themselves. Conditions affecting the skeletal system include fractures, arthritis, and osteoporosis."
+    },
+    {
+      "id": "text_0065",
+      "content": "Nuclear energy is the energy released during nuclear fission or fusion. Fission splits heavy atomic nuclei like uranium, releasing large amounts of energy used in power plants. Fusion combines light nuclei like hydrogen, powering the sun and stars. Nuclear power plants produce electricity without greenhouse gas emissions, but generate radioactive waste that requires careful disposal. Nuclear energy also has medical applications in imaging and cancer treatment, and military applications in weapons."
+    },
+    {
+      "id": "text_0066",
+      "content": "The Gupta Empire was an ancient Indian empire that existed from approximately 320 to 550 AD, often called the Golden Age of India. It was marked by extensive achievements in science, technology, engineering, art, literature, mathematics, astronomy, and philosophy. The Gupta period produced the mathematician Aryabhata, the concept of zero, the decimal system, and significant advancements in medicine. The empire promoted Hinduism but also supported Buddhism and Jainism."
+    },
+    {
+      "id": "text_0067",
+      "content": "The muscular system allows for movement of the body, maintains posture, and circulates blood throughout the body. There are three types of muscles: skeletal (voluntary, attached to bones), smooth (involuntary, found in organs), and cardiac (involuntary, found only in the heart). Muscles work by contracting and relaxing. They require energy from ATP and produce heat as a byproduct. Exercise strengthens muscles, while diseases like muscular dystrophy weaken them."
+    },
+    {
+      "id": "text_0068",
+      "content": "Quantum mechanics is a fundamental theory in physics that describes nature at the smallest scales of energy levels of atoms and subatomic particles. It differs from classical physics in that energy, momentum, and other quantities are often restricted to discrete values (quantization), and particles have both particle and wave properties (wave-particle duality). Key concepts include the uncertainty principle, quantum superposition, and entanglement. It underlies much of modern technology, including semiconductors and lasers."
+    },
+    {
+      "id": "text_0069",
+      "content": "The Songhai Empire was a state that dominated the western Sahel in the 15th and 16th centuries, one of the largest African empires in history. It succeeded the Mali Empire and was centered on the middle reaches of the Niger River, with its capital at Gao. The empire grew wealthy through trade, especially in gold and salt. It was known for its sophisticated government and the great trading cities of Timbuktu and Djenné, centers of Islamic learning. It fell after a Moroccan invasion in 1591."
+    },
+    {
+      "id": "text_0070",
+      "content": "The digestive system breaks down food into nutrients that the body can absorb and use. It consists of the gastrointestinal tract (mouth, esophagus, stomach, small intestine, large intestine, rectum, anus) and accessory organs (salivary glands, liver, gallbladder, pancreas). Digestion involves both mechanical processes (chewing, churning) and chemical processes (enzymes, acids). Nutrients are absorbed in the small intestine, while water is absorbed in the large intestine."
+    },
+    {
+      "id": "text_0071",
+      "content": "Relativity, developed by Albert Einstein, comprises two theories: special relativity and general relativity. Special relativity (1905) deals with objects moving at constant speeds, especially near the speed of light, and introduced concepts like time dilation and length contraction. General relativity (1915) describes gravity as a curvature of spacetime caused by mass and energy. Relativity has been confirmed by numerous experiments and is essential for GPS systems, astronomy, and our understanding of the universe."
+    },
+    {
+      "id": "text_0072",
+      "content": "The Ghana Empire, also known as Wagadou, was a West African empire located in present-day southeastern Mauritania and western Mali that existed from around 300 to 1200 AD. It was the first of the great West African empires, growing wealthy by controlling trans-Saharan trade in gold and salt. The empire had a complex government with a king and a capital at Koumbi Saleh. It declined due to attacks, internal strife, and the rise of competing powers like the Mali Empire."
+    },
+    {
+      "id": "text_0073",
+      "content": "The excretory system removes metabolic wastes from the body. The main organs are the kidneys, which filter blood to produce urine containing urea, excess water, and salts. Urine travels through ureters to the bladder for storage, then exits through the urethra. The skin also excretes water and salts through sweat, and the lungs excrete carbon dioxide. Maintaining proper fluid and electrolyte balance (homeostasis) is crucial for health."
+    },
+    {
+      "id": "text_0074",
+      "content": "Atomic theory describes the nature of matter, stating that all matter is composed of tiny, discrete particles called atoms. The theory has evolved from Democritus's early ideas to Dalton's atomic theory (early 1800s), which proposed that elements are made of identical atoms. Later discoveries revealed subatomic particles (electrons, protons, neutrons) and the structure of the atom, including the nucleus and electron cloud. Modern atomic theory incorporates quantum mechanics to explain electron behavior."
+    },
+    {
+      "id": "text_0075",
+      "content": "The Kingdom of Aksum was an ancient kingdom located in what is now northern Ethiopia and Eritrea, flourishing from the 1st to the 7th centuries AD. It was a major naval and trading power, controlling trade routes between the Roman Empire and India. Aksum developed its own script (Ge'ez) and currency, and was one of the first major empires to adopt Christianity in the 4th century. Its monumental obelisks and ruins still stand today."
+    },
+    {
+      "id": "text_0076",
+      "content": "The reproductive system is responsible for producing offspring. The male reproductive system produces sperm and delivers it to the female. The female reproductive system produces eggs, receives sperm, and supports the development of a fetus. Key organs include testes, ovaries, uterus, and fallopian tubes. Hormones regulate the reproductive cycle. Sexual reproduction combines genetic material from two parents, increasing genetic diversity."
+    },
+    {
+      "id": "text_0077",
+      "content": "Fluid mechanics is the branch of physics that studies fluids (liquids, gases, and plasmas) and the forces on them. It is divided into fluid statics (fluids at rest) and fluid dynamics (fluids in motion). Key principles include Pascal's law, Archimedes' principle, and Bernoulli's principle. Fluid mechanics has applications in many fields, including aerodynamics, hydrodynamics, meteorology, oceanography, and engineering (pipelines, pumps, turbines)."
+    },
+    {
+      "id": "text_0078",
+      "content": "The Mali Empire was a West African empire that flourished from the 13th to the 16th centuries, founded by Sundiata Keita. It became famous for its wealth, particularly under Mansa Musa (early 14th century), whose lavish pilgrimage to Mecca showcased the empire's gold resources. The empire controlled trans-Saharan trade routes and was a center of Islamic learning, especially in Timbuktu. It declined due to internal succession disputes and the rise of the Songhai Empire."
+    },
+    {
+      "id": "text_0079",
+      "content": "Optics is the branch of physics that studies the behavior and properties of light, including its interactions with matter and the instruments used to detect it. It covers phenomena like reflection, refraction, diffraction, and polarization. Geometrical optics treats light as rays, while physical optics treats light as waves. Applications include lenses, microscopes, telescopes, cameras, and fiber optics. Modern optics also includes quantum optics and lasers."
+    },
+    {
+      "id": "text_0080",
+      "content": "The Kingdom of Kush was an ancient Nubian kingdom located in present-day Sudan, south of Egypt. It existed from around 1070 BC to 350 AD. Kushite culture was heavily influenced by Egypt, including the worship of Egyptian gods and the building of pyramids. At its height, the Kushite kings conquered and ruled Egypt as the 25th Dynasty. The kingdom had its capital at Napata and later Meroë, known for its iron production and distinctive pyramids."
+    },
+    {
+      "id": "text_0081",
+      "content": "Organic chemistry is the study of carbon-containing compounds, their structure, properties, reactions, and synthesis. Carbon can form stable bonds with many elements, especially hydrogen, oxygen, nitrogen, and other carbons, leading to millions of organic compounds. These include fuels, plastics, pharmaceuticals, and biological molecules like proteins and DNA. Functional groups determine the characteristic reactions of organic molecules. Organic chemistry is central to biochemistry and materials science."
+    },
+    {
+      "id": "text_0082",
+      "content": "The Carthaginian Empire was a Phoenician city-state located in present-day Tunisia that became a major power in the Mediterranean from the 6th to the 3rd centuries BC. Its wealthy and powerful navy controlled trade across the region. Carthage famously clashed with the Roman Republic in the Punic Wars. The Carthaginian general Hannibal nearly defeated Rome during the Second Punic War by crossing the Alps with elephants. Carthage was finally destroyed by Rome in 146 BC."
+    },
+    {
+      "id": "text_0083",
+      "content": "Inorganic chemistry deals with the properties and behavior of inorganic compounds, which include metals, minerals, and organometallic compounds. It covers all chemical compounds except the vast majority of carbon-based ones studied in organic chemistry. Key areas include coordination chemistry, solid-state chemistry, and bioinorganic chemistry. Inorganic compounds are essential in catalysis, materials science, pigments, and electronics."
+    },
+    {
+      "id": "text_0084",
+      "content": "The Holy Roman Empire was a complex of territories in Central Europe that developed during the Early Middle Ages and continued until its dissolution in 1806. At its peak, it encompassed present-day Germany, Austria, Switzerland, the Low Countries, and parts of France and Italy. It was not a centralized state but a loose federation of principalities, duchies, and free cities under an elected emperor. It played a central role in European politics, religion, and culture for centuries."
+    },
+    {
+      "id": "text_0085",
+      "content": "Astronomy is the scientific study of celestial objects, space, and the universe as a whole. It uses physics and mathematics to understand phenomena beyond Earth's atmosphere. It is divided into observational astronomy (gathering data with telescopes and other instruments) and theoretical astronomy (developing models to explain observations). Subfields include planetary science, stellar astronomy, galactic astronomy, and cosmology. Astronomy has revealed the scale, composition, and evolution of the universe."
+    },
+    {
+      "id": "text_0086",
+      "content": "The Han Dynasty was the second imperial dynasty of China, ruling from 206 BC to 220 AD, a period considered a golden age in Chinese history. It was founded by Liu Bang and is divided into the Western Han and Eastern Han periods. The Han Dynasty saw significant advancements in science, technology, culture, and trade. The Silk Road trade network was established during this time. Confucianism was promoted, and the dynasty's influence is so profound that the majority ethnic group in China still calls itself 'Han'."
+    },
+    {
+      "id": "text_0087",
+      "content": "Biochemistry is the branch of science that explores the chemical processes within and related to living organisms. It combines principles from biology and chemistry to study the structure and function of cellular components like proteins, carbohydrates, lipids, nucleic acids, and other biomolecules. Key topics include metabolism, enzyme kinetics, genetic information flow (DNA replication, transcription, translation), and cell signaling. Biochemistry underpins much of modern medicine and biotechnology."
+    },
+    {
+      "id": "text_0088",
+      "content": "The Abbasid Caliphate was the third caliphate to succeed the Islamic prophet Muhammad, ruling from 750 to 1258 AD. It overthrew the Umayyad Caliphate and moved the capital to Baghdad, which became a center of learning, culture, and trade during the Islamic Golden Age. The Abbasids promoted scholarship, preserving and expanding upon Greek, Persian, and Indian knowledge in fields like mathematics, astronomy, medicine, and philosophy. The caliphate declined due to internal strife and eventually fell to the Mongol invasion."
+    },
+    {
+      "id": "text_0089",
+      "content": "Molecular biology is the branch of biology that studies the molecular basis of biological activity, focusing on the interactions between DNA, RNA, and proteins and their role in cell function and regulation. It overlaps with biochemistry and genetics. Key techniques include DNA cloning, PCR, gel electrophoresis, and sequencing. Discoveries in molecular biology, such as the structure of DNA and the genetic code, have revolutionized our understanding of life and led to advances in medicine, agriculture, and forensics."
+    },
+    {
+      "id": "text_0090",
+      "content": "The Byzantine Empire preserved and transmitted much of classical Greek and Roman knowledge to the Islamic world and eventually to Western Europe. Its capital, Constantinople, was a major center of learning, art, and commerce. Byzantine scholars preserved ancient texts in philosophy, science, and literature. The empire's legal code, the Corpus Juris Civilis, influenced European law. Byzantine art and architecture, with its distinctive mosaics and domed churches, also had a lasting impact."
+    },
+    {
+      "id": "text_0091",
+      "content": "Ecology is the scientific study of the interactions between organisms and their environment. It examines how organisms interact with each other and with their physical and biological surroundings. Levels of study include organism, population, community, ecosystem, landscape, and biosphere. Key concepts include energy flow, food webs, nutrient cycling, biodiversity, and succession. Ecology helps us understand environmental issues like climate change, conservation, and pollution."
+    },
+    {
+      "id": "text_0092",
+      "content": "The Umayyad Caliphate was the second of the four major caliphates established after the death of Muhammad, ruling from 661 to 750 AD. It was the largest empire in the world at the time, with its capital at Damascus. The Umayyads expanded Islamic rule across North Africa, Spain, and into Central Asia. They built magnificent architecture like the Dome of the Rock in Jerusalem. The caliphate was overthrown by the Abbasids, but a branch continued to rule in Spain (Cordoba) for several more centuries."
+    },
+    {
+      "id": "text_0093",
+      "content": "Botany is the scientific study of plants, including their physiology, structure, genetics, ecology, distribution, classification, and economic importance. It is a branch of biology. Key areas include plant anatomy, plant physiology, plant taxonomy, and ethnobotany. Plants are essential for life on Earth, producing oxygen, providing food and medicine, and forming the basis of most ecosystems. Botany has applications in agriculture, horticulture, forestry, and conservation."
+    },
+    {
+      "id": "text_0094",
+      "content": "The Crusades were a series of religious wars initiated by the Latin Church in the medieval period, primarily aimed at recovering the Holy Land from Islamic rule. They took place between the 11th and 13th centuries. The First Crusade (1095-1099) resulted in the capture of Jerusalem and the establishment of Crusader states. Later crusades were less successful. The Crusades had significant political, economic, and social impacts on Europe and the Middle East, including increased trade and cultural exchange."
+    },
+    {
+      "id": "text_0095",
+      "content": "Zoology is the scientific study of animals, including their biology, behavior, structure, evolution, classification, and distribution. It is a branch of biology. Sub-disciplines include animal physiology, ecology, evolution, ethology (animal behavior), and comparative anatomy. Zoology helps us understand the diversity of animal life, the role of animals in ecosystems, and the evolutionary relationships between species. It has applications in conservation, veterinary medicine, and agriculture."
+    },
+    {
+      "id": "text_0096",
+      "content": "The Safavid Empire was one of the most significant ruling dynasties of Iran, ruling from 1501 to 1736. They established Twelver Shi'ism as the official religion, marking a major turning point in Islamic history. The Safavids created a unified Iranian state and fostered a flourishing of Persian art, culture, and architecture, with their capital at Isfahan becoming a magnificent city. They were often at odds with the neighboring Ottoman Empire. The empire declined due to internal problems and external pressures."
+    },
+    {
+      "id": "text_0097",
+      "content": "Genetics is the study of genes, genetic variation, and heredity in living organisms. It is based on the work of Gregor Mendel, who first described patterns of inheritance in pea plants. Genes, made of DNA, are passed from parents to offspring and determine traits. Modern genetics includes the study of gene function, gene expression, and genetic disorders. Advances in genetic engineering and DNA sequencing have revolutionized medicine, agriculture, and biology."
+    },
+    {
+      "id": "text_0098",
+      "content": "The Mongol Empire was the largest contiguous land empire in history, founded by Genghis Khan in 1206. At its peak, it stretched from Eastern Europe to the Sea of Japan, covering large parts of Siberia, Central Asia, China, and the Middle East. The Mongols were known for their skilled cavalry, effective military strategies, and ability to adapt and incorporate technologies from conquered peoples. The empire facilitated trade and cultural exchange along the Silk Road."
+    },
+    {
+      "id": "text_0099",
+      "content": "The Mughal Empire was an Islamic empire that ruled large parts of the Indian subcontinent from the early 16th to the mid-19th centuries. Founded by Babur, it is known for its cultural achievements, including magnificent architecture like the Taj Mahal. The empire had a sophisticated administration and a flourishing economy. Under emperors like Akbar, it promoted cultural and religious tolerance. The empire declined due to internal conflicts, revolts, and the growing power of the British East India Company."
+    },
+    {
+      "id": "text_0100",
+      "content": "The Qing Dynasty was the last imperial dynasty of China, ruling from 1644 to 1912. Founded by the Manchu clan Aisin Gioro, it expanded China's borders to their largest extent, incorporating Tibet, Xinjiang, and Mongolia. The early Qing period was a time of prosperity, stability, and cultural flourishing. However, the dynasty faced internal rebellions, foreign pressure, and economic decline in the 19th century, leading to its eventual overthrow after the Xinhai Revolution."
+    }
+  ]
+}

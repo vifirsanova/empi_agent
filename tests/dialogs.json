@@ -1,0 +1,704 @@
+{
+  "dialogues": [
+    {
+      "id": "dialogue_0001",
+      "history": [
+        {"role": "user", "content": "I have ADHD and find it hard to focus on long paragraphs. Can you make the text shorter and use bullet points? Also, I get distracted by animations, so please keep the interface simple."},
+        {"role": "assistant", "content": "Thank you for sharing. I'll simplify the text and use clear headings and bullet points. I'll also avoid any moving elements."}
+      ]
+    },
+    {
+      "id": "dialogue_0002",
+      "history": [
+        {"role": "user", "content": "I have dyslexia. Words seem to blur together. Can you use a special font like OpenDyslexic and increase line spacing? Also, cream background helps."},
+        {"role": "assistant", "content": "I'll apply OpenDyslexic font, increase line spacing, and set a cream background. Let me know if you need further adjustments."}
+      ]
+    },
+    {
+      "id": "dialogue_0003",
+      "history": [
+        {"role": "user", "content": "I'm on the autism spectrum. I need clear structure and no metaphors. Please use literal language and avoid surprises like pop-ups."},
+        {"role": "assistant", "content": "Understood. I'll use straightforward language, organize content clearly, and ensure no unexpected elements appear."}
+      ]
+    },
+    {
+      "id": "dialogue_0004",
+      "history": [
+        {"role": "user", "content": "I have low vision. Can you increase contrast and make text larger? Also, buttons should be big and easy to click."},
+        {"role": "assistant", "content": "I'll increase text size, enhance contrast, and enlarge buttons for better visibility."}
+      ]
+    },
+    {
+      "id": "dialogue_0005",
+      "history": [
+        {"role": "user", "content": "I have both ADHD and dyslexia. Long texts are overwhelming, and I also struggle with blurry words. Can you use bullet points and the OpenDyslexic font?"},
+        {"role": "assistant", "content": "I'll break content into bullet points, use OpenDyslexic font, and ensure good spacing. I'll keep it simple and distraction-free."}
+      ]
+    },
+    {
+      "id": "dialogue_0006",
+      "history": [
+        {"role": "user", "content": "I have anxiety. Please avoid any flashing or moving elements. I prefer calm colors and clear instructions."},
+        {"role": "assistant", "content": "I'll use a calm color palette, remove all animations, and provide clear step-by-step instructions."}
+      ]
+    },
+    {
+      "id": "dialogue_0007",
+      "history": [
+        {"role": "user", "content": "I have trouble processing information quickly. Can you present content in small chunks and use simple language?"},
+        {"role": "assistant", "content": "I'll break content into small, digestible chunks and use simple, direct language throughout."}
+      ]
+    },
+    {
+      "id": "dialogue_0008",
+      "history": [
+        {"role": "user", "content": "I'm colorblind. Don't rely on color alone to convey information. Use patterns or icons instead."},
+        {"role": "assistant", "content": "I'll avoid color-based indicators and use icons and patterns to convey information clearly."}
+      ]
+    },
+    {
+      "id": "dialogue_0009",
+      "history": [
+        {"role": "user", "content": "I have epilepsy. No flashing content at all. Please ensure nothing blinks or flickers."},
+        {"role": "assistant", "content": "I'll remove all flashing and flickering elements and ensure the interface is static and safe."}
+      ]
+    },
+    {
+      "id": "dialogue_0010",
+      "history": [
+        {"role": "user", "content": "I have a traumatic brain injury. I need extra time to read and understand. Please avoid auto-advancing content."},
+        {"role": "assistant", "content": "I'll ensure nothing auto-advances and give you full control over pacing. Take your time."}
+      ]
+    },
+    {
+      "id": "dialogue_0011",
+      "history": [
+        {"role": "user", "content": "I have ADHD and get easily distracted by cluttered layouts. Can you keep it minimal with lots of white space?"},
+        {"role": "assistant", "content": "I'll use a clean, minimal design with plenty of white space and remove any unnecessary elements."}
+      ]
+    },
+    {
+      "id": "dialogue_0012",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also struggle with numbers. Can you use clear fonts and maybe include visual aids?"},
+        {"role": "assistant", "content": "I'll use OpenDyslexic font and include simple visual aids to support numerical information."}
+      ]
+    },
+    {
+      "id": "dialogue_0013",
+      "history": [
+        {"role": "user", "content": "I'm on the spectrum and need routines. Please keep the layout consistent across pages."},
+        {"role": "assistant", "content": "I'll maintain consistent layout and navigation throughout so you always know where things are."}
+      ]
+    },
+    {
+      "id": "dialogue_0014",
+      "history": [
+        {"role": "user", "content": "I have low vision and use screen magnification. Make sure the layout doesn't break when zoomed in."},
+        {"role": "assistant", "content": "I'll ensure the layout is responsive and remains usable when zoomed in."}
+      ]
+    },
+    {
+      "id": "dialogue_0015",
+      "history": [
+        {"role": "user", "content": "I have both autism and anxiety. I need predictability and calm colors. Please avoid any sudden changes."},
+        {"role": "assistant", "content": "I'll use a calm, predictable interface with consistent behavior and no sudden changes."}
+      ]
+    },
+    {
+      "id": "dialogue_0016",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also some vision issues. Can you use high contrast and keep paragraphs short?"},
+        {"role": "assistant", "content": "I'll use high contrast colors and break text into short, scannable paragraphs."}
+      ]
+    },
+    {
+      "id": "dialogue_0017",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and prefer listening over reading. Is there an option to have text read aloud?"},
+        {"role": "assistant", "content": "I'll include text-to-speech compatibility and ensure screen reader support."}
+      ]
+    },
+    {
+      "id": "dialogue_0018",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and also use a screen reader. Please ensure all images have alt text and no flashing."},
+        {"role": "assistant", "content": "I'll add alt text to all images and remove any flashing elements for safety."}
+      ]
+    },
+    {
+      "id": "dialogue_0019",
+      "history": [
+        {"role": "user", "content": "I have a processing disorder. Please use simple sentences and avoid jargon."},
+        {"role": "assistant", "content": "I'll use simple language, avoid technical terms, and explain any necessary concepts clearly."}
+      ]
+    },
+    {
+      "id": "dialogue_0020",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also tend to skim. Can you use bold headings and highlight key points?"},
+        {"role": "assistant", "content": "I'll use clear headings and highlight key information so it's easy to spot while skimming."}
+      ]
+    },
+    {
+      "id": "dialogue_0021",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also experience migraines. Please use low-contrast colors, not bright white."},
+        {"role": "assistant", "content": "I'll use a softer color palette with reduced contrast to minimize strain."}
+      ]
+    },
+    {
+      "id": "dialogue_0022",
+      "history": [
+        {"role": "user", "content": "I'm on the spectrum and get overwhelmed by too much information. Can you show only what's essential?"},
+        {"role": "assistant", "content": "I'll strip away non-essential information and focus only on what's needed for the task."}
+      ]
+    },
+    {
+      "id": "dialogue_0023",
+      "history": [
+        {"role": "user", "content": "I have low vision and use a screen reader. Please ensure all buttons and links are properly labeled."},
+        {"role": "assistant", "content": "I'll ensure all interactive elements have clear, descriptive labels for screen reader compatibility."}
+      ]
+    },
+    {
+      "id": "dialogue_0024",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also memory issues. Can you include reminders and keep instructions visible?"},
+        {"role": "assistant", "content": "I'll keep key instructions visible and include gentle reminders where helpful."}
+      ]
+    },
+    {
+      "id": "dialogue_0025",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also struggle with left-right orientation. Please avoid directional language like 'see left'."},
+        {"role": "assistant", "content": "I'll avoid directional references and use clear labels instead."}
+      ]
+    },
+    {
+      "id": "dialogue_0026",
+      "history": [
+        {"role": "user", "content": "I have anxiety and need confirmation before actions. Please add 'are you sure?' prompts."},
+        {"role": "assistant", "content": "I'll include confirmation dialogs for important actions to reduce anxiety about mistakes."}
+      ]
+    },
+    {
+      "id": "dialogue_0027",
+      "history": [
+        {"role": "user", "content": "I have both ADHD and dyslexia. I need both structure and special fonts. Can you combine both?"},
+        {"role": "assistant", "content": "I'll use OpenDyslexic font with clear structure, headings, and bullet points."}
+      ]
+    },
+    {
+      "id": "dialogue_0028",
+      "history": [
+        {"role": "user", "content": "I have photosensitive epilepsy. Absolutely no animations or transitions."},
+        {"role": "assistant", "content": "I'll disable all animations and keep the interface completely static."}
+      ]
+    },
+    {
+      "id": "dialogue_0029",
+      "history": [
+        {"role": "user", "content": "I'm colorblind and also have low vision. Use patterns and large text."},
+        {"role": "assistant", "content": "I'll combine large text with patterns and icons to convey information without relying on color."}
+      ]
+    },
+    {
+      "id": "dialogue_0030",
+      "history": [
+        {"role": "user", "content": "I have autism and need extra time. Please don't time out my sessions."},
+        {"role": "assistant", "content": "I'll disable session timeouts so you can work at your own pace."}
+      ]
+    },
+    {
+      "id": "dialogue_0031",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also dyscalculia. Can you use visual aids for numbers and keep text short?"},
+        {"role": "assistant", "content": "I'll use visual representations for numerical data and keep text concise and scannable."}
+      ]
+    },
+    {
+      "id": "dialogue_0032",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and prefer sans-serif fonts. Can you use Arial or Verdana?"},
+        {"role": "assistant", "content": "I'll use a clean sans-serif font like Arial for better readability."}
+      ]
+    },
+    {
+      "id": "dialogue_0033",
+      "history": [
+        {"role": "user", "content": "I have anxiety and get stressed by cluttered interfaces. Please keep it very simple."},
+        {"role": "assistant", "content": "I'll create a simple, uncluttered interface with only essential elements."}
+      ]
+    },
+    {
+      "id": "dialogue_0034",
+      "history": [
+        {"role": "user", "content": "I have low vision and also use voice control. Make sure buttons have clear names for voice commands."},
+        {"role": "assistant", "content": "I'll ensure all buttons have clear, unique names for voice control compatibility."}
+      ]
+    },
+    {
+      "id": "dialogue_0035",
+      "history": [
+        {"role": "user", "content": "I have both autism and dyslexia. I need clear structure AND special fonts. Can you do both?"},
+        {"role": "assistant", "content": "I'll combine OpenDyslexic font with clear hierarchical structure and consistent layout."}
+      ]
+    },
+    {
+      "id": "dialogue_0036",
+      "history": [
+        {"role": "user", "content": "I have ADHD and need frequent breaks. Can you save my progress automatically?"},
+        {"role": "assistant", "content": "I'll implement auto-save so you can take breaks without losing progress."}
+      ]
+    },
+    {
+      "id": "dialogue_0037",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and also use a screen reader. Please ensure both safety and accessibility."},
+        {"role": "assistant", "content": "I'll remove all flashing content and ensure full screen reader compatibility."}
+      ]
+    },
+    {
+      "id": "dialogue_0038",
+      "history": [
+        {"role": "user", "content": "I have a memory disorder. Please keep instructions visible and repeat important information."},
+        {"role": "assistant", "content": "I'll keep key instructions on screen and repeat important information where needed."}
+      ]
+    },
+    {
+      "id": "dialogue_0039",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also sensitivity to sound. Please avoid auto-playing media."},
+        {"role": "assistant", "content": "I'll disable all auto-playing media and give you control over any audio/video."}
+      ]
+    },
+    {
+      "id": "dialogue_0040",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also struggle with small text. Can you use larger font and special font?"},
+        {"role": "assistant", "content": "I'll use OpenDyslexic font at a larger size for better readability."}
+      ]
+    },
+    {
+      "id": "dialogue_0041",
+      "history": [
+        {"role": "user", "content": "I'm on the spectrum and need clear expectations. Please explain what will happen before I click."},
+        {"role": "assistant", "content": "I'll provide clear descriptions of what each button does before interaction."}
+      ]
+    },
+    {
+      "id": "dialogue_0042",
+      "history": [
+        {"role": "user", "content": "I have low vision and also colorblindness. Use patterns and high contrast together."},
+        {"role": "assistant", "content": "I'll combine high contrast with patterns to ensure information is accessible."}
+      ]
+    },
+    {
+      "id": "dialogue_0043",
+      "history": [
+        {"role": "user", "content": "I have anxiety and ADHD. Keep it simple, calm, and structured."},
+        {"role": "assistant", "content": "I'll create a calm, structured environment with simple navigation and no surprises."}
+      ]
+    },
+    {
+      "id": "dialogue_0044",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also use text-to-speech. Ensure proper punctuation for natural speech."},
+        {"role": "assistant", "content": "I'll use proper punctuation and grammar to support natural text-to-speech reading."}
+      ]
+    },
+    {
+      "id": "dialogue_0045",
+      "history": [
+        {"role": "user", "content": "I have both epilepsy and low vision. No flashing, and text must be large."},
+        {"role": "assistant", "content": "I'll use large text with no flashing elements, ensuring both safety and readability."}
+      ]
+    },
+    {
+      "id": "dialogue_0046",
+      "history": [
+        {"role": "user", "content": "I have ADHD and need interactive elements to stay engaged. Can you add simple interactions?"},
+        {"role": "assistant", "content": "I'll add simple, predictable interactive elements to maintain engagement without distraction."}
+      ]
+    },
+    {
+      "id": "dialogue_0047",
+      "history": [
+        {"role": "user", "content": "I have autism and sensory sensitivities. Please use muted colors and avoid bright lights."},
+        {"role": "assistant", "content": "I'll use a muted, soothing color palette and avoid bright, harsh colors."}
+      ]
+    },
+    {
+      "id": "dialogue_0048",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also need help with navigation. Can you add a clear path forward?"},
+        {"role": "assistant", "content": "I'll provide clear navigation cues and a visible path through the content."}
+      ]
+    },
+    {
+      "id": "dialogue_0049",
+      "history": [
+        {"role": "user", "content": "I have low vision and use magnification. Ensure text doesn't get cut off when zoomed."},
+        {"role": "assistant", "content": "I'll ensure all text remains visible and doesn't overflow when magnified."}
+      ]
+    },
+    {
+      "id": "dialogue_0050",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also anxiety about deadlines. Can you show progress without pressure?"},
+        {"role": "assistant", "content": "I'll show gentle progress indicators without time pressure or deadlines."}
+      ]
+    },
+    {
+      "id": "dialogue_0051",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also migraines. Use dyslexia-friendly font and reduce blue light."},
+        {"role": "assistant", "content": "I'll use OpenDyslexic font with warm, reduced-blue color tones."}
+      ]
+    },
+    {
+      "id": "dialogue_0052",
+      "history": [
+        {"role": "user", "content": "I'm on the spectrum and need literal language. No idioms or sarcasm, please."},
+        {"role": "assistant", "content": "I'll use only literal language and avoid all figurative expressions."}
+      ]
+    },
+    {
+      "id": "dialogue_0053",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and also use keyboard navigation. Ensure everything is keyboard accessible."},
+        {"role": "assistant", "content": "I'll ensure full keyboard accessibility and remove any flashing content."}
+      ]
+    },
+    {
+      "id": "dialogue_0054",
+      "history": [
+        {"role": "user", "content": "I have ADHD and need variety to stay focused. Can you use different formats (lists, images)?"},
+        {"role": "assistant", "content": "I'll mix formats with short text, lists, and relevant images to maintain interest."}
+      ]
+    },
+    {
+      "id": "dialogue_0055",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also struggle with columns. Please use single-column layout."},
+        {"role": "assistant", "content": "I'll use a simple single-column layout for easier reading flow."}
+      ]
+    },
+    {
+      "id": "dialogue_0056",
+      "history": [
+        {"role": "user", "content": "I have anxiety and need reassurance. Can you include encouraging messages?"},
+        {"role": "assistant", "content": "I'll include gentle, encouraging messages throughout the experience."}
+      ]
+    },
+    {
+      "id": "dialogue_0057",
+      "history": [
+        {"role": "user", "content": "I have low vision and also ADHD. Use large text AND keep it concise."},
+        {"role": "assistant", "content": "I'll use large, readable text while keeping content brief and focused."}
+      ]
+    },
+    {
+      "id": "dialogue_0058",
+      "history": [
+        {"role": "user", "content": "I have both dyslexia and epilepsy. Special font, no flashing, cream background."},
+        {"role": "assistant", "content": "I'll combine OpenDyslexic font, cream background, and remove all flashing content."}
+      ]
+    },
+    {
+      "id": "dialogue_0059",
+      "history": [
+        {"role": "user", "content": "I have autism and need warning before changes. Please alert me before anything updates."},
+        {"role": "assistant", "content": "I'll provide clear alerts before any content updates or changes."}
+      ]
+    },
+    {
+      "id": "dialogue_0060",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also use a screen reader. Keep it simple and properly labeled."},
+        {"role": "assistant", "content": "I'll keep the interface simple and ensure all elements are properly labeled for screen readers."}
+      ]
+    },
+    {
+      "id": "dialogue_0061",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also need high contrast. Can you do both special font and good contrast?"},
+        {"role": "assistant", "content": "I'll use OpenDyslexic font with high contrast colors for maximum readability."}
+      ]
+    },
+    {
+      "id": "dialogue_0062",
+      "history": [
+        {"role": "user", "content": "I have anxiety and epilepsy. Calm colors and no flashing, please."},
+        {"role": "assistant", "content": "I'll use a calm color palette and ensure no flashing elements are present."}
+      ]
+    },
+    {
+      "id": "dialogue_0063",
+      "history": [
+        {"role": "user", "content": "I have low vision and also use voice control. Large text and clear button names."},
+        {"role": "assistant", "content": "I'll combine large text with clearly named buttons for voice control compatibility."}
+      ]
+    },
+    {
+      "id": "dialogue_0064",
+      "history": [
+        {"role": "user", "content": "I have ADHD and dyslexia. Short paragraphs, bullet points, and special font."},
+        {"role": "assistant", "content": "I'll use OpenDyslexic font with short paragraphs and bullet points for easy scanning."}
+      ]
+    },
+    {
+      "id": "dialogue_0065",
+      "history": [
+        {"role": "user", "content": "I'm on the spectrum and need predictable navigation. Same menu on every page."},
+        {"role": "assistant", "content": "I'll keep navigation identical across all pages for consistency."}
+      ]
+    },
+    {
+      "id": "dialogue_0066",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and also dyslexia. No flashing, special font, cream background."},
+        {"role": "assistant", "content": "I'll combine all safety and accessibility features: no flashing, OpenDyslexic font, cream background."}
+      ]
+    },
+    {
+      "id": "dialogue_0067",
+      "history": [
+        {"role": "user", "content": "I have anxiety and ADHD. Keep it simple but also engaging enough to hold focus."},
+        {"role": "assistant", "content": "I'll create a clean interface with just enough engagement to maintain focus without causing anxiety."}
+      ]
+    },
+    {
+      "id": "dialogue_0068",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and low vision. Large OpenDyslexic font and high contrast."},
+        {"role": "assistant", "content": "I'll use enlarged OpenDyslexic font with high contrast colors."}
+      ]
+    },
+    {
+      "id": "dialogue_0069",
+      "history": [
+        {"role": "user", "content": "I have autism and need extra processing time. No time limits anywhere."},
+        {"role": "assistant", "content": "I'll remove all time limits and let you work at your own pace."}
+      ]
+    },
+    {
+      "id": "dialogue_0070",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also get overwhelmed by too many choices. Limit options on each screen."},
+        {"role": "assistant", "content": "I'll present only a few options at a time to prevent choice overload."}
+      ]
+    },
+    {
+      "id": "dialogue_0071",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and also use screen magnification. No flashing, zoom-friendly layout."},
+        {"role": "assistant", "content": "I'll ensure no flashing content and a layout that remains usable when zoomed."}
+      ]
+    },
+    {
+      "id": "dialogue_0072",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and anxiety. Special font, calm colors, clear structure."},
+        {"role": "assistant", "content": "I'll combine OpenDyslexic font with calm colors and clear organizational structure."}
+      ]
+    },
+    {
+      "id": "dialogue_0073",
+      "history": [
+        {"role": "user", "content": "I have low vision and also need simple language. Large text and plain English."},
+        {"role": "assistant", "content": "I'll use large text with simple, straightforward language."}
+      ]
+    },
+    {
+      "id": "dialogue_0074",
+      "history": [
+        {"role": "user", "content": "I have ADHD and autism. Need both structure and engagement. Clear but not boring."},
+        {"role": "assistant", "content": "I'll create structured content with predictable but engaging elements."}
+      ]
+    },
+    {
+      "id": "dialogue_0075",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also need help with focus. Special font and remove distractions."},
+        {"role": "assistant", "content": "I'll use OpenDyslexic font and remove all non-essential visual elements."}
+      ]
+    },
+    {
+      "id": "dialogue_0076",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and anxiety. No flashing, calm colors, predictable interface."},
+        {"role": "assistant", "content": "I'll create a calm, predictable interface with no flashing and soothing colors."}
+      ]
+    },
+    {
+      "id": "dialogue_0077",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also memory issues. Keep instructions visible and repeat key points."},
+        {"role": "assistant", "content": "I'll keep instructions on screen and repeat important information throughout."}
+      ]
+    },
+    {
+      "id": "dialogue_0078",
+      "history": [
+        {"role": "user", "content": "I have low vision and dyslexia. Large OpenDyslexic font, high contrast."},
+        {"role": "assistant", "content": "I'll use enlarged OpenDyslexic font with maximum contrast."}
+      ]
+    },
+    {
+      "id": "dialogue_0079",
+      "history": [
+        {"role": "user", "content": "I'm on the spectrum and need clear boundaries. Please separate different sections visually."},
+        {"role": "assistant", "content": "I'll use clear visual separation between different sections and content types."}
+      ]
+    },
+    {
+      "id": "dialogue_0080",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and also use keyboard navigation. No flashing, full keyboard support."},
+        {"role": "assistant", "content": "I'll ensure full keyboard accessibility and remove all flashing elements."}
+      ]
+    },
+    {
+      "id": "dialogue_0081",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also need visual breaks. Can you add some white space between sections?"},
+        {"role": "assistant", "content": "I'll add generous white space between sections for visual breathing room."}
+      ]
+    },
+    {
+      "id": "dialogue_0082",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also struggle with crowded text. Please increase letter spacing too."},
+        {"role": "assistant", "content": "I'll increase both line spacing and letter spacing for better readability."}
+      ]
+    },
+    {
+      "id": "dialogue_0083",
+      "history": [
+        {"role": "user", "content": "I have anxiety and need to know what to expect. Please explain each step before I start."},
+        {"role": "assistant", "content": "I'll provide clear overviews of each step before you begin."}
+      ]
+    },
+    {
+      "id": "dialogue_0084",
+      "history": [
+        {"role": "user", "content": "I have low vision and ADHD. Large text AND short, scannable content."},
+        {"role": "assistant", "content": "I'll combine large, readable text with short, scannable content blocks."}
+      ]
+    },
+    {
+      "id": "dialogue_0085",
+      "history": [
+        {"role": "user", "content": "I have both autism and epilepsy. Predictable, no flashing, calm colors."},
+        {"role": "assistant", "content": "I'll create a predictable, calm interface with no flashing and consistent behavior."}
+      ]
+    },
+    {
+      "id": "dialogue_0086",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also need help with navigation. Clear 'next' and 'back' buttons always visible."},
+        {"role": "assistant", "content": "I'll keep navigation buttons clearly visible and consistently placed."}
+      ]
+    },
+    {
+      "id": "dialogue_0087",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also sensory sensitivities. Keep it simple and avoid bright colors."},
+        {"role": "assistant", "content": "I'll use a simple design with muted, gentle colors."}
+      ]
+    },
+    {
+      "id": "dialogue_0088",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and also need high contrast. No flashing, but good contrast is essential."},
+        {"role": "assistant", "content": "I'll provide high contrast while ensuring no flashing elements are present."}
+      ]
+    },
+    {
+      "id": "dialogue_0089",
+      "history": [
+        {"role": "user", "content": "I have anxiety and dyslexia. Calm colors, special font, clear structure."},
+        {"role": "assistant", "content": "I'll combine OpenDyslexic font with calm colors and clear organization."}
+      ]
+    },
+    {
+      "id": "dialogue_0090",
+      "history": [
+        {"role": "user", "content": "I have low vision and also use screen reader. Large text and proper labels for everything."},
+        {"role": "assistant", "content": "I'll ensure large text size and comprehensive labeling for screen reader compatibility."}
+      ]
+    },
+    {
+      "id": "dialogue_0091",
+      "history": [
+        {"role": "user", "content": "I have ADHD and need tasks broken down. Please show one thing at a time."},
+        {"role": "assistant", "content": "I'll present information one piece at a time to prevent overwhelm."}
+      ]
+    },
+    {
+      "id": "dialogue_0092",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also need help with forms. Clear labels and examples."},
+        {"role": "assistant", "content": "I'll provide clear labels and examples for all form fields."}
+      ]
+    },
+    {
+      "id": "dialogue_0093",
+      "history": [
+        {"role": "user", "content": "I'm on the spectrum and need explicit instructions. Don't assume I understand implied steps."},
+        {"role": "assistant", "content": "I'll provide explicit, step-by-step instructions with no implied steps."}
+      ]
+    },
+    {
+      "id": "dialogue_0094",
+      "history": [
+        {"role": "user", "content": "I have epilepsy and also use voice control. No flashing, clear button names for voice."},
+        {"role": "assistant", "content": "I'll ensure no flashing content and clear button names for voice control."}
+      ]
+    },
+    {
+      "id": "dialogue_0095",
+      "history": [
+        {"role": "user", "content": "I have ADHD and also need positive reinforcement. Can you add some encouragement?"},
+        {"role": "assistant", "content": "I'll include positive feedback and encouragement throughout."}
+      ]
+    },
+    {
+      "id": "dialogue_0096",
+      "history": [
+        {"role": "user", "content": "I have dyslexia and also need help with numbers. Use digits instead of words for numbers."},
+        {"role": "assistant", "content": "I'll use digits (e.g., '5' instead of 'five') for better number recognition."}
+      ]
+    },
+    {
+      "id": "dialogue_0097",
+      "history": [
+        {"role": "user", "content": "I have anxiety and need control. Please let me choose when to move to next section."},
+        {"role": "assistant", "content": "I'll give you full control over pacing with manual progression only."}
+      ]
+    },
+    {
+      "id": "dialogue_0098",
+      "history": [
+        {"role": "user", "content": "I have low vision and epilepsy. Large text, no flashing, high contrast."},
+        {"role": "assistant", "content": "I'll combine large text, high contrast, and no flashing for safety and readability."}
+      ]
+    },
+    {
+      "id": "dialogue_0099",
+      "history": [
+        {"role": "user", "content": "I have ADHD and autism. Need both structure and engagement. Predictable but not boring."},
+        {"role": "assistant", "content": "I'll create predictable patterns with subtle engagement elements."}
+      ]
+    },
+    {
+      "id": "dialogue_0100",
+      "history": [
+        {"role": "user", "content": "I have dyslexia, ADHD, and anxiety. Can you combine all: special font, short text, calm colors, clear structure?"},
+        {"role": "assistant", "content": "I'll create a comprehensive accessible interface with OpenDyslexic font, concise content, calm colors, and clear organization."}
+      ]
+    }
+  ]
+}

@@ -89,7 +89,7 @@ private:
         
         llama_context_params ctx_params = llama_context_default_params();
         ctx_params.n_ctx = 2048;
-        ctx_params.n_batch = 512;
+        ctx_params.n_batch = 2048;
         ctx_params.n_threads = std::thread::hardware_concurrency();
         
         ctx_ = llama_init_from_model(model_, ctx_params);
@@ -110,7 +110,7 @@ private:
     std::string construct_prompt(const json& dialog_history) {
         std::stringstream ss;
         
-        ss << "<s>[INST] Analyze this dialog history and provide user feedback analysis. ";
+        ss << "[INST] Analyze this dialog history and provide user feedback analysis. ";
         ss << "Extract: sentiment, key topics, user satisfaction, and any complaints.\n\n";
         
         ss << "DIALOG HISTORY:\n";
@@ -133,8 +133,13 @@ private:
         std::vector<llama_token> tokens;
         
         int n_tokens = llama_tokenize(vocab_, prompt.c_str(), prompt.length(), nullptr, 0, true, true);
-        tokens.resize(n_tokens);
-        llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
+        if (n_tokens < 0) {
+            tokens.resize(-n_tokens);
+            llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
+        } else {
+            tokens.resize(n_tokens);
+            llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
+        }
         
         llama_batch batch = llama_batch_get_one(tokens.data(), tokens.size());
         if (llama_decode(ctx_, batch) != 0) {
@@ -162,7 +167,6 @@ private:
     }
     
     json parse_response(const std::string& response) {
-        // Try to extract JSON from response
         size_t json_start = response.find('{');
         size_t json_end = response.rfind('}');
         
@@ -170,11 +174,9 @@ private:
             try {
                 return json::parse(response.substr(json_start, json_end - json_start + 1));
             } catch (...) {
-                // Fall through to default
             }
         }
         
-        // Default response if parsing fails
         return {
             {"sentiment", "neutral"},
             {"topics", json::array()},
@@ -210,7 +212,6 @@ std::string FeedbackAgent::get_last_error() const {
 
 void FeedbackAgent::register_handlers() {
     register_handler("feedback_analysis",
-        // φ-function
         [](const json& input, const json& context, json& state) -> json {
             json extracted_info;
             
@@ -236,7 +237,6 @@ void FeedbackAgent::register_handlers() {
             return extracted_info;
         },
         
-        // ψ-function
         [this](const json& extracted_info, const json& context, json& state) -> json {
             json data_field;
             
@@ -251,7 +251,6 @@ void FeedbackAgent::register_handlers() {
                 if (llama_impl_ && is_available()) {
                     analysis = llama_impl_->analyze_feedback(extracted_info["dialog_history"]);
                 } else {
-                    // Fallback analysis
                     analysis = {
                         {"sentiment", "neutral"},
                         {"topics", {"general"}},

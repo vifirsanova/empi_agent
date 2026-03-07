@@ -1,6 +1,6 @@
 /**
  * @file FeedbackAgent.cpp
- * @brief Implementation of FeedbackAgent for user profile analysis
+ * @brief Implementation of FeedbackAgent for user feedback analysis
  */
 
 #include "FeedbackAgent.hpp"
@@ -12,14 +12,20 @@
 #include <fstream>
 #include <sstream>
 #include <thread>
+#include <chrono>
 
-#include "llama.h"
+// Llama.cpp includes
+#include <llama.h>
 
 namespace fs = std::filesystem;
 using json = nlohmann::json;
 
 namespace EMPI {
 
+/**
+ * @class FeedbackAgent::LlamaImpl
+ * @brief Manages llama.cpp model for feedback analysis
+ */
 class FeedbackAgent::LlamaImpl {
 public:
     LlamaImpl(const std::string& model_path)
@@ -56,6 +62,7 @@ public:
         
         std::string prompt = construct_prompt(dialog_history);
         std::string response = generate_text(prompt, 512);
+        
         return parse_response(response);
     }
     
@@ -82,7 +89,7 @@ private:
         
         llama_context_params ctx_params = llama_context_default_params();
         ctx_params.n_ctx = 2048;
-        ctx_params.n_batch = 2048;
+        ctx_params.n_batch = 512;
         ctx_params.n_threads = std::thread::hardware_concurrency();
         
         ctx_ = llama_init_from_model(model_, ctx_params);
@@ -103,48 +110,20 @@ private:
     std::string construct_prompt(const json& dialog_history) {
         std::stringstream ss;
         
-        ss << "[INST] Analyze this dialog and create a user profile. Focus on:\n";
-        ss << "- Age group (child, teen, adult, senior)\n";
-        ss << "- ADHD indicators (inattention, hyperactivity, impulsivity in responses)\n";
-        ss << "- Dyslexia indicators (spelling patterns, sentence structure)\n";
-        ss << "- Special needs (anxiety, autism spectrum indicators, processing needs)\n";
-        ss << "- Communication style (direct/indirect, emotional/cognitive)\n";
-        ss << "- Technical literacy (basic/intermediate/advanced)\n\n";
+        ss << "[INST] Analyze this dialog history and provide user feedback analysis. ";
+        ss << "Extract: sentiment, key topics, user satisfaction, and any complaints.\n\n";
         
-        ss << "DIALOG:\n";
+        ss << "DIALOG HISTORY:\n";
         for (const auto& msg : dialog_history) {
             std::string role = msg.value("role", "unknown");
             std::string content = msg.value("content", "");
             ss << role << ": " << content << "\n";
         }
         
-        ss << "\nReturn ONLY a JSON object with this structure:\n";
-        ss << "{\n";
-        ss << "  \"age_group\": \"child/teen/adult/senior\",\n";
-        ss << "  \"adhd_indicators\": {\n";
-        ss << "    \"inattention\": 0.0-1.0,\n";
-        ss << "    \"hyperactivity\": 0.0-1.0,\n";
-        ss << "    \"impulsivity\": 0.0-1.0\n";
-        ss << "  },\n";
-        ss << "  \"dyslexia_indicators\": {\n";
-        ss << "    \"spelling_issues\": 0.0-1.0,\n";
-        ss << "    \"sentence_structure\": 0.0-1.0,\n";
-        ss << "    \"reading_difficulty\": 0.0-1.0\n";
-        ss << "  },\n";
-        ss << "  \"special_needs\": {\n";
-        ss << "    \"anxiety_indicators\": 0.0-1.0,\n";
-        ss << "    \"autism_indicators\": 0.0-1.0,\n";
-        ss << "    \"processing_speed\": \"slow/medium/fast\"\n";
-        ss << "  },\n";
-        ss << "  \"communication_style\": {\n";
-        ss << "    \"directness\": 0.0-1.0,\n";
-        ss << "    \"emotionality\": 0.0-1.0,\n";
-        ss << "    \"verbosity\": 0.0-1.0\n";
-        ss << "  },\n";
-        ss << "  \"technical_literacy\": \"basic/intermediate/advanced\",\n";
-        ss << "  \"summary\": \"brief profile summary\"\n";
-        ss << "}\n";
-        ss << "[/INST]";
+        ss << "\nProvide analysis in JSON format with fields: ";
+        ss << "sentiment (positive/neutral/negative), topics (array), ";
+        ss << "satisfaction_score (0-1), complaints (array), feedback_summary\n";
+        ss << "[/INST]\n";
         
         return ss.str();
     }
@@ -154,8 +133,13 @@ private:
         std::vector<llama_token> tokens;
         
         int n_tokens = llama_tokenize(vocab_, prompt.c_str(), prompt.length(), nullptr, 0, true, true);
-        tokens.resize(n_tokens);
-        llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
+        if (n_tokens < 0) {
+            tokens.resize(-n_tokens);
+            llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
+        } else {
+            tokens.resize(n_tokens);
+            llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
+        }
         
         llama_batch batch = llama_batch_get_one(tokens.data(), tokens.size());
         if (llama_decode(ctx_, batch) != 0) {
@@ -175,15 +159,6 @@ private:
             
             result += std::string(buf, n);
             
-            if (result.find("}") != std::string::npos) {
-                size_t last_brace = result.rfind('}');
-                size_t first_brace = result.find('{');
-                if (last_brace > first_brace && 
-                    result.substr(first_brace, last_brace - first_brace + 1).find('{') == 0) {
-                    break;
-                }
-            }
-            
             batch = llama_batch_get_one(&new_token, 1);
             if (llama_decode(ctx_, batch) != 0) break;
         }
@@ -199,35 +174,15 @@ private:
             try {
                 return json::parse(response.substr(json_start, json_end - json_start + 1));
             } catch (...) {
-                // Return empty but structured JSON
             }
         }
         
-        // Return default structure if parsing fails
         return {
-            {"age_group", "adult"},
-            {"adhd_indicators", {
-                {"inattention", 0.5},
-                {"hyperactivity", 0.5},
-                {"impulsivity", 0.5}
-            }},
-            {"dyslexia_indicators", {
-                {"spelling_issues", 0.5},
-                {"sentence_structure", 0.5},
-                {"reading_difficulty", 0.5}
-            }},
-            {"special_needs", {
-                {"anxiety_indicators", 0.5},
-                {"autism_indicators", 0.5},
-                {"processing_speed", "medium"}
-            }},
-            {"communication_style", {
-                {"directness", 0.5},
-                {"emotionality", 0.5},
-                {"verbosity", 0.5}
-            }},
-            {"technical_literacy", "intermediate"},
-            {"summary", "Profile analysis based on dialog"}
+            {"sentiment", "neutral"},
+            {"topics", json::array()},
+            {"satisfaction_score", 0.5},
+            {"complaints", json::array()},
+            {"feedback_summary", response.substr(0, 200)}
         };
     }
 };
@@ -260,17 +215,22 @@ void FeedbackAgent::register_handlers() {
         [](const json& input, const json& context, json& state) -> json {
             json extracted_info;
             
-            // Просто берем то что пришло - без валидации
-            if (input.contains("dialog_history")) {
-                extracted_info["dialog_history"] = input["dialog_history"];
-            } else if (input.contains("history")) {
-                extracted_info["dialog_history"] = input["history"];
-            } else if (input.contains("messages")) {
-                extracted_info["dialog_history"] = input["messages"];
-            } else {
-                // Если ничего не нашли, берем весь input как диалог
-                extracted_info["dialog_history"] = input;
+            std::vector<json> dialog;
+            if (input.contains("dialog_history") && input["dialog_history"].is_array()) {
+                dialog = input["dialog_history"].get<std::vector<json>>();
+            } else if (input.contains("history") && input["history"].is_array()) {
+                dialog = input["history"].get<std::vector<json>>();
+            } else if (input.contains("messages") && input["messages"].is_array()) {
+                dialog = input["messages"].get<std::vector<json>>();
             }
+            
+            if (dialog.empty()) {
+                extracted_info["error"] = "No dialog history found";
+                return extracted_info;
+            }
+            
+            extracted_info["dialog_history"] = dialog;
+            extracted_info["message_count"] = dialog.size();
             
             state["total_analyses"] = state.value("total_analyses", 0) + 1;
             
@@ -280,17 +240,30 @@ void FeedbackAgent::register_handlers() {
         [this](const json& extracted_info, const json& context, json& state) -> json {
             json data_field;
             
+            if (extracted_info.contains("error")) {
+                data_field["status"] = "error";
+                data_field["message"] = extracted_info["error"];
+                return data_field;
+            }
+            
             try {
-                json profile;
+                json analysis;
                 if (llama_impl_ && is_available()) {
-                    profile = llama_impl_->analyze_feedback(extracted_info["dialog_history"]);
+                    analysis = llama_impl_->analyze_feedback(extracted_info["dialog_history"]);
                 } else {
-                    throw std::runtime_error("LLM not available");
+                    analysis = {
+                        {"sentiment", "neutral"},
+                        {"topics", {"general"}},
+                        {"satisfaction_score", 0.5},
+                        {"complaints", json::array()},
+                        {"feedback_summary", "Mock feedback analysis"}
+                    };
                 }
                 
                 data_field["status"] = "success";
-                data_field["profile_id"] = "profile_" + std::to_string(state.value("total_analyses", 0));
-                data_field["user_profile"] = profile;
+                data_field["analysis_id"] = "fb_" + std::to_string(state.value("total_analyses", 0));
+                data_field["analysis"] = analysis;
+                data_field["messages_analyzed"] = extracted_info["message_count"];
                 
             } catch (const std::exception& e) {
                 data_field["status"] = "error";

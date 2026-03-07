@@ -80,8 +80,8 @@ private:
         vocab_ = llama_model_get_vocab(model_);
         
         llama_context_params ctx_params = llama_context_default_params();
-        ctx_params.n_ctx = 2048;
-        ctx_params.n_batch = 2048;
+        ctx_params.n_ctx = 4096;
+        ctx_params.n_batch = 4096;
         ctx_params.n_threads = std::thread::hardware_concurrency();
         
         ctx_ = llama_init_from_model(model_, ctx_params);
