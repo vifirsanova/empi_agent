@@ -49,12 +49,12 @@ public:
     bool is_available() const { return is_available_; }
     std::string get_last_error() const { return last_error_; }
     
-    std::string generate_interface(const json& text_metrics, const json& feedback_analysis) {
+    std::string generate_interface(const json& text_metrics, const json& feedback_analysis, const std::string&original_text) {
         if (!is_available_) {
             throw std::runtime_error("Model not available: " + last_error_);
         }
         
-        std::string prompt = construct_prompt(text_metrics, feedback_analysis);
+        std::string prompt = construct_prompt(text_metrics, feedback_analysis, original_text);
         return generate_html(prompt);
     }
     
@@ -81,7 +81,7 @@ private:
         
         llama_context_params ctx_params = llama_context_default_params();
         ctx_params.n_ctx = 4096;
-        ctx_params.n_batch = 4096;
+        ctx_params.n_batch = 2048;
         ctx_params.n_threads = std::thread::hardware_concurrency();
         
         ctx_ = llama_init_from_model(model_, ctx_params);
@@ -99,11 +99,14 @@ private:
         is_available_ = true;
     }
    
-    std::string construct_prompt(const json& text_metrics, const json& user_profile) { 
+    std::string construct_prompt(const json& text_metrics, const json& user_profile, const std::string& original_text) { 
     std::stringstream ss;
     
     ss << "[INST] You are an accessibility assistant. Adapt the following text for a user with specific needs.\n\n";
     
+    ss << "ORIGINAL TEXT:\n";
+    ss << original_text << "\n\n";
+
     ss << "ORIGINAL TEXT METRICS:\n";
     ss << text_metrics.dump(2) << "\n\n";
     
@@ -222,7 +225,10 @@ void InterfaceGenerator::register_handlers() {
             if (input.contains("feedback_analysis")) {
                 extracted_info["feedback_analysis"] = input["feedback_analysis"];
             }
-            
+            if (input.contains("original_text")) {
+                extracted_info["original_text"] = input["original_text"];
+            } 
+ 
             if (!extracted_info.contains("text_metrics")) {
                 extracted_info["error"] = "Missing text_metrics";
                 return extracted_info;
@@ -231,7 +237,6 @@ void InterfaceGenerator::register_handlers() {
                 extracted_info["error"] = "Missing feedback_analysis";
                 return extracted_info;
             }
-            
             state["total_generations"] = state.value("total_generations", 0) + 1;
             
             return extracted_info;
@@ -252,7 +257,8 @@ void InterfaceGenerator::register_handlers() {
                 if (llama_impl_ && is_available()) {
                     html = llama_impl_->generate_interface(
                         extracted_info["text_metrics"],
-                        extracted_info["feedback_analysis"]
+                        extracted_info["feedback_analysis"],
+			extracted_info.value("original_text", "")
                     );
                 } else {
                     // Fallback HTML template

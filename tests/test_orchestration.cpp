@@ -100,8 +100,9 @@ int main(int argc, char** argv) {
         std::string text_id = text_item["id"];
         std::string text_content = text_item["content"];
         
-        std::cout << "Processing text " << (i+1) << "/" << num_texts 
+        std::cout << "\n>>> Processing text " << (i+1) << "/" << num_texts 
                   << " (ID: " << text_id << ")\n";
+        std::cout << ">>> Text preview: " << text_content.substr(0, 50) << "...\n";
         
         for (size_t j = 0; j < num_dialogues; ++j) {
             const auto& dialogue_item = dialogues[j];
@@ -115,15 +116,21 @@ int main(int argc, char** argv) {
             }
             
             try {
+                std::cout << "\n    --- Combo " << text_id << " x " << dialogue_id << " ---\n";
+                
                 // Run TextAnalyzer and FeedbackAgent in parallel
                 auto text_future = std::async(std::launch::async, [&]() {
                     json input = {{"text", text_content}};
-                    return text_agent.process_raw(input);
+                    auto result = text_agent.process_raw(input);
+                    std::cout << "    [TextAnalyzer] finished\n";
+                    return result;
                 });
                 
                 auto feedback_future = std::async(std::launch::async, [&]() {
                     json input = {{"dialog_history", dialog_history}};
-                    return feedback_agent.process_raw(input, "feedback_analysis");
+                    auto result = feedback_agent.process_raw(input, "feedback_analysis");
+                    std::cout << "    [FeedbackAgent] finished\n";
+                    return result;
                 });
                 
                 // Wait for both
@@ -134,25 +141,49 @@ int main(int argc, char** argv) {
                 json text_data = text_result["payload"]["data"];
                 json feedback_data = feedback_result["payload"]["data"];
                 
+                // Print TextAnalyzer result
+                std::cout << "    [TextAnalyzer] status: " << text_data.value("status", "unknown") << "\n";
+                if (text_data["status"] == "success") {
+                    std::cout << "    [TextAnalyzer] metrics: " << text_data["metrics"].dump(2) << "\n";
+                } else {
+                    std::cout << "    [TextAnalyzer] error: " << text_data.value("message", "unknown") << "\n";
+                }
+                
+                // Print FeedbackAgent result
+                std::cout << "    [FeedbackAgent] status: " << feedback_data.value("status", "unknown") << "\n";
+                if (feedback_data["status"] == "success") {
+                    std::cout << "    [FeedbackAgent] analysis: " << feedback_data["analysis"].dump(2) << "\n";
+                } else {
+                    std::cout << "    [FeedbackAgent] error: " << feedback_data.value("message", "unknown") << "\n";
+                }
+                
                 if (text_data["status"] != "success" || feedback_data["status"] != "success") {
                     throw std::runtime_error("Agent processing failed");
                 }
                 
                 // Generate interface
+                std::cout << "    [InterfaceGenerator] calling with text_metrics and feedback_analysis\n";
+                
                 json interface_input = {
                     {"text_metrics", text_data["metrics"]},
-                    {"feedback_analysis", feedback_data["analysis"]}
+                    {"feedback_analysis", feedback_data["analysis"]},
+                    {"original_text", text_content}
                 };
                 
                 json interface_result = interface_gen.process_raw(interface_input, "html_generation");
                 json interface_data = interface_result["payload"]["data"];
                 
+                std::cout << "    [InterfaceGenerator] status: " << interface_data.value("status", "unknown") << "\n";
+                
                 if (interface_data["status"] != "success") {
+                    std::cout << "    [InterfaceGenerator] error: " << interface_data.value("message", "unknown") << "\n";
                     throw std::runtime_error("Interface generation failed");
                 }
                 
                 // Save HTML with named template
                 std::string html = interface_data["html"];
+                std::cout << "    [InterfaceGenerator] HTML size: " << html.length() << " bytes\n";
+                std::cout << "    [InterfaceGenerator] HTML preview: " << html.substr(0, 100) << "...\n";
                 
                 // Extract numeric parts for clean filename
                 std::string text_num = extract_id(text_id);
@@ -164,16 +195,17 @@ int main(int argc, char** argv) {
                 file << html;
                 file.close();
                 
+                std::cout << "    [OK] Saved to: " << filename << "\n";
+                
                 success_count++;
                 
             } catch (const std::exception& e) {
                 error_count++;
-                // Optional: log errors quietly, or print if debugging
-                // std::cerr << "Error on text " << text_id << ", dialogue " << dialogue_id 
-                //           << ": " << e.what() << "\n";
+                std::cerr << "\n    [ERROR] on " << text_id << " x " << dialogue_id 
+                          << ": " << e.what() << "\n";
             }
         }
-        std::cout << "\n";
+        std::cout << "\n  Completed text " << text_id << "\n";
     }
     
     auto end_time = std::chrono::steady_clock::now();

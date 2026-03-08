@@ -57,11 +57,11 @@ else()
 endif()
 
 if(EMPI_BUILD_LLAMA_TOOLS)
-    target_include_directories(empi_agents PRIVATE
+    target_include_directories(empi_agents PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/llama-dynamic-context/include
     )
 
-    target_link_libraries(empi_agents PRIVATE
+    target_link_libraries(empi_agents PUBLIC
         llama
         ggml
         pthread
@@ -135,5 +135,11 @@ install(DIRECTORY src/
     FILES_MATCHING PATTERN "*.hpp"
 )
 
+add_executable(test_default tests/test_default.cpp)
+target_link_libraries(test_default PRIVATE empi_agents)
+
+
+
 add_executable(test_orchestration tests/test_orchestration.cpp)
 target_link_libraries(test_orchestration PRIVATE empi_agents)
+
