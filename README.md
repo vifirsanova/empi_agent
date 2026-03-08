@@ -2,6 +2,18 @@
 
 EMPI is a multi-agent framework for inclusive education. The framework takes any learning material (textbooks, supplementaries, scientific papers) and adapts it for neurodivergent students, like magic
 
+### Output Examples
+
+The frameworks analyzed your chat history with LLM and generates accessible HTML-page based on the contents complexity and your accessibility preferences
+
+This is how it looks:
+
+<img width="1179" height="280" alt="image" src="https://github.com/user-attachments/assets/88670ad3-d115-4deb-b3c8-60ab92b07779" />
+
+<img width="1075" height="425" alt="image" src="https://github.com/user-attachments/assets/f4cf46c2-572f-484f-8800-2d640fa9eb31" />
+
+To make it real, we built a multi-agent architecture, and an orchestration pattern 
+
 ## φ-ψ Handler Architecture
 
 The `UniversalAgent` is a base class for all agents
