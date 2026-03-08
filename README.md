@@ -1,6 +1,6 @@
 # EMPI Agent Framework
 
-EMPI is a C++ framework for inclusive education
+EMPI is a multi-agent framework for inclusive education. The framework takes any learning material (textbooks, supplementaries, scientific papers) and adapts it for neurodivergent students, like magic
 
 ## φ-ψ Handler Architecture
 
