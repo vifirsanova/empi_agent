@@ -1,3 +1,4 @@
+```markdown
 # EMPI Agent Framework
 
 EMPI is a C++ framework for inclusive education
@@ -10,11 +11,11 @@ The `UniversalAgent` is a base class for all agents
 
 ```mermaid
 flowchart LR
-    Input[JSON Input] --> PHI[φ-function\ndata extraction]
+    Input[EMPI Message] --> PHI[φ-function\ndata extraction]
     PHI --> State[(Agent State)]
     PHI --> Extracted[Extracted Data]
     Extracted --> PSI[ψ-function\ndata processing]
-    PSI --> Output[JSON Output]
+    PSI --> Output[EMPI Message]
     State --> PSI
 ```
 
@@ -36,35 +37,54 @@ classDiagram
 
     class Header {
         <<required>>
+        +protocol: string
         +message_id: string
+        +timestamp: string
         +agent_id: string
-        +parent_hash: string
-        +timestamp: number
+        +task_type: string
+        +version: string
         <<optional>>
-        +protocol_version: string
+        +parent_hash: string
         +requires_ack: boolean
         +async_token: string
     }
 
     class Payload {
         <<required>>
-        +task_type: string
+        +metadata: Metadata
         +data: object
+    }
+
+    class Metadata {
+        +source: string
+        +processing_start: string
     }
 
     class TextMetricsData {
         +flesch_kincaid_grade: float
-        +syllable_count: int
+        +flesch_reading_ease: float
+        +gunning_fog: float
+        +smog_index: float
+        +automated_readability_index: float
+        +coleman_liau_index: float
+        +dale_chall_score: float
+        +difficult_words: int
+        +lexicon_count: int
         +sentence_count: int
-        +word_count: int
-        +complex_words: int
+        +character_count: int
+        +letter_count: int
+        +syllable_count: int
+        +avg_syllables_per_word: float
+        +avg_letters_per_word: float
+        +avg_words_per_sentence: float
     }
 
     class FeedbackAnalysisData {
-        +age_group: string
-        +adhd_indicators: object
-        +dyslexia_indicators: object
-        +processing_speed: string
+        +sentiment: string
+        +topics: array
+        +satisfaction_score: float
+        +complaints: array
+        +feedback_summary: string
     }
 
     class HTMLGenerationData {
@@ -74,6 +94,7 @@ classDiagram
 
     EMPIMessage *-- Header
     EMPIMessage *-- Payload
+    Payload *-- Metadata
     Payload <|-- TextMetricsData : task_type="text_metrics"
     Payload <|-- FeedbackAnalysisData : task_type="feedback_analysis"
     Payload <|-- HTMLGenerationData : task_type="html_generation"
@@ -83,14 +104,18 @@ Example EMPI message:
 ```json
 {
   "header": {
+    "protocol": "EMPI/1.0",
     "message_id": "msg_1234567890_text_analyzer",
+    "timestamp": "1234567890",
     "agent_id": "text_analyzer",
-    "parent_hash": "",
-    "timestamp": 1234567890,
-    "protocol_version": "1.0"
+    "task_type": "text_metrics",
+    "version": "1.0"
   },
   "payload": {
-    "task_type": "text_metrics",
+    "metadata": {
+      "source": "text_analyzer",
+      "processing_start": "1234567890"
+    },
     "data": {}
   }
 }
@@ -107,7 +132,7 @@ Text analysis agent for neurodiversity assessment (ASD/ADHD support)
 - Provides complexity labels (simple/moderate/complex)
 - Estimates accessibility levels for neurodiverse readers
 
-Input:
+Input payload.data:
 ```json
 {
   "text": "The water cycle describes the movement of water on Earth."
@@ -153,7 +178,7 @@ Analyzes dialog history to extract user needs and preferences using a local LLM
 - Extracts complaints and issues
 - Generates feedback summary
 
-Input:
+Input payload.data:
 ```json
 {
   "dialog_history": [
@@ -181,7 +206,7 @@ Output payload.data:
 
 ### InterfaceGenerator
 
-Generates HTML interfaces based on text metrics and feedback analysis using a local LLM
+Generates HTML interfaces based on text metrics and feedback analysis using a local LLM (inference)
 
 - Takes text metrics from TextAnalyzer
 - Takes feedback analysis from FeedbackAgent
@@ -189,7 +214,7 @@ Generates HTML interfaces based on text metrics and feedback analysis using a lo
 - Generates complete HTML page with inline CSS
 - Returns HTML string and size in bytes
 
-Input:
+Input payload.data:
 ```json
 {
   "text_metrics": {
@@ -217,7 +242,7 @@ Output payload.data:
 
 ## Orchestration Pattern
 
-Parallel-Sequential Processing Pattern runs TextAnalyzer and FeedbackAgent in parallel as part of the agentic framework, and starts InterfaceGenerate for HTML-template inference
+Parallel-Sequential Processing Pattern runs TextAnalyzer and FeedbackAgent in parallel as part of the agentic framework, then starts InterfaceGenerator for HTML generation
 
 ```mermaid
 flowchart TD
@@ -247,7 +272,6 @@ Run:
 ```
 
 ## Validation 
-
 Node.js script that validates generated HTML against accessibility standards
 
 ```javascript
@@ -269,8 +293,10 @@ The checker validates against the following WCAG 2.1 success criteria:
 | **1.4.3** | Contrast (Minimum) - text has sufficient contrast | AA |
 | **2.4.4** | Link Purpose (In Context) - links have meaningful text | A |
 | **2.4.7** | Focus Visible - interactive elements have visible focus indicators | AA |
+| **3.2.2** | On Input - selecting a control does not automatically cause a context change | A |
 | **3.3.2** | Labels or Instructions - form inputs have associated labels | A |
 | **4.1.1** | Parsing - no duplicate ID attributes | A |
+| **4.1.2** | Name, Role, Value - ARIA roles are valid | A |
 
 Run:
 ```bash
