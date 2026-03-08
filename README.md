@@ -1,4 +1,3 @@
-```markdown
 # EMPI Agent Framework
 
 EMPI is a C++ framework for inclusive education
@@ -9,7 +8,7 @@ The `UniversalAgent` is a base class for all agents
 
 ### Data Flow
 
-```mermaid
+```memraid
 flowchart LR
     Input[EMPI Message] --> PHI[φ-function\ndata extraction]
     PHI --> State[(Agent State)]
