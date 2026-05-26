@@ -1,0 +1,156 @@
+URL: https://webaim.org/techniques/javascript/eventhandlers#onmouseover
+Title: WebAIM: Accessible JavaScript - JavaScript Event Handlers
+================================================================================
+
+WebAIM: Accessible JavaScript - JavaScript Event Handlers
+Accessible JavaScript
+JavaScript Event Handlers
+You are here:
+Home
+>
+Articles
+>
+JavaScript
+> Page 2: JavaScript Event Handlers
+Overview
+Event handlers are triggered by a browser or user event - such as when the page loads, when the user clicks the mouse, or when the time is 8AM. Some event handlers are dependent upon use of a mouse (or touch) or keyboard. These are called
+device dependent
+event handlers. Other event handlers are
+device independent
+and are triggered by both the mouse/touch and keyboard, or by other means.
+Important
+To ensure accessibility, use either a device independent event handler (one that works with both the mouse and the keyboard) or use both mouse dependent
+and
+keyboard dependent event handlers.
+onmouseover
+and
+onmouseout
+The
+onmouseover
+event handler (and related
+mouseover
+and
+mouseenter
+events) is triggered when the mouse cursor is placed over an item. As its name implies,
+onmouseover
+requires the use of a mouse, thus it is a device dependent event handler and may introduce accessibility issues.
+onmouseover
+, and its companion,
+onmouseout
+(and related
+mouseout
+and
+mouseleave
+events), may be used, as long as any important content or functionality is also available without using the mouse. If the mouse interaction is purely cosmetic (such as the addition of a glow or drop shadow), there are likely no accessibility issues, so long as the style change does not indicate some function (such as to indicate that an element is clickable).
+If the mouse interaction presents additional information or content, such as a tooltip, a navigation menu, etc., then this content will not be accessible to anyone not using a mouse. For screen reader users (who very often use a keyboard for navigation), the additional content might be provided directly in an accessible way, such as via
+alternative text
+, through
+an ARIA label or description
+, or perhaps through
+off-screen text
+. However, for sighted keyboard-only users, there must be a mechanism for them to access and view the newly revealed content or functionality.
+Sometimes scripting is used to present complex mouse interactions, such as a drop-down or fly-out menu. While these can be made technically keyboard accessible, sometimes an accessible alternative approach may be more friendly. For example, instead of forcing users to navigate through a complex and lengthy navigation menu, you could instead ensure that the sub-menu items are NOT directly keyboard accessible (nor read by a screen reader). Instead, standard links would provide functionality on the top-level menu item (e.g., "Products"). These links would take the user to secondary pages that provides links to additional pages provided through the complex menu (e.g., a Products landing page that has links to the various product categories). While not exactly the same interaction that mouse users may choose, such alternatives are often more intuitive and friendly.
+onfocus
+and
+onblur
+One might use
+onfocus
+(or
+focus
+or
+focusin
+events) and
+onblur
+(or
+blur
+or
+focusout
+events) when the keyboard is used to navigate to and from an element. These event handlers are typically used with form inputs, such as text fields, radio buttons, and submit buttons, but can also be used with links or perhaps
+ARIA widgets
+.
+onfocus
+is triggered when the cursor is placed on or within a specific form element, or when a user 'tabs' to the element using the keyboard.
+onblur
+is triggered when the cursor leaves a form element or the user 'tabs' away from it.
+Both of these event handlers are device independent, meaning that they can be performed with the mouse, touch, keyboard, or other assistive technology. The actions that are performed as a result of these event handlers must be analyzed to determine if they cause accessibility problems, especially if they are modifying the default behavior of the web browser or are interfering with keyboard navigation within the web page. Examples of such issues include automatically setting focus to other page areas after
+onfocus
+and
+onblur
+are triggered, trapping the user inside a form control, dynamically revealing form controls immediately upon a user leaving (blurring) a form input, etc.
+onclick
+and
+ondblclick
+The
+onclick
+event handler (and
+click
+event) is triggered when the mouse is pressed and released when over a page element or when the
+Enter
+key is pressed while a keyboard-navigable element has focus. In these cases,
+onclick
+is a device independent event handler.
+However, the
+Enter
+key will not always trigger
+onclick
+if it is used with non-link and non-control elements, such as plain text, table cells, or
+<div>
+elements, even if they made keyboard navigable using
+tabindex
+or are focused using scripting. In these cases, it will be necessary to detect the
+Enter
+and
+Space
+key presses while focus is placed on them. Using standard HTML controls often avoids the necessity of scripting and potential accessibility issues.
+The
+ondblclick
+event handler (and
+dblclick
+event) is associated with the double click of a pointing device (typically a mouse or trackpad) on a selected element. Similarly,
+mouseup
+and
+mousedown
+events are only available via pointing devices. These should typically be avoided.
+onchange
+and
+onselect
+The
+onchange
+event handler (and
+change
+event) is triggered when a form input value is changed, for example, when a radio button is selected, when the text changes within a text box or text area, or when the active item in a select menu changes. Although these events are device independent and can be activated using the mouse, keyboard, or other device, the actions that are performed as a result of these events must be analyzed to determine if they cause accessibility problems.
+A common use of
+onchange
+is on select menus to
+trigger navigation when the active option within the menu is changed
+. In some browsers, these menus can cause keyboard accessibility issues because the user cannot scroll through the list using a keyboard without selecting one of the options (and thus triggering the
+change
+event). Removing
+onchange
+and providing a submit button separate from the list of choices that activates the currently selected item provides a more accessible and user-friendly alternative.
+Using Device Independent Event Handlers
+Several event handlers are device independent, including
+onfocus
+,
+onblur
+,
+onselect
+,
+onchange
+, and
+onclick
+(when
+onclick
+is used with a keyboard-focusable element). When possible, use device independent event handlers. Other event handlers are device dependent, meaning that they rely wholly upon a certain type of input. For instance,
+onmouseover
+,
+onmouseout
+, and
+ondblclick
+rely upon the use of a pointer device. There are also some event handlers that are dependent upon use of the keyboard (
+onkeydown
+,
+onkeyup
+, etc.).
+Multiple device dependent event handlers can be used together to allow mouse, touch, and keyboard activation of JavaScript, but this requires testing across different browsers and assistive technologies to ensure that accessibility is not limited in any way.
+Next

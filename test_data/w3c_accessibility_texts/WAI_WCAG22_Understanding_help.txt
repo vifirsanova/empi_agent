@@ -1,0 +1,75 @@
+URL: https://www.w3.org/WAI/WCAG22/Understanding/help
+Title: Understanding Success Criterion 3.3.5: Help | WAI | W3C
+================================================================================
+
+Understanding Success Criterion 3.3.5: Help | WAI | W3C
+Skip to content
+Understanding
+SC 3.3.5
+Help (Level AAA)
+In Brief
+Goal
+Users can avoid making mistakes.
+What to do
+Provide help to users on the function currently being performed.
+Why it's important
+People with cognitive or other disabilities can complete their tasks more easily.
+Success Criterion (SC)
+Context-sensitive help
+is available.
+Intent
+The intent of this success criterion is to help users avoid making mistakes. Some
+users with disabilities may be more likely to make mistakes than users without disabilities.
+Using context-sensitive help, users find out how to perform an operation without losing
+track of what they are doing.
+Context-sensitive help only needs to be provided when the label is not
+sufficient to describe all functionality. The existence of context-sensitive help
+should be obvious to the user and they should be able to obtain it whenever they require
+it.
+The content author may provide the help text, or the user agent may provide the help
+text based on technology-specific, programmatically determined information.
+Benefits
+Assistance for text input helps individuals with writing disabilities and people with
+reading and intellectual disabilities who often have difficulty writing text in forms
+or other places that need text input.
+Additionally, these kinds of assistance help people who are aging and have the same
+difficulty in text input and/or mouse operation.
+Examples
+on-line job application
+Some of the questions may be hard for new job seekers to understand. A help link
+next to each question provides instructions and explanations for each question.
+Techniques
+Each numbered item in this section represents a technique or combination of techniques
+that the Accessibility Guidelines Working Group deems sufficient for meeting this success criterion.
+A technique may go beyond the minimum requirement of the criterion. There may be other ways of meeting the criterion not covered by these techniques.
+For information on using other techniques, see
+Understanding Techniques for WCAG Success Criteria
+,
+particularly the "Other Techniques" section.
+Sufficient Techniques
+Select the situation below that matches your content.
+Each situation includes techniques or combinations of techniques that are known and documented to be sufficient for that situation.
+Situation A: If a form requires text input:
+G71: Providing a help link on every web page
+G193: Providing help by an assistant in the web page
+G194: Providing spell checking and suggestions for text input
+G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input
+Situation B: If a form requires text input in an expected data format:
+G89: Providing expected data format and example
+G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input
+Advisory Techniques
+Although not required for conformance, the following additional techniques should be considered in order to make content more accessible.
+Not all techniques can be used or would be effective in all situations.
+H89: Using the title attribute to provide context-sensitive help
+Key Terms
+context-sensitive help
+help text that provides information related to the function currently being performed
+Note
+Clear labels can act as context-sensitive help.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

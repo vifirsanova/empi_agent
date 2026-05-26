@@ -1,0 +1,20 @@
+URL: https://webaim.org/blog/
+Title: WebAIM: Blog
+================================================================================
+
+WebAIM: Blog
+WebAIM Blog
+You are here:
+Home
+>
+Blog
+Ask AIMee: An accessible accessibility-focused AI chatbot
+We’re happy to introduce AIMee – an easy-to-use, AI-powered conversational chatbot focused on accessibility. AIMee has been designed to be highly accessible to users with disabilities. Ask her accessibility questions to get quick answers and guidance. The name “AIMee” plays off of the “AIM” (Accessibility In Mind) from “WebAIM” and also “AI”. Here are some […]
+A New Path for Digital Accessibility?
+Please note This post will explore how an adaptive, intelligent system could empower users with disabilities to optimize their experience in digital environments. Even were such a system available tomorrow, developers of digital content, services, and products would still be responsible for providing equal access to ALL users. Consider a few of the many exciting […]
+2026 Predictions: The Next Big Shifts in Web Accessibility
+I’ve lived long enough, and worked in accessibility long enough, to have honed a healthy skepticism when I hear about the Next Big Thing. I’ve seen lush website launches that look great, until I activate a screen reader. Yet, in spite of it all, accessibility does evolve, but quietly rather than dramatically. As I gaze […]
+Word and PowerPoint Alt Text Roundup
+Introduction In Microsoft Word and PowerPoint, there are many types of non-text content that can be given alternative text. We tested the alternative text of everything that we could think of in Word and PowerPoint and then converted these files to PDFs using Adobe’s Acrobat PDFMaker (the Acrobat Tab on Windows), Adobe’s Create PDF cloud […]
+Accessibility by Design: Preparing K–12 Schools for What’s Next
+Delivering web and digital accessibility in any environment requires strategic planning and cross-organizational commitment. While the goal (ensuring that websites and digital platforms do not present barriers to individuals with disabilities) and the standards (the Web Content Accessibility Guidelines) remain constant, implementation must be tailored to each organization’s needs and context.   For K–12 educational agencies, […]

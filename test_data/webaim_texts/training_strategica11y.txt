@@ -1,0 +1,70 @@
+URL: https://webaim.org/training/strategica11y
+Title: WebAIM: StrategicA11y - Virtual Strategic Web Accessibility Workshop
+================================================================================
+
+WebAIM: StrategicA11y - Virtual Strategic Web Accessibility Workshop
+StrategicA11y - Virtual Strategic Web Accessibility Workshop
+Coming Soon
+You are here:
+Home
+>
+Services
+> WebAIM Training
+Registration is currently closed for our virtual strategic accessibility workshop.
+We will announce our rescheduled dates soon. Please
+contact us
+if you have any questions
+System-wide Organizational Web Accessibility
+When:
+TBA
+Where:
+Online over Zoom
+Cost:
+$1,200/person ($1,000/person for groups of two or more)
+Join WebAIM's highly regarded staff for four days of
+StrategicA11Y: The Strategic Web Accessibility Workshop
+.
+Web accessibility is an issue of civil rights for individuals with disabilities. Organizations are often challenged to achieve system-level accessibility that can be sustained over time. While typical conferences and workshops on web accessibility provide key information or training on discrete elements of web accessibility, these are often tactical in nature—they hit one problem, then another. It is time to move away from a tactical approach to one that is
+strategic
+in nature.
+This meeting will help participants think in strategic ways about the accessibility of their broader systems, making accessibility a systemic issue that is sustainable. At the end of the workshop, participants will leave having engaged accessibility strategically and will be ready to develop a plan of action that sets out achievable immediate goals and sets a foundation for larger-scale organizational planning.
+Note on terminology: “A11y” is short for the word “accessibility”: the first letter, the last letter, and 11 letters in between.
+When you register for this workshop, you will receive:
+A seat in the StrategicA11y Workshop.
+Participants receive a
+complimentary registration
+for
+WebAIM's Document (Word, PowerPoint, and PDF) Accessibility online course
+—a $125 value.
+1 hour of individualized consultation after the workshop concludes.
+Workshop Overview
+Each day, we will meet at
+Noon–4 Eastern time
+. We will break for a few minutes every hour and have a 45-60 minute break from about 2–2:30 Eastern time.
+Topics critical to system change will each receive specific attention. Those topics are:
+Gaining true executive support and securing the participation of those affected throughout the process
+Creating a policy
+Creating an implementation plan to frame your work
+Culture of communication and motivation
+Procedures across your enterprise (e.g., procurement, HR, workflow)
+Professional development (training and supports)
+Evaluating your efforts (both accessibility and system work)
+Participants can expect to receive a presentation on each topic with an eye for action. We will examine case studies from the field to take practical lessons from lived experience. Participants will have opportunities to discuss details and challenges for each topic that are relevant to their own organization or system. Participants will leave with resources they can use for ongoing efforts (e.g., budgeting, tools, resources, and knowledge repositories).
+Customized strategic accessibility workshops
+As an alternative to our hosted workshop, WebAIM can provide a customized Strategic Web Accessibility workshop tailored specifically to your organization's needs. This workshop can be provided online or on-site at your organization.
+Learn more about
+customizing strategic accessibility workshops
+Materials will be provided for each key topic so participants can begin or expand the process of building a strategic framework. Participants will leave ready to prioritize the work they will recommend to their organization. They will also be able to sketch out their proposed plan for action (i.e., what needs to be done, how, by whom, and on what timeline).
+One to two months after the workshop, WebAIM staff will provide
+one hour of personalized consultation
+to answer additional questions that may have arisen. This is a great opportunity to take ideas back to your organization and then work with WebAIM directly to help to map out your next steps, refine your recommendations, adjust communication plans, or otherwise touch base about challenges you've encountered and progress that you've made.
+Technical Web Accessibility Training
+If you are interested in learning the technical aspects of implementing and evaluating web accessibility, please check out the standard
+WebAIM training
+.
+If you want to learn the skills required to ensure your organization makes a successful shift to sustainable accessibility practices, this training will provide what you need. We'll also provide the resources and information you need to empower your organization to meet future accessibility needs.
+WebAIM has trained tens of thousands of web developers across the world. Clients include PayPal, IBM, eBay, the Internal Revenue Service, several state governments, and over 200 colleges and universities. WebAIM trainers have presented at hundreds of conferences and meetings around the world and are active in web accessibility standards development.
+Need Help or Have Questions?
+If you have any questions regarding the workshop or the registration process, please
+contact us
+.

@@ -1,0 +1,164 @@
+URL: https://webaim.org/articles/framework/#note4
+Title: WebAIM: A Conceptual Framework -  for Accessibility Tools to Benefit Users with Cognitive Disabilities
+================================================================================
+
+WebAIM: A Conceptual Framework -
+for Accessibility Tools to Benefit Users with Cognitive Disabilities
+A Conceptual Framework
+for Accessibility Tools to Benefit Users with Cognitive Disabilities
+You are here:
+Home
+>
+Articles
+> A Conceptual Framework for Accessibility Tools to Benefit Users with Cognitive Disabilities
+Note
+This paper was written by invitation to be presented at the 2nd Annual International
+Cross-Disciplinary Workshop on Web Accessibility (W4A)
+in Chiba, Japan, May 10, 2005.
+Abstract.
+The authors present a conceptual framework which tool developers can use to chart future directions of development of tools to benefit users with cognitive disabilities. The framework includes categories of functional cognitive disabilities, principles of cognitive disability accessibility, units of web content analysis, aspects of analysis, and realms of responsibility.
+Introduction
+Several accessibility tools can check for obvious accessibility problems, such as images missing alt text, data tables missing headers, forms missing labels, and so on. All of these issues are important to accessibility. However, the focus of the vast majority of the algorithms in these tools is on only one type of disability: blindness. Very few of the algorithms focus on other types of disabilities. The most neglected category of disability is that of cognitive disabilities.
+Part of the reason for this neglect is the scarcity of generally-accepted recommendations for cognitive disability access to the web. Recommendations do exist, but the body of literature and research in this area is much thinner, raising the question of how reliable or valid they actually are.
+Another reason for this neglect is the vagueness and subjectivity of the recommendations which do exist. Web accessibility experts often interpret the recommendations differently, making claims of compliance difficult to verify. In many cases, designing computer algorithms for these recommendations is considered either theoretically impossible or, at the very least, arbitrary. For example, although few experts dispute the idea that clear and simple text
+[1]
+can benefit users with cognitive disabilities, there is no defining point at which text becomes “clear and simple,” as opposed to “unclear and complex.” Cognitive disability access is an ill-structured domain which overlaps other ill-structured domains such as usability, human-computer interface design, and perceptual psychology.
+In light of the inherent complexity and ambiguity of cognitive disability access issues, most tool developers have chosen to focus in other areas. As a result, users of these tools often overlook cognitive disability access issues entirely. Nevertheless, the difficulty of the task does not diminish its importance. If given tools capable of identifying at least some of the access issues for people with cognitive disabilities, developers might be more inclined to design their content accordingly.
+A Framework for De-mystifying Web Design for Cognitive Disabilities
+To the extent possible, cognitive disabilities must be demystified before any progress can be made toward developing tools that help make content accessible to people with cognitive disabilities. Toward this end, this paper outlines a conceptual framework within which tool designers can approach the challenge of identifying and repairing cognitive disability accessibility barriers. This framework consists of:
+categories of functional cognitive disabilities,
+principles of cognitive disability accessibility,
+units of web content analysis,
+aspects of analysis,
+stages of analysis, and
+realms of responsibility.
+After briefly exploring this framework, we will explore how this framework can be applied to the development of cognitive disability accessibility tools.
+Clinical vs. Functional Cognitive Disabilities
+There are myriad types of cognitive disabilities, each with its own clinical diagnosis. Individuals may be diagnosed as having learning disabilities (such as dyslexia, dysgraphia, dyscalculia, or attention deficit disorder), genetic or developmental disabilities (such as autism, Down syndrome), congenital birth defects (such as fetal alcohol syndrome), or any of the other types of disabilities affecting cognition. Though perhaps useful to clinicians, these diagnoses mean little or nothing to web developers because there is not a direct link between the diagnoses and the actions the developer must take to accommodate people with these diagnoses. First, there is considerable overlap in the limiting characteristics of people with various diagnoses. Individuals with either Down syndrome or fetal alcohol syndrome may have difficulty processing text-based information, as will some individuals with learning disabilities, though perhaps to different degrees. This brings us to the second point which is that there is often a great deal of variation not only between groups but within groups of the same clinical disability. Some individuals with Down syndrome are highly functional and completely capable of reading and understanding the majority of web content. Others may be almost entirely incapable of understanding most web content.
+A more useful framework for developers is that of
+functional cognitive disabilities
+. Not all of the categories of functional cognitive disabilities proposed by previous writers are directly relevant to web developers. The functional cognitive disability categories we propose are based primarily on Rowland’s
+[2]
+categories, with some additions. These categories are:
+Memory
+Problem-solving
+Attention
+Reading, linguistic, and verbal comprehension
+Math comprehension
+Visual comprehension
+The last three categories are an elaboration of Rowland’s original category of “perception and processing,” which we felt was a little too broad for our purposes. User challenges in any of these functional disability categories exert identifiable—though not mutually exclusive—effects on the ability of users to access web content. The fact that these categories are not mutually exclusive in terms of their effects on accessibility complicates matters somewhat, but the categories are still useful as a frame of reference within which to characterize the challenges of users with cognitive disabilities. Most user challenges will fit primarily into one category, even if its effects bleed over into other categories. For example, a person with reading difficulties may also find it difficult to pay attention to long passages of text. Conversely, a person who has difficulty paying attention may have difficulties comprehending text. In the first case, the reading difficulties lead to inattention. In the second instance, inattention leads to reading difficulties. Despite the overlap in the resulting effects, paying attention to the root cause can eliminate or at least reduce the secondary effects. Likewise, from a web development standpoint, each of these categories represents a different type of problem, usually requiring a different type of solution.
+Principles of Cognitive Disability Accessibility
+There are general principles which can be applied across all of the categories of functional cognitive disabilities. These principles, adapted from Bohman
+[3]
+assert that web content should be:
+Simple
+Consistent
+Clear
+Multi-modal
+Error-tolerant
+Delay-tolerant
+Attention-focusing
+Defining each of these principles is not always an easy task. How simple must something be in order to be considered “simple,” for example? How much variation can be introduced before something is no longer “consistent?” What are the best methods for making the meaning of content “clear?” The answers to these types of questions will determine what kinds of things tools can and should identify in web content in order to make it more accessible to people with disabilities. Unfortunately, many of the answers are as obscure and vague as the questions suggest they would be. Even so, identifying some principles is at least a step in the right direction because it allows us to categorize the existing algorithms in tools and provides a sense of direction for the development of future algorithms.
+Units of Analysis
+One of the areas most often overlooked in web accessibility tool development is that of the unit of analysis. We have identified six potential units of analysis:
+The web “page”
+The entire web site
+The template
+Content within the template
+Content “chunks” or subsections
+Scenarios and paths
+Most tools evaluate web pages, either one at a time, or all throughout the site. Even the tools that produce reports for an entire web site use individual web pages as the unit of analysis. Often the reports give a list of errors and provide the user with the URI of the pages on which the errors are found. Though useful in many ways, page-level analyses are not as efficient or as useful as other types based on other units of analysis.
+Page-level analyses are less efficient because sites are usually constructed using some sort of template system, oftentimes with navigation elements such as tabs or side bar links to other areas of the web site. These templates are usually fairly consistent from page to page. Reports that focus on the
+page
+as the unit of analysis invariably end up reporting the same errors for every page. If the main logo in the template is missing alt text, for example, the tool will report the same instance of missing alt text on every page across the entire site. It would be more efficient to report this error only once and to identify the error as an error in the template.
+Errors that occur in the main content should also be identified as such—but tools can potentially do even more than separate content from the template. Where appropriate, tools could analyze the chunks or subsections of the main content. This would be especially useful on sites that aggregate content from multiple sources. Each content component could be analyzed separately as an independent unit. Not all web content can or should be separated into smaller subsections, but where it can be separated out, it may make sense to also analyze it separately.
+The final unit of analysis is one of the most important, though it is also almost universally ignored: scenarios and paths
+[4]
+. In the context of this paper, a scenario or path is the total user experience, from start to finish. On an e-commerce site, for instance, the user scenario might include searching for a product, adding the product to the virtual shopping cart, entering payment and shipment information, and confirming the order. This, of course, assumes that the user does not stray from the path. Alternative or tangential paths might include reading more about the company that sells the product, reading about the company’s privacy policy, comparing the product to other similar products, etc. If any of the steps along the way on any of these paths is inaccessible, the entire path is inaccessible. In this case, it makes little sense to be content to say that 95% of the web site is accessible if the 5% that is inaccessible prevents the user from purchasing the product. The entire scenario—or set of scenarios—must be taken into account to achieve maximum accessibility.
+Aspects of Analysis
+For all of the units of analysis, there are two different aspects of analysis:
+The content
+The presentation
+The content can be analyzed primarily for semantic and conceptual meaning. The presentation, whether in text, graphics, video, audio, or other formats, can be analyzed in terms of its multi-modality, error tolerance, delay tolerance, or ability to focus the attention of the user. Interestingly, the presentation can also be evaluated for its semantic and conceptual meaning. For example, a web page can be divided into different sections by means of <div> tags with different colored backgrounds or borders. These sections can effectively serve as visual grouping or chunking mechanisms. As such, they provide more than visual “fluff;” they provide a visual representation of semantic meaning. Of course, such semantic meaning should also be provided somehow in the main, non-presentational content, but the presentation aspects applied to this content serve to enhance this underlying semantic meaning.
+Stages of Analysis
+Web content can be evaluated at different stages of development, and for different reasons. The main stages of analysis are:
+The planning process
+The design process
+The testing phase
+After the content is completed
+Most tools are designed to be used after the content is completed. This is an important stage of analysis, but it is not the only one. The bulk of the web accessibility work ought to be done during the first phase: the planning process. Tools for the planning process might exist inside of authoring tools, or in graphics tools (for prototyping), or in tools designed exclusively for the planning process. Such tools could provide the user with guidance and suggestions before even beginning development, thus preventing problems before they ever occur. In addition to creating tools for the authoring environment, testing tools can be created for the browser, for standalone desktop applications, or for web applications.
+Realms of Responsibility
+One of the difficulties that arises when discussing ways to make web content accessible to people with cognitive disabilities is that it is often unclear who should be responsible for enacting which changes. The main realms of responsibility include:
+Web developers
+Guidelines and standards bodies
+Authoring tool developers
+User agent developers
+Assistive technology developers
+Personal assistants of the user (where applicable)
+The user
+There are many points of intervention at which web content can be made more accessible to people with cognitive disabilities. The order in which the realms of responsibility appear in the list above is a rough representation of the flow of web content from the source (the web developer) to the destination (the user). Web developers implement guidelines and standards within their authoring tools. The content is displayed in a user agent (browser), and may be mediated by an assistive technology of some kind (e.g. a text-to-speech synthesizer) and/or by a personal assistant, depending upon the severity of the user’s cognitive disability. The more severe the cognitive disability, the more likely that person will need a personal assistant to provide help and guidance while accessing web content. At the end of this flow are the users, who can set browser options according to their needs and preferences.
+Despite the many points of intervention, the fact that the process starts with the web developer is crucial. Web developers cannot abdicate their responsibility, though some might like to. The familiar adage “garbage in, garbage out” is particularly apt here. Once the web developer posts web content, that content either is or is not optimally accessible to people with cognitive disabilities. There is only so much that all of the rest of the points of intervention can do to improve upon the author’s original content because only the author knows the original meaning behind the content. All other points of intervention are interpretations of the author’s original intent. As such, they can rarely fully compensate for the author’s oversights, omissions, errors, or carelessness.
+Applying the Framework to Tool Development
+The framework outlined in this paper helps to simultaneously define and expand the possibilities for tool development, not only for cognitive disabilities, but for all disabilities. However, since the focus of this paper is tools for cognitive disabilities, we will develop the idea a bit further with an example.
+Though it would be nice to flesh out every possible type of algorithm for every aspect of the framework, such an endeavor would take us well beyond the scope of this paper and, quite frankly, beyond the scope of our current comprehension of cognitive disability accessibility. The framework helps to demystify some of the conceptual issues of tool development for cognitive disabilities, but, alas, it does not provide automatic or easy answers in terms of translating those concepts into automatable processes. Indeed, some of the concepts in the framework may never be fully automatable, and will likely always require human interpretation and intervention, both on the authoring end and on the evaluation end.
+For our example, we have chosen one part of each of the framework elements to explore in some detail. The framework elements we have chosen are as follows:
+Category of functional cognitive disabilities:
+Reading
+, linguistic, and verbal comprehension
+Principle of cognitive disability accessibility:
+Simplicity
+Unit of web content analysis:
+The scenario or path
+Aspect of analysis:
+Presentation
+Stage of analysis:
+The design phase
+Realm of responsibility:
+Authoring tool developers
+The scenario to which we will apply these framework elements is a user's search for the weather on a news site. The steps in this scenario are:
+Go to news site home page
+Locate link to weather information
+Click on link to weather information
+Type in city, state, and country
+Read weather forecast
+The scope of our analysis consists of ensuring that each of these steps in the scenario or path is accessible in terms of simple presentation of content for reading, linguistic, and verbal comprehension. The analysis in our example takes place during the design phase, within the authoring tool.
+Our hypothetical authoring tool allows us to define possible scenarios or user paths through the web site. We define one of these scenarios according to our test analysis and give it a title of “read the weather.” (Other possible scenarios we might define—for other analyses—could include “read local headlines,” “submit an obituary,” “submit a letter to the editor,” or “read the technology news.”)
+Because our hypothetical authoring tool is aware of which areas of the web page are the template and which areas are the main content (we would have defined this previously), we will be able to identify which errors occur in which parts of the web pages. When we activate the tool, it gives us the choice of a summary report or an interactive wizard interface. We choose the interactive wizard. The tool first looks at the template.
+Analysis of the template.
+As it turns out, the same template is used on each of the three pages we need to access in order to obtain the weather forecast. This is a good thing. The tool commends us for the
+consistency
+of maintaining the same template.
+The tool notes that there are fifteen main navigational links in the template. The average length of the text within the links is 1.3 words. The tool chastises us for having so many main navigational links, telling us that this reduces the
+simplicity
+of the design, and complicates
+reading comprehension
+. However, it commends us for the short length of our link text. In this sense, the navigational links are
+simple
+.
+The tool notices that our choice of fonts for the main navigation is Verdana, which is a font designed for on-screen viewing. The font size is the default font size of the browser. The tool commends us for our choices of font and font size. The contrast is also within an acceptable range.
+Our hypothetical tool is able to make these judgments because it has more than a superficial knowledge of style sheets. It would be impossible to determine all of the variables or presentation without being able to access style sheet information.
+In terms of simple presentation for reading comprehension, our tool gives us passing marks on every measure so far, except for number of main navigational links.
+Analysis of the content on the home page.
+After analyzing the template, the tool produces an analysis of the home page. It notes that there are 206 links (not counting the template), and 4 images related to headlines (we previously defined the semantic meaning of “headlines” in our tool as one of the “content chunks” on the home page).
+The tool points out that our font size is 60% for the main content, which is too small for many readers. The line-height is 1.2em, which is within an acceptable range (the tool has acceptable ranges for these types of values pre-programmed in the default configuration, but these values are user-modifiable). There are no instances of ALL CAPS, long passages of italicized text, or other potentially difficult text presentation styles.
+Although we are focusing on presentation rather than content in this example, it may be helpful to note that the tool could perform such tasks as count the number of characters, number of words, number of words per sentence, number of sentences per paragraph, number of syllables per word, number of characters per word, number of passive sentences, and so on. All of these could be part of computations of reading level, reading ease, or other measures of readability. Despite the fact that these measures have been criticized as unreliable or inaccurate representations of readability, they may at least provide a rough estimate of readability as a place from which to begin considering the complexity of the written content.
+The remaining pages.
+The tool would perform a similar analysis on the remaining pages in this scenario to ensure that each one met our criteria of simple presentation of content for reading, linguistic, and verbal comprehension. The tool would then provide an overall report of the accessibility of the scenario or path. The tool might give suggestions on how to ensure that the user knows how to navigate the scenario from beginning to end, taking into account the text and presentational elements already in place.
+One particular area of interest on the remaining pages would be the form <input> for the user’s city, state, and country. In a scenario-based analysis, we would need to evaluate not only the possibility of a correct response (i.e. values that allow the web script to retrieve the weather information), but the possibility of incorrect or unintelligible input. Any user errors must be correctable, and the error messages must be meaningful, very obvious, and simple.
+Future Possibilities
+Ironically, in order to create tools best fit to the needs of people with cognitive disabilities, the tools have to be imbued with an extraordinary amount of intelligence. People with cognitive disabilities need highly usable, concise, well-designed sites, perhaps even more than the average user. Designing for simplicity and clarity has always been one of the most difficult challenges in web design—or in the design of any type of information, for that matter.
+The smarter our tools are, the more capable they will be of meeting our needs. In the previous hypothetical example, we stated that the user designated certain areas of the web page as the template, or as the headlines, or other parts of the site. User designation of these areas is effective, but crude. More sophisticated tools could employ pattern recognition to identify these elements independent of the user. Such a feature would be even more useful in analyzing sites that have already been developed (after-the-fact analyses), because it would eliminate the need to alter the code.
+Tool developers also need to devise more sophisticated means of analyzing the readability of text, the subtleties of style sheet presentation, and the complexities of multimedia content. We can imagine the integration of a sophisticated accessibility/usability tool in the Flash authoring environment, for example, or SVG authoring tools, video editing software, and so on. We can imagine it, but we also acknowledge the massiveness of the undertaking. Such tools would require hefty investments of time and money. On the optimistic side, such tools could serve the dual purpose of increasing disability access for people with disabilities as well as overall usability for all users.
+Conclusion
+The framework presented in this paper is not a magic bullet for creating tools for cognitive disabilities; rather, it is a conceptual exploration of some of the possibilities. The world probably does not need yet another tool to analyze web pages one at a time and give a report. Tools of this nature are already fairly abundant, even if largely inadequate. The next generation of tools requires a deeper commitment on the part of tool developers to the underlying structure of web content, the semantic meaning behind it, and the purpose for which it exists: to communicate information to users. The need to communicate clearly becomes an even greater issue when the audience includes people with cognitive disabilities.
+References
+Chisolm, W., Vanderheiden, G, Jacobs, I. (1999) Web content accessibility guidelines 1.0. Retrieved April 1, 2005 from
+http://www.w3.org/TR/WCAG10/
+.
+Rowland, C. (2004). Cognitive disabilities part 2: conceptualizing design considerations. Retrieved April 1, 2005 from
+http://www.webaim.org/techniques/ articles/conceptualize/
+.
+Bohman, P. (2004). Cognitive disabilities part 1: we still know too little and we do even less. Retrieved April 1, 2005 from
+http://www.webaim.org/techniques/articles/cognitive_too_little/
+.
+Bohman, P., Anderson, S. (2004). Toward user-centered, scenario-based planning and evaluation tools. 9th International Conference on Computers Helping People with Special Needs, Paris, France.

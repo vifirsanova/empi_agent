@@ -1,0 +1,210 @@
+URL: https://webaim.org/articles/strategicframework/leadership
+Title: WebAIM: The WebAIM Strategic Accessibility Framework
+================================================================================
+
+WebAIM: The WebAIM Strategic Accessibility Framework
+The WebAIM Strategic Accessibility Framework
+Indicator 1: Leadership Vision and Commitment for Accessibility
+You are here:
+Home
+>
+Articles
+>
+The WebAIM Strategic Accessibility Framework
+> Indicator 1: Leadership Vision and Commitment for Accessibility
+Introduction to Indicator 1
+Leadership commitment is crucial for successful and ongoing digital accessibility in an organization. This requires a commitment to the initial work as well as recognition that accessibility is a long-term effort. An organization needs someone with decision-making authority to drive sustainable changes. Without true leadership commitment, resources and support may diminish over time as they are assigned to other initiatives.
+Strategic Accessibility Training & Consultation
+WebAIM has helped hundreds of clients at different stages of their accessibility journey to use strategic thinking and build a sustainable accessibility program. Our comprehensive
+strategic accessibility training
+provides a detailed look at components of successful accessibility initiatives. Our
+customized consulting
+can help the organization create policies, plans, and processes to support this framework.
+Learn more about WebAIM Strategic Services
+Benchmark 1: Commitment by Leadership
+Administrative leadership begins with a clear vision and commitment to change that is communicated throughout the organization. This is usually led by top-level leaders and may involve the board of directors. This commitment leads to the development and implementation of an accessibility policy and plan, backed with the necessary resources. While accessibility champions or groups in the organization can help, it is important to have leadership express their vision for accessibility for the entire organization to achieve lasting change. Leadership must also translate this vision into action, taking the steps required to create and sustain an accessibility program.
+Note on each Benchmark's statements of evidence:
+These statements of evidence are examples and are not all required to reach a benchmark. There are many ways to align these benchmarks to an organization's culture. Understanding the general idea of the benchmark itself will support determination if it is present or not.
+1. Organizational statement of commitment to digital accessibility
+A statement of the organization's vision or commitment to digital accessibility is readily available. Those with a vested interest in the organization know this vision and commitment. To the extent feasible, relevant stakeholders are made aware of their responsibilities under this vision. This may take the form of a letter, email, or memo from the responsible source, such as the Board of Directors or the Chief Executive Officer. This statement may be posted to the web.
+Ways to determine if this is present
+The statement is publicly available.
+The statement is explicit that it pertains to digital accessibility for persons with disabilities.
+A definition will help clarify what is meant by digital accessibility.
+It is easy to understand.
+It is published with other commitment and vision statements.
+It is easy to find.
+It is publicized and promoted.
+2. The creation and support of a digital accessibility committee, task force, or workgroup to work across the organization
+Leadership establishes and supports a committee to develop, propose, and execute plans for accessibility. This shows commitment to the effort. This committee should regularly report back to leadership about how accessibility work progresses and where there are gaps that need attention. It is important to empower this group with authority to take ownership of recommendations and results. It is also important to make sure the personnel who are appointed or invited represent different stakeholders within the organization. A consideration should be made for including those who are power brokers in the organization and those who are admired by their professional peers as they will help translate what needs to be done back to those specific groups and provide encouragement for the initiative.
+Ways to determine if this is present
+The committee represents a wide range of relevant stakeholders to ensure an array of perspectives is represented. This might include:
+Those who will develop and oversee accessibility initiatives
+Accessibility subject matter experts
+Content owners
+Web designers and developers
+ADA or Section 504 coordinators
+Diversity, equity, and inclusion officers
+Central purchasing staff
+Information technology
+Marketing
+Risk management
+Consumers of the end product
+Others who will engage in the organization's accessibility work
+There is documentation that this group has the authority and support of leadership to recommend and develop initiatives to promote and encourage digital accessibility across the organization.
+There is documentation that the group is empowered to take ownership of changing the organizational climate and obtain buy-in from the organizational community.
+There is evidence that the group is sustainable and ongoing.
+3. Policy on digital accessibility that covers the entire organization
+The organization has a published policy on digital accessibility. This policy defines the technical standard to which the organization's web pages will adhere. (Sample components for a comprehensive policy are detailed in
+Indicator 2
+). It is critical that it pertains to the entire organization. Some may want to enact unit policies. Those will, over time, be ineffective as the unit is nested in the broader organization. Organization-wide policies should appear in central administrative policy documents such as employee handbooks, unit guidelines, or on the web with other organizational policies. Ideally, digital accessibility policy would stem from governing boards. However, when this is not the case, organizations should enact local policies. As with any policy, enforcement is necessary to ensure its effectiveness.
+Ways to determine if this is present
+The policy aligns with the mission of the organization.
+There is evidence that the policy has been published and endorsed by the organizational leadership and/or governing board?
+The policy is included in central administrative policy documents, such as employee handbooks or unit guidelines.
+It is published with other policy and position documents.
+The policy applies to the entire organization.
+There is evidence that the policy is consistently and appropriately enforced.
+4. Action plans on digital accessibility that are enterprise-wide in scope
+Organizational leadership has an established implementation plan detailing how they will meet the vision of accessibility as stated in the policy. (If there is no organization-wide policy, it is still imperative that a written implementation plan describe the work of the organization). An accessibility implementation plan covers both current and future accessibility efforts. This plan should be directly linked to long-term strategic goals and near-term initiatives of the organization. This plan can stand alone or be part of a full business prospectus. (Sample components for an implementation plan are detailed in
+Indicator 2
+.)
+Ways to determine if this is present
+The plan aligns with and supports the digital accessibility policy, if present.
+The plan aligns with the organization's long-term strategic goals and near-term initiatives.
+The plan covers both current and future accessibility efforts.
+The plan is detailed enough to provide a roadmap for those who will be implementing the plan.
+The plan is extensible to new technologies and organizational situations.
+5. Resources (e.g., budget, personnel effort) for digital accessibility are available across the organization
+Leadership commits the necessary resources to ensure the success of their action plan. This includes resources of time, money, materials, and personnel. (Visit
+Indicator 3
+for guidance on digital accessibility resources).
+Ways to determine if this is present
+There is evidence of leadership commitment to resources dedicated to digital accessibility efforts. Specifically, there is evidence of available time, money, materials, and personnel.
+There is evidence that leadership is involved in planning and allocating resources for digital accessibility efforts.
+Accessibility is included in relevant job descriptions.
+6. Digital accessibility efforts are given visibility, promotion, and communication throughout the organization
+The institution's vision, leadership, and commitment to digital accessibility are evident through action and activities. Ongoing communication and status updates about the plan and leadership's dedication to it reinforces its importance and keeps the message from being lost. The target audience includes all staff internal to the organization, and especially the community and clientele outside the organization.
+Ways to determine if this is present
+There are statements of administration and leadership support for digital accessibility.
+Are these statements published and widely available?
+There is documentation of regular status updates on digital accessibility efforts from administration and/or a group charged with it (e.g., an accessibility committee).
+There is documentation of the desire to produce ongoing and consistent communication with staff and the community outside the organization. If yes, does the communication:
+Reinforce the administration's commitment to the accessibility plan?
+Inform stakeholders of their roles in the process?
+Include upcoming targets, timelines, or goals?
+Encourage feedback and discussion?
+7. Work on digital accessibility is evidenced over several years
+Time can show commitment. When an organization has worked for several successive years to improve digital accessibility and has the budgets, staff, and support needed to mount the work of accessibility, it can usually be inferred that it is receiving the support of leadership.
+Ways to determine if this is present
+The organization can demonstrate multi-year organization-wide accessibility initiatives in operation.
+Accessibility resources (budgets, staff) have been available to support the organization's efforts over multiple years.
+Benchmark 2: Involvement and Input of Relevant Stakeholders
+It is important to involve relevant personnel in planning, implementing, and maintaining digital accessibility to ensure a successful and sustainable outcome. Each stakeholder has a different role in achieving overall accessibility, including technical staff, content developers, procurement personnel, and individuals with disabilities, to name a few. The participation of these individuals is crucial to the success of the effort. Their participation and adequate training demonstrates leadership's commitment to enterprise-wide accessibility.
+1. Individuals representing a wide range of stakeholders are involved in the organization's planning and continuous improvement
+In order to ensure that plans are created and sustained with the needs of many different groups in mind, many different stakeholders are asked to participate in the development of the policy and plan, to provide feedback, and to be fully involved in its implementation. This can be done at a committee or individual level.
+Stakeholders that commonly participate in organization-wide digital accessibility planning include staff from administrative units, central information technology, a disability office for the organization, representative staff members who are designers, developers and content creators, accessibility specialists, and individuals with disabilities. Individuals from risk management, human resources, procurement offices, or the contracting office may also be invited participants. Not all members need to be accessibility experts, nor must they participate in every activity.
+Ways to determine if this is present
+The committee should be a representative group of the organization. It might include the following:
+Administrators
+Central information technology staff
+Staff from the disability resource office
+Designers, developers, and content creators
+Accessibility specialists
+Individuals with disabilities
+Risk management
+Legal counsel
+Human resources
+Procurement office
+Contracting office
+Marketing and communications
+There is evidence that they can provide substantial input on the plans, process, and continuous improvement that will result from the work over time.
+2. Staff have clear responsibility for digital accessibility and take action to ensure accessibility in their work
+All stakeholders understand their unique roles and responsibilities with respect to developing, acquiring, and maintaining an accessible web presence and are empowered to fulfill those responsibilities. Those in leadership set clear expectations regarding how relevant roles will fulfill their responsibilities. Leadership also spearheads and supports training efforts. This can be documented through position descriptions, evidence of training, annual performance evaluations, and mechanisms for accessibility feedback from staff and those with disabilities.
+Ways to determine if this is present
+There is documentation of participation and buy-in by different groups across the organization.
+Leadership to support digital accessibility efforts
+Technical staff involved in designing accessible web pages
+Content creators who identify and upload accessible materials into templates
+Staff who create accessible documents intended for the web
+Staff who ensure that organizational purchases meet the accessibility standard
+Individuals with disabilities who provide feedback on the accessibility outcomes
+There is documentation that participation and buy-in exists. This might be seen in the following:
+Job and role descriptions, including in roles that are not primarily technical in nature.
+Evidence of
+training
+Annual performance evaluations of staff
+Meeting Notes
+Reports on progress
+Memos
+Communications – official and unofficial
+The assessment of digital accessibility outcomes across the organizational web
+There is evidence that those expected to take responsibility for digital accessibility activities are empowered and equipped to do so.
+3. Systems are available for individuals to provide feedback on the implementation of accessibility and accessible outcomes
+Those in leadership support implementing feedback systems that encourage staff, committee members, and web site consumers (particularly individuals with disabilities) to provide opinions on progress and implementation of the accessibility plan. Feedback is reviewed and utilized throughout the planning, development and assessment cycles so that this work is genuinely one of continuous improvement.
+Ways to determine if this is present
+Mechanisms for accessibility feedback from staff and persons with disabilities and measures that feedback is considered and implemented.There is documentation of available feedback and reporting systems for:
+Members of the accessibility planning committee.
+Staff who are charged with implementing accessibility.
+Persons with disabilities who are accessing the organization's web presence.
+Feedback systems are diverse, such as:
+Surveys
+Email or telephone contacts
+Usability studies and UX research
+There is documentation of how often these systems are used.
+There is documentation on the promotion of these systems to ensure that the target audiences are aware of their existence and use them.
+There is documentation of the feedback received from these systems.
+There is documentation or a description of how the feedback is used to improve accessibility planning, development, and assessment.
+Benchmark 3: Communicate Vision, Commitment, Direction, and Progress
+While it is critical that leadership possess the vision for and commitment to their organization's digital accessibility initiative, it is also vital that this is communicated throughout the organization, and to the broader community. Along with launching a communication strategy to announce accessibility work, consideration should be given to how to regularly communicate directions, progress, and ongoing challenges. A yearly “State of Accessibility” message could be shared with relevant stakeholders. This often includes the public and clientele.
+1. A written communication (marketing) plan to express leadership's dedication to accessibility and progress over time
+A communication plan discusses how the needs of staff and outside stakeholders are or will be met. It can encourage different messages (announcement of the work, how the organization will respond, accessibility accomplishments and challenges, etc.) and timelines for different communication methods. The messages communicated will change as the organization progresses in its accessibility efforts.
+Ways to determine if this is present
+An effective communication plan is in place.
+The communication plan covers a variety of audiences.
+The communication plan is reviewed and modified as needed.
+2. Communications occur across staff and relevant stakeholders
+The organization's plan for accessibility should be communicated both internally and externally. Messages should be customized for the intended audience. For example, staff should hear about the organization's new commitment to accessibility, why they chose to do it, what it means for staff, and how accessibility will impact their work. Further, they should stay informed about professional development opportunities, where to go for help, and how the organization is progressing. These communications should occur regularly.
+The messages to those outside the organization should be focused on the values held by the organization for diversity and inclusion, and that the organization will implement measures over time to ensure that all web designs, content, and tools are accessible to those with disabilities. Such external messaging might be important to clients who desire to do business with those supporting inclusion.
+Ways to determine if this is present
+There are prominent internal communications (e.g., internal memoranda, internal email, Intranet, video) on the leadership decision to pursue accessibility.
+There are prominent internal communications on what this will mean for staff (e.g., training and support for any new role, changes to job responsibilities, changes to performance evaluations, what to do when there is an issue).
+There is communication on the direction this work will take (e.g., broad tasks, timelines, groups).
+There are opportunities to provide feedback.
+There is communication on accomplishments and continuing challenges.
+There are prominent external communications that are tailored to different audiences. (e.g., published memoranda, news coverage, organization's website, article for external publication, video).
+3. Leadership should ensure that communication is ongoing
+The communication plan should span multiple years. It should change as the needs to communicate with internal and external entities shift and as new accomplishments and challenges are experienced. Leadership should drive these communications.
+Ways to determine if this is present
+Communications are present over time that reinforce the work of accessibility within the organization.
+Communication plans are evaluated regularly, ideally on a regular schedule formalized by leadership, to identify needed changes in message, medium, and audience.
+The organization provides awards, distinctions, and kudos from leadership to staff for their accomplishments in accessibility.
+Benchmark 4: Establish an Organizational Culture that Values Accessibility and Inclusion
+Establishing an organizational culture around digital accessibility will help everyone feel they are part of solving an important problem. It can incentivize employees to engage in the process and it can improve creativity and innovation to further accessibility efforts. It promotes social responsibility. By valuing digital accessibility, an organization demonstrates its commitment to creating a more equitable and accessible society. Organizations will benefit by having employees with disabilities working with them. These staff can often share important perspectives with the organization, and it will make a difference in outcomes.
+1. Mechanisms for employees to collaborate on and drive inclusion efforts
+When the culture of an organization values inclusion and accessibility, there are tangible mechanisms for staff to share and receive supports and acclaim. There are many ways that organizations can genuinely embrace an inclusion effort. For example, this can take the form of a Disability Employee Resource Group (ERG) where employees can discuss issues and collectively work to broaden opportunities for prospective and current employees with disabilities.
+Organizations that value accessibility and inclusion may also take focused steps to include disabled people in broader diversity, equity, and inclusion practices. Such initiatives often exclude people with disabilities despite finding success in helping to better serve other traditionally marginalized communities.
+These efforts often include focusing specifically on improving the hiring and promotion of disabled people. This, in turn, goes beyond making sure that hiring platforms are accessible. It extends into the full range of recruiting, applying, interviewing, onboarding, and the workplace itself.
+Active engagement with disability advocacy groups and the wider community of people with disabilities can also show an organization's inclusive culture. Forging meaningful relationships through outreach is another way that organizations can act on their values in this space.
+Ways to determine if this is present
+The organization has systems for networking and sharing about accessibility. There are ways that employees can ask one another questions or get tips.
+If so, is it welcoming of all intended participants?
+The organization provides a forum for disabled employees to bring broader concerns and ideas for change to leadership.
+There are informal groups that meet face-to-face where employees can discuss accessibility issues or celebrate accessibility progress. Examples include brown-bag lunches (or Lunch-N-Learn opportunities), or meetups on the topic of digital accessibility for staff.
+The organization offers tangible motivators for those who participate in accessibility efforts (e.g., badging for professional development, accessibility-themed swag, stickers for the office).
+2. Inclusive hiring practices for those with disabilities
+Organizations who hire qualified persons with disabilities experience the benefit of both their talents and their perspective. Having employees with disabilities on staff when launching and implementing an accessibility initiative can be important to the overall success of the plan.
+Ways to determine if this is present
+The organization discusses and shares its plans to hire qualified persons with disabilities.
+Recruitment practices include advertising among local or national disability groups.
+The organization monitors the number of disabled people hired over time.
+The organization monitors retention of employees with disabilities and compares rates to employees without disabilities.
+The organization monitors promotion of disabled employees.
+Based on the above monitoring, the organization adjusts its recruiting, retention, and promotion activities to improve outcomes for people with disabilities.
+3.Engage a community of individuals with disabilities to assist as accessibility policies, processes, procedures, and data-based decision-making is created and refined
+If the organization does not have personnel with disabilities available to participate in the accessibility committee, engaging persons with disabilities by hiring them as consultants should be considered. They can bring critical perspective to the planning, implementation, and continuous improvement process. Engaging with other stakeholders, including those outside the organization, can be informative.
+Ways to determine if this is present
+There are individuals with disabilities on the accessibility committee.
+If not, then what steps can it document to show that it attempted to hire consultants to serve in this role?
+The organization can point to outreach that it has done to disability advocacy or organizing groups.
+Next

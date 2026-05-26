@@ -1,0 +1,39 @@
+URL: https://webaim.org/techniques/sitetools/
+Title: WebAIM: Site Searches, Indexes, and Site Maps
+================================================================================
+
+WebAIM: Site Searches, Indexes, and Site Maps
+Site Searches, Indexes, and Site Maps
+You are here:
+Home
+>
+Articles
+> Site Searches, Indexes, and Site Maps
+The Importance of Site Tools
+Site tools, such as search functionality and site maps or indexes, can be very helpful for users exploring and finding content. While site navigation should be clear and intuitive, search or site maps provide an alternative method for finding content that may be easier for some users.
+The Web Content Accessibility Guidelines (WCAG) requires
+Multiple Ways
+of finding web pages on a site. Search, site maps, or a table of contents can support this important requirement.
+Site Searches
+A good site search enables users to find and go directly to their desired content. The site search feature itself should be easy to find and simple to operate. An advanced or complex search form could be provided as an extra feature, but it should not be the default option. The search form should be readily distinguishable on the page, and differentiated from other forms by having a clearly labeled search text box and/or button.
+The site search feature is often most usable if it appears on every page in a consistent location, without forcing users to click on a link to a search page. The search feature should have a character width of about 25 to 35 characters, so that users can type and edit their queries without too much difficulty.
+Site search can be marked up with the "search" ARIA landmark role (e.g.,
+<form role="search">
+) to allow it to be more easily accessed by screen reader and keyboard users. This role differentiates the search form from any other forms on the page.
+Site Maps or Indexes
+There are three main types of site maps or indexes:
+Alphabetical
+Structural
+Graphical
+Alphabetical site indexes
+Alphabetical site indexes list all of the important areas of content on a site in alphabetical order, much like the index at the back of a book. This may be unnecessary for very small sites, and may be impractical for very large sites, because these lists can become too lengthy to use effectively, but it is also one of the most useful ways for a user to find information on a site.
+The more comprehensive the alphabetical index, the more useful it is, as long as it does not become unwieldy. Developers may need to create multiple pages for long indexes, perhaps with a page for each letter of the alphabet.
+Structural (topical) site indexes
+A structural site map is a list of links to the contents of a web site, organized by topic or category.
+Normally, structural site maps mirror the site's organization. For example, if a site has 3 main "tabs," or category links at the top of each page, these 3 categories could serve as the method for organizing the content of the structural site map. In general, the site map organization should reflect some navigation or structural organization of the site itself.
+Graphical site maps
+Although less common—and perhaps less useful—graphical or visual site maps are one type of alternative to the more common text-based versions. These graphics often look similar to the organizational charts often used by businesses to delineate the hierarchical relationships between supervisors and the people whom they supervise.
+The above example is relatively simple. One problem with graphical site maps for complex sites is that they would need large structural maps—perhaps larger than could be easily understood.
+There are many ways of representing a site's organization graphically. Photos or graphics could be used in the headings to group and illustrate concepts. Circles or boxes could be drawn around related pages. A furniture store could use a floor plan of a house to organize the names or photos of different types of furniture. All of the links to kitchen items could literally be placed in the diagram's kitchen, and so on. This type of concept can be quite powerful when used carefully and when tested for usability. The creativity involved in thinking up ideas such as this can easily backfire though, creating a confusing mess. Be creative, but test solutions to ensure they work.
+Graphical site maps are probably unnecessary if the visual design of the site navigation provides obvious visual cues as to the structure of the entire site. Another primary issue is screen reader accessibility. It would be difficult
+for such a graphical site map image to be given adequately descriptive alternative text. If used, other mechanisms for providing access to the site structure may be necessary.

@@ -1,0 +1,10 @@
+spacy>=3.7.0
+textstat>=0.7.3
+tomli>=2.0.0
+openai>=1.6.0
+textacy
+spacy
+transformers
+torch
+tomli
+pytest

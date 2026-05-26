@@ -1,0 +1,246 @@
+URL: https://webaim.org/articles/narrator/
+Title: WebAIM: Using Narrator to Evaluate Web Accessibility
+================================================================================
+
+WebAIM: Using Narrator to Evaluate Web Accessibility
+Using Narrator to Evaluate Web Accessibility
+You are here:
+Home
+>
+Articles
+> Using Narrator to Evaluate Web Accessibility
+Introduction
+Narrator
+is a screen reader that comes built into Windows computers. While it is currently not as popular as
+JAWS
+or
+NVDA
+, it is a solid screen reader that has become
+much more popular
+in the past few years. This article is designed to help users who are new to Narrator learn the basic controls for testing web content, and to serve as a reference for the occasional screen reader user.
+If you are new to screen readers, plan on spending some time (perhaps a few hours) becoming comfortable using Narrator. Don't get discouraged if things still seem confusing after only a few minutes. Slow down the reading speed and take your time. Remember that many screen reader users do not use a mouse, so try using only the keyboard as you become more comfortable with Narrator.
+If you are familiar with the JAWS or NVDA screen readers, Narrator has many similar commands.
+Getting Started
+To Start or Stop Narrator, press the
+Windows key
++
+Ctrl
++
+Enter
+. A window will open with options to learn more about Narrator and configure your settings. Select
+for a useful tutorial.
+Important
+at any time to adjust settings like the voice, relative volume, and speed. Do not change any settings that will impact what information
+will be read. Leave
+at
+Both the
+Caps Lock
+and
+Insert
+keys can be used as the Narrator "modifier" key
+used in many commands—we
+will call it the
+Narrator
+key. We recommend using
+Caps Lock
+because it is close to the
+Ctrl
+,
+Alt
+, and
+Shift
+keys, which are used in many commands. To toggle Caps Lock functionality while Narrator is running, press
+Caps Lock
+twice.
+Narrator currently works best with the Edge browser, but it also has support for Chrome and Firefox.
+Reading
+There are dozens of keyboard shortcuts that allow you to read web content. The following is a list of essential reading shortcuts. With these shortcuts, you should be able to read through most content with Narrator.
+Ctrl
+: Stop reading
+↑
+/
+↓
+: Previous/Next paragraph or item
+←
+/
+→
+: Previous/Next character
+Ctrl
++
+↑
+/
+↓
+: Previous/next line
+Ctrl
++
+←
+/
+→
+: Previous/next word
+Narrator
++
+Tab
+: Reread current item
+Narrator
++
++
+/
+-
+: Increase/decrease speech rate
+You may want to practice reading through this page with Narrator right now to try these commands out.
+Navigation
+Sighted users visually skim a webpage for headings, lists, tables, etc. You can navigate by these (and other) types of content in Narrator if the site is correctly structured and well organized.
+Single-key shortcuts
+There
+are several single-key shortcuts to quickly navigate by common page elements. These include:
+Tab
+: Links and form controls
+H
+: Headings
+1
+-
+6
+: Heading 1, heading 2, etc.
+D
+: Landmarks
+F
+: Form controls
+T
+: Tables
+B
+: Buttons
+K
+: Links
+L
+: Lists
+I
+: Items in a list
+Tip
+Shift
++ any of these keys will allow you to navigate in reverse.
+Other navigation shortcuts
+Narrator
++
+Ctrl
++
+F
+: Open the Find dialog
+Narrator
++
+F3
+: Move through Narrator Find results (add Shift to go backward)
+Ctrl
++
+Home
+: Top of the page
+Ctrl
++
+End
+: Bottom of the page
+Ctrl
++
+L
+: Browser address bar
+Ctrl
++
+R
+: Refresh the page (useful if you are lost or if Narrator is not behaving as expected)
+To practice reading and navigation commands, try refreshing this page and navigating to this paragraph using commands like headings (
+H
+), lists (
+L
+), or Read Previous/Next line (
+↑
+/
+↓
+).
+Images
+An image's
+alternative text
+will be read by Narrator. If alternative text is not defined, Narrator will typically say "image" or "unlabeled graphic" (most other screen readers ignore these).
+Image examples and practice
+Data Tables
+To navigate to the next table in a page, press the
+T
+key. To navigate within a
+data table
+, hold down
+Ctrl
++
+Alt
+and use
+↑
+/
+↓
+/
+←
+/
+→
+to move from cell to cell. If a table has proper row and column headers, they will be read automatically while navigating.
+Table examples and practice
+Forms
+When a
+form control
+gets keyboard focus, Narrator read the label (if there is one), and then the type of form control. If a group of form controls—typically groups of checkboxes or radio buttons—is contained in a fieldset with a legend, Narrator presents items in a fieldset as a group and reads the legend when you first navigate to anything within the group.
+Use the following browser keyboard
+controls to interact with form controls:
+Tab
+and
+Shift
++
+Tab
+: Navigate through
+form controls
+Space
+to select and deselect checkboxes
+↑
+/
+↓
+:Select from a group of radio buttons
+Space
+, then
+↑
+/
+↓
+or the first letter of an option: Expand and then select an option in a combo box
+Enter
+: Submit a form
+Form examples and practice
+Scan mode
+Since screen readers use many of the keys on the keyboard for quick navigation, filling in a form or interacting with a widget presents a dilemma. For example, when pressing the "H" key, how does a screen reader know if you want to navigate to the next heading or enter the letter into a textbox?
+By default, Narrator operates in what it calls "Scan mode" while in a browser—the mode where the "H" key takes you to the next heading. It
+turns off this mode automatically when you use the
+Tab
+key to navigate to text boxes or
+other elements that require keyboard interaction. When you navigate back into the main page--for example, to a link, it will switch back to Scan mode. Brief sounds will announce these changes.
+Tip
+Press
+Narrator
++
+Space
+to turn Scan mode off and on, though this is usually unnecessary unless there is a problem with a custom-built widget.
+Practice
+Review this page, section by section. At the end of each section, return to the top and navigate new sections in different ways. For example:
+Use the Table of Contents
+Use
+Narrator
++
+Ctrl
++
+F
+and
+Narrator
++
+F3
+to open the Find dialog
+Navigate by headings (either
+H
+or
+1
+-
+3
+)
+There are two elements in this page that are visually hidden, but which are provided to better orient screen reader users. See if you can identify them (hint: one toward the start of the webpage and the other is right before the breadcrumbs).
+Locate and visit our WCAG 2 checklist.
+Subscribe to the WebAIM Newsletter without using your mouse.
+Turn off the monitor and repeat some of these tasks.

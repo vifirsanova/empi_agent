@@ -1,0 +1,169 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/css/C45
+Title: C45: Using CSS :focus-visible to provide keyboard focus indication | WAI | W3C
+================================================================================
+
+C45: Using CSS :focus-visible to provide keyboard focus indication | WAI | W3C
+Skip to content
+Technique C45:
+Using
+CSS
+:focus-visible
+to provide keyboard focus indication
+About this Technique
+This technique relates to
+2.4.7 Focus Visible
+(
+Sufficient
+).
+This technique applies to all technologies that support CSS.
+Description
+The objective of this technique is to provide custom styles for interactive elements when they receive keyboard focus. In this example, this is achieved using the CSS
+:focus-visible
+pseudo-class.
+Styles defined with the regular
+:focus
+pseudo-class are applied whenever an element has focus, regardless of how it received focus. In contrast, user agents apply additional heuristics and logic to decide when to show
+:focus-visible
+styles – in particular, browsers always show these styles when a user is navigating using the keyboard, but will generally
+not
+show them as a result of a mouse/pointer interaction (with the exception of elements that also support keyboard input, such as
+<input>
+elements). This allows authors to provide strong visible focus indication for keyboard users, without forcing them on mouse/pointer users who may not necessarily want or need them (for instance, because they find them visually distracting).
+This satisfies the requirement of providing a
+mode of operation where the keyboard focus indicator is visible
+.
+Note
+This technique is only sufficient
+if
+it uses styles that provide a
+visible
+focus indicator.
+Note
+There may be situations where mouse/pointer users could also benefit from having a visible focus indicator, even though they did not set focus to an element using the keyboard. As a best practice, consider still providing an explicit
+:focus
+style for these cases.
+Examples
+Example 1: Using
+CSS
+:focus-visible
+to provide keyboard focus indication
+In this example, we have a standard
+<button>
+control in the HTML.
+By default, in all modern browsers, this button does not show any focus indication when activated using a mouse/pointer. Browsers show their default focus outline/indication when a user sets focus on the button using
+Tab
+.
+In order to make this focus indication more prominent, we use the
+:focus-visible
+pseudo-class selector to define a more intentional and pronounced focus style.
+Working example:
+Using CSS
+:focus-visible
+to provide keyboard focus indication
+.
+<!DOCTYPE
+html
+>
+<
+html
+lang
+=
+"en"
+>
+<
+head
+>
+<
+meta
+charset
+=
+"utf-8"
+>
+<
+meta
+name
+=
+"viewport"
+content
+=
+"width=device-width,
+initial-scale=1, shrink-to-fit=no"
+>
+<
+title
+>
+Using CSS :focus-visible to
+provide keyboard focus indication
+</
+title
+>
+<
+style
+>
+/* Specific :focus-visible styles */
+:focus-visible
+{
+outline
+:
+5px
+solid red;
+}
+…
+</
+style
+>
+</
+head
+>
+<
+body
+>
+…
+<
+button
+>
+Example button
+</
+button
+>
+…
+</
+body
+>
+</
+html
+>
+Related Resources
+No endorsement implied.
+CSS Selectors Level 4 -
+:focus-visible
+pseudo-class
+.
+MDN
+-
+:focus-visible
+pseudo-class
+.
+Related Techniques
+C15: Using CSS to change the presentation of a user interface component when it receives focus
+G165: Using the default focus indicator for the platform so that high visibility default focus indicators will carry over
+G195: Using an author-supplied, visible focus indicator
+C40: Creating a two-color focus indicator to ensure sufficient contrast with all components
+Tests
+Procedure
+For each user interface component that can receive keyboard focus:
+Set focus to the interface component using the keyboard (generally, navigating to the component using
+Tab
+/
+Shift+Tab
+)
+Verify that once the component has received focus, a focus indicator is visible
+Expected Results
+Check #2 is true.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

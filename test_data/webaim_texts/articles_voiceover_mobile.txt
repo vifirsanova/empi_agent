@@ -1,0 +1,73 @@
+URL: https://webaim.org/articles/voiceover/mobile
+Title: WebAIM: VoiceOver on Mobile
+================================================================================
+
+WebAIM: VoiceOver on Mobile
+VoiceOver on Mobile
+You are here:
+Home
+>
+Articles
+> VoiceOver on Mobile
+Introduction
+VoiceOver is a screen reader program that comes installed on iPhones, iPads, and iPod touch devices (see
+Using VoiceOver to Evaluate Web Accessibility
+to learn about VoiceOver for Mac). This article is intended to provide a basic understanding of VoiceOver and some of its features for the purpose of basic navigation and evaluation of web content in mobile Safari.
+Enabling VoiceOver
+Depending on your device and software version, the steps to enable or disable VoiceOver may vary slightly. Go to
+, then enable the toggle button to activate VoiceOver. Alternatively, you can turn on VoiceOver by telling Siri "Turn on VoiceOver."
+In the Accessibility settings are options for setting the Accessibility Shortcut to VoiceOver, which will allow you to triple-click the Home button (or Side button) to activate VoiceOver.
+VoiceOver is disabled the same way as it is enabled . You will need the Accessibility Shortcut enabled to use the Home or Side button to disable it by triple clicking.
+Rotor
+The rotor gives you the option to navigate a page by specified elements. To use the rotor, rotate two fingers on the screen of the device either clockwise or counter-clockwise to change the setting. Rotating will cycle through the available options. Once an option is selected, this will change the element by which you can navigate through the page when using an upward or downward swipe. For example, if "Links" is selected in the Rotor, swiping down will move to the next link on a page. Swiping up will move to the previous link.
+You can customize the available Rotor options in
+. The most useful options to enable for accessibility testing are Lines, Speaking Rate (to speed up or slow down the speech rate), Headings, Links, Form Controls, Tables, Landmarks, Buttons, and Images. Other options may be useful in some circumstances, and this can be customized to your liking. Some options may only be available within the Rotor under specific conditions. For a more detailed explanation of the rotor, please see
+Apple's VoiceOver article
+Navigation
+Once VoiceOver is turned on, you can explore the screen by dragging a finger over the screen, and the screen reader will speak each item touched. Touch gestures are available to support different functionality. There are many gestures that can be used, and it's possible to customize these in the Accessibility settings.
+VoiceOver provides the following gestures for navigation:
+VoiceOver Gesture
+Action
+One-finger tap an item
+Select and speak an item
+One-finger swipe right
+Select next item
+One-finger swipe left
+Select previous item
+One-finger swipe down
+Select next Rotor item
+One-finger swipe up
+Select previous Rotor item
+One-finger double-tap
+Activate the selected item
+Two-finger swipe up
+Speak the entire screen from the top
+Two-finger swipe down
+Speak the entire screen from the selected item
+Two-finger tap
+Pause or continue speaking
+Two-finger double-tap
+Start or stop the current action (for example, play or pause music or video, take a photo in Camera, start or stop the stopwatch)
+Three-finger swipe down
+Move down one page
+Three-finger swipe up
+Move up one page
+Three-finger double-tap
+Mute or unmute VoiceOver
+See the
+VoiceOver Section in the iPhone User Guide
+for a more extensive list. Standard gestures are still possible with VoiceOver enabled, but there's an added step. To use a standard gesture with VoiceOver activated, double-tap and hold your finger on the screen until you hear three rising tones, then make the standard gesture (this disables VoiceOver gestures until the finger is lifted). When you lift your finger, VoiceOver gestures resume.
+Evaluation
+Evaluating web accessibility on a mobile device is not so different from testing on a desktop browser. The same
+WCAG requirements
+that apply to a desktop version of a webpage apply to a mobile version as well. You will also want to test the
+WCAG 2.1 Input Modalities success criteria
+on mobile.
+Basic testing can be conducted by doing the following:
+Load the web page in mobile Safari.
+Enable VoiceOver (see instructions above).
+Swipe down with two fingers to listen to the entire page content.
+Change the Rotor option to an element of interest (such as Links, Buttons, Landmarks, or Images).
+Swipe down (next element) or up (previous element) to navigate through elements.
+To activate an element, such as a link or form control, either navigate to it by swiping or slide your finger over it until it is read, then double tap anywhere on the screen. Typing text is also done by sliding your finger to a character in the on-screen keyboard, then double tapping.
+It is advisable to also conduct VoiceOver testing with a Bluetooth keyboard to ensure the content or application supports mobile keyboard accessibility. It is also useful to test without looking at the screen to ensure a more authentic experience.

@@ -1,0 +1,52 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/general/G131
+Title: G131: Providing descriptive labels | WAI | W3C
+================================================================================
+
+G131: Providing descriptive labels | WAI | W3C
+Skip to content
+Technique G131:
+Providing descriptive labels
+About this Technique
+This technique relates to:
+2.4.6 Headings and Labels
+(
+Sufficient
+)
+3.3.2 Labels or Instructions
+(
+Sufficient
+using a more specific technique)
+This technique applies to all technologies.
+Description
+The objective of this technique is to ensure that the label for any interactive component within web content makes the component's purpose clear. Using the appropriate technology-specific techniques for technologies for associating labels with interactive controls allows assistive technology to recognize the label and present it to the user, therefore allowing the user to identify the purpose of the control.The label may also be used to include text or a text symbol indicating that input is required.
+Examples
+Example 1: Online maps with controls for zooming in and out
+A web application presents maps of a city. Users can “zoom in" to view part of the map in greater detail, and can “zoom out" to make it show a larger part of the city. The controls can be operated using either a mouse or a keyboard. The controls are labeled “Zoom in (Ctrl + Shift + L)" And “Zoom out (Ctrl + Shift + R)."
+Example 2: A form asking the name of the user
+A form asks the name of the user. It consists of two input fields to ask for the first and last name. The first field is labeled "First name", the second is labeled "Last name".
+Example 3: A form with required fields
+A purchasing form includes several fields that are required. In addition to identifying the field, the label for each required field includes the word “required" in parentheses.
+Related Techniques
+H90: Indicating required form controls using label or legend
+Tests
+Procedure
+For each interface component with a label:
+Identify the purpose of the interface component.
+Check that each label makes the component's purpose clear.
+Expected Results
+Checks #2 is true.
+Test Rules
+The following are Test Rules
+related to this Technique.
+It is not necessary to use these particular Test Rules to check for conformance with WCAG, but they are defined and approved test methods.
+For information on using Test Rules, see
+Understanding Test Rules for WCAG Success Criteria
+.
+Form field label is descriptive
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

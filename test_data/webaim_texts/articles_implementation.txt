@@ -1,0 +1,87 @@
+URL: https://webaim.org/articles/implementation/
+Title: WebAIM: 8-Step Implementation Model - Introduction: Overview of a Model of Reform
+================================================================================
+
+WebAIM: 8-Step Implementation Model - Introduction: Overview of a Model of Reform
+8-Step Implementation Model
+Introduction: Overview of a Model of Reform
+You are here:
+Home
+>
+Articles
+> 8-Step Implementation Model
+Important
+The WebAIM Strategic Accessibility Framework
+provides a more comprehensive model for implementing digital accessibility than is provided in this article. This article is maintained here for archival purposes.
+Note
+Work on this model of accessible system reform was funded by the U.S. Department of Education.
+FIPSE
+funded work for higher
+education under a Learning Anytime Anywhere Partnership grant (LAAP #P339B990640).
+OSERS
+funded work for K-12 implementation
+under a Project of National Significance grant (PNS #H325N020064 ). No official endorsement should be inferred.
+The Model of Reform at a Glance...
+Gather baseline information
+Gain top-level support
+Organize a web accessibility committee
+Define a standard
+Create an implementation plan
+Provide training and technical support
+Monitor conformance
+Remain flexible through the changes
+Every organization will need to adapt this model to it's own circumstances, but the general principles apply across organizations and circumstances.
+The Scope of the Problem
+Measuring the impact
+The impact of disability access issues may be minimal on small, infrequently-accessed web sites, but the impact of web accessibility issues on sites of large organizations, such as universities, businesses, and government agencies, can be enormous. Nearly all web sites that have any significant amount of traffic are visited by users with disabilities. Not all of these visits result in pleasant experiences for the individuals with disabilities, so some never return to the site. For this reason, it is difficult to gauge how many people with disabilities are using a web site. Before the Americans with Disabilities Act was made law in the United States, some bus companies complained about the requirement to make their buses accessible to people in wheelchairs, arguing that these people don't use the bus system. The rebuttal to that argument is that they weren't using it because it was impossible for them to use it. In areas where wheelchair-accessible buses are available, it is common to see individuals in wheelchairs making use of them. In much the same way, web site statistics of users with disabilities are not meaningful for sites that are not designed to be accessible. The mantra from the movie "Field of Dreams" applies here: "If you build it, they [people with disabilities] will come."
+Let's look at three different scenarios in different arenas--postsecondary education, e-commerce, and government--where disability access to the web could be a serious issue:
+Three scenarios
+Postsecondary Education
+Internet technologies can transform our educational experiences, but there is a very real divide between students who do and do not have access to the Internet in education today. As universities grapple with issues of physical access to hardware, software, the web, and a National Information Infrastructure, decision-makers must be mindful of those with disabilities.
+Postsecondary entities, like the rest of our society, use the Internet more and more for daily tasks. The rapid rise in the use of the Internet as well as the functions of pages within sites grow each day. Today if you were to go to almost any institutional site, you would find that students could at least do the following:
+get information about required courses,
+register for courses,
+look up transcripts,
+order books,
+pay for educational expenses with a credit card,
+take online courses,
+gain access to web-enhanced courses,
+complete web-based assignments,
+meet others in virtual student lounges,
+conduct research from library holdings or the Internet,
+take tests online (e.g., MAT), and
+get information from web-based kiosks about social and community events and issues.
+Each day students can find new ways to interact with their education provider as new functions are added to sites. It is clear that the web is seen as a central element in postsecondary education. So much so that many institutions are dedicating enormous resources to keep up with the advantages that this technology holds for students. This access is viewed as desirable, if not necessary, for students to succeed in their educational endeavors and participate in the digital community that has emerged. However, the population of students with disabilities are often shut out of these opportunities.
+When institutional sites are not accessible we harm students with disabilities in at least 2 ways:
+First, they may not have an educational experience that is equivalent to their non-disabled peers.
+Second, they lose out on opportunities to learn how to efficiently gather web-based information.
+It becomes a tail-chasing phenomenon where lack of access reduces skill acumen and fledgling skills further reduce access. The adage "practice makes perfect" comes to mind. Students without opportunities to practice cannot be as prepared to meet their future, one that will include the Internet. Postsecondary education systems must be created and sustained to help students with disabilities participate in the web-based society that is growing each day.
+So what can be done about this important issue? The only way to really get the job done is for institutions of higher education to engage in a system-change effort where they are dedicated to coordination and reform of their web sites.
+E-commerce
+Imagine a scenario from 15 or 20 years ago. A man with cerebral palsy lives in an apartment in a large city. His muscle movements are spastic, his speech is slurred, and he uses a wheelchair to navigate his physical world, but his mind is unaffected by his motor disability. He can type letters on a computer with an adaptive keyboard that reduces the chance of input errors due to his spastic muscle movements. He has never used the Internet, because it has not yet surged in popularity. In fact, like most of the people in the world at that time, he had never heard of the Internet. This man cannot easily go shopping for clothing, food, books, or anything else without someone else's assistance. He is not incapable of these acts, but there are access issues with public transportation, with the sidewalks, with the stores, and so on. It can be more bother than it's worth at times. He depends upon help from others.
+Now let's move this man into the present time. He has access to the Internet. Rather than depending on someone else for every little need, he has the option to go to web sites to order the clothing, food, books and other items that he wants. The problem is that the most popular sites for these items have not taken accessibility into account. He is unable to use a mouse reliably, and finds that some sites are unusable without a mouse. In his frustration, he seeks other sites that offer similar products, and finds a few, but they are not as comprehensive as the ones he really wants to access. He has a measure of independence, but it is limited.
+Finally, let's look into a more ideal future. The web sites that this man wants to access are accessible to him. He is able to purchase the items that he needs and wants without always depending on someone else. His disability is irrelevant in these circumstances. He enjoys a level of independence that was formerly denied him, and which the majority of the world takes for granted.
+Government
+Here is another scenario. A woman in her thirties, who previously had no disabilities, was blinded as a result of a head injury in an automobile accident. Throughout the years, she had always taken care of the administrative details of life, such as car registration, income tax preparation, property taxes, and so on. Where she lives, all of these details could be taken care of over the Internet, which she had learned to use before her accident. Now that she is legally blind, she has learned to use a screen reader to access the web, but finds that these online forms are confusing, and that they do not provide sufficient information in a format that is accessible to her screen reader. This capable individual is now unable to perform tasks that she routinely performed on her own. She is forced to make several phone calls, trying to find someone who can give her instructions on how to perform these tasks. One office even offers her a Braille copy, but this too is unusable, since she is only beginning to learn Braille.
+Conclusion
+As the above scenarios illustrate, the inaccessibility of web content can have a significant impact on the lives of individuals with disabilities. Many people without disabilities are ignorant of the importance of the issue to those who are directly affected. They are also often ignorant of the tremendous benefit that accessible web content can be.
+Important
+Accessible web sites offer independence to individuals with disabilities that would otherwise not have it.
+Thinking Ahead
+With concentrated effort, it is possible to fix the major accessibility errors on a web site in a matter of hours, days, or weeks, depending on the size and complexity of the site. Such an effort would be a wonderful one-time effort, but it is likely that its would not continue through to different incarnations of the web site unless there is some sort of system in place which assures that accessibility is a priority, and which verifies that the web site is indeed accessible.
+Sizing up the task
+Always in take into account the size of the problem by taking into account the size of your organization. It is certainly easier to coordinate the actions of 10 individuals than 1,000. Moreover, it is easier to ensure coordination across 15 units than 150. Size does matter in coordination and reform efforts in organizations as they struggle to support, monitor, and ultimately comply with internal policies or federal regulations. As you progress through each step of the process, remember that the size of your organization may effect decision-making and action plans.
+Transforming the climate of an organization with regard to disability access is not a simple process. It is a complex one whose scope and importance are increasing with the growth of the Internet's use. Before moving on to explaining the specific steps of the process of institutional reform, it is valuable to keep in mind a few key principles.
+There are many elements to the future success of postsecondary access. The most salient would be (a) commitment, (b) action, and (c) an eye toward new technology solutions. Organizations, especially those in education and government, must begin to grapple with current inequities and legal mandates. Organizational commitment and coordination will go a long way toward reforming the present crisis.
+Solid commitment
+Important
+Organizations need to commit to accessibility to the extent that it becomes a factor in every major decision related to the organization's web site.
+Speaking specifically about web accessibility coordination in postsecondary institutions, Cynthia Waddell, in The Growing Digital Divide in Access for People with Disabilities stated, "Just as a removal of architectural barriers requires a plan for implementation, the removal of technological or digital barriers in programs and services requires a comprehensive institutional plan impacting every campus office."
+Due to the complexity of the issue of web accessibility, it requires a solid commitment to the process in terms of people, time, money and facilities. Resources committed by an organization also factor into the complexity of the problem. Entities that can appoint someone to chair an accessibility committee as part of their role assignment (e.g., half time for the first year) will do better with web accessibility than those that cannot.
+Also, organizations that use their resources to create a stable environment for web development staff will have a better chance delivering accessible sites across the institution. Training and support in accessible design for web developers are two important elements of this requirement. Salary and career incentives for technical development personnel are some others. Employee turnover can be quite high, especially in the lower-paying education and government positions. Over 1,400 web masters in postsecondary education in the United States were surveyed in 2000. Of the 536 response (38% response rate), most had been in their current position for only 2 years. Just over half of the sample (54%) indicated web design as their full-time responsibility. Sixty-two percent (n=334) reported that they had learned about at least some aspect of accessibility; most (n=300) reported that they did so on their own and not during any pre-service or in-service training. It is likely that frequent changes in web personnel would have a negative affect on the accessibility of sites within a postsecondary institution. Postsecondary entities that commit more resources to this issue will also be able to better monitor the accessible design of their web development staff.
+Another resource that must be considered in reform is money. There are funds that can be procured from sources outside of the organization (e.g. grants). However, this financial support can be slow in coming and should not be counted on. The financial backing of institutional reform should become a line item in the organization's budget, just as physical facility changes conforming with the ADA. Do not wait for money from outside sources to begin the process of accessibility reform.
+Action
+An organization's "actions" demonstrate its level of commitment. A proactive stance on accessibility will show that the organization truly believes in the principle of accessibility. An apathetic, or slow-to-react stance demonstrates just the opposite.
+These actions must include all stakeholder groups: students, faculty, web designers, departmental units, administrators. Action plans should be created with input from all and should articulate change in small, measurable steps that are place along a reasonable timeline. Systems that include multiple points for input throughout the process will be more likely to succeed over time.
+With these ideas in mind, let's take a closer look at a model of web accessibility coordination.
+Next

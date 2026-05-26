@@ -1,0 +1,110 @@
+URL: https://www.w3.org/WAI/
+Title: Home | Web Accessibility Initiative (WAI) | W3C
+================================================================================
+
+Home | Web Accessibility Initiative (WAI) | W3C
+W3C Web Accessibility Initiative Home
+W3C
+The World Wide Web Consortium (W3C) develops international standards for the Web: HTML, CSS, and many more.
+WAI
+The W3C Web Accessibility Initiative (WAI) develops standards and support materials to help you understand and implement accessibility.
+You
+You can use W3C WAI resources to make your websites, applications, and other digital creations more accessible and usable to everyone.
+Hide Section
+Current Work
+(updated monthly)
+See
+What We're Working On – Accessibility Activities and Publications
+For Review: WCAG 3 Working Draft – March 2026
+(2026-Mar-03)
+W3C Accessibility Guidelines (WCAG) 3.0 Working Draft
+is updated. The starting place for background, timeline, and up-to-date information is the
+WCAG 3 Introduction
+. For a list of changes in the March 2026 draft, see
+Status: In-progress drafts
+.
+For Review: W3C Accessibility Guidelines Evaluation Methodology (WCAG-EM) 2.0 — First Draft Note
+(2026-Feb-05)
+W3C Accessibility Guidelines Evaluation Methodology (WCAG-EM) 2.0
+is available as a first Draft Note. WCAG-EM describes a methodology with a step-by-step process to evaluate how well digital products conform to Web Content Accessibility Guidelines (WCAG) 2. WCAG-EM 1 is specifically for testing websites and web pages. WCAG-EM 2 also applies to apps and other digital products. For an introduction to WCAG-EM and more information about the WCAG-EM 2 draft, see
+WCAG-EM Overview
+.
+For Review: Cognitive Accessibility Research Modules — First Draft Notes
+(2026-Feb-05)
+Cognitive Accessibility Research Modules
+are available as first Draft Notes. The documents cover research on accessibility for people with cognitive and learning disabilities for
+Voice Systems and Conversational Interfaces
+,
+Technology Assisted Indoor Navigation / Wayfinding
+,
+Online Safety and Wellbeing (Algorithms and Data)
+, and
+Supported Decision-Making Online
+. They address user needs, accessibility issues, directions for solutions, and areas for further research. We particularly seek input on what might be appropriate to add to these documents, including other relevant research, additional user needs, and the connection between research and priorities for new work in W3C groups. Information on related work is in
+Cognitive Accessibility at W3C
+.
+ACT Rules Format 1.1 is a Web Standard (W3C Recommendation)
+(2026-Feb-05)
+Accessibility Conformance Testing (ACT) Rules Format 1.1
+is now a web standard (W3C Recommendation). ACT Rules Format defines a format for writing accessibility test rules. The test rules can be used for developing automated testing tools and manual testing methodologies. For an introduction to ACT Rules, see
+Accessibility Conformance Testing (ACT) Overview
+.
+WCAG 2.2 Approved as an ISO Standard
+(2025-Oct-21)
+Web Content Accessibility Guidelines (
+WCAG
+) 2.2 is now an approved International Organization for Standardization (ISO) standard: ISO/IEC 40500:2025. It is available free from
+ISO/IEC 40500:2025 - Information technology — W3C Web Content Accessibility Guidelines (WCAG) 2.2
+. This standard enables more countries to formally adopt WCAG 2.2. Additional information is in the
+W3C press release on WCAG 2.2 approved as ISO/IEC international standard
+and
+‘ISO/IEC 40500, EAA, EN 301 549’ section of WCAG 2 Overview
+.
+For Review: WCAG 3 Working Draft - September 2025
+(2025-Sep-04)
+W3C Accessibility Guidelines (WCAG) 3.0 Working Draft
+is updated. For review questions and how to comment, please see the
+WCAG 3 section ‘About this draft’
+. The starting place for background, timeline, and up-to-date information is the
+WCAG 3 Introduction
+.
+For Wide Review: Accessibility Maturity Model — Updated Draft Note
+(2025-Sep-01)
+Accessibility Maturity Model Updated Draft Note
+is ready for review. The Accessibility Maturity Model provides a framework to assess an organization’s policies and procedures to deliver accessible products and services. It can be used to measure current capabilities, identify gaps, and plan improvements. For more details, review questions and how to comment, see the
+email announcing the Accessibility Maturity Model update
+.
+Please comment by 30 September 2025
+.
+See All News
+Subscribe to WAI News
+Getting Started
+Content Writers
+Designers
+Developers
+Evaluators, Testers
+Managers
+Policy Makers
+Trainers, Educators
+Web Users, People with Disabilities, Advocates
+Everyone (All WAI Resources)
+Other Languages
+The free "Introduction to Web Accessibility" online course provides the foundation you need to make your digital technology accessible. It's designed for:
+technical and non-technical learners
+developers, designers, ux, writers, managers, advocates
+professionals, instructors, students
+About the Free Online Course
+Captions are the audio information in text that is synchronized with the audio and visual content. Captions are called "subtitles" in some regions.
+Video Captions are essential for people with disabilities and benefit everyone in a variety of situations.
+More About Video Captions
+See All Perspectives Videos
+This media resource helps you understand and create captions/subtitles, audio description of visual information, descriptive transcripts, and sign language for media. It introduces user experiences and benefits to organizations.
+Making Audio and Video Media Accessible
+WAI is supported in part by the following organizations. Thank you!
+Ford Foundation
+,
+Technology and Society Program
+WAI welcomes donations, sponsors, grants and other
+financial support
+.
+Back to Top

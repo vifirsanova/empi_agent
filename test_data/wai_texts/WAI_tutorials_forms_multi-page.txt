@@ -1,0 +1,31 @@
+URL: https://www.w3.org/WAI/tutorials/forms/multi-page/
+Title: Multi-page Forms | Web Accessibility Initiative (WAI) | W3C
+================================================================================
+
+Multi-page Forms | Web Accessibility Initiative (WAI) | W3C
+The following basic principles should apply for multi-step forms:
+Repeat
+overall instructions
+on every page.
+Split the form up according to its logical groups of controls. For example, in an online shop, shipping and payment information are typically separated.
+Make it easy to recognize and to skip optional stages. For example, highlight optional steps in the main heading of the web page and provide an option to skip.
+If possible, don’t set a time limit to fill out the form. If a time limit is required, provide a feature that allows the user to adjust or extend the time limit.
+Indicating progress
+If possible, the first step of a form should explain how many steps will follow. Each step should inform the user about the progress they are making.
+Using the page title
+The
+<title>
+element is the first item read by many people, such as screen reader users. Changing the title of the page to include the progress gives immediate feedback. This information should precede other information provided in the title, such as the name of the step or any error notifications.
+Using the main heading
+Using the main heading to inform users is a good way to provide the same information for people scanning the page visually, as the main heading usually is prominent in the document.
+Using the HTML5 progress element
+HTML5 provides a
+progress
+element that can be used to inform users about the progress. This can be particularly useful in situations where the number of steps depends on user input, such as in a survey where steps are skipped depending on how questions were answered.
+The progress element, like other form elements, is a component from the operating system rendered directly on the website. Those components are animated in some operating systems which would violate WCAG’s
+2.2.2 Pause, Stop, Hide
+success criterion that requires that users are able to disable an animation that starts automatically, lasts more than 5 seconds and is presented in parallel with other content.
+The animation can be stopped by using custom styling with browser-specific CSS as shown below.
+Using step-by-step indicator
+If a form has a known number of steps to be completed, a step-by-step indicator can help users orient themselves. In the example below, we use an ordered list with a list item for every step. Visually hidden text is used to indicate the current and completed steps. If possible, provide a link to steps already completed, so the user can review them. In this case, any data already entered in the current step should be saved.
+Back to Top

@@ -1,0 +1,41 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/general/G5
+Title: G5: Allowing users to complete an activity without any time limit | WAI | W3C
+================================================================================
+
+G5: Allowing users to complete an activity without any time limit | WAI | W3C
+Skip to content
+Technique G5:
+Allowing users to complete an activity without any time limit
+About this Technique
+This technique relates to
+2.2.3 No Timing
+(
+Sufficient
+).
+This technique applies to any technologies or methods supporting the implementation of an activity which does not require timed interaction for its functionality.
+Description
+The objective of this technique is to provide users with all the time they need to complete an activity. This technique involves providing a specified activity which does not require timed interaction. Users are allowed as much time as they need to interact with the activity.
+Examples
+An interactive exam for a course provides all questions on one web page. Users can take as much time as they need to complete it.
+In an interactive game, users can take as much time as they like on their turn instead of having to complete their move within a limited amount of time.
+In an online auction, each bidder can submit only one bid rather than submitting multiple competitive bids based on timing. The bidding is open for a full day, providing enough time for anyone to complete the simple bid form. Once bidding is closed, the best bid wins.
+Related Resources
+No endorsement implied.
+Top Ten Web Design Mistakes of 2005
+Related Techniques
+G75: Providing a mechanism to postpone any updating of content
+G76: Providing a mechanism to request an update of the content instead of updating automatically
+G80: Providing a submit button to initiate a change of context
+G198: Providing a way for the user to turn the time limit off
+Tests
+Procedure
+Determine if any timed interactions are present (client and/or server side).
+Expected Results
+#1 is false.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

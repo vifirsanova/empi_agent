@@ -1,0 +1,51 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/html/H88
+Title: H88: Using HTML according to spec | WAI | W3C
+================================================================================
+
+H88: Using HTML according to spec | WAI | W3C
+Skip to content
+Technique H88:
+Using
+HTML
+according to spec
+About this Technique
+This technique relates to
+4.1.2 Name, Role, Value
+(
+Sufficient
+when used with
+G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes
+).
+This technique applies to HTML.
+Description
+The objective of this technique is to use HTML according to its specification. Technology specifications define the meaning and proper handling of features of the technology. Using those features in the manner described by the specification ensures that user agents, including assistive technologies, will be able to present representations of the feature that are accurate to the author's intent and interoperable with each other.
+There are a few broad aspects to using HTML according to its specification.
+Using only features that are defined in the specification
+HTML defines sets of elements, attributes, and attribute values that may be used on web pages. These features have specific semantic meanings and are intended to be processed by user agents in particular ways. Sometimes, however, additional features come into common authoring practice. These are usually initially supported by only one user agent. When features not in the specification are used, many user agents may not support the feature for a while or ever. Furthermore, lacking standard specifications for the use of these features, different user agents may provide varying support. This impacts accessibility because assistive technologies, developed with fewer resources than mainstream user agents, may take a long time if ever to add useful support. Therefore, authors should avoid features not defined in HTML to prevent unexpected accessibility problems.
+Using features in the manner prescribed by the specification
+The HTML specification provides specific guidance about how particular elements, attributes, and attribute values are to be processed and understood semantically. Sometimes, however, authors use features in a manner that is not supported by the specification, for example, using semantic elements to achieve visual effects without intending the underlying semantic message to be conveyed. This leads to confusion for user agents and assistive technologies that rely on correct semantic information to present a coherent representation of the page. It is important to use HTML features only as prescribed by the HTML specification.
+Making sure the content can be parsed
+HTML defines how content should be encoded in order to be correctly processed by user agents. Rules about the structure of start and end tags, attributes and values, nesting of elements, etc. ensure that user agents will parse the content in a way to achieve the intended document representation. Following the structural rules in these specifications is an important part of using these technologies according to specification.
+Related Resources
+No endorsement implied.
+Refer to the resources section of
+Validating web
+pages
+.
+Tests
+Procedure
+For each HTML page:
+Check that the page uses only elements, attributes, and attribute values that are defined in the specification.
+Check that elements, attributes, and values are used in the manner prescribed by the specification.
+Check that the page can be parsed correctly, according to the rules of the specification.
+Note
+Check #1 and #3 are most easily checked with page validation tools. Check #2 can be checked with the assistance of heuristic evaluation tools though manual judgment is usually required.
+Expected Results
+Checks #1, #2, and #3 are true.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

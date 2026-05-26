@@ -1,0 +1,102 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/failures/F111
+Title: F111: Failure of Success Criteria 1.3.1, 2.5.3, and 4.1.2 due to a control with visible label text but no accessible name | WAI | W3C
+================================================================================
+
+F111: Failure of Success Criteria 1.3.1, 2.5.3, and 4.1.2 due to a control with visible label text but no accessible name | WAI | W3C
+Skip to content
+Technique F111:
+Failure of Success Criteria 1.3.1, 2.5.3, and 4.1.2 due to a control with visible label text but no accessible name
+About this Technique
+This technique relates to:
+1.3.1 Info and Relationships
+(
+Failure
+)
+2.5.3 Label in Name
+(
+Failure
+)
+4.1.2 Name, Role, Value
+(
+Failure
+)
+This failure applies to all technologies that include interactive controls (such as links or form inputs).
+Description
+The objective of this Failure is to describe situations where speech input users cannot reliably speak the name of a control because although it has a visible label, it lacks an accessible name.
+When speech input users interact with a web page, they usually speak a command followed by the reference to some visible label (like the text in a button or a link, or the text labelling some input). If the control lacks an accessible name, speech users won't be able to activate the control using its visible label.
+Examples
+Example 1: A text input with a visible label, but without an accessible name
+The text input is preceded by a visible text label "Enter name", but the text is not marked up as a
+<label>
+for the input, and there is no alternative way (e.g.,
+aria-label
+) to provide the input with an accessible name at all.
+<
+p
+>
+Enter name
+</
+p
+>
+<
+input
+type
+=
+"text"
+>
+Example 2: A text input with a visible label and aria-labelledby pointing to a non-existent id
+The text input is preceded by a visible text label "Enter name". The text's container has an
+id
+of
+nameEntry
+, but the input has an
+aria-labelledby
+referencing a non-existent
+name-entry
+id
+. As a result, the input lacks an accessible name altogether.
+<
+p
+id
+=
+"nameEntry"
+>
+Enter name
+</
+p
+>
+<
+input
+type
+=
+"text"
+aria-labelledby
+=
+"name-entry"
+>
+Related Techniques
+F96: Failure due to the accessible name not containing the visible label text
+G131: Providing descriptive labels
+ARIA7: Using aria-labelledby for link purpose
+ARIA8: Using aria-label for link purpose
+ARIA9: Using aria-labelledby to concatenate a label from several text nodes
+ARIA14: Using aria-label to provide an accessible name where a visible label cannot be used
+ARIA16: Using aria-labelledby to provide a name for user interface controls
+SCR30: Using scripts to change the link text
+Tests
+Procedure
+For all controls with a visible label (e.g., link text, button text, programmatically linked label, images in links or buttons with text, etc.), check that:
+The control has a visible text label.
+The control has an accessible name.
+The accessible name contains the text that appears as the visible label.
+Expected Results
+If check #1 is false, the Success Criterion does not apply.
+If check #1 is true, but checks #2 and/or #3 are false, the content fails the Success Criterion.
+If all checks are true, the content passes the Success Criterion.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

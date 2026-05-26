@@ -1,0 +1,272 @@
+URL: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html#main
+Title: Understanding Success Criterion 1.4.12: Text Spacing | WAI | W3C
+================================================================================
+
+Understanding Success Criterion 1.4.12: Text Spacing | WAI | W3C
+Skip to content
+Understanding
+SC 1.4.12
+Text Spacing (Level AA)
+In Brief
+Goal
+Users can adjust text spacing to make it easier to read.
+Author task
+Ensure content adapts to user-defined text settings.
+Why it's important
+Some people need text with different spacing or font characteristics.
+Success Criterion (SC)
+In content implemented using markup languages that support the following
+text
+style properties
+, no loss of content or functionality occurs by setting all of the following and by changing no other style property:
+Line height (line spacing) to at least 1.5 times the font size;
+Spacing following paragraphs to at least 2 times the font size;
+Letter spacing (tracking) to at least 0.12 times the font size;
+Word spacing to at least 0.16 times the font size.
+Exception:
+Human languages
+and scripts that do not make use of one or more of these text style properties in written text can conform using only the properties that exist for that combination of language and script.
+Note 1
+Content is not required to use these text spacing values. The requirement is to ensure that when a user overrides the authored text spacing, content or functionality is not lost.
+Note 2
+Writing systems for some languages use different text spacing settings, such as paragraph start indent. Authors are encouraged to follow locally available guidance for improving readability and legibility of text in their writing system.
+Intent
+The intent of this success criterion (SC) is to ensure that when people override author-specified text spacing to improve their reading experience, content is still readable and operable. Each of the requirements stipulated in the SC's four bullets helps ensure text styling can be adapted by the user to suit their needs.
+The metrics set a target for a minimum for text spacing that must be met. Starting from the author's presentation, changing these four style properties to the specified values should not result in a loss of content or functionality.
+This SC focuses on the adaptability of content to a change in spacing between lines, words, letters, and paragraphs. Any combination of these may assist a user with effectively reading text. As well, ensuring that content correctly adapts when users override author settings for spacing also significantly increases the likelihood other style preferences can be set by the user. For example, a user may need to change to a wider font family than the author has set in order to effectively read text.
+Author Responsibility
+This SC does not dictate that authors must set all their content to the specified metrics, or provide a mechanism to do so. Rather, it specifies that an author's content has the ability to be set to those metrics without loss of content or functionality. The author requirement is both to not interfere with a user's ability to override the author settings, and to ensure that content thus modified does not break content in the manners shown in figures 1 through 3 in
+Effects of Not Allowing for Spacing Override
+. The values in the SC are a baseline. Authors are encouraged to allow spacing to surpass the values specified, not see them as a ceiling.
+It is beneficial for users if authors use any locally available guidance for improving readability in the local language or writing system. Conversely, in some human languages and scripts, some of the metrics specified by the SC are inapplicable. For example, languages such as Japanese do not use spacing following paragraphs, meaning that users are unlikely to make any paragraph spacing changes in practice. The exception in this SC allows authors to ignore text style properties which are inapplicable to the combination of language and script being used.
+User Responsibility
+The user may choose to exceed the spacing adjustments in the SC. The ability to read and derive meaning from the overridden spacing rests with the user. If large changes in spacing reduce readability, or cause loss of content or functionality, the user can adjust or return to spacing within the bounds of the SC. How such changes are achieved is up to the user, who may choose a user stylesheet, bookmarklet, extension, or application. Regardless, the user needs the flexibility to adjust spacing – and within the bounds set in the SC, without loss of content or functionality.
+Further, this SC does not require that content implement its own mechanisms to allow users to do this. It is not a failure of the content if a user agent or platform does not provide a way for users to do this. Content does not fail this SC if the method chosen by the user - for instance, the use of an extension or bookmarklet - fails to correctly set the line height and spacing text properties on the content (provided that the content is not actively and purposely preventing the properties from being added).
+Applicability
+If the markup-based technologies being used are capable of overriding text to the Success Criterion's metrics, then this SC is applicable. For instance Cascading Style Sheet/HTML technologies are quite able to allow for the specified spacing metrics. Plugin technologies would need to have a built-in ability to modify styles to the specified metrics. Currently, this SC does not apply to PDF, as the portable document format is not implemented using markup.
+Examples of text typically not affected by
+style properties
+and not expected to adapt are:
+Video captions embedded directly into the video frames and not provided as an associated caption file
+Images of text
+For this SC,
+canvas
+implementations of text are considered to be
+images of text
+.
+Use of ellipses
+There may be regions of a page where text containers cannot expand due to design constraints (such as a maximum width for the left navigation or table column headers). A common convention if text exceeds its space is to replace truncated text with an ellipsis. Where ellipses appear as a result of modifying text style properties, the page can still meet the Text Spacing requirements, so long as the content is still available. For example:
+a mechanism is provided to reveal the truncated text on the page (for instance, the text appears on focus or on activation)
+where the ellipsis is part of a section of content which includes a link, the truncated text is revealed on the linked page
+Where text is not truncated but it is when text is spaced, if there is no mechanism to show the truncated text, it fails this success criterion.
+Effects
+The following images show some types of failures when authors do not take into consideration that users may override spacing to the metrics specified in this success criterion.
+Text Cut Off
+The bottom portion of the words "Your Needs" is cut off in a heading making that text unreadable in Figure 1. It should read
+"We Provide a Mobile Application Service to Meet Your Needs."
+Figure 1.
+Vertical text cut off is a failure.
+In Figure 2 the last portion of text is cut off in three side-by-side headings. The first heading should read "A cog in the wheel" but it reads "A cog in the whe". Only half of the second "e" is visible and the letter "l" is completely missing. The second heading should read "A penny for your thoughts" but it reads "A penny for your". The third should read "Back to the drawing board." but it reads "Back to the drawi".
+Figure 2.
+Horizontal text cut off is a failure.
+Text Overlap
+In Figure 3 the last three words "Groups and Programs" of the heading "Technologists Seeking Input from Groups and Programs" overlap the following sentence. That sentence should read, "You are invited to share ideas and areas of interest related to the integration of technology from a group or program perspective." However, the words "You are invited to share ideas" are obscured and unreadable.
+Figure 3.
+Overlapping text is a failure.
+Benefits
+People with low vision who require increased space between lines, words, and letters are able to read text.
+People with dyslexia may increase space between lines, words, and letters to increase reading speed.
+Although not required by this SC, white space between blocks of text can help people with cognitive disabilities discern sections and call-out boxes.
+Examples
+When spacing is being overridden to the SC's metrics:
+Text fits within the bounds of its containing box without being cut off.
+Text fits within the bounds of its containing box without overlapping other boxes.
+Related Resources
+Resources are for information purposes only, no endorsement implied.
+Research
+The
+grounds for this SC are
+based on research
+. The metrics chosen as measures are based on the
+McLeish
+study. She ran from .04 to .25 em tests. McLeish found an increasing curve in reading speed of actual materials up to .25, but it
+started to flatten at .20. Previous studies that reported no improvement started at .5em. Right at the flat point.
+Wayne E. Dick, Ph.D. analyzed the McLeish study
+and translated from points. Dr. Dick recommended the metrics that the Working Group adopted.
+Languages and Scripts
+Roughly 480 different languages and scripts
+have been tested
+.
+Maximum spacing adjustments allowed by the SC were set on the following 3 pages:
+Languages in their own writing systems
+Online Encyclopedia of writing systems and languages – language names
+Universal Declaration of Human Rights
+Results
+No adverse effects occurred. The following are the specific findings:
+Character Spacing
+Individual characters in words remained intact though they were spaced a bit further apart.
+Word Spacing
+Words were spaced further apart. In languages that typically do not include spaces between words (e.g., Japanese), applying word spacing had no effect. This is expected.
+Line Height
+Changing line height did not separate diacritics from characters, nor did it adversely impact ascenders or descenders.
+As previously discussed, the ability to read text with adjusted spacing is a user responsibility. This is true no matter the language.
+The SC's exception addresses cases where a text style property is not used in a language or script. In such cases, authors are only required to ensure relevant properties do not break the layout.
+Other references
+Allan, Kirkpatrick, Lawton Henry, Editors. (2017).
+Accessibility Requirements for People with Low Vision (3.4 Spacing for Reading)
+.
+World Wide Web Consortium.
+Stylus Team
+(2012).
+Stylus browser extension
+(Firefox, Chrome, and Opera) (compatible with Userstyles.org material).
+Campbell, Alastair.
+(2017).
+Text Adaptation Bookmarklet
+. GitHub.
+Chung, Susana T. L. (2012).
+Dependence of Reading Speed on Letter Spacing in Central Vision Loss
+. Optom Vis Sci.
+Chung, Susana T. L. (2002).
+The Effect of Letter Spacing on Reading Speed in Central and Peripheral Vision (PDF)
+. IOVS ARVO Journals.
+Mcleish, Eve. (2007).
+A study of the effect of letter spacing on the reading speed of young readers with low vision (PDF)
+. The British Journal of Visual Impairment 25.2: 133-43.
+Rello, L., & Baeza-Yates, R. A. (2017).
+How to present more readable text for people with dyslexia
+. Universal Access in the Information Society, 16(1), 29-49.
+Sjoblom, A.M., Eaton, E. and Stagg, S.D., (2016).
+The effects of letter spacing and coloured overlays on reading speed and accuracy in adult dyslexia
+. British Journal of Educational Psychology, 86(4), pp. 630-639).
+Zorzi,
+Marco et, al. (2012).
+Extra-large letter spacing improves reading in dyslexia
+. Proceedings of the National Academy of Sciences.
+Techniques
+Each numbered item in this section represents a technique or combination of techniques
+that the Accessibility Guidelines Working Group deems sufficient for meeting this success criterion.
+A technique may go beyond the minimum requirement of the criterion. There may be other ways of meeting the criterion not covered by these techniques.
+For information on using other techniques, see
+Understanding Techniques for WCAG Success Criteria
+,
+particularly the "Other Techniques" section.
+Sufficient Techniques
+C36: Allowing for text spacing override
+C35: Allowing for text spacing without wrapping
+Advisory Techniques
+Although not required for conformance, the following additional techniques should be considered in order to make content more accessible.
+Not all techniques can be used or would be effective in all situations.
+C8: Using CSS letter-spacing to control spacing within a word
+C21: Specifying line spacing in CSS
+C28: Specifying the size of text containers using em units
+Failures
+The following are common mistakes that are considered failures of this success criterion by the Accessibility Guidelines Working Group.
+F104: Failure of Success Criterion 1.4.12 due to clipped or overlapped content when text spacing is adjusted
+Key Terms
+assistive technology
+hardware and/or software that acts as a
+user agent
+, or along with a mainstream user agent, to provide functionality to meet the requirements
+of users with disabilities that go beyond those offered by mainstream user agents
+Note 1
+Functionality provided by assistive technology includes alternative presentations
+(e.g., as synthesized speech or magnified content), alternative input methods (e.g.,
+voice), additional navigation or orientation mechanisms, and content transformations
+(e.g., to make tables more accessible).
+Note 2
+Assistive technologies often communicate data and messages with mainstream user agents
+by using and monitoring APIs.
+Note 3
+The distinction between mainstream user agents and assistive technologies is not absolute.
+Many mainstream user agents provide some features to assist individuals with disabilities.
+The basic difference is that mainstream user agents target broad and diverse audiences
+that usually include people with and without disabilities. Assistive technologies
+target narrowly defined populations of users with specific disabilities. The assistance
+provided by an assistive technology is more specific and appropriate to the needs
+of its target users. The mainstream user agent may provide important functionality
+to assistive technologies like retrieving web content from program objects or parsing
+markup into identifiable bundles.
+Example
+Assistive technologies that are important in the context of this document include
+the following:
+screen magnifiers, and other visual reading assistants, which are used by people with
+visual, perceptual and physical print disabilities to change text font, size, spacing,
+color, synchronization with speech, etc. in order to improve the visual readability
+of rendered text and images;
+screen readers, which are used by people who are blind to read textual information
+through synthesized speech or braille;
+text-to-speech software, which is used by some people with cognitive, language, and
+learning disabilities to convert text into synthetic speech;
+speech recognition software, which may be used by people who have some physical disabilities;
+alternative keyboards, which are used by people with certain physical disabilities
+to simulate the keyboard (including alternate keyboards that use head pointers, single
+switches, sip/puff and other special input devices.);
+alternative pointing devices, which are used by people with certain physical disabilities
+to simulate mouse pointing and button activations.
+human language
+language that is spoken, written or signed (through visual or tactile means) to communicate
+with humans
+Note
+See also
+sign language
+.
+image of text
+text that has been rendered in a non-text form (e.g., an image) in order to achieve
+a particular visual effect
+Note
+This does not include text that is part of a picture that contains significant other visual content.
+Example
+A person's name on a nametag in a photograph.
+programmatically determined
+determined by software from author-supplied data provided in a way that different
+user agents
+, including
+assistive technologies
+, can extract and present this information to users in different modalities
+Example 1
+Determined in a markup language from elements and attributes that are accessed directly
+by commonly available assistive technology.
+Example 2
+Determined from technology-specific data structures in a non-markup language and exposed
+to assistive technology via an accessibility API that is supported by commonly available
+assistive technology.
+sign language
+a language using combinations of movements of the hands and arms, facial expressions,
+or body positions to convey meaning
+style property
+property whose value determines the presentation (e.g. font, color, size, location, padding, volume, synthesized speech prosody) of
+content elements as they are rendered (e.g. onscreen, via loudspeaker, via braille display) by user agents
+Style properties can have several origins:
+User agent default styles: The default style property values applied in the absence of any author or user styles. Some web content technologies specify a default rendering, others do not;
+Author styles: Style property values that are set by the author as part of the content (e.g. in-line styles, author style
+sheets);
+User styles: Style property values that are set by the user (e.g. via user agent interface settings, user style sheets)
+text
+sequence of characters that can be
+programmatically determined
+, where the sequence is expressing something in
+human language
+user agent
+any software that retrieves and presents web content for users
+Example
+Web browsers, media players, plug-ins, and other programs — including
+assistive technologies
+— that help in retrieving, rendering, and interacting with web content.
+Test Rules
+The following are Test Rules
+for certain aspects of this Success Criterion.
+It is not necessary to use these particular Test Rules to check for conformance with WCAG, but they are defined and approved test methods.
+For information on using Test Rules, see
+Understanding Test Rules for WCAG Success Criteria
+.
+Important letter spacing in style attributes is wide enough
+Important line height in style attributes is wide enough
+Important word spacing in style attributes is wide enough
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

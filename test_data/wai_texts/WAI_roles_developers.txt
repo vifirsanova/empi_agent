@@ -1,0 +1,34 @@
+URL: https://www.w3.org/WAI/roles/developers/#top
+Title: Resources for Developers | Web Accessibility Initiative (WAI) | W3C
+================================================================================
+
+Resources for Developers | Web Accessibility Initiative (WAI) | W3C
+Resources for Developers
+This page provides a starting point for information that is particularly relevant to developers.
+Get a Foundation
+Introduction to Web Accessibility
+Includes links to videos and to lots more information that you might want to read now or later.
+We encourage you to read this page even if you know a lot about accessibility.
+Get Started
+Tips for Getting Started Developing for Web Accessibility
+Brief descriptions of some things to address for markup and coding
+Web Accessibility Tutorials
+Guidance on how to create specific components of websites to meet accessibility standards — including menus, images, tables, forms, and more.
+Get Comprehensive Guidance
+Web Content Accessibility Guidelines (WCAG) Overview
+Helps you understand the standards and supporting materials for content.
+How to Meet WCAG 2 (Quick Reference)
+A list of the WCAG success criteria with links to Techniques and Understanding documents. In the Filters, you can choose to see only Tags related to developing content.
+Get Specific Guidance
+ARIA Authoring Practices Guide (APG)
+Mobile Accessibility at W3C
+Cognitive Accessibility at W3C
+Older Users and Web Accessibility: Meeting the Needs of Ageing Web Users
+Making Audio and Video Media Accessible
+Take a Free Course
+The
+Digital Accessibility Foundations - Free Online Course
+page introduces a self-paced course from W3C WAI for developers and others. It is designed for technical and non-technical learners, including students, instructors, professionals, and people with disabilities. The course is free, with optional certificate.
+More
+We encourage you to look around the W3C WAI website to find other information that you might be interested in reading or sharing with others.
+Back to Top

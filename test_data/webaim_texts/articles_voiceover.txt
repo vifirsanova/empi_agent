@@ -1,0 +1,289 @@
+URL: https://webaim.org/articles/voiceover/
+Title: WebAIM: Using VoiceOver to Evaluate Web Accessibility
+================================================================================
+
+WebAIM: Using VoiceOver to Evaluate Web Accessibility
+Using VoiceOver to Evaluate Web Accessibility
+You are here:
+Home
+>
+Articles
+> Using VoiceOver to Evaluate Web Accessibility
+WebAIM Accessibility Testing Services
+The experts at WebAIM can audit your web site and provide a detailed report to help you remediate accessibility and WCAG compliance issues.
+Learn more about WebAIM Evaluation Services
+Introduction
+VoiceOver
+is a screen reader program that comes on new Mac computers, iPhones, iPads, and iPod touches. This article is designed to help users who are new to VoiceOver learn the basic controls for testing web content, and to serve as a reference for the occasional VoiceOver user.
+While reading this article, keep a few things in mind:
+This article does not contain a comprehensive list of VoiceOver shortcuts. It does provide a list of the
+essential
+commands that new or novice VoiceOver users should know. For a more comprehensive list of VoiceOver keyboard shortcuts, see the
+VoiceOver Commands Chart
+. The
+VoiceOver Getting Started Guide
+is also available.
+If you are new to screen readers, plan on spending some time (perhaps several hours) becoming comfortable using VoiceOver. Don't get discouraged if things still seem confusing after only a few minutes. Slow down the reading speed and take your time.
+While VoiceOver is available on most Apple platforms, this guide will primarily focus on using the OS X version of VoiceOver.
+Getting Started
+The method to start (or stop) VoiceOver will vary based on the type of Apple computer you have. For newer computers triple-click the TouchID button to start VoiceOver. On computers without a TouchID button press
+Command
++
+F5
+—if on a laptop you may need to additionally press the
+fn
+(function) key to activate
+F5
+. VoiceOver can also be enabled by going to
+and selecting
+.
+The VoiceOver Activation keys (called
+VO
+keys) are
+control
++
+option
+. These keys are used to access special VoiceOver commands and functions and will be referenced simply as
+VO
+. For example,
+VO
++
+H
+(or
+control
++
+option
++
+H
+) will open the VoiceOver Help menu.
+While working in VoiceOver, keep the following in mind:
+VoiceOver currently functions best with the Safari web browser. VoiceOver works with other browsers, but some errors may be introduced. VoiceOver can also access most OS X native applications and functions. This article will only focus on accessing web content with Safari.
+You must enable full keyboard accessibility before testing with Safari. In the
+menu, select
+and check
+.
+Remember that screen reader users typically do not use a mouse. As you become more comfortable with VoiceOver, try using only the keyboard.
+Most browser shortcut keys will work when using VoiceOver.
+Reading
+There are dozens of keyboard shortcuts that allow you to read web content. The following is a list of essential reading shortcuts. With these shortcuts, you should be able to read through most content.
+VO
++
+A
+: Start reading
+control
+: Stop Reading
+VO
++
+→
+: Read next item
+VO
++
+←
+: Read previous item
+VO
++
+P
+: Read paragraph
+VO
++
+S
+: Read sentence
+VO
++
+W
+: Read word (press W multiple times to spell words alphabetically and phonetically)
+VO
++
+B
+: Read from top to current location
+VO
++
+Home
+: Jump to top of page (on laptop keyboards,
+fn
++
+←
+is Home)
+VO
++
+End
+: Jump to bottom of page (on laptop keyboards,
+fn
++
+→
+is End)
+VO
++
+command
++
+←
+/
+→
+: Select speech setting option (speaking rate, voice, pitch, etc.). Use
+VO
++
+command
++
+↑
+/
+↓
+to modify the selected speech setting
+You may want to practice reading through the content on this page with VoiceOver right now.
+Navigation
+Sighted users visually navigate through web content in a number of ways. They skim for headings, lists, tables, etc. Most of these methods are available to VoiceOver users if the web page is correctly structured and well organized.
+The following shortcuts will help you navigate common page elements. You can press the
+shift
+key with these commands to move to the previous occurrence.
+tab
+: Next link or form control
+VO
++
+command
++
+L
+: Next link
+VO
++
+command
++
+H
+: Next heading
+VO
++
+command
++
+J
+: Next form control
+VO
++
+command
++
+T
+: Next table
+VO
++
+command
++
+X
+: Next list
+VO
++
+command
++
+G
+: Next graphic
+VO
++
+space
+: Activate a link or form control
+Many other navigation shortcuts are available in the
+VoiceOver Commands Chart
+.
+VoiceOver also provides nifty functionality in the rotor, which provides quick access to various page elements. Open the rotor by pressing
+VO
++
+U
+, then use the
+←
+and
+→
+keys to choose between Tables, Frames, Images, Headers (heading elements), Links, Auto Web Spots (automatically generated list of structural and significant items on the page), Form controls, Web spots (user-identified page areas), Visited links, and Non-visited links. Once a page element type is selected, use the
+↑
+and
+↓
+keys to select a particular element and
+enter
+to activate it.
+Within the rotor, you can begin typing to filter the available elements. For example, with the Headers rotor open, pressing "2" will filter to second level headings. Typing "nav" will filter to the headings that contain those characters. Try this on this page to filter to specific headings. The rotor allows you to get a quick overview of the structure of a web page and allows access to many elements in the page.
+Other useful shortcut keys
+shift
++
+VO
++
+F
+: Find menu - find a wide variety of page elements
+shift
++
+VO
++
+I
+: Read webpage statistics - get an overview of the web page contents
+shift
++
+VO
++
+M
+: Open shortcut menu - the same as right clicking on an item
+shift
++
+VO
++
+?
+: Online help
+VO
++
+F8
+: VoiceOver Utility - change VoiceOver settings and customizations
+command
++
+L
+: Browser address bar
+VO
++
+M
+: Menu bar - navigate through the browser menus
+Practice the reading and navigation commands in VoiceOver by refreshing this page and navigating to this section of the page. There are several ways you can do this - using the Rotor, using the Find command, navigating by links, headings, lists, etc., or by reading through the page.
+Images
+Every image that conveys content or has a function on a page needs
+alt text
+. Navigate or listen through the following page to experience how VoiceOver behaves with various images, both with and without alternative text.
+Image examples and practice
+Data Tables
+The cells of
+data tables
+can be navigated using
+VO
++ the arrow keys. If a table has proper table headers, they will be read automatically as the table is explored in Safari.
+VO
++
+C
+will also read the column headers for a cell and
+VO
++
+R
+will read the row headers.
+VoiceOver has difficulty with spanned row or column headers and when the top-left cell is empty. This may result in incorrect headers being read.
+Table examples and practice
+Forms
+Support for correctly-labeled
+forms
+is good in VoiceOver. When the <label> element is used to explicitly associate form controls and their descriptions, VoiceOver will read the appropriate label when that form element is navigated to. If a form control has a visual label that is not associated using the <label> element, VoiceOver will not auto-associate the label to the form control based on proximity. The legend for a <fieldset> will be read for grouped form controls. The title attribute value of unlabeled form controls will be read. If both a title attribute and a label is provided, both will be read.
+Form examples and practice
+Practice
+Review these pages, section by section. At the end of each section, return to the top and navigate to new sections in different ways. For example:
+Use the Table of Contents.
+Use
+VO
++
+U
+to navigate by various items in the Rotor.
+Navigate by headings (
+VO
++
+command
++
+H
+).
+There are a couple of elements in this page that are visually hidden, but which are provided to better orient screen reader users. See if you can identify them (hint: one is right before the breadcrumbs).
+Subscribe to the WebAIM Newsletter without using your mouse.
+You can turn on Screen Curtain with
+VO
++
+shift
++
+F11
+. This blackens the screen, thus giving you a more accurate experience allowing you to better ensure that the web page is truly accessible through audio only. Enable screen curtain or turn off or ignore the monitor and repeat some of these tasks.
+VoiceOver on Mobile
+VoiceOver on the iPhone, iPod Touch, and iPad functions much like the desktop version of VoiceOver, except everything is controlled via the touch-screen interface. Some mobile devices also support keyboard functionality. See our article on
+VoiceOver on Mobile
+for more details.

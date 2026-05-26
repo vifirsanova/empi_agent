@@ -1,0 +1,91 @@
+URL: https://webaim.org/articles
+Title: WebAIM: Articles
+================================================================================
+
+WebAIM: Articles
+Articles
+You are here:
+Home
+> Articles
+The User's Perspective
+Introduction to Web Accessibility
+Constructing a POUR (Perceivable, Operable, Understandable, Robust) Website
+Disability Types
+Visual
+Auditory
+Motor
+Cognitive
+Seizure and Vestibular Disorders
+Design Considerations
+Considering the User Perspective: A Summary of Design Issues
+HTML, ARIA, and CSS Accessibility
+Accessible Rich Internet Applications (ARIA)
+Animation and Carousels
+Content and Structure
+Headings
+Semantic Structure: Regions, Headings, and Lists
+Designing for Screen Reader Compatibility
+Document and Content Language
+Links & Hypertext
+Site Searches, Indexes, and Site Maps
+Skip Navigation Links
+Writing Clearly and Simply
+Disclosures and Accordions
+Dreamweaver
+Forms
+Usable and Accessible Form Validation and Error Recovery
+Frames and Iframes
+Images
+Alternative Text
+JavaScript
+Keyboard Accessibility
+Page Titles
+Presentation and Style
+Accessible CSS
+CSS in Action: Invisible Content Just for Screen Reader Users
+Contrast and Color Accessibility
+Responsive Design and Reflow
+Typefaces and Fonts
+Text/Typographical Layout
+Tables
+Document and Media Accessibility
+PDF
+Adobe Acrobat
+Foxit PhantomPDF (PDF Editor)
+Captions, Transcripts, and Audio Descriptions
+Real-time Captioning
+Microsoft Office
+PowerPoint
+Word
+Excel
+Evaluation, Testing, and Tools
+Web Accessibility Evaluation Guide
+Accessibility Evaluation Tools
+A Conceptual Framework for Accessibility Tools to Benefit Users with Cognitive Disabilities
+Screen Readers
+Using JAWS to Evaluate Web Accessibility
+Using NVDA to Evaluate Web Accessibility
+Using VoiceOver to Evaluate Web Accessibility
+VoiceOver on Mobile
+Using TalkBack to Evaluate Web Accessibility
+Using Narrator to Evaluate Web Accessibility
+Using Dolphin to Evaluate Web Accessibility
+Testing with Screen Readers: Questions and Answers
+Standards and Laws
+The Web Content Accessibility Guidelines (WCAG)
+WCAG 2 Checklist
+Decoding Label and Name for Accessibility
+United States Laws
+Section 508 Checklist
+Canadian Laws
+Strategy, Policy, and Training
+The WebAIM Strategic Accessibility Framework: Indicators and Benchmarks for Success
+WebAIM's Roadmap to Meeting the ADA Title II Requirements
+Making VPATs and ACRs More Effective in Procurement
+How Traits of Successful Communities Can Inform Our Accessibility Initiatives
+The Importance of Leadership
+Training Others
+Other Articles
+Cognitive Disabilities Part 1: We Still Know Too Little, and We Do Even Less
+Cognitive Disabilities Part 2: Conceptualizing Design Considerations
+Web Accessibility Gone Wild

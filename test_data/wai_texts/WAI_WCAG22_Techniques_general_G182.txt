@@ -1,0 +1,40 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/general/G182
+Title: G182: Ensuring that additional visual cues are available when text color differences are used to convey information | WAI | W3C
+================================================================================
+
+G182: Ensuring that additional visual cues are available when text color differences are used to convey information | WAI | W3C
+Skip to content
+Technique G182:
+Ensuring that additional visual cues are available when text color differences are used to convey information
+About this Technique
+This technique relates to
+1.4.1: Use of Color
+(
+Sufficient
+).
+This technique applies to colored text when the color is used to convey information such as:
+Words that are links in a paragraph
+Items in a list where some are different than others and are presented in colored text
+Description
+The intent of this technique is to provide a redundant visual cue for users who may not be able to discern a difference in text color. Color is commonly used to indicate the different status of words that are part of a paragraph or other block of text or where special characters or graphics cannot be used to indicate which words have special status. For example, scattered words in text may be hypertext links that are marked as such by being printed in a different color. This technique describes a way to provide cues in addition to color so that users who may have difficulty perceiving color differences or have low vision can identify them.
+To use this technique, an author incorporates a visual cue in addition to color for each place where color alone is used to convey information. Visual cues can take many forms including changes to the font style, the addition of underlines, bold, or italics, or changes to the font size.
+Note
+While this technique is sufficient to meet the visual requirements of Success Criterion 1.4.1, the information conveyed by the color must also be available programmatically to satisfy Success Criterion 1.3.1. See
+How to Meet 1.3.1
+.
+Examples
+The default formatting for links on a page includes presenting them both in a different color than the other text on the page underlining them to make the links identifiable even without color vision.
+An article comparing the use of similar elements in different markup languages uses colored text to identify the elements from each language. Elements from the first markup language are identified using BLUE, bolded text. Elements from the second are presented as RED, italicized text.
+A news site lists links to the articles appearing on its site. Additional information such as the section the article appears in, the time the article was posted, a related location or an indication that it is accompanied by live video appears in some cases. The links to the articles are in a different color than the additional information but the links are not underlined, and each link is presented in a larger font than the rest of the information so that users who have problems distinguishing between colors can identify the links more easily.
+Short news items sometimes have sentences that are also links to more information. Those sentences are printed in color and use a sans-serif font face while the rest of the paragraph is in black Times-Roman.
+Related Techniques
+G14: Ensuring that information conveyed by color differences is also available in text
+G205: Including a text cue for colored form control labels
+G183: Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on hover for links or controls where color alone is used to identify them
+Tests
+Procedure
+Locate all instances where the color of text is used to convey information.
+Check that any text where color is used to convey information is also styled or uses a font that makes it visually distinct from other text around it.
+Expected Results
+Check #2 is true.
+Back to Top

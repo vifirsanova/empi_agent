@@ -1,0 +1,222 @@
+URL: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text-no-exception
+Title: Understanding Success Criterion 1.4.9: Images of Text (No Exception) | WAI | W3C
+================================================================================
+
+Understanding Success Criterion 1.4.9: Images of Text (No Exception) | WAI | W3C
+Skip to content
+Understanding
+SC 1.4.9
+Images of Text (No Exception) (Level AAA)
+In Brief
+Goal
+Users can always adjust how text is presented.
+What to do
+Do not use pictures of text unless there is no other way to present information.
+Why it's important
+People cannot alter how text looks in images.
+Success Criterion (SC)
+Images of text
+are only used for
+pure decoration
+or where a particular presentation of
+text
+is
+essential
+to the information being conveyed.
+Note
+Logotypes (text that is part of a logo or brand name) are considered essential.
+Intent
+The intent of this success criterion is to enable people who require a particular
+visual presentation of text to be able to adjust the text presentation as required.
+This includes people who require the text in a particular font size, foreground and
+background color, font family, line spacing or alignment.
+This means implementing the text in a manner that allows its presentation to be changed
+or providing a mechanism by which users can select an alternate presentation. Using
+images of text is an example of an implementation that does not allow users to alter
+the presentation of the text within it.
+In some situations, a particular visual presentation of the text is essential to the
+information being conveyed. This means that information would be lost without that
+particular visual presentation. In this case implementing the text in a manner that
+allows its presentation to be changed is not required. This includes text that demonstrates
+a particular visual aspect of the text, such as a particular font family, or text
+that conveys an identity, such as text within a company logo.
+Text that is decorative does not require implementing the text in a manner that allows
+its presentation to be changed.
+The definition of image of text contains the note: Note: This does not include text that is part of a picture that contains significant
+other visual content. Examples of such pictures include graphs, screenshots, and diagrams which visually
+convey important information through more than just text.
+Benefits
+People with low vision (who may have trouble reading the text with the authored font
+family, size and/or color).
+People with visual tracking problems (who may have trouble reading the text with the
+authored line spacing and/or alignment).
+People with cognitive disabilities that affect reading.
+Examples
+A quote
+A web page contains a quote. The quote itself is presented as italicized text, indented
+from the left margin. The name of the person to whom the quote is attributed is below
+the quote with 1.5x the line space and further indented from the left margin. CSS
+is used to position the text; set the spacing between lines; as well as display the
+text's font family, size, color and decoration.
+Navigation items
+A web page contains a menu of navigation links that have both an icon and text to
+describe their target. CSS is used to display the text's font family, size and foreground
+and background colors; as well as the spacing between the navigation links.
+A logo containing text
+A website contains the organization's logo in the top left corner of each web page.
+The logo contains logotype (text as part, or all, of the logo). The visual presentation
+of the text is essential to the identity of the logo and is included as a gif image
+which does not allow the text characteristics to be changed. The image has a text
+alternative.
+Representation of a font family
+A web page contains information about a particular font family. Substituting the font
+family with another font would defeat the purpose of the representation. The representation
+is included as a jpeg image which does not allow the text characteristics to be changed.
+The image has a text alternative.
+A representation of a letter
+A web page contains a representation of an original letter. The depiction of the letter
+in its original format is essential to information being conveyed about the time period
+in which it was written. The letter is included as a gif image which does not allow
+the text characteristics to be changed. The image has a text alternative.
+Symbolic text characters
+A form allows users to enter blocks of text. The form provides a number of buttons,
+including functions to style the text and check spelling. Some of the buttons use
+text characters that do not form a sequence that expresses something in human language.
+For example "B" to increase font weight, "I" to italicize the text and "ABC" to check
+the spelling. The symbolic text characters are included as gif images which do not
+allow the text characteristics to be changed. The buttons have text alternatives.
+Related Resources
+Resources are for information purposes only, no endorsement implied.
+CSS @ Ten: The Next Big Thing (A List Apart)
+Weblog comments: WebKit now supports CSS @font-face rules
+Creating Cross Browser Compatible CSS Text Shadows
+CSS and text
+Techniques
+Each numbered item in this section represents a technique or combination of techniques
+that the Accessibility Guidelines Working Group deems sufficient for meeting this success criterion.
+A technique may go beyond the minimum requirement of the criterion. There may be other ways of meeting the criterion not covered by these techniques.
+For information on using other techniques, see
+Understanding Techniques for WCAG Success Criteria
+,
+particularly the "Other Techniques" section.
+Sufficient Techniques
+C22: Using CSS to control visual presentation of text
+C30: Using CSS to replace text with images of text and providing user interface controls to switch
+G140: Separating information and structure from presentation to enable different presentations
+PDF7: Performing OCR on a scanned PDF document to provide actual text
+Advisory Techniques
+Although not required for conformance, the following additional techniques should be considered in order to make content more accessible.
+Not all techniques can be used or would be effective in all situations.
+C12: Using percent for font sizes
+C13: Using named font sizes
+C14: Using em units for font sizes
+C8: Using CSS letter-spacing to control spacing within a word
+C6: Positioning content based on structural markup
+Key Terms
+assistive technology
+hardware and/or software that acts as a
+user agent
+, or along with a mainstream user agent, to provide functionality to meet the requirements
+of users with disabilities that go beyond those offered by mainstream user agents
+Note 1
+Functionality provided by assistive technology includes alternative presentations
+(e.g., as synthesized speech or magnified content), alternative input methods (e.g.,
+voice), additional navigation or orientation mechanisms, and content transformations
+(e.g., to make tables more accessible).
+Note 2
+Assistive technologies often communicate data and messages with mainstream user agents
+by using and monitoring APIs.
+Note 3
+The distinction between mainstream user agents and assistive technologies is not absolute.
+Many mainstream user agents provide some features to assist individuals with disabilities.
+The basic difference is that mainstream user agents target broad and diverse audiences
+that usually include people with and without disabilities. Assistive technologies
+target narrowly defined populations of users with specific disabilities. The assistance
+provided by an assistive technology is more specific and appropriate to the needs
+of its target users. The mainstream user agent may provide important functionality
+to assistive technologies like retrieving web content from program objects or parsing
+markup into identifiable bundles.
+Example
+Assistive technologies that are important in the context of this document include
+the following:
+screen magnifiers, and other visual reading assistants, which are used by people with
+visual, perceptual and physical print disabilities to change text font, size, spacing,
+color, synchronization with speech, etc. in order to improve the visual readability
+of rendered text and images;
+screen readers, which are used by people who are blind to read textual information
+through synthesized speech or braille;
+text-to-speech software, which is used by some people with cognitive, language, and
+learning disabilities to convert text into synthetic speech;
+speech recognition software, which may be used by people who have some physical disabilities;
+alternative keyboards, which are used by people with certain physical disabilities
+to simulate the keyboard (including alternate keyboards that use head pointers, single
+switches, sip/puff and other special input devices.);
+alternative pointing devices, which are used by people with certain physical disabilities
+to simulate mouse pointing and button activations.
+essential
+if removed, would fundamentally change the information or functionality of the content,
+and
+information and functionality cannot be achieved in another way that would conform
+human language
+language that is spoken, written or signed (through visual or tactile means) to communicate
+with humans
+Note
+See also
+sign language
+.
+image of text
+text that has been rendered in a non-text form (e.g., an image) in order to achieve
+a particular visual effect
+Note
+This does not include text that is part of a picture that contains significant other visual content.
+Example
+A person's name on a nametag in a photograph.
+programmatically determined
+determined by software from author-supplied data provided in a way that different
+user agents
+, including
+assistive technologies
+, can extract and present this information to users in different modalities
+Example 1
+Determined in a markup language from elements and attributes that are accessed directly
+by commonly available assistive technology.
+Example 2
+Determined from technology-specific data structures in a non-markup language and exposed
+to assistive technology via an accessibility API that is supported by commonly available
+assistive technology.
+pure decoration
+serving only an aesthetic purpose, providing no information, and having no functionality
+Note
+Text is only purely decorative if the words can be rearranged or substituted without
+changing their purpose.
+Example
+The cover page of a dictionary has random words in very light text in the background.
+sign language
+a language using combinations of movements of the hands and arms, facial expressions,
+or body positions to convey meaning
+text
+sequence of characters that can be
+programmatically determined
+, where the sequence is expressing something in
+human language
+user agent
+any software that retrieves and presents web content for users
+Example
+Web browsers, media players, plug-ins, and other programs — including
+assistive technologies
+— that help in retrieving, rendering, and interacting with web content.
+Test Rules
+The following are Test Rules
+for certain aspects of this Success Criterion.
+It is not necessary to use these particular Test Rules to check for conformance with WCAG, but they are defined and approved test methods.
+For information on using Test Rules, see
+Understanding Test Rules for WCAG Success Criteria
+.
+HTML images contain no text
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

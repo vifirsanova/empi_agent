@@ -1,0 +1,58 @@
+URL: https://webaim.org/services/consulting/
+Title: WebAIM: Consulting & Technical Assistance
+================================================================================
+
+WebAIM: Consulting & Technical Assistance
+Consulting & Technical Assistance
+You are here:
+Home
+>
+Services
+> Consulting
+WebAIM's
+team of accessibility experts
+is uniquely qualified to work with your organization along every step of its accessibility journey. Many people and organizations find that they benefit greatly from having specific and tailored feedback and guidance. WebAIM's consulting spans disciplines within the web and digital accessibility landscape.
+StrategicA11y - WebAIM's Strategic Accessibility Workshop
+Elevate accessibility in your organization with WebAIM's help.
+Learn more about StrategicA11y
+Web Technologies and Technical Conformance
+WebAIM staff have decades of combined experience contributing to, training on, and interpreting web accessibility standards as practical advice that you can fold into your technical knowledge base seamlessly. WebAIM can help you apply new knowledge to your own web design, web development, quality assurance, and training efforts.
+Some of the common
+technical topics
+that WebAIM works with clients on include:
+Accessible websites and web applications, using JavaScript, ARIA, and native HTML.
+Accessible non-web document design and authoring using Microsoft Office and Adobe Acrobat.
+In-depth
+accessibility testing
+of websites and web applications, including diagnosis, remediation guidance, and prioritizing remediation work so that larger barriers to people with disabilities are removed promptly and efficiently.
+Analysis of component libraries with detailed guidance about how to improve technical accessibility and to document accessibility within your component library or design system.
+Building internal
+training and professional development
+on technical topics.
+Project, Product, and Organizational Strategy
+WebAIM has worked with
+hundreds of individuals and organizations
+to help them better integrate accessibility into digital strategy at many levels. Our goal is to meet you where you are in your accessibility journey and identify the best ways to make accessibility a part of your organization's day-to-day workflows.
+Project Management and Planning
+Project teams are often the first to focus on accessibility. That means that they are often the first to really work to operationalize accessibility. WebAIM will help your project teams, including team leads and project managers, to integrate accessibility into project planning, UX design, project team skill-building, quality assurance, and the team's Definition of Done. We will help you to find tools that add value without bogging your team down, no matter the scale of your team's work. We can also work with project teams to identify ways to scale accessibility up around the organization so that they have the supports around them to take accessibility as far as it can go in your technology environment.
+Product Management
+A key part of project teams succeeding with accessibility is scaling accessibility beyond the team. A natural next step is to integrate accessibility into your formal or informal product management.
+Product managers are in a perfect position to help their organizations take the next step to providing accessible digital products. WebAIM will help you account for accessibility as you work to “shift left” with your accessibility practice. Strategies like creating inclusive personas, engaging with people with disabilities as a part of creating product roadmaps, and generally addressing accessibility at the product level so that more project teams can successfully create accessible deliverables. And while including accessibility in a project team's Definition of Done is important, having this defined at the product level is even more powerful.
+Organizational Strategy, Policy, and Planning
+For accessibility to truly become a part of an organization's full technology environment, it must be a key priority of the organization's leadership. This is true beyond those responsible for technology. Organizations that reach the highest levels of accessibility in their technology take accessibility on as a core part of their mission, vision, and values.
+This does not happen without the organization's leadership making sure that accessibility is not only supported but also actively advanced, at their level.
+WebAIM's extensive experience in organization-wide accessibility focuses on the critical processes, tools, and people that are required to scale accessibility up to its highest level. WebAIM helps its clients explore accessibility policies, plan their accessibility programs, and embrace accessibility fully. As with our entire consulting portfolio, WebAIM will work closely with you to find the most effective ways to approach accessibility whether your organization is just beginning its journey or is already well on its way.
+Examples of the areas where our consulting and advice is helpful include:
+Integrating accessibility in overall digital strategy.
+Creating accessibility policy and conformance statements, including and beyond technical conformance criteria.
+Implementation planning that makes your mission, vision, and policy actionable.
+Key Performance Indicators that will help your organization to measure progress and identify opportunities for growth.
+Including key stakeholders in planning and document authoring.
+Resource planning so that those that carry out plans have the tools, time, and funding to ensure success.
+Technology Procurement, Purchasing, and Use
+Organizations rely on third-party technology for vital parts of their technology environments. Employees, clients, program participants, students, and others.
+Let WebAIM help you or your organization better account for accessibility in all phases of your technology procurement and acquisition process.
+WebAIM's expertise extends from initial requests for information and requests for proposals through to the final product selection. WebAIM will help your organization to strengthen its vetting processes during product demonstrations, analysis of Voluntary Product Accessibility Templates (VPAT) and Accessibility Compliance Reports (ACR), scaling direct testing of candidate products, and meaningfully weighing accessibility in your vendor and product scoring matrices. WebAIM can also advise you about ways to address accessibility with vendors.
+For Vendors: Accessibility as a Product Differentiator
+Procurement and accessibility specialists in organizations that include accessibility in their purchase and use decisions frequently state frustration with vendor responses to requests for accessibility information about products. WebAIM sees the potential for vendors to truly set themselves and their products apart from others in the same product categories. WebAIM can help you tell your authentic accessibility story as you engage current and potential clients of your own. WebAIM can help you create accurate, thorough, current, and complete Accessibility Compliance Reports from a Voluntary Product Accessibility Template. We can help put your Accessibility Conformance Report into a broader context so that you can include accessibility organically in conversations with clients, during product demonstrations, and in your product literature online and elsewhere.
+Contact WebAIM to discuss how our consultation service can help you

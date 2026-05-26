@@ -1,0 +1,114 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/html/H89#main
+Title: H89: Using the title attribute to provide context-sensitive help | WAI | W3C
+================================================================================
+
+H89: Using the title attribute to provide context-sensitive help | WAI | W3C
+Skip to content
+Technique H89:
+Using the
+title
+attribute to provide context-sensitive help
+About this Technique
+This technique relates to
+3.3.5 Help
+(
+Advisory
+).
+This technique applies to
+HTML
+.
+Description
+The objective of this technique is to provide context sensitive help for users as they enter data in forms by providing the help information in a
+title
+attribute. The help may include format information or examples of input.
+Note
+Current user agents and assistive technologies do not always provide the information contained in the
+title
+attribute to users. Avoid using this technique in isolation.
+Examples
+Example 1
+A mapping application provides a form consisting of a label "Address:", an input component and a submit button with value "Find map". The input component has a
+title
+attribute value with an example of the address format the user should enter.
+<
+label
+for
+=
+"search-address"
+>
+Address:
+</
+label
+>
+<
+input
+id
+=
+"search-address"
+name
+=
+"search-address"
+size
+=
+"30"
+title
+=
+"Address example: 101 Collins St, Melbourne, Australia"
+type
+=
+"text"
+value
+=
+""
+>
+Example 2
+A form that allows users to pay their bill online requires the user to enter their account number. The input component associated with the "Account number" label has a
+title
+attribute providing information on locating the account number.
+<
+label
+for
+=
+"acc-num1"
+>
+Account number:
+</
+label
+>
+<
+input
+id
+=
+"acc-num1"
+size
+=
+"10"
+title
+=
+"Your account number can be found in the top right-hand corner of your bill"
+type
+=
+"text"
+value
+=
+""
+>
+Related Techniques
+H65: Using the title attribute to identify form controls when the label element cannot be used
+G71: Providing a help link on every web page
+Tests
+Procedure
+Identify form controls that require text input.
+Check that each form control has an explicitly associated label
+Check that each form control has context-sensitive help provided in the
+title
+attribute.
+Expected Results
+Checks #2 and #3 are true.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

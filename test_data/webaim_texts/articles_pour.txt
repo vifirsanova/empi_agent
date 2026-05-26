@@ -1,0 +1,47 @@
+URL: https://webaim.org/articles/pour/
+Title: WebAIM: Constructing a POUR Website - Putting People at the Center of the Process
+================================================================================
+
+WebAIM: Constructing a POUR Website - Putting People at the Center of the Process
+Constructing a POUR Website
+Putting People at the Center of the Process
+You are here:
+Home
+>
+Articles
+> Constructing a POUR Website
+Why Create Accessible Web Content?
+to
+improve the lives
+of people with disabilities (human-centered motivations)
+to
+attract a wider audience
+or consumer base (marketing or economic-centered motivations)
+to
+adhere to the law
+and avoid negative publicity (public relations and punishment-centered motivations)
+Accessible websites accomplish all of these goals. These motivations are listed in order of most to least altruistic, but if the website is accessible in the end, perhaps that matters more than the authors' initial motivations.
+Regardless of motivation, one principle remains constant: Web accessibility is most easily achieved when people are at the center of the process. Even those who are simply trying to avoid lawsuits will sooner or later realize that the needs of the target audience—people with disabilities—must be carefully considered and addressed.
+Understanding the User's Perspective and Needs
+Web accessibility guidelines were not invented to make life hard for web developers. They were invented to make life easier for people with disabilities—who, like everyone else, want and need to access web content. Once a geeky alternative to brick-and-mortar offices and shops, the web is now where business routinely gets done. Nothing could be more perfect in terms of making the world more accessible to people with disabilities.
+The web is not a barrier to people with disabilities; it is the solution. It has the potential to revolutionize their daily lives by increasing their ability to independently access information, communication, entertainment, commerce, and other aspects of life that other people take for granted. However, for the web to reach its full potential for people with disabilities, web developers must commit to always designing with accessibility in mind. Failure to do so risks turning a revolutionary solution into yet another barrier in the lives of people with disabilities. After all, people with disabilities are people. They just want to make the most of life. An accessible Internet is not a magic bullet or panacea to every obstacle faced by people with disabilities, but it is at least a step in the right direction.
+Moving Beyond Technical Accessibility
+Techniques and guidelines are important because they help define and clarify the concept of web accessibility. They represent a consensus, or at least a majority opinion, about best practices and methods for achieving web accessibility. The
+Web Content Accessibility Guidelines (WCAG)
+are the most widely-accepted set of recommendations, and were developed over several years of collaborative involvement by a panel of experts and interested individuals. None of the participants in this process would ever claim that the guidelines are the last word on accessibility, or that conformance to the guidelines will guarantee web accessibility. They are, however, a strong foundation upon which to build accessible web content, but unless those implementing them understand the reasons behind the guidelines, they might apply the guidelines incorrectly or ineffectively.
+For example, one of the best-known guidelines is to provide
+alternative text
+for images in the
+alt
+attribute of the
+<img>
+tag. If web developers learn only the guideline, but not the rationale behind it, they may provide alternative text that is not helpful to users who need it. They may even create rather than resolve accessibility barriers.
+When web professionals focus only on technical specifications, they may achieve technical conformance but fall short of usable accessibility. They can create websites that are possible for people with disabilities to access, but only with great difficulty. The technical standards are important, but insufficient on their own. Designers and developers must also consider usability for users with disabilities.
+Focusing on the Principles of Accessibility
+Version 1.0 of WCAG focused heavily on HTML techniques. WCAG 2 takes a different approach, introducing four user-centered principles of accessibility:
+Perceivable
+Operable
+Understandable
+Robust
+WCAG techniques are presented in separate documents. By emphasizing principles rather than techniques, developers should approach the process conceptually. Conveniently, these principles spell out an acronym that is relatively easy to remember: POUR. The idea is to create a POUR web site, so to speak. The pun may be a bad one, but if it helps developers memorize the principles, then it has served its purpose.
+Next

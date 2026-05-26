@@ -1,0 +1,271 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/general/G201
+Title: G201: Giving users advanced warning when opening a new window | WAI | W3C
+================================================================================
+
+G201: Giving users advanced warning when opening a new window | WAI | W3C
+Skip to content
+Technique G201:
+Giving users advanced warning when opening a new window
+About this Technique
+This technique relates to:
+2.4.4 Link Purpose (In Context)
+(
+Advisory
+)
+2.4.6 Headings and Labels
+(
+Advisory
+)
+2.4.9 Link Purpose (Link Only)
+(
+Advisory
+)
+3.2.5 Change on Request
+(
+Advisory
+)
+This technique applies to pages that open new windows.
+Description
+The objective of this technique is to provide advanced warning for links and buttons that open a new
+window or tab when activated by the user. This only applies to "regular" activation, such as
+a left-click on a mouse, or pressing
+Enter
+or
+Space
+when the link or button has
+focus – actions that normally would open the link target in the current tab or window, trigger an action
+on the current page, or result in a form submission and a loading a confirmation page in in the current tab or window.
+The technique does not apply to situations where the user explicitly chooses to open a new tab or window – for instance,
+when using the browser's context menu option, or middle-clicking a link with the mouse.
+Opening a new tab or window when
+a link or button is activated can be disorienting for people who have difficulty
+perceiving visual content, and for some people with cognitive disabilities,
+if they are not warned in advance. Providing a warning or indication that a new tab or window
+will be opened allows the user to decide it they want to leave the current tab or window. It will also help
+them understand that, once they follow they activate the link or button, their browser's "back" button
+will not work and that they have to return to the last tab or window they
+had open, in order to find their previous location.
+Note
+This technique is advisory. While indicating that a link or button
+"opens in a new window" is considered good practice, it is not necessary
+to meet the requirements of any particular success criterion.
+Examples
+Example 1: Including the warning in the text describing a control
+The name or label that describes a control can include the warning
+about opening in a new window.
+<
+a
+href
+=
+"knitting.html"
+rel
+=
+"noopener"
+target
+=
+"_blank"
+>
+All about Knitting (opens in new window)
+</
+a
+>
+Example 2: Using an icon and accessible description to provide a warning before opening a new window
+The code below uses CSS to add an SVG icon to a link, providing a visual warning before opening a new
+window. In addition,
+aria-describedby
+is used on the link to include an equivalent text warning
+for assistive technology users.
+<!DOCTYPE
+html
+>
+<
+html
+lang
+=
+"en"
+>
+<
+head
+>
+<
+meta
+charset
+=
+"utf-8"
+>
+<
+title
+>
+Link opens in new window notification
+</
+title
+>
+<
+style
+>
+body
+{
+background
+:
+#fff
+;
+color
+:
+#000
+;
+font
+:
+1rem
+/
+1.5
+system-ui,
+"Segoe UI"
+, Roboto, Helvetica, sans-serif;
+}
+[hidden]
+{
+display
+:none;
+}
+.new-window-icon
+{
+fill
+:current
+Color;
+height
+:
+0.75rem
+;
+margin-inline-start
+:
+0.3em
+;
+vertical-align
+:middle;
+width
+:
+0.75rem
+;
+}
+</
+style
+>
+</
+head
+>
+<
+body
+>
+<
+svg
+hidden
+>
+<
+symbol
+id
+=
+"new-window-icon"
+viewBox
+=
+"0 0 12 12"
+>
+<
+title
+id
+=
+"new-win-desc"
+>
+opens in a new window
+</
+title
+>
+...
+</
+symbol
+>
+</
+svg
+>
+<
+h1
+>
+Link opens in new window notification
+</
+h1
+>
+<
+p
+>
+This is an example of an
+<
+a
+aria-describedby
+=
+"new-win-desc"
+href
+=
+"https://example.com"
+rel
+=
+"noopener"
+target
+=
+"_blank"
+>
+external link
+<
+svg
+class
+=
+"new-window-icon"
+aria-hidden
+=
+"true"
+role
+=
+"img"
+>
+<
+use
+href
+=
+"#new-window-icon"
+>
+</
+use
+>
+</
+svg
+>
+</
+a
+>
+</
+p
+>
+</
+body
+>
+</
+html
+>
+A
+working example of Using an icon and accessible description to provide a warning before opening a new window
+is available.
+Related Techniques
+H83: Using the target attribute to open a new window on user request and indicating this in link text
+SCR24: Using progressive enhancement to open new windows on user request
+Tests
+Procedure
+For each link or button that opens a new window or tab when activated:
+Check that there is a warning spoken in assistive technology that this control opens a new window.
+Check that there is a visual warning/indication that this control opens a new window.
+Expected Results
+Checks #1 and #2 are true.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

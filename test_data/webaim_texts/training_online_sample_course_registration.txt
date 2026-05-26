@@ -1,0 +1,60 @@
+URL: https://webaim.org/training/online/sample/course/registration
+Title: WebAIM: WebAIM Accessible Document Training
+================================================================================
+
+WebAIM: WebAIM Accessible Document Training
+WebAIM Accessible Document Training
+[This is a sample custom registration page]
+Your enrollment into the
+Accessible Documents: Word, PowerPoint, & Acrobat
+online training course is being provided by [Client].
+Overview
+This independent-study course covers principles and processes for:
+Creating
+accessible document content and structure in Word & PowerPoint.
+Evaluating
+the accessibility of well-structured Word & PowerPoint documents.
+Optimizing
+the accessibility of PDFs exported from well-structured Word & PowerPoint documents with Acrobat.
+Creating
+accessible document content and structure in Excel (bonus module).
+This course is designed for participants that have experience creating Word & PowerPoint documents. Web development or design experience is not required.
+Delivery
+The course is delivered through the Canvas learning management system. Enrolled participants have 24/7 access to technical support for Canvas in English and Spanish. New cohorts start on the
+first Monday
+of each month unless there is a U.S. holiday that week.
+Please note
+Participants have
+60 business days
+to complete the course.
+Participants must register with a
+[Client]
+email.
+Problems registering?
+Email us at
+accessibledocs[at]webaim.org
+.
+Register
+To register please provide us with the following information—
+Month to start training:
+July
+August
+First name:
+Last name:
+Email:
+Please select your unit's name:
+Unit 01
+Unit 02
+Unit 03
+Unit 04
+Unit 05
+Unit 06
+Unit 07
+Unit 08
+Unit 09
+Unit 10
+Unit 11
+Unit 12
+Unit 13
+Unit 14
+Unit 15

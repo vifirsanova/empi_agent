@@ -1,0 +1,200 @@
+URL: https://www.w3.org/WAI/ACT/Overview.html
+Title: WAI-ACT Project (IST 287725)
+================================================================================
+
+WAI-ACT Project (IST 287725)
+Skip to Content
+| Change
+text size or colors
+WAI: Strategies, guidelines, resources to make the Web accessible to people with disabilities
+Site Navigation
+W3C Home
+Web Accessibility Initiative (WAI) Home
+Getting Started
+Designing for Inclusion
+Guidelines & Techniques
+Planning & Implementing
+Evaluating Accessibility
+Presentations & Tutorials
+Translations
+-
+WAI-ACT
+Project (
+IST
+287725)
+Introduction
+Web Accessibility Initiative - Cooperation Framework for Guidance on Advanced Technologies, Evaluation Methodologies, and Research Agenda Setting to Support eAccessibility (
+WAI-ACT
+)
+European Commission Project, 7th Framework Programme,
+IST
+287725
+Page Contents
+Introduction
+Project Work
+How To Participate
+Project Publications
+About
+WAI-ACT
+Project Staff
+Project Work
+WAI-ACT
+project deliverables
+were carried out through
+WAI groups
+and processes:
+EOWG
+- Education and Outreach Working Group
+Application Notes on Common Accessible Web Components
+Application Notes and Code Samples for Advanced Technologies
+Practical Guidance on Adopting and Implementing W3C/WAI Standards
+Guidance on Finding and Selecting Web Accessibility Evaluation Tools
+Interactive Guide to Assist Managing Web Accessibility Evaluations
+ERT WG
+- Web Content Accessibility Guidelines Working Group
+Open Collaboration Platform to Facilitate Involvement and Participation
+Techniques for Automated and Semi-Automated Evaluation Tools
+Eval TF
+-
+WCAG
+2.0 Evaluation Methodology Task Force
+Methodology for Evaluating Conformance of Websites to WCAG 2.0
+RDWG
+- Research and Development Working Group
+Teleconference Seminars to Explore eAccessibility Research Topics
+Annotated Catalogue of eAccessibility Research Topics and Resources
+WAI Staff Effort
+Open Cooperation Forum for Transparent Dialog and Exchange
+Outreach in Europe to Invite Participation in the Cooperation Framework
+W3C Workshop on Referencing and Adopting WCAG 2.0 in Practice
+How To Participate
+WAI-ACT
+Project formally ended on 1 September 2014.
+The project work listed above contributed valuable
+W3C
+/
+WAI
+resources. To help maintain, evolve, and contribute to these and other resources, see
+Getting Involved with
+WAI
+and
+Participating in
+WAI
+. If you have any questions, contact
+Shadi Abou-Zahra
+(Scientific Coordinator).
+WAI-ACT
+work was developed through
+W3C
+/
+WAI
+Working Groups
+. Project work is listed under the Working Group or Task Force above. The work was open for direct contribution by anyone. This includes reviewing drafts of these resources and actively participating in the relevant Working Groups to help develop these resources.
+About
+WAI-ACT
+WAI-ACT
+was a support action project, co-funded by the European Commission as a Specific Support Action under the
+IST
+7th Framework Programme. The project started on 1 September 2011 for a duration of three years. It was lead by and built upon the strengths of the existing World Wide Web Consortium (
+W3C
+) Web Accessibility Initiative (
+WAI
+) cooperation mechanisms, to facilitate strategic European and international participation throughout the project.
+WAI-ACT
+project partners were:
+W3C
+Web Accessibility Initiative (
+W3C/WAI
+)
+Stiching Bartimeus Accessibility (
+SBA
+)
+Fraunhofer Institute for Applied Information Technology (Fraunhofer)
+Johannes Keppler University (
+JKU
+)
+WAI-ACT
+work was developed in an open, non-exclusive collaborative environment to maximize participation and involvement from stakeholders.
+WAI-ACT
+also seeked active exchange with relevant networks in Europe such as
+eAccess+
+, and coordination standardisation activities such as
+EC
+Mandate M/376
+.
+More specifically...
+WAI-ACT
+, a Cooperation Framework for Guidance on Advanced Technologies, Evaluation Methodologies, and Research Agenda Setting to Support eAccessibility, addressed critical areas of advanced accessibility support through activities that built upon the strengths of past web accessibility work, harmonizes existing work, and helped shape a research agenda in coordination with key stakeholders in Europe and internationally.
+The project addressed the need for expanded European and international cooperation on the development of accessibility solutions for people with disabilities; for consensus-based, authoritative technical guidance to accelerate implementation of advanced technologies; for internationally harmonised evaluation methodologies; and for a coordinated research agenda on eAccessibility.
+WAI-ACT
+addressed these challenges through development of a framework for open, expanded cooperation among European and international stakeholders, technical guidance on advanced web technologies; an evaluation methodology for web accessibility; and a research agenda for eAccessibility. Technical guidance includes a repository of information on accessibility support in web technologies, application notes on authoring accessible web page components, and code samples for web applications.
+WAI-ACT
+contributed to:
+Expanded cooperation on the development of accessibility solutions
+Authoritative accessibility guidance on advanced web technologies
+Harmonized methodologies for evaluating accessibility of websites
+Common visions for a coordinated eAccessibility research agenda
+See
+project deliverables
+and contact
+Shadi Abou-Zahra
+(Scientific Coordinator) for more information.
+Project Staff
+WAI-ACT
+project staff include the following people:
+W3C
+Web Accessibility Initiative (
+W3C/WAI
+)
+Shadi Abou-Zahra (Scientific Coordinator)
+Jessica Michel (Administrative Coordinator)
+Bim Egan
+Eric Eggert
+Kevin White
+Pascale Payrol
+Tom Williamson
+Vivien Lacourba
+Stiching Bartimeus Accessibility (
+SBA
+)
+Eric Velleman
+Wilco Fiers
+Martijn Houtepen
+FIT
+Web Compliance Center (Fraunhofer)
+Carlos Velasco
+Evangelos Vlachogiannis
+Yehya Mohamad
+Philip Ackermann
+Johannes Keppler University (
+JKU
+)
+Klaus Miesenberger
+Daniel Pöll
+Andrea Petz
+Document Information
+Copyright
+© 2013
+W3C
+®
+(
+MIT
+,
+ERCIM
+,
+Keio
+,
+Beihang
+), All Rights Reserved. W3C
+liability
+,
+trademark
+,
+document use
+and
+software licensing
+rules apply. Your interactions with this site are in accordance with our
+public
+and
+Member
+privacy statements.

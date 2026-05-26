@@ -1,0 +1,423 @@
+{
+  "dataset_version": "1.0",
+  "total_profiles": 100,
+  "profiles": [
+    {
+      "id": "dyslexia_mild_001",
+      "age_group": "adult",
+      "natural_language_prompt": "I have mild dyslexia. Long paragraphs tire my eyes. Sans-serif fonts like Arial help. I sometimes reverse letters when tired.",
+      "cognitive_profile": {
+        "condition": "dyslexia",
+        "severity": "mild",
+        "core_deficits": ["phonological_processing"]
+      },
+      "accessibility_settings": {
+        "font_primary": "Arial",
+        "line_spacing": 1.5,
+        "letter_spacing": "0.03em",
+        "max_line_length_chars": 65,
+        "text_align": "left",
+        "disable_justified_text": true
+      }
+    },
+    {
+      "id": "dyslexia_moderate_002",
+      "age_group": "adolescent",
+      "natural_language_prompt": "Dyslexia makes reading slow. I need OpenDyslexic font, wider line spacing, and a blue overlay. Short lines help me not lose my place.",
+      "cognitive_profile": {
+        "condition": "dyslexia",
+        "severity": "moderate",
+        "core_deficits": ["phonological_processing", "rapid_automatized_naming"]
+      },
+      "accessibility_settings": {
+        "font_primary": "OpenDyslexic",
+        "font_fallback": "Comic Sans",
+        "line_spacing": 1.7,
+        "letter_spacing": "0.05em",
+        "max_line_length_chars": 55,
+        "text_align": "left",
+        "disable_justified_text": true,
+        "colored_overlay": "blue"
+      }
+    },
+    {
+      "id": "dyslexia_marked_003",
+      "age_group": "child",
+      "natural_language_prompt": "Severe dyslexia – I cannot read dense text. Need OpenDyslexic, yellow overlay, very large spacing, and audio support suggested.",
+      "cognitive_profile": {
+        "condition": "dyslexia",
+        "severity": "marked",
+        "core_deficits": ["phonological_processing", "rapid_automatized_naming", "working_memory"]
+      },
+      "accessibility_settings": {
+        "font_primary": "OpenDyslexic",
+        "line_spacing": 2.0,
+        "letter_spacing": "0.08em",
+        "max_line_length_chars": 45,
+        "text_align": "left",
+        "disable_justified_text": true,
+        "colored_overlay": "yellow",
+        "suggest_tts": true
+      }
+    },
+    {
+      "id": "adhd_mild_004",
+      "age_group": "adult",
+      "natural_language_prompt": "ADHD – I get distracted by long walls of text. Bullet points and clear headings keep me focused.",
+      "cognitive_profile": {
+        "condition": "ADHD",
+        "severity": "mild",
+        "core_deficits": ["sustained_attention"]
+      },
+      "accessibility_settings": {
+        "max_paragraphs_per_section": 3,
+        "prefer_bulleted_lists": true,
+        "consistent_navigation": true,
+        "highlight_key_terms": true
+      }
+    },
+    {
+      "id": "adhd_moderate_005",
+      "age_group": "adolescent",
+      "natural_language_prompt": "Moderate ADHD – I lose focus after a few sentences. Need progress bars, time estimates, and no autoplay videos.",
+      "cognitive_profile": {
+        "condition": "ADHD",
+        "severity": "moderate",
+        "core_deficits": ["sustained_attention", "working_memory"]
+      },
+      "accessibility_settings": {
+        "max_paragraphs_per_section": 2,
+        "show_progress_indicator": true,
+        "show_time_estimate_per_section": true,
+        "disable_autoplay": true,
+        "disable_animations": true,
+        "highlight_key_terms": true
+      }
+    },
+    {
+      "id": "adhd_marked_006",
+      "age_group": "child",
+      "natural_language_prompt": "Severe ADHD – I cannot sit through more than 2-3 sentences. Need ultra-short chunks, lots of headings, and a completion tracker.",
+      "cognitive_profile": {
+        "condition": "ADHD",
+        "severity": "marked",
+        "core_deficits": ["sustained_attention", "working_memory", "executive_function"]
+      },
+      "accessibility_settings": {
+        "max_paragraphs_per_section": 1,
+        "max_sentences_per_paragraph": 2,
+        "show_progress_indicator": true,
+        "show_time_estimate_per_section": true,
+        "disable_autoplay": true,
+        "disable_animations": true,
+        "highlight_key_terms": true,
+        "prefer_bulleted_lists": true,
+        "minimize_side_content": true
+      }
+    },
+    {
+      "id": "asd_mild_007",
+      "age_group": "adult",
+      "natural_language_prompt": "Autism – I prefer clear, literal text. Avoid idioms and unexpected layout changes.",
+      "cognitive_profile": {
+        "condition": "ASD",
+        "severity": "mild",
+        "core_deficits": ["theory_of_mind"]
+      },
+      "accessibility_settings": {
+        "literal_language_only": true,
+        "avoid_idioms_sarcasm_metaphors": true,
+        "predictable_navigation": true,
+        "no_unexpected_popups": true,
+        "explicit_instructions": true
+      }
+    },
+    {
+      "id": "asd_moderate_008",
+      "age_group": "adolescent",
+      "natural_language_prompt": "ASD – I need a very clean interface. No extra icons, no pop-ups. Single column. Visual schedule of what comes next.",
+      "cognitive_profile": {
+        "condition": "ASD",
+        "severity": "moderate",
+        "core_deficits": ["theory_of_mind", "central_coherence"]
+      },
+      "accessibility_settings": {
+        "literal_language_only": true,
+        "predictable_navigation": true,
+        "single_column_layout": true,
+        "minimal_icons": true,
+        "no_decorative_elements": true,
+        "visual_schedule": true,
+        "hide_non_essential_info": true
+      }
+    },
+    {
+      "id": "asd_marked_009",
+      "age_group": "child",
+      "natural_language_prompt": "Severe autism – Unexpected sounds or pop-ups cause distress. Need step-by-step instructions, no metaphors, and a very quiet design.",
+      "cognitive_profile": {
+        "condition": "ASD",
+        "severity": "marked",
+        "core_deficits": ["theory_of_mind", "central_coherence", "executive_function"]
+      },
+      "accessibility_settings": {
+        "literal_language_only": true,
+        "avoid_idioms_sarcasm_metaphors": true,
+        "predictable_navigation": true,
+        "no_unexpected_popups": true,
+        "no_layout_shifts": true,
+        "explicit_instructions": true,
+        "visual_schedule": true,
+        "single_column_layout": true,
+        "minimal_icons": true,
+        "no_decorative_elements": true,
+        "hide_non_essential_info": true,
+        "disable_autoplay": true,
+        "disable_sounds": true
+      }
+    },
+    {
+      "id": "asd_adhd_comorbid_010",
+      "age_group": "adult",
+      "natural_language_prompt": "I have both ASD and ADHD. Need literal language, no distractions, but also progress tracking because I lose focus. Single column, no pop-ups.",
+      "cognitive_profile": {
+        "condition": "combined",
+        "comorbidity": ["ASD", "ADHD"],
+        "core_deficits": ["sustained_attention", "executive_function", "central_coherence", "overstimulation_risk"]
+      },
+      "accessibility_settings": {
+        "ultra_chunked_content": true,
+        "literal_language_only": true,
+        "show_progress_indicator": true,
+        "disable_autoplay": true,
+        "disable_animations": true,
+        "predictable_navigation": true,
+        "single_column_layout": true,
+        "minimal_icons": true,
+        "max_paragraphs_per_section": 1,
+        "highlight_key_terms": true,
+        "show_time_estimate_per_section": true
+      }
+    },
+    {
+      "id": "asd_adhd_comorbid_011",
+      "age_group": "adolescent",
+      "natural_language_prompt": "ASD + ADHD – Overstimulation is my biggest problem. Flashing, auto-play, or too many colors make me shut down. Ultra-clean design with very short sections.",
+      "cognitive_profile": {
+        "condition": "combined",
+        "comorbidity": ["ASD", "ADHD"],
+        "severity": "moderate_marked",
+        "core_deficits": ["overstimulation_risk", "sustained_attention", "central_coherence"]
+      },
+      "accessibility_settings": {
+        "ultra_chunked_content": true,
+        "literal_language_only": true,
+        "disable_autoplay": true,
+        "disable_animations": true,
+        "avoid_high_contrast_flashing": true,
+        "predictable_navigation": true,
+        "single_column_layout": true,
+        "minimal_icons": true,
+        "no_decorative_elements": true,
+        "max_paragraphs_per_section": 1,
+        "show_progress_indicator": true
+      }
+    },
+    {
+      "id": "dyslexia_adhd_comorbid_012",
+      "age_group": "adult",
+      "natural_language_prompt": "Dyslexia + ADHD – Reading is exhausting and I lose my place constantly. OpenDyslexic font, very short lines, bullet points, and a progress bar.",
+      "cognitive_profile": {
+        "condition": "combined",
+        "comorbidity": ["dyslexia", "ADHD"],
+        "core_deficits": ["phonological_processing", "working_memory", "sustained_attention"]
+      },
+      "accessibility_settings": {
+        "font_primary": "OpenDyslexic",
+        "line_spacing": 1.7,
+        "letter_spacing": "0.05em",
+        "max_line_length_chars": 50,
+        "max_paragraphs_per_section": 2,
+        "prefer_bulleted_lists": true,
+        "show_progress_indicator": true,
+        "highlight_key_terms": true,
+        "disable_justified_text": true
+      }
+    },
+    {
+      "id": "dyslexia_adhd_comorbid_013",
+      "age_group": "child",
+      "natural_language_prompt": "My child has dyslexia and ADHD. He cannot read more than 2 sentences without losing focus. Needs yellow overlay, very large text, and pictures with short captions.",
+      "cognitive_profile": {
+        "condition": "combined",
+        "comorbidity": ["dyslexia", "ADHD"],
+        "severity": "moderate",
+        "core_deficits": ["phonological_processing", "sustained_attention"]
+      },
+      "accessibility_settings": {
+        "font_primary": "OpenDyslexic",
+        "font_size": "large",
+        "line_spacing": 1.8,
+        "letter_spacing": "0.06em",
+        "max_line_length_chars": 45,
+        "max_paragraphs_per_section": 1,
+        "prefer_bulleted_lists": true,
+        "show_progress_indicator": true,
+        "colored_overlay": "yellow",
+        "suggest_visual_aids": true
+      }
+    },
+    {
+      "id": "asd_dyslexia_comorbid_014",
+      "age_group": "adolescent",
+      "natural_language_prompt": "ASD and dyslexia – I need literal language AND OpenDyslexic font. No idioms. Short lines. Predictable layout.",
+      "cognitive_profile": {
+        "condition": "combined",
+        "comorbidity": ["ASD", "dyslexia"],
+        "core_deficits": ["theory_of_mind", "phonological_processing", "central_coherence"]
+      },
+      "accessibility_settings": {
+        "font_primary": "OpenDyslexic",
+        "line_spacing": 1.6,
+        "letter_spacing": "0.04em",
+        "max_line_length_chars": 55,
+        "literal_language_only": true,
+        "predictable_navigation": true,
+        "single_column_layout": true,
+        "minimal_icons": true,
+        "disable_justified_text": true
+      }
+    },
+    {
+      "id": "asd_dyslexia_comorbid_015",
+      "age_group": "adult",
+      "natural_language_prompt": "I have autism and dyslexia. Need clear, factual language, no figures of speech, and Arial font with wide spacing. Also hate pop-ups.",
+      "cognitive_profile": {
+        "condition": "combined",
+        "comorbidity": ["ASD", "dyslexia"],
+        "severity": "mild_moderate",
+        "core_deficits": ["theory_of_mind", "phonological_processing"]
+      },
+      "accessibility_settings": {
+        "font_primary": "Arial",
+        "line_spacing": 1.5,
+        "letter_spacing": "0.03em",
+        "max_line_length_chars": 60,
+        "literal_language_only": true,
+        "avoid_idioms_sarcasm_metaphors": true,
+        "predictable_navigation": true,
+        "no_unexpected_popups": true
+      }
+    },
+    {
+      "id": "triple_comorbid_016",
+      "age_group": "adult",
+      "natural_language_prompt": "ASD + ADHD + dyslexia – Triple diagnosis. Extremely overwhelmed by dense text. Need ultra-short chunks, OpenDyslexic, literal language, progress tracking, and no animations at all.",
+      "cognitive_profile": {
+        "condition": "combined",
+        "comorbidity": ["ASD", "ADHD", "dyslexia"],
+        "severity": "marked",
+        "core_deficits": ["phonological_processing", "sustained_attention", "executive_function", "central_coherence", "overstimulation_risk"]
+      },
+      "accessibility_settings": {
+        "font_primary": "OpenDyslexic",
+        "line_spacing": 2.0,
+        "letter_spacing": "0.08em",
+        "max_line_length_chars": 40,
+        "max_paragraphs_per_section": 1,
+        "max_sentences_per_paragraph": 1,
+        "literal_language_only": true,
+        "show_progress_indicator": true,
+        "show_time_estimate_per_section": true,
+        "disable_autoplay": true,
+        "disable_animations": true,
+        "predictable_navigation": true,
+        "single_column_layout": true,
+        "minimal_icons": true,
+        "no_decorative_elements": true,
+        "hide_non_essential_info": true,
+        "colored_overlay": "blue"
+      }
+    },
+    {
+      "id": "triple_comorbid_017",
+      "age_group": "child",
+      "natural_language_prompt": "Young child with ASD, ADHD, dyslexia. Cannot read at all independently. Needs TTS, very simple sentences, OpenDyslexic, and visual schedule.",
+      "cognitive_profile": {
+        "condition": "combined",
+        "comorbidity": ["ASD", "ADHD", "dyslexia"],
+        "severity": "marked",
+        "core_deficits": ["phonological_processing", "sustained_attention", "central_coherence"]
+      },
+      "accessibility_settings": {
+        "font_primary": "OpenDyslexic",
+        "line_spacing": 2.0,
+        "letter_spacing": "0.08em",
+        "max_line_length_chars": 35,
+        "max_paragraphs_per_section": 1,
+        "literal_language_only": true,
+        "visual_schedule": true,
+        "suggest_tts": true,
+        "disable_autoplay": true,
+        "single_column_layout": true,
+        "minimal_icons": true,
+        "show_progress_indicator": true
+      }
+    },
+    {
+      "id": "adhd_light_sensitivity_018",
+      "age_group": "adult",
+      "natural_language_prompt": "ADHD plus light sensitivity. High contrast white backgrounds give me headaches. Need dark mode and reduced motion.",
+      "cognitive_profile": {
+        "condition": "ADHD",
+        "additional_features": ["light_sensitivity"],
+        "core_deficits": ["sustained_attention"]
+      },
+      "accessibility_settings": {
+        "color_scheme": "dark_mode",
+        "reduce_motion": true,
+        "max_paragraphs_per_section": 2,
+        "show_progress_indicator": true,
+        "disable_animations": true,
+        "highlight_key_terms": true
+      }
+    },
+    {
+      "id": "asd_auditory_sensitivity_019",
+      "age_group": "adolescent",
+      "natural_language_prompt": "ASD with auditory sensitivity – No unexpected sounds. Need text-only mode. Literal language and simple layout.",
+      "cognitive_profile": {
+        "condition": "ASD",
+        "additional_features": ["auditory_sensitivity"],
+        "core_deficits": ["central_coherence", "theory_of_mind"]
+      },
+      "accessibility_settings": {
+        "text_only_mode": true,
+        "disable_autoplay": true,
+        "disable_sounds": true,
+        "literal_language_only": true,
+        "single_column_layout": true,
+        "predictable_navigation": true
+      }
+    },
+    {
+      "id": "dyslexia_scotopic_sensitivity_020",
+      "age_group": "adult",
+      "natural_language_prompt": "Dyslexia with scotopic sensitivity – White backgrounds cause visual stress. Need rose-tinted overlay and off-white background.",
+      "cognitive_profile": {
+        "condition": "dyslexia",
+        "additional_features": ["scotopic_sensitivity"],
+        "core_deficits": ["phonological_processing"]
+      },
+      "accessibility_settings": {
+        "background_color": "#FDF6E3",
+        "text_color": "#333333",
+        "colored_overlay": "rose",
+        "font_primary": "OpenDyslexic",
+        "line_spacing": 1.6,
+        "max_line_length_chars": 55,
+        "disable_justified_text": true
+      }
+    }
+  ]
+}

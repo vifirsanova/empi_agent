@@ -1,0 +1,57 @@
+URL: https://webaim.org/techniques/acrobat
+Title: WebAIM: PDF Accessibility - Defining PDF Accessibility
+================================================================================
+
+WebAIM: PDF Accessibility - Defining PDF Accessibility
+PDF Accessibility
+Defining PDF Accessibility
+You are here:
+Home
+>
+Articles
+> PDF Accessibility > Defining PDF Accessibility
+PDF Tags
+When people talk about "accessible" PDF files, they are usually referring to "tagged" PDF files. Tags are “...a set of standard structure types and attributes that allow page content (text, graphics, and images) to be extracted and reused for other purposes.” (
+PDF Techniques for WCAG 2.0
+). One of those purposes is to present information to
+screen readers
+. These tags have no impact on the visual layout of a PDF. There is more to an accessible PDF file than tags, but an untagged PDF would not be considered "accessible."
+3 Important Parts of a PDF
+Think of a PDF as having three important parts that provide different types of information to users.
+Visual
+The visual layer is what is seen on the screen. A primary benefit of a PDF is that it maintains the layout and appearance of the original document (also known as the "source document") used to create the PDF. It looks the same when it is displayed—even across devices with different screen sizes—and when it is printed.
+Content
+The content layer contains basic formatting applied to text, like fonts and colors, and text formatted as a list or a table. When a user chooses to “reflow” a document—for example, for a more usable view on a small screen—the content layer is presented instead of the visual layer.
+Reflow
+The Reflow view allows users to reorder the content layer’s objects into a simplified, single-column layout. The order of these objects may be different than in other layers.
+Select
+or
+Control
++
+4
+.
+Reflow can make a document easier to read on a mobile device, or tablet. It may also make the content more accessible when enlarging a PDF because it reduces horizontal scrolling.
+Tags
+The tags layer contains the document’s structure, including headings, links, lists, and tables. This information supports assistive technologies, such as screen reading software which provides users access to the tags structure in this layer.
+For example, screen reader users can quickly navigate to elements that are identified as headings in this layer.
+Adobe, PDF, and Acrobat
+Adobe, PDF, and Acrobat are often used interchangeably, but they are not the same. The relationship between these terms is similar to the relationship between Microsoft, Word, and DOC(X).
+Adobe
+is a company; they are the creators of PDF (the format) and Acrobat (the product).
+PDF is a format or type of document. Its main purpose is to preserve the formatting of a document. It was created by Adobe but is now an open format that can be created and displayed by other programs.
+Acrobat describes a series of tools created by Adobe for viewing, creating, and editing PDF files.
+There are 3 primary Acrobat programs:
+Acrobat Reader
+allows user to view and interact with a PDF, but it cannot be used to create new PDFs or edit existing ones.
+Acrobat Standard
+adds the ability to create a PDF, along with other features like converting a scanned PDF to a searchable file. However, it cannot be reviewed or edited.
+Acrobat Pro
+is the only version of Acrobat that can be used to view and edit the accessibility information of a PDF.
+Each of these programs provides
+accessibility features
+for users.
+Note:
+In this article, the term "Acrobat" refers to
+Acrobat Pro
+.
+Next

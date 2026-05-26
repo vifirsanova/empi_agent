@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EMPI_Protocol_Message",
+  "description": "Universal container for agent-to-agent communication within the EMPI network.",
+  "type": "object",
+  "required": ["header", "payload"],
+  "properties": {
+    "header": {
+      "type": "object",
+      "required": ["message_id", "agent_id", "parent_hash", "timestamp"],
+      "properties": {
+        "message_id": {
+          "type": "string",
+          "description": "Unique message identifier. Format: <agent_prefix>-<isotimestamp> or UUID",
+          "pattern": "^[a-zA-Z0-9_-]+-\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$|^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "agent_id": {
+          "type": "string",
+          "description": "Identifier of the sender agent.",
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_-]+$"
+        },
+        "parent_hash": {
+          "type": "string",
+          "description": "SHA-256 hash of the previous message in the chain. Empty string or genesis hash for the first message.",
+          "pattern": "^$|^[a-fA-F0-9]{64}$"
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Unix timestamp with millisecond precision (e.g., 1744414140.123)."
+        },
+        "protocol_version": {
+          "type": "string",
+          "description": "Version of the EMPI protocol used. Highly recommended for compatibility.",
+          "pattern": "^\\d+\\.\\d+(-[a-zA-Z0-9]+)?$",
+          "default": "0.1-neuro"
+        },
+        "requires_ack": {
+          "type": "boolean",
+          "description": "Whether the sender requires an acknowledgment of delivery/processing.",
+          "default": false
+        },
+        "async_token": {
+          "type": "string",
+          "description": "Token for tracking asynchronous operations. Must be unique within an agent's session.",
+          "pattern": "^async_[a-zA-Z0-9]+$"
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "required": ["task_type", "data"],
+      "properties": {
+        "task_type": {
+          "type": "string",
+          "description": "Type of task/processing performed. Dictates the structure of the 'data' field.",
+          "pattern": "^[a-z_]+$",
+          "examples": ["text_embed_and_ner", "image_segmentation", "audio_transcription", "agent_coordination", "system_control"]
+        },
+        "data": {
+          "type": "object",
+          "description": "The payload data. Structure is VARIABLE and defined by the 'task_type'. This field is extensible - each new agent type defines its own schema for this object."
+        }
+      }
+    }
+  }
+}

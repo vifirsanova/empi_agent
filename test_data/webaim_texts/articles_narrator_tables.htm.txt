@@ -1,0 +1,180 @@
+URL: https://webaim.org/articles/narrator/tables.htm
+Title: Narrator Practice: Tables
+================================================================================
+
+Narrator Practice: Tables
+Narrator Practice: Tables
+Return to the main article
+Data Tables
+To skip to a table, press the
+T
+key. To navigate between
+cells, hold down
+Ctrl + Alt
+and use the
+arrow keys
+to move from cell to cell.
+Table with one row and one column of headers
+The following
+table contains one row and one column of headers. Headers and cells are correctly associated using the <th> element and the scope attribute.
+Dept. Code/ Class Number
+Section
+Max Enrollment
+Current Enrollment
+Rm #
+Days
+Start Time
+End Time
+Inst.
+BIO 100
+1
+15
+13
+5
+Mon,Wed,Fri
+10:00
+11:00
+Magde
+BIO 100
+2
+15
+7
+5
+Tue,Thu
+11:00
+12:30
+Indge
+BIO 205
+1
+15
+9
+6
+Tue,Thu
+09:00
+10:30
+Magde
+BIO 315
+1
+12
+3
+6
+Mon,Wed,Fri
+13:00
+14:00
+Indge
+BUS 150
+1
+15
+15
+13
+Mon,Wed,Fri
+09:00
+10:00
+Roberts
+BUS 210
+1
+10
+9
+13
+Mon,Wed,Fri
+08:00
+09:00
+Rasid
+The following table is the same table as above, but headers and cells are not correctly associated.
+Dept. Code/ Class Number
+Section
+Max Enrollment
+Current Enrollment
+Rm #
+Days
+Start Time
+End Time
+Inst.
+BIO 100
+1
+15
+13
+5
+Mon,Wed,Fri
+10:00
+11:00
+Magde
+BIO 100
+2
+15
+7
+5
+Tue,Thu
+11:00
+12:30
+Indge
+BIO 205
+1
+15
+9
+6
+Tue,Thu
+09:00
+10:30
+Magde
+BIO 315
+1
+12
+3
+6
+Mon,Wed,Fri
+13:00
+14:00
+Indge
+BUS 150
+1
+15
+15
+13
+Mon,Wed,Fri
+09:00
+10:00
+Roberts
+BUS 210
+1
+10
+9
+13
+Mon,Wed,Fri
+08:00
+09:00
+Rasid
+Tables with multiple row headers
+The following complex table contains two columns of row headers. Headers and cells are correctly associated using the "id" and "headers" attributes.
+Shelly's Daughters
+Name
+Age
+Birthday
+by birth
+Jackie
+5
+April 5
+Beth
+8
+January 14
+by marriage
+Jenny
+12
+Feb 12
+The following table is the same table as above, but headers and cells are not correctly associated.
+Shelly's Daughters
+Name
+Age
+Birthday
+by birth
+Jackie
+5
+April 5
+Beth
+8
+January 14
+by marriage
+Jenny
+12
+Feb 12
+Return to the main article

@@ -1,0 +1,28 @@
+# EMPI Agent Configuration
+# Copy to agent_config.toml and fill in your values
+
+[system]
+max_text_length = 100000
+default_language = "en"
+
+[languages]
+en = "en_core_web_sm"
+ru = "ru_core_news_sm"
+
+[llm]
+# Cloud API (OpenAI-compatible: Yandex Cloud, Together AI, etc.)
+# If api_key is empty, local model will be used.
+# If local_model_path is also empty, fallback mode generates a basic HTML template.
+api_base = "https://api.openai.com/v1"
+api_key = ""
+folder_id = ""                      # Yandex Cloud only, leave empty otherwise
+model = "gpt-4o-mini"
+max_tokens = 8000
+temperature = 0.7
+
+# Local model (.gguf format, e.g. Phi-3-mini-4k-instruct-q4.gguf)
+local_model_path = ""
+
+[text_analysis]
+min_words_for_mtld = 50
+min_words_for_hdd = 100

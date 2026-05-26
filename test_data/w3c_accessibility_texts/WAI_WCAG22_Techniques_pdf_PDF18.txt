@@ -1,0 +1,91 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF18#main
+Title: PDF18: Specifying the document title using the Title entry in the document information dictionary of a PDF document | WAI | W3C
+================================================================================
+
+PDF18: Specifying the document title using the Title entry in the document information dictionary of a PDF document | WAI | W3C
+Skip to content
+Technique PDF18:
+Specifying the document title using the
+Title
+entry in the document information dictionary of a
+PDF
+document
+About this Technique
+This technique relates to
+2.4.2 Page Titled
+(
+Sufficient
+when used with
+G88: Providing descriptive titles for web pages
+).
+This technique applies to tagged PDF documents.
+Description
+The intent of this technique is to show how a descriptive title for
+a PDF document can be specified for assistive technology by using the
+/Title
+entry in the document information dictionary and by setting
+the DisplayDocTitle flag to True in a viewer preferences dictionary.
+This is typically accomplished by using a tool for authoring PDF.
+Document titles identify the current location without requiring users
+to read or interpret page content. User agents make the title of the
+page easily available to the user for identifying the page. For instance,
+a user agent may display the page title in the window title bar or
+as the name of the tab containing the page.
+Examples
+Example 1: Setting the document title in the metadata and specifying that the title be displayed in the title bar using Adobe Acrobat Pro
+This example is shown with Adobe Acrobat Pro. There are other software tools that perform similar functions.
+Open the PDF document in Adobe Acrobat Pro:
+Select File → Properties
+Select the Description tab to view the metadata in the document, including the document information dictionary
+Modify the Title field to add or change the document's Title entry
+Note that, with Adobe Acrobat installed, you can also enter and read
+the data properties information from the desktop. Access the file's
+context menu, choose Properties, and select the PDF tab. Any information
+you type or edit in this dialog box also appears in the Document Properties
+Description when you open the file.
+To display the document title in the title bar of a user agent:
+Select File → Properties
+Select the Initial View tab
+In the Window Options section, select Document Title in the Show pull-down list.
+The title is now displayed in the title bar.
+Example 2: A
+/Title
+entry in the document information dictionary of a PDF document
+The following code fragment illustrates code that is typical for providing a
+/Title
+entry in a document information dictionary that contains a document title.
+1 0 obj
+<< /Title (Applying Guerrilla Tactics to Usability Testing by People with Disabilities)
+/Author (Mary Smith)
+/CreationDate (D:19970915110347-08'00')
+>>
+endobj
+Related Resources
+No endorsement implied.
+Section 14.3.3 (Document Information Dictionary) in
+PDF 1.7 (ISO 32000-1) (PDF)
+Create and verify PDF accessibility (Acrobat Pro)
+Related Techniques
+G88: Providing descriptive titles for web pages
+Tests
+Procedure
+Verify that the title for the document is correctly specified and
+displayed in the user agent title bar by applying one of the following:
+Open the PDF document with a screen reader, listening to hear that the document title is read correctly.
+Using a PDF editor, check that the document title is specified. Select the Initial View tab to check that the title will be displayed.
+Use a tool which is capable of showing the
+/Title
+entry value in the document catalog to open the PDF document and view the
+/Title
+entry and
+/DisplayDocTitle
+flag settings.
+Expected Results
+#1 is true.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

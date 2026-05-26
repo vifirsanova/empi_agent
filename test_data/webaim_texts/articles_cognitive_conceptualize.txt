@@ -1,0 +1,128 @@
+URL: https://webaim.org/articles/cognitive/conceptualize/
+Title: WebAIM: Cognitive Disabilities Part 2 - Conceptualizing Design Considerations
+================================================================================
+
+WebAIM: Cognitive Disabilities Part 2 - Conceptualizing Design Considerations
+Cognitive Disabilities Part 2
+Conceptualizing Design Considerations
+You are here:
+Home
+>
+Articles
+> Cognitive Disabilities Part 2: Conceptualizing Design Considerations
+Introduction
+It is an unfortunate fact that the web accessibility community has struggled for some time to come to a consensus on guidelines that can be applied to web content for individuals with cognitive disabilities. Many authors propose specific, commonsense considerations while others wait for more definitive research. At WebAIM, we believe that promoting a dialogue on this important issue will be helpful in two ways. First, the collective thoughts of a number of individuals can be gathered and distilled. This may aid researchers in forming their questions as well as the ways in which they approach answering them. It may also aid web developers who want to design their content now in a way that does not exclude the largest population of individuals with disabilities. Second, ongoing interaction on the topic holds the promise to further refine important areas and subtle distinctions between issues that will be important.
+In the article
+Cognitive Disabilities Part 1: We Still Know Too Little, and We Do Even Less
+, WebAIM published a list of tentative recommendations that could be included in design guidelines. Responses from the field will help refine these technical recommendations. Another way to look at conceptualizing design considerations is from a human factors approach. It is the experience of WebAIM staff members that developers often benefit from understanding design techniques from the user point of view. Placing accessibility issues in a macro structure, such as human factors, can facilitate the developer's ability to assimilate accessibility techniques into their practice. For example, it seems easier for a developer to consider that someone who is blind "does not see" than it is for the developer to remember all the technical specifications necessary to make a page accessible for someone who is blind. From that simple perspective, the developer can proceed with items that make sense to them. By remembering that the individual can't see the elements of the page, they are prompted to ask if equivalent alternatives exist for content (e.g., alternative text) and structure (e.g., associated form labels or associated column and row headers in data tables). Organizing technical specifications around the real problems of the user has been a WebAIM technique for some time. This approach is consistent with
+Web Content Accessibility Guidelines
+where technical specifications center on key concepts such as "perceivable" and "operable." This macro structure will ultimately reduce a developer's own cognitive load with respect to accessibility techniques and help them embed accessibility into their practice.
+Important
+With this in mind, WebAIM seeks input on the best ways to organize design considerations for persons with cognitive disabilities from the user perspective. We invite you to comment on the contents of this brief article. We are interested in sharing the concept of the user perspective in the hopes that it can be refined, tested, and used by developers into the future.
+Who are Individuals with Cognitive Disabilities?
+Individuals with cognitive disabilities represent the largest single disability group worldwide. There are 4 times more individuals with cognitive disabilities than there are individuals who are blind. This is in part due to the fact that many distinct disabilities can affect an individual's ability to process, access, or remember information and learning experiences. Due to the array of similar challenges present for individuals with cognitive disabilities, many subgroups are typically placed into the overarching category of a "Cognitive Disability." This includes individuals who have learning disabilities (e.g., dyslexia and dysgraphia), attention disorders (e.g., ADHD and ADUD), developmental disabilities (e.g., Down's Syndrome, Fragile X, Autism, and Cerebral Palsy), and neurological impairments (e.g., Alzheimer's, traumatic brain injury, dementia, and stroke). One of the challenges present in this large disability group is that the needs of the individual users are quite diverse. It is common for individuals with cognitive disabilities to have deficits in one area but to exhibit typical skills, or even advanced skills, in other areas.
+Patterns emerge, however, when you attempt to describe difficulties that an individual with a cognitive disability must overcome. The most common words used to describe the problems encountered by individuals in this group on the web include problems with:
+Perception and processing
+Memory
+Problem-solving
+Attention
+Perception and Processing
+Perception and processing refers to an individual's ability to identify (i.e., perceive) and integrate information (e.g., visual or auditory information) into meaningful chunks. Some authors' place reading and writing into this category, others place some reading or writing skills here and some in other areas.
+The need for reading and writing skills on the web are fairly apparent. For users with cognitive disabilities they must have the ability to access, and comprehend, letters, written words and phrases, and provide or identify a written response when required. Problems may be present in decoding individual words, comprehending literal or abstract language, and constructing responses when required. These may be typed responses or responses identified from pull-down menus. If a developer were to understand the implications that a user will face in perceiving or processing words and sentences they might be interested in checking their work for technical considerations (e.g., using the clearest and simplest language appropriate for the content, pairing graphics with text, allowing fonts to be enlarged, providing text contrast, and adding white space to the page).
+Memory
+Memory refers to the ability of a user to recall what they have learned over time. We all have working (i.e., immediate) memory, short-term memory, and long-term memory. Meaningful information is typically moved up the chain from immediate to short-term into long-term memory stores. Some individuals with cognitive disabilities have difficulties with one, two, or all 3 of these memory types. The more meaningful your content can be to the needs of the user, the greater the chances that it will be moved into functional memory stores in the brain. Some users may have memory difficulties that impair their ability to remember how they got to content on and off the web site. These users would benefit from many technical considerations including:
+Navigation that is consistent across the site and over time
+The use of obvious breadcrumbs
+Consistent use of style to denote hypertext links such as a blue underline
+Problem-solving
+Some individuals with cognitive disabilities have a difficult time solving problems as they arise. In many instances, their resilience can be low and the resulting frustration is such that they choose to leave the site and not persist to solve the problem. One example of this would be the presence of a 404 error, a bad link, or a link that does not take them where they thought they were going. For some individuals, the problems associated with moving the mouse to a desired area on the screen (e.g., due to a visual processing problem), and clicking within a small area is more than they can bear. Designers would be wise to think about the ways in which their designs help to reduce or eliminate problems (e.g., by checking for valid links on a regular basis, making sure the forms work properly, avoiding pop-ups, and providing a mechanism to answer questions or providing support to the user if needed).
+Attention
+There are many individuals that have difficulty with focusing their attention to the task at hand. Distractions such as scrolling text and blinking icons can make the web environment difficult. Even for typical users the presence of blinking and scrolling items or multiple pop-ups can be irritating. Good design principles would limit these instances to only that which is necessary to convey the content.
+Sample Table
+The table below is one example of an attempt to organize specific design considerations across areas that present common problems for individuals with cognitive disabilities. This information could easily be organized in a variety of different ways. For example, it might make the most sense to organize by each area of challenge rather than across all areas in a table format. If this were done, technical considerations would need to be repeated several times as they appear in multiple problem areas. no attempt was made to make this list inclusive of all the technical considerations that would benefit individuals with cognitive disabilities. Sixteen considerations are listed. A comprehensive list would likely contain 4 times as many technical considerations. The point here, however, is to gain input on the utility of such organization for web developers.
+Design considerations that present common problems for individuals with cognitive disabilities.
+Samples of some areas that possibly affect users with a cognitive disability
+Perception & Processing
+Memory
+Problem-Solving
+Attention
+Use the simplest language possible for the content (check reading levels with an automated tool).
+YES
+no
+no
+no
+Allow for text to be enlarged.
+YES
+no
+no
+YES
+Pair icons or graphics with text so that contextual cures are available.
+YES
+YES
+no
+no
+Avoid scrolling text as it increases pressure to read at set speeds.
+YES
+no
+no
+YES
+Save your best contrast for items that carry content, allow non-content areas to be muted or displayed in pastels.
+YES
+no
+no
+YES
+Insure that the user can view with their own styles and turn off color and images if desired.
+YES
+no
+no
+no
+Avoid time-based elements (auto refresh, redirects, shut outs) unless the user is prompted to ask for additional time.
+YES
+no
+no
+no
+Insure that any "on-mouse" command has a large clickable area.
+no
+no
+YES
+no
+Use consistent and predictable navigation that is consistent throughout the site.
+no
+YES
+YES
+no
+Use consistent methods of indicating hyperlinks (e.g., blue underlined text) and make them descriptive (e.g., avoid "click here" and "more").
+no
+YES
+YES
+YES
+Provide demonstrations or audio descriptions whenever possible.
+YES
+no
+YES
+YES
+Provide text transcripts for captioned media so that the user can revisit concepts within the narrative.
+YES
+YES
+YES
+no
+Use obvious breadcrumbs in your design.
+YES
+YES
+YES
+YES
+Use descriptive headings and other organizational techniques (e.g., bullets) to chunk your material.
+YES
+YES
+no
+no
+Ensure ample white space in your design rather than condense or clutter information onto your pages.
+YES
+no
+YES
+YES
+Avoid animated or blinking icons unless necessary for content.
+YES
+no
+no
+YES

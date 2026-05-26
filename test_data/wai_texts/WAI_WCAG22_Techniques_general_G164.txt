@@ -1,0 +1,35 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/general/G164
+Title: G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request | WAI | W3C
+================================================================================
+
+G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request | WAI | W3C
+Skip to content
+Technique G164:
+Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request
+About this Technique
+This technique relates to
+3.3.4: Error Prevention (Legal, Financial, Data)
+(
+Sufficient
+).
+This technique applies to all technologies that provide forms.
+Description
+The objective of this technique is to allow users to recover from errors made when placing an order by providing them with a period of time during which they can cancel or change the order. In general, a contract or an order is a legal commitment and cannot be canceled. However, a website may choose to offer this capability, and it provides a way for users to recover from errors.
+The web content would need to tell the user how long the cancellation period is after submitting the form and what the procedure would be to cancel the order. The cancellation procedure may not be possible online. It may, for instance, require written notice be sent to an address listed on the web page.
+After submitting the form, the user is informed of the length of the cancellation period and the procedure for canceling the transaction. It's best to provide the cancellation procedure at the same website where the transaction was submitted so that it is as easy to cancel as it was to submit and to accommodate users who may be unable to use other mechanisms. But, if necessary, the cancellation procedure may be provided through some other mechanism or combination of mechanisms as long as it has equivalent cross-disability accessibility. In this case, users are warned prior to submitting the form that they will not be able to cancel their order online.
+Examples
+Example 1: Online shopping
+An online shopping website lets users cancel purchases up to 24 hours after they have been made. The website explains their policy, and includes a summary of the policy on the purchase receipt emailed to the user. After 24 hours, the purchase will be shipped to the user and can no longer be canceled.
+Example 2: Custom orders
+A website sells custom sports jackets that are made to order. The customer chooses the fabric and provides body measurements for the tailor. The website gives customers up to three days to change or cancel an order. Once the material has been cut to the customer's specifications, it is no longer possible to change or cancel the order. The company policy is described on its website.
+Related Techniques
+G98: Providing the ability for the user to review and correct answers before submitting
+G155: Providing a checkbox in addition to a submit button
+G168: Requesting confirmation to continue with selected action
+Tests
+Procedure
+Check that the web page describes the time period to cancel or change an order.
+Check that the web page describes the process for canceling or changing an order.
+Expected Results
+Checks #1 and #2 are true.
+Back to Top

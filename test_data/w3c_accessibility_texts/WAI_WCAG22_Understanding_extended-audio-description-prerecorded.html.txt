@@ -1,0 +1,152 @@
+URL: https://www.w3.org/WAI/WCAG22/Understanding/extended-audio-description-prerecorded.html#dfn-synchronized-media
+Title: Understanding Success Criterion 1.2.7: Extended Audio Description (Prerecorded) | WAI | W3C
+================================================================================
+
+Understanding Success Criterion 1.2.7: Extended Audio Description (Prerecorded) | WAI | W3C
+Skip to content
+Understanding
+SC 1.2.7
+Extended Audio Description (Prerecorded) (Level AAA)
+In Brief
+Goal
+Videos can be played with more detailed audio descriptions.
+What to do
+Provide extended spoken descriptions of the visual content in videos.
+Why it's important
+People who are blind or who cannot understand the visual content can have it described to them while playing videos.
+Success Criterion (SC)
+Where pauses in foreground audio are insufficient to allow
+audio descriptions
+to convey the sense of the video,
+extended audio description
+is provided for all
+prerecorded
+video
+content in
+synchronized media
+.
+Intent
+The intent of this success criterion is to provide people who are blind or visually
+impaired access to a synchronized media presentation beyond that which can be provided
+by standard audio description.
+This is done by periodically freezing the synchronized
+media presentation and playing additional audio description.
+The synchronized media
+presentation is then resumed.
+Because it disrupts viewing for those who do not need the additional description,
+techniques that allow you to turn the feature on and off are often provided.
+Alternately,
+versions with and without the additional description can be provided.
+Benefits
+People who are blind, people with low vision who cannot see the screen, as well as
+those with cognitive limitations who have difficulty interpreting visually what is
+happening, often use audio description of the visual information. However, if there
+is too much dialogue the audio description is insufficient. Extended audio description
+can provide the additional information needed to understand the video.
+Examples
+Example 1. Video of a lecture.
+A physics professor is giving a lecture. The professor makes freehand sketches on the whiteboard,
+speaking rapidly while drawing. As soon as discussion on one problem is finished, the professor
+erases the drawing and makes another sketch while continuing to speak and gesture.
+The video is paused between problems, and extended audio description
+of the professor's drawings and gestures is provided; the video is then resumed.
+Related Resources
+Resources are for information purposes only, no endorsement implied.
+Synchronized Multimedia Integration Language (SMIL) 1.0
+Synchronized Multimedia Integration Language (SMIL) 2.0
+Accessibility Features of SMIL
+GBH - Integrate audio descriptions into multimedia presentations using SMIL
+Standard Techniques in Audio Description
+Techniques
+Each numbered item in this section represents a technique or combination of techniques
+that the Accessibility Guidelines Working Group deems sufficient for meeting this success criterion.
+A technique may go beyond the minimum requirement of the criterion. There may be other ways of meeting the criterion not covered by these techniques.
+For information on using other techniques, see
+Understanding Techniques for WCAG Success Criteria
+,
+particularly the "Other Techniques" section.
+Sufficient Techniques
+G8: Providing a movie with extended audio descriptions
+using
+one of the following techniques:
+SM1: Adding extended audio description in SMIL 1.0
+SM2: Adding extended audio description in SMIL 2.0
+Advisory Techniques
+Although not required for conformance, the following additional techniques should be considered in order to make content more accessible.
+Not all techniques can be used or would be effective in all situations.
+H96: Using the track element to provide audio descriptions
+Key Terms
+audio
+the technology of sound reproduction
+Note
+Audio can be created synthetically (including speech synthesis), recorded from real
+world sounds, or both.
+audio description
+narration added to the soundtrack to describe important visual details that cannot
+be understood from the main soundtrack alone
+Note 1
+Audio description of
+video
+provides information about actions, characters, scene changes, on-screen text, and
+other visual content.
+Note 2
+In standard audio description, narration is added during existing pauses in dialogue.
+(See also
+extended audio description
+.)
+Note 3
+Where all of the
+video
+information is already provided in existing
+audio
+, no additional audio description is necessary.
+Note 4
+Also called "video description" and "descriptive narration."
+extended audio description
+audio description that is added to an audiovisual presentation by pausing the
+video
+so that there is time to add additional description
+Note
+This technique is only used when the sense of the
+video
+would be lost without the additional
+audio description
+and the pauses between dialogue/narration are too short.
+live
+information captured from a real-world event and transmitted to the receiver with
+no more than a broadcast delay
+Note 1
+A broadcast delay is a short (usually automated) delay, for example used in order
+to give the broadcaster time to cue or censor the audio (or video) feed, but not sufficient
+to allow significant editing.
+Note 2
+If information is completely computer generated, it is not live.
+media alternative for text
+media that presents no more information than is already presented in text (directly
+or via text alternatives)
+Note
+A media alternative for text is provided for those who benefit from alternate representations
+of text. Media alternatives for text may be audio-only, video-only (including sign-language
+video), or audio-video.
+prerecorded
+information that is not
+live
+synchronized media
+audio
+or
+video
+synchronized with another format for presenting information and/or with time-based
+interactive components, unless the media is a
+media alternative for text
+that is clearly labeled as such
+video
+the technology of moving or sequenced pictures or images
+Note
+Video can be made up of animated or photographic images, or both.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

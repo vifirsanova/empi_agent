@@ -1,0 +1,28 @@
+URL: https://webaim.org/articles/design/
+Title: WebAIM: Design Considerations - One Size Fits All?
+================================================================================
+
+WebAIM: Design Considerations - One Size Fits All?
+Design Considerations
+One Size Fits All?
+You are here:
+Home
+>
+Articles
+> Design Considerations - One Size Fits All?
+The Case For Personalized Web Design
+On the web, one size does not fit all. The needs and preferences of users, especially users with disabilities, vary greatly. Personalized designs can offer a better user experience by tailoring the site to the needs of users. Users with low vision, for example, may benefit from sites designed especially for their needs, with extra large fonts, high contrast, narrower page formats, and so on. A user with a cognitive or learning disability may benefit from illustrations and very basic text.
+Some accessibility experts have advocated that authors provide specialized designs for each type of disability. This type of customization could take into account the various needs and preferences of users in ways that one-size-doesn't-quite-fit-all designs simply can't. A number of techniques have attempted to do this, from pre-fabricated templates to storing user preferences in databases, or even allowing users to switch style sheets quickly as they view the page. Some of these techniques have met with success; others have not.
+The advantage of a personalized design is that it seeks to create web content that is highly accessible for all users. The website can present custom versions of content ideally accessible for each specific disability.
+The Case Against Personalized Web Design
+Despite the possibilities of the personalized design movement, there are many drawbacks with this approach. The most glaring drawback is site maintenance. Developers must invest a lot of time and effort to design different versions of web sites for each type of disability. There are many issues that must be addressed if a developer decides to create disability-specific web pages, including (but not limited to) the following:
+How frequently will the page content be updated, and how will changes be reflected in each version?
+How well can the content be conveyed using different mediums? For example, how can the content be conveyed using icons and illustrations for users with cognitive disabilities?
+What resources would be necessary to update each version if substantial additions or changes are made?
+These issues become quite difficult when analyzed carefully.
+Another challenge is the vast number of possible disabilities. It is entirely impractical to attempt to design a personalized web site for every type of disability imaginable. There are simply too many.
+Additionally, users must somehow indicate which version of the content they prefer. This may require the user to divulge that they have disability—and many users with disabilities are reluctant to do so.
+Finally, people with the same disability often have very different preferences. Whether it be the position of navigational links, color schematics, or sign language vs. text, it is impossible for one design to account for all the preferences of users with a specific type of disability, let alone multiple disabilities.
+Conclusion
+The goal to accommodate all users is commendable. When the necessary resources are available, personalized designs can be worth the effort for users. More often than not, however, those resources are not available, and a single design is more practical. That single design, however, must be designed to be compatible with end-user adaptations and assistive technologies. Both approaches require thoughtful planning, but the single design approach is generally more reasonable and, if done correctly, more broadly accessible.
+Next

@@ -1,0 +1,20 @@
+URL: https://www.w3.org/WAI/roles/policy-makers/
+Title: Resources for Policy Makers | Web Accessibility Initiative (WAI) | W3C
+================================================================================
+
+Resources for Policy Makers | Web Accessibility Initiative (WAI) | W3C
+Resources for Policy Makers
+This page provides a starting point for information that is particularly relevant to policy makers.
+Introduction to Web Accessibility
+Includes links to videos and to lots more information that you might want to read now or later.
+We encourage you to at least skim this page even if you know a lot about accessibility.
+Why Standards Harmonization is Essential to Web Accessibility
+Explains the importance of using international standards (rather than creating different standards).
+Essential Components of Web Accessibility
+Explains how web accessibility depends on several components of web development and interaction working together. It also shows how the W3C WAI accessibility standards (WCAG, ATAG, UAAG, WAI-ARIA) apply.
+Web Accessibility Laws and Policies
+List of governmental policies relating to web accessibility in countries and regions around the world.
+Developing Organizational Policies on Web Accessibility
+Guidance on developing a policy for an organization.
+We encourage you to look around the W3C WAI website to find other information that you might be interested in reading or sharing with others.
+Back to Top

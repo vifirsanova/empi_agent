@@ -1,0 +1,48 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/general/G82#main
+Title: G82: Providing a text alternative that identifies the purpose of interactive non-text content | WAI | W3C
+================================================================================
+
+G82: Providing a text alternative that identifies the purpose of interactive non-text content | WAI | W3C
+Skip to content
+Technique G82:
+Providing a text alternative that identifies the purpose of interactive non-text content
+About this Technique
+This technique relates to
+1.1.1: Non-text Content
+(
+Sufficient
+using a more specific technique).
+This technique applies to all technologies.
+Description
+The purpose of this technique is to provide useful information via the text
+alternative even if the full function of the non-text content cannot be
+provided.
+Sometimes, a text alternative cannot serve the same purpose as the original
+interactive non-text content (for example an applet meant to develop two dimensional
+rapid targeting skills and eye hand coordination). In these cases this
+technique is used. With this technique a description of the purpose of the
+non-text content is provided.
+Examples
+Example 1
+An eye-hand coordination development applet has the
+following text alternative "Applet that uses the mouse and
+moving targets to develop eye-hand coordination"
+A camera applet that has a round disk where you push on the
+edges to control a remote camera and a slider in the middle
+for zooming has the following text alternative "Control for
+aiming and zooming remote video camera".
+Related Techniques
+G196: Using a text alternative on one item within a group of images that describes all items in the group
+H36: Using alt attributes on images used as submit buttons
+H37: Using alt attributes on img elements
+H53: Using the body of the object element
+H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak
+Tests
+Procedure
+Remove, hide, or mask the non-text content.
+Replace it with the text alternative.
+Check that the purpose of the non-text content is clear - even
+if function is lost.
+Expected Results
+#3 is true.
+Back to Top

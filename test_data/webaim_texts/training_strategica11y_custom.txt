@@ -1,0 +1,54 @@
+URL: https://webaim.org/training/strategica11y/custom
+Title: WebAIM: StrategicA11y - Customized Strategic Web Accessibility Workshop
+================================================================================
+
+WebAIM: StrategicA11y - Customized Strategic Web Accessibility Workshop
+StrategicA11y - Customized Strategic Web Accessibility Workshop
+You are here:
+Home
+>
+Services
+> WebAIM Training
+System-wide Web Accessibility Planning Customized for Your Organization
+As an alternative to our
+virtual strategic accessibility workshops
+, WebAIM can also provide a customized Strategic Web Accessibility workshop tailored specifically to your organization's needs. There are two options for this workshop.
+Online
+When:
+Six one-hour online sessions will be scheduled for your organization, optimally one per week for six weeks.
+Where:
+Online using video conferencing.
+Cost:
+$3000. A minimum participation of 3 key stakeholders is highly recommended.
+On-site
+When:
+One full-day in-person workshop.
+Where:
+On-site at your organization.
+Cost:
+$5000 plus travel expenses for one facilitator. A minimum participation of 3 key stakeholders is highly recommended.
+What is StrategicA11y?
+Organizations are often challenged to achieve system-level accessibility that can be sustained over time. System-level accessibility is not merely about bug patches, overlays, or third party add-ons. What sustainability is about is a broader, more inclusive approach. Supported by administration, understood by middle management, and practiced by all who impact your web presence, including designers, developers, content creators, HR, Purchasing, and more.
+While typical conferences and workshops on web accessibility provide information or training on discrete elements of web accessibility, these are often tactical in nature—they address one problem, then another. It is time to move beyond a tactical approach to one that is strategic in nature.
+This workshop is about organizational change management. (
+Technical training is available separately.
+) It will provide your organization with information to help you think and plan in strategic ways about the accessibility of your broader systems. You will leave the workshop ready—and motivated—to bring system-level accessibility to your organization.
+Note on terminology: "A11y" is short for the word "accessibility": the first letter, the last letter, and 11 letters in between.
+Workshop Focus
+Topics critical to system-change will each receive specific attention (each topic is covered in one webinar in the webinar option):
+Overview of a strategic rubric for system accessibility. Four indicators of success, each with their own benchmarks. The importance of administrative commitment and leadership (and how to get more of it).
+Creating a policy and implementation plan for your organization
+Resources and supports (part 1)—Time and effort of personnel, budget sufficient for the work, communication plans
+Resources and supports (part 2)—Training and technical assistance to support all staff
+Resources and supports (part 3)—Procurement, HR, motivation through the process
+Assessing your efforts—both accessibility and system work)
+Each topic prepares you for action. The workshop will be catered to your organization's current situation, structure, and needs, with participants discussing and working together with the facilitator to define and begin implementation of a strategic accessibility plan for your organization.
+If you want to learn the skills required to ensure your organization makes a successful shift to or continues sustainable accessibility practices, this webinar series will provide what you need. We'll also provide resources and information you need to empower your organization to meet future accessibility challenges.
+Get Started
+If you would like to learn more about or schedule a customized StrategicA11y Workshop, please
+contact Rob Carr via email
+.
+Technical Web Accessibility Training
+If you are interested in learning the technical aspects of implementing and evaluating web accessibility, please check out the standard
+WebAIM training
+.

@@ -1,0 +1,585 @@
+URL: https://www.w3.org/WAI/standards-guidelines/act/rules/bc659a/#main
+Title: Meta element has no refresh delay | ACT Rule | WAI | W3C
+================================================================================
+
+Meta element has no refresh delay | ACT Rule | WAI | W3C
+Skip to content
+This is an
+Atomic rule
+to test
+2.2.1: Timing Adjustable (Level A)
+,
+2.2.4: Interruptions (Level AAA)
+,
+3.2.5: Change on Request (Level AAA)
+Description
+This rule checks that the
+meta
+element is not used for delayed redirecting or refreshing.
+Applicability
+This rule applies to the first
+meta
+element in a document for which all the following are true:
+the element has an
+http-equiv
+attribute value
+of
+"refresh"
+; and
+the element has a valid
+content
+attribute value
+, as described in the
+meta refresh
+pragma directive.
+Expectation
+For each target, the
+time
+from the content
+attribute value
+is between 0 and 72000 (20 hours). To determine the
+time
+, run the
+shared declarative refresh steps
+on the
+meta
+element as described in the
+HTML refresh state
+.
+Assumptions
+This rule assumes no functionality was provided by the website for the user to adjust the timer.
+This rule assumes that the refresh was not
+essential
+, which is listed as a valid exception to
+2.2.1 Time Adjustable
+.
+Accessibility Support
+Not all major web browsers parse the value of the
+content
+attribute in the same way. Some major browsers, when they are unable to parse the value, default to a 0 seconds delay, whereas others will not redirect at all. This can cause some pages to be inapplicable for this rule, while still having a redirect in a minority of web browsers.
+Background
+Because a refresh with a timing of 0 is a redirect, it is exempt from this rule. Since this can cause rapid screen flashes it is strongly recommended to avoid this.
+This rule is designed specifically for
+2.2.1 Timing Adjustable
+, which can be satisfied if the time limit is over 20 hours long. All pages that fail this because of a “refresh”
+meta
+element also do not satisfy
+3.2.5 Change on Request
+. In order to adequately test the
+expectation
+, some of the passed examples do not satisfy
+3.2.5 Change on Request
+.
+Bibliography
+Understanding Success Criterion 2.2.1: Timing Adjustable
+Understanding Success Criterion 2.2.4: Interruptions
+Understanding Success Criterion 3.2.5: Change on Request
+G110: Using an instant client-side redirect
+H76: Using meta refresh to create an instant client-side redirect
+F40: Failure of Success Criterion 2.2.1 and 2.2.4 due to using meta redirect with a time limit
+F41: Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh with a time-out
+Accessibility Requirements Mapping
+2.2.1 Timing Adjustable (Level A)
+Learn more about 2.2.1 Timing Adjustable
+Required for conformance
+to WCAG 2.0 and later on level A and higher.
+Outcome mapping:
+Any
+failed
+outcomes: success criterion is not satisfied
+All
+passed
+outcomes: success criterion needs further testing
+An
+inapplicable
+outcome: success criterion needs further testing
+2.2.4 Interruptions (Level AAA)
+Learn more about 2.2.4 Interruptions
+Required for conformance
+to WCAG 2.0 and later on level AAA.
+Outcome mapping:
+Any
+failed
+outcomes: success criterion is not satisfied
+All
+passed
+outcomes: success criterion needs further testing
+An
+inapplicable
+outcome: success criterion needs further testing
+3.2.5 Change on Request (Level AAA)
+Learn more about 3.2.5 Change on Request
+Required for conformance
+to WCAG 2.0 and later on level AAA.
+Outcome mapping:
+Any
+failed
+outcomes: success criterion is not satisfied
+All
+passed
+outcomes: success criterion needs further testing
+An
+inapplicable
+outcome: success criterion needs further testing
+G110: Using an instant client-side redirect
+Learn more about technique G110
+Not required for conformance to any W3C accessibility recommendation.
+Outcome mapping:
+Any
+failed
+outcomes: technique is not satisfied
+All
+passed
+outcomes: technique needs further testing
+An
+inapplicable
+outcome: technique needs further testing
+H76: Using meta refresh to create an instant client-side redirect
+Learn more about technique H76
+Not required for conformance to any W3C accessibility recommendation.
+Outcome mapping:
+Any
+failed
+outcomes: technique is not satisfied
+All
+passed
+outcomes: technique needs further testing
+An
+inapplicable
+outcome: technique needs further testing
+Input Aspects
+The following aspects are required in using this rule.
+DOM Tree
+Test Cases
+Passed
+Passed Example 1
+Open in a new tab
+This page redirects to a new page immediately.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"0; URL='https://github.com'"
+/>
+</head>
+Passed Example 2
+Open in a new tab
+The first valid
+meta
+element on this page redirects to a new page immediately.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"0; https://w3.org"
+/>
+<meta
+http-equiv=
+"refresh"
+content=
+"5; https://w3.org"
+/>
+</head>
+Passed Example 3
+Open in a new tab
+This page redirects after more than 20 hours.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"72001; https://w3.org"
+/>
+</head>
+Failed
+Failed Example 1
+Open in a new tab
+This page refreshes after 30 seconds.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"30"
+/>
+</head>
+<body>
+<p>
+This page refreshes after 30 seconds.
+</p>
+</body>
+Failed Example 2
+Open in a new tab
+This page redirects to a new page after 30 seconds.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"30; URL='https://w3.org'"
+/>
+</head>
+<body>
+<p>
+This page redirects afte 30 seconds.
+</p>
+</body>
+Failed Example 3
+Open in a new tab
+The first
+meta
+element on this page is not valid because it uses colon (“:”) rather than semicolon (“;”). The second
+meta
+element redirects to a new page after 5 seconds.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"0: https://w3.org"
+/>
+<meta
+http-equiv=
+"refresh"
+content=
+"5; https://w3.org"
+/>
+</head>
+<body>
+<p>
+This page refreshes after 5 seconds.
+</p>
+</body>
+Failed Example 4
+Open in a new tab
+This page redirects to a new page after exactly 20 hours.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"72000; https://w3.org"
+/>
+</head>
+<body>
+<p>
+This page redirects after exactly 20 hours.
+</p>
+</body>
+Inapplicable
+Inapplicable Example 1
+Open in a new tab
+This page will not refresh because it lacks a
+content
+attribute.
+<head>
+<meta
+http-equiv=
+"refresh"
+/>
+</head>
+<body>
+<p>
+This page does not refresh.
+</p>
+</body>
+Inapplicable Example 2
+Open in a new tab
+This page will not refresh because it lacks a
+http-equiv
+attribute.
+<head>
+<meta
+content=
+"30"
+/>
+</head>
+<body>
+<p>
+This page does not refresh.
+</p>
+</body>
+Inapplicable Example 3
+Open in a new tab
+This ‘meta’ element contains an invalid
+content
+attribute and will not refresh the page.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"0: https://w3.org"
+/>
+</head>
+<body>
+<p>
+This page does not redirect.
+</p>
+</body>
+Inapplicable Example 4
+Open in a new tab
+This ‘meta’ element contains an invalid
+content
+attribute and will not refresh the page.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"-00.12 foo"
+/>
+</head>
+<body>
+<p>
+This page does not refresh.
+</p>
+</body>
+Inapplicable Example 5
+Open in a new tab
+This ‘meta’ element contains an invalid
+content
+attribute and will not refresh the page.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"; 30"
+/>
+</head>
+<body>
+<p>
+This page does not refresh.
+</p>
+</body>
+Inapplicable Example 6
+Open in a new tab
+This ‘meta’ element contains an invalid
+content
+attribute and will not refresh the page.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+""
+/>
+</head>
+<body>
+<p>
+This page does not refresh.
+</p>
+</body>
+Inapplicable Example 7
+Open in a new tab
+This ‘meta’ element contains an invalid
+content
+attribute and will not refresh the page.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"+5; https://w3.org"
+/>
+</head>
+<body>
+<p>
+This page does not redirect.
+</p>
+</body>
+Inapplicable Example 8
+Open in a new tab
+This ‘meta’ element contains an invalid
+content
+attribute and will not refresh the page.
+<head>
+<meta
+http-equiv=
+"refresh"
+content=
+"foo; URL='https://w3.org'"
+/>
+</head>
+<body>
+<p>
+This page does not redirect.
+</p>
+</body>
+Glossary
+Attribute value
+The
+attribute value
+of a content attribute set on an HTML element is the value that the attribute gets after being parsed and computed according to specifications. It may differ from the value that is actually written in the HTML code due to trimming whitespace or non-digits characters, default values, or case-insensitivity.
+Some notable case of attribute value, among others:
+For
+enumerated attributes
+, the
+attribute value
+is either the state of the attribute, or the keyword that maps to it; even for the default states. Thus
+<input type="image" />
+has an attribute value of either
+Image Button
+(the state) or
+image
+(the keyword mapping to it), both formulations having the same meaning; similarly, “an input element with a
+type
+attribute value
+of
+Text
+” can be either
+<input type="text" />
+,
+<input />
+(missing value default), or
+<input type="invalid" />
+(invalid value default).
+For
+boolean attributes
+, the
+attribute value
+is
+true
+when the attribute is present and
+false
+otherwise. Thus
+<button disabled>
+,
+<button disabled="disabled">
+and
+<button disabled="">
+all have a
+disabled
+attribute value
+of
+true
+.
+For attributes whose value is used in a case-insensitive context, the
+attribute value
+is the lowercase version of the value written in the HTML code.
+For attributes that accept
+numbers
+, the
+attribute value
+is the result of parsing the value written in the HTML code according to the rules for parsing this kind of number.
+For attributes that accept sets of tokens, whether
+space separated
+or
+comma separated
+, the
+attribute value
+is the set of tokens obtained after parsing the set and, depending on the case, converting its items to lowercase (if the set is used in a case-insensitive context).
+For
+aria-*
+attributes, the
+attribute value
+is computed as indicated in the
+WAI-ARIA specification
+and the
+HTML Accessibility API Mappings
+.
+This list is not exhaustive, and only serves as an illustration for some of the most common cases.
+The
+attribute value
+of an
+IDL attribute
+is the value returned on getting it. Note that when an
+IDL attribute
+reflects
+a content attribute, they have the same attribute value.
+Outcome
+An
+outcome
+is a conclusion that comes from evaluating an ACT Rule on a
+test subject
+or one of its constituent
+test target
+. An outcome can be one of the three following types:
+Inapplicable:
+No part of the test subject matches the applicability
+Passed:
+A
+test target
+meets all expectations
+Failed:
+A
+test target
+does not meet all expectations
+Note:
+A rule has one
+passed
+or
+failed
+outcome for every
+test target
+. When there are no test targets the rule has one
+inapplicable
+outcome. This means that each
+test subject
+will have one or more outcomes.
+Note:
+Implementations using the
+EARL10-Schema
+can express the outcome with the
+outcome property
+. In addition to
+passed
+,
+failed
+and
+inapplicable
+, EARL 1.0 also defined an
+incomplete
+outcome. While this cannot be the outcome of an ACT Rule when applied in its entirety, it often happens that rules are only partially evaluated. For example, when applicability was automated, but the expectations have to be evaluated manually. Such “interim” results can be expressed with the
+incomplete
+outcome.
+Rule Versions
+Latest version, 25 October 2022
+Implementations
+This section is not part of the official rule. It is populated dynamically and
+not accounted for in the change history or the last modified date.
+Implementation
+Type
+Consistency
+Report
+Alfa (fully automated) 0.112.0
+Automated tool
+Consistent
+Alfa (semi-automated) 0.112.0
+Semi-automated tool
+Consistent
+Axe DevTools Pro 4.37.1
+Semi-automated tool
+Consistent
+Axe-core 4.10.2
+Automated tool
+Consistent
+QualWeb 3.0.0
+Automated tool
+Partial
+Total Validator 17.4.0
+Linter
+Consistent
+Total Validator (+Browser) 17.4.0
+Automated tool
+Consistent
+UsableNet AQA - WCAG 2.2 AA Auto 2.5.1
+Automated tool
+Consistent
+UsableNet AQA - WCAG 2.2 AA Semi-auto 2.5.1
+Semi-automated tool
+Consistent
+Webmate Accessibility Workbench
+Automated tool
+Consistent
+Useful Links
+Github issues related to this rule
+Open a new issue
+Please share your ideas, suggestions, or comments via e-mail to the publicly-archived list
+public-wcag-act@w3.org
+or via GitHub.
+E-mail
+Back to Top

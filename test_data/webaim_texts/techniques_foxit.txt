@@ -1,0 +1,45 @@
+URL: https://webaim.org/techniques/foxit/
+Title: WebAIM: Foxit and PDF Accessibility - Defining PDF Accessibility
+================================================================================
+
+WebAIM: Foxit and PDF Accessibility - Defining PDF Accessibility
+Foxit and PDF Accessibility
+Defining PDF Accessibility
+You are here:
+Home
+>
+Articles
+> Foxit and PDF Accessibility: Defining PDF Accessibility
+Introduction
+PhantomPDF is a program by Foxit that you can use to create and edit PDF files. This article outlines how to create and repair accessible PDFs using Phantom PDF, version 9.
+Note:
+The name of this program was changed to PDF Editor for version 11.
+PDF Tags
+When people talk about "accessible" PDF files, they are usually referring to "tagged" PDF files. PDF tags provide a hidden, structured representation of the PDF content that is presented to screen readers. They exist for accessibility purposes only and have no visible effect on the PDF file. There is more to an accessible PDF file than tags, but an untagged PDF would not be
+considered "accessible".
+HTML tags and PDF tags often use similar tag names (e.g., both have tags named h1) and organization structures. If you are comfortable with HTML, you will probably have an easier time creating and editing tagged PDF files, but knowledge of HTML is not necessary.
+PhantomPDF Versions
+There are 3 versions of PhantomPDF available:
+PhantomPDF
+Standard
+: Allows the creation of tagged PDFs within the program, and
+through an add-in for Microsoft Office. However, it cannot be used to view or
+edit the accessibility of a PDF.
+PhantomPDF
+Business
+: Adds the very important ability to view and edit the
+accessibility of a PDF.
+Phantom
+PDF Mac
+: This version does not support creating or editing tagged PDFs at
+this time.
+In other words, you must have PhantomPDF Business
+for Windows
+to both create and edit tagged PDFs.
+Although there are many differences in look and function
+between PhantomPDF
+and Acrobat, the accessibility features of
+PhantomPDF Business are almost identical to Acrobat Pro XI. If you are already familiar with
+the accessibility tools in Acrobat Pro, the processes outlined in this article
+should be very familiar.
+Next

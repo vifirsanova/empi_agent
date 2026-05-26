@@ -1,0 +1,124 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/html/H100
+Title: H100: Providing properly marked up email and password inputs | WAI | W3C
+================================================================================
+
+H100: Providing properly marked up email and password inputs | WAI | W3C
+Skip to content
+Technique H100:
+Providing properly marked up email and password inputs
+About this Technique
+This technique relates to:
+3.3.8 Accessible Authentication (Minimum)
+(
+Sufficient
+)
+3.3.9 Accessible Authentication (Enhanced)
+(
+Sufficient
+)
+This technique applies to technologies that support authentication.
+Description
+The objective of this technique is to provide examples of properly marked up email and password inputs. This technique involves providing form mechanism where the user can enter their email address and password to log into the website.
+Browsers and password managers generally use the accessible name of the input to determine how to fill it in. The user agent (including password managers) should not be blocked from populating the fields, and pasting by the user should also not be blocked.
+Examples
+Example 1: properly marked up email and password inputs
+A secure website has an email and password based login form.
+<
+form
+method
+=
+"post"
+action
+=
+"login"
+>
+<
+div
+>
+<
+label
+for
+=
+"email"
+>
+Email
+</
+label
+>
+<
+input
+autocomplete
+=
+"email"
+id
+=
+"email"
+type
+=
+"email"
+...
+>
+</
+div
+>
+<
+div
+>
+<
+label
+for
+=
+"password"
+>
+Password
+</
+label
+>
+<
+input
+autocomplete
+=
+"current-password"
+id
+=
+"password"
+type
+=
+"password"
+...
+>
+</
+div
+>
+<
+input
+type
+=
+"submit"
+value
+=
+"Login"
+>
+</
+div
+>
+</
+form
+>
+Related Resources
+No endorsement implied.
+Bureau of Internet Accessibility: How To Make Your Website's Authentication Process Accessible
+Tests
+Procedure
+For websites which require users to login with an email and password only:
+Check that each input for authentication includes an appropriate accessible-name.
+Check that each input for authentication allows pasting.
+Expected Results
+#1 and #2 are true.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

@@ -1,0 +1,325 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/html/H48
+Title: H48: Using ol, ul and dl for lists or groups of links | WAI | W3C
+================================================================================
+
+H48: Using ol, ul and dl for lists or groups of links | WAI | W3C
+Skip to content
+Technique H48:
+Using
+ol
+,
+ul
+and
+dl
+for lists or groups of links
+About this Technique
+This technique relates to
+1.3.1: Info and Relationships
+(
+Sufficient
+when used for making information and relationships conveyed through presentation programmatically determinable).
+This technique applies to
+HTML
+.
+Description
+The objective of this technique is to create lists of related items using list elements appropriate for their purposes. The
+ol
+element is used when the list is ordered and the
+ul
+element is used when the list is unordered. Description lists (
+dl
+) are used to group name-value pairs of information, for example: terms and definitions or questions and answers. Although the use of this markup can make lists more readable, not all lists need markup. For instance, sentences that contain comma-separated lists may not need list markup.
+When markup is used that visually formats items as a list but does not indicate the list relationship, users may have difficulty in navigating the information. An example of such visual formatting is including asterisks in the content at the beginning of each list item and using
+br
+elements to separate the list items.
+Some assistive technologies allow users to navigate from list to list or item to item. Style sheets can be used to change the presentation of the lists while preserving their integrity.
+The list structure, commonly unordered lists, is also useful to group hyperlinks. When this is done, it helps screen reader users to navigate from the first item in a list to the end of the list or jump to the next list. This helps them to bypass groups of links if they choose to.
+Examples
+Example 1: A list showing steps in a sequence
+This example uses an ordered list to show the sequence of steps in a process.
+<
+ol
+>
+<
+li
+>
+Mix flour, eggs, milk, and seasoning in a bowl.
+</
+li
+>
+<
+li
+>
+Whisk until the batter is smooth.
+</
+li
+>
+<
+li
+>
+Rest the batter for at least 30 minutes before cooking.
+</
+li
+>
+</
+ol
+>
+Example 2: A grocery list
+This example shows an unordered list of items to buy at the store.
+<
+ul
+>
+<
+li
+>
+Milk
+</
+li
+>
+<
+li
+>
+Eggs
+</
+li
+>
+<
+li
+>
+Butter
+</
+li
+>
+</
+ul
+>
+Example 3: A word and its definition
+This example uses a description list to group a definition with the term that is being defined.
+<
+dl
+>
+<
+dt
+>
+blink
+</
+dt
+>
+<
+dd
+>
+turn on and off between 0.5 and 3 times per second
+</
+dd
+>
+</
+dl
+>
+Example 4: Contact information using a description list
+This example uses a description list to mark up pairs of related items. The pairs themselves are a logically related list.
+<
+dl
+>
+<
+div
+>
+<
+dt
+>
+Name:
+</
+dt
+>
+<
+dd
+>
+Taisha Silveri
+</
+dd
+>
+</
+div
+>
+<
+div
+>
+<
+dt
+>
+Tel:
+</
+dt
+>
+<
+dd
+>
+503-123-4567
+</
+dd
+>
+</
+div
+>
+<
+div
+>
+<
+dt
+>
+Email:
+</
+dt
+>
+<
+dd
+>
+taisha-silveri@example.com
+</
+dd
+>
+</
+div
+>
+</
+dl
+>
+This is shown in the
+working example of contact information using a description list
+.
+Example 5: Using lists to group links
+In this example the links are grouped using the
+ul
+and
+li
+elements.
+<
+h2
+id
+=
+"product-categories"
+>
+Product Categories
+</
+h2
+>
+<
+nav
+aria-labelledby
+=
+"product-categories"
+>
+<
+ul
+>
+<
+li
+>
+<
+a
+href
+=
+"kitchen.html"
+>
+Kitchen
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"bedbath.html"
+>
+Bed
+&amp;
+Bath
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"dining.html"
+>
+Fine Dining
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"lighting.html"
+>
+Lighting
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"storage.html"
+>
+Storage
+</
+a
+>
+<
+li
+>
+</
+ul
+>
+</
+nav
+>
+Related Resources
+No endorsement implied.
+HTML - the
+dl
+element
+.
+HTML - the
+ol
+element
+.
+HTML - the
+ul
+element
+.
+Related Techniques
+H40: Using description lists
+Tests
+Procedure
+Check that content that has the visual appearance of a list (with or without bullets) is marked as an unordered list.
+Check that content that has the visual appearance of a numbered list is marked as an ordered list.
+Check that content is marked as a description list when groups of name-value pairs, for example: terms and definitions or questions and answers, are presented in the form of a list.
+Expected Results
+All the checks above are true.
+Back to Top

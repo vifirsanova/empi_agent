@@ -1,0 +1,299 @@
+URL: https://webaim.org/techniques/forms/controls
+Title: WebAIM: Creating Accessible Forms - Accessible Form Controls
+================================================================================
+
+WebAIM: Creating Accessible Forms - Accessible Form Controls
+Creating Accessible Forms
+Accessible Form Controls
+You are here:
+Home
+>
+Articles
+>
+Forms
+> Page 2: Accessible Form Controls
+Text Inputs
+Name:
+<label
+for="name"
+>Name:</label>
+<input
+id="name"
+type="text" autocomplete="name">
+Matching
+for
+and
+id
+values associate the label with its form control. Because
+id
+attribute values must be unique on each page, a form control can only have one associated
+<label>
+.
+You can also create the association by placing the label text and the input within the
+<label>
+element (and not using
+for
+and
+id
+).
+<label>Name: <input type="text" autocomplete="name"></label>
+Note
+Another benefit of labels is that the user can click on the label to set focus to the form control. This is useful on small screens and to some people with motor disabilities, particularly when targeting small checkboxes and radio buttons.
+Clicking on labels is also an easy way to check for proper form labeling. If clicking the label sets focus to or activates the form control, then that label is programmatically associated.
+Text Areas
+Enter your address:
+<label
+for="address"
+>Enter your address:</label><br>
+<textarea
+id="address"
+autocomplete="street-address"></textarea>
+Checkboxes
+Select your pizza toppings:
+Ham
+Pepperoni
+Mushrooms
+Olives
+<fieldset>
+<legend>Select your pizza toppings:</legend>
+<input id="ham" type="checkbox" name="toppings" value="ham">
+<label for="ham">Ham</label><br>
+<input id="pepperoni" type="checkbox" name="toppings" value="pepperoni">
+<label for="pepperoni">Pepperoni</label><br>
+<input id="mushrooms" type="checkbox" name="toppings" value="mushrooms">
+<label for="mushrooms">Mushrooms</label><br>
+<input id="olives" type="checkbox" name="toppings" value="olives">
+<label for="olives">Olives</label>
+</fieldset>
+The
+<fieldset>
+contains the group of checkboxes, and the
+<legend>
+labels the group. Screen readers may repeat the legend for each control in the group, so the legend text should be brief and descriptive.
+Radio Buttons
+Choose a shipping method:
+Overnight
+Two day
+Ground
+<fieldset>
+<legend>Choose a shipping method:</legend>
+<input id="overnight" type="radio" name="shipping" value="overnight">
+<label for="overnight">Overnight</label><br>
+<input id="twoday" type="radio" name="shipping" value="twoday">
+<label for="twoday">Two day</label><br>
+<input id="ground" type="radio" name="shipping" value="ground">
+<label for="ground">Ground</label>
+</fieldset>
+Note
+Fieldset and legend should only be used when a higher-level label is necessary. Single checkboxes or basic radio buttons that make sense from their labels alone do not require fieldset and legend.
+Nested fieldsets can cause odd screen reader behavior and should be avoided.
+Other Input Types
+Other
+<input>
+types –
+password
+,
+file
+,
+date
+and
+time
+(and various data/time alternatives),
+email
+,
+tel
+,
+url
+,
+number
+,
+color
+, and
+range
+– must also have associated descriptive text using
+<label>
+elements.
+Select Menus
+Which is your favorite city?
+Amsterdam
+Buenos Aires
+Delhi
+Hong Kong
+London
+Los Angeles
+Moscow
+Mumbai
+New York
+São Paulo
+Tokyo
+<label for="favcity">Which is your favorite city?</label>
+<select id="favcity" name="select">
+<option value="1">Amsterdam</option>
+<option value="2">Buenos Aires</option>
+<option value="3">Delhi</option>
+<option value="4">Hong Kong</option>
+<option value="5">London</option>
+<option value="6">Los Angeles</option>
+<option value="7">Moscow</option>
+<option value="8">Mumbai</option>
+<option value="9">New York</option>
+<option value="10">São Paulo</option>
+<option value="11">Tokyo</option>
+</select>
+Grouping options
+Long lists of options can be grouped with
+<optgroup>
+. However, since
+<optgroup>
+is sometimes ignored in the screen reader environment
+, don't rely on this technique to convey vital context.
+Which is your favorite city?
+Delhi
+Hong Kong
+Mumbai
+Tokyo
+Amsterdam
+London
+Moscow
+Los Angeles
+New York
+Buenos Aires
+São Paulo
+<label for="favcity2">Which is your favorite city?</label>
+<select id="favcity2" name="favcity2">
+<optgroup label="Asia">
+<option value="3">Delhi</option>
+<option value="4">Hong Kong</option>
+<option value="8">Mumbai</option>
+<option value="11">Tokyo</option>
+</optgroup>
+<optgroup label="Europe">
+<option value="1">Amsterdam</option>
+<option value="5">London</option>
+<option value="7">Moscow</option>
+</optgroup>
+<optgroup label="North America">
+<option value="6">Los Angeles</option>
+<option value="9">New York</option>
+</optgroup>
+<optgroup label="South America">
+<option value="2">Buenos Aires</option>
+<option value="10">São Paulo</option>
+</optgroup>
+</select>
+Multiple-select menus
+Multiple-select menus allow the user to choose more than one option.
+What are your three favorite cities?
+Amsterdam
+Buenos Aires
+Delhi
+Hong Kong
+London
+Los Angeles
+Moscow
+Mumbai
+New York
+São Paulo
+Tokyo
+Note
+Avoid using multiple-select menus.
+Not all browsers provide intuitive keyboard navigation for them. Many users do not know to use Control/Command or Shift + click to select multiple items. A group of checkboxes provides similar functionality in a more accessible way.
+Buttons
+Screen readers announce the nested text for
+<button>
+elements, and the
+value
+attribute for input buttons. Form buttons must never be empty.
+Activate
+<input type="submit" name="submit"
+value="Submit Search"
+>
+<input type="reset" name="reset"
+value="Reset"
+>
+<button>
+Activate
+</button>
+Reset buttons should not be used
+unless specifically needed, because they are easy to click by mistake.
+Image buttons
+Image buttons (
+<input type="image">
+) must have equivalent
+alt
+text. Otherwise, screen reader users will just hear "button", with no indication of what the button does.
+<input type="image" name="submitbutton"
+alt="search"
+src="submit.png">
+JavaScript Jump Menus
+A jump menu is a
+<select>
+(or a custom widget that behaves like one) that triggers page changes or navigation when a user clicks an option with the mouse.
+When navigating with a keyboard, merely
+browsing
+the options with the arrow keys can trigger the change. This unexpected navigation can confuse and disorient keyboard and screen reader users. A jump menu should be replaced with a standard
+<select>
+menu and button, with the button acting as the trigger. The exact behavior varies across browsers and operating systems.
+Bad example
+This is a typical example of the problem. In some browsers, navigation to the first option will be triggered spontaneously when the user tries to explore the options.
+Go to a website:
+Select...
+WebAIM
+Google
+Yahoo
+Microsoft
+Good example
+Triggering from a submit button supports keyboard accessibility across all browsers. Users can explore the options using the up/down arrow keys and then click the Submit button.
+Go to a website:
+Select a website
+WebAIM
+Google
+Yahoo
+Microsoft
+Submit
+Important Attributes
+autocomplete
+Form fields collecting
+certain types of user-specific information
+need appropriate
+autocomplete
+attributes to identify input purpose. Users can benefit when common field types (name, address, birthdate, etc.) are represented consistently across the web. The ability to programmatically determine the purpose of each field makes filling out forms easier, especially for people with cognitive disabilities.
+Name:
+<label
+for="name2"
+>Name:</label>
+<input
+id="name2"
+type="text"
+autocomplete="name"
+>
+Required fields
+While required fields are commonly identified with an asterisk, users may not understand this convention. Additionally, screen readers may not always announce this character.
+aria-required
+If the indication that a field is required is presented outside the input label, applying the
+aria-required="true"
+attribute will cause screen readers to announce "required" along with the label text. No validation or "enforcement" mechanism comes along with this attribute, and it has no visual impact.
+All fields below are required.
+Name:
+Submit
+<input id="name3" type="text" autocomplete="name"
+aria-required="true"
+>
+required
+The HTML
+required
+attribute likewise causes screen readers to announce "required", and also triggers the browser to warn the user if the user leaves the field blank.
+Name*:
+Submit
+<input id="name4" type="text" autocomplete="name"
+required
+>
+Invalid fields
+When performing form validation, applying the
+aria-invalid="true"
+attribute to a form control will cause the screen reader to announce "invalid" when that control gets the focus—and that's all. There is no visual impact. You can apply this to required fields that the user left blank or to fields that failed validation in some other way. This is helpful to users who cannot see the icons and color changes that are typically used to flag errors visually.
+Name:
+<input id="name5" type="text" autocomplete="name"
+aria-invalid="true"
+>
+Next

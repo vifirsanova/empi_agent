@@ -1,0 +1,59 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/general/G158
+Title: G158: Providing an alternative for time-based media for audio-only content | WAI | W3C
+================================================================================
+
+G158: Providing an alternative for time-based media for audio-only content | WAI | W3C
+Skip to content
+Technique G158:
+Providing an alternative for time-based media for audio-only content
+About this Technique
+This technique relates to
+1.2.1 Audio-only and Video-only (Prerecorded)
+(
+Sufficient
+).
+This technique applies to all technologies.
+Description
+The purpose of this technique is to provide an accessible alternative way of presenting the information in an audio-only presentation.
+In an audio-only presentation, information is presented in a variety of ways including dialogue and sounds (both natural and artificial). In order to present the same information in accessible form, this technique involves creating a document that tells the same story and presents the same information in the same
+human language
+as the prerecorded audio-only content. In this technique, the document serves as long description for the content and includes all of the important dialogue and as well as descriptions of background sounds etc. that are part of the story.
+If an actual script was used to create the audio-only content in the first place, this can be a good place to start. In production and editing however, the content often varies somewhat from the script. For this technique, the original script would be corrected to match the dialogue and what actually happens in the final edited form of the audio presentation.
+Examples
+A podcast includes a description of new features in a recent software release. It involves two speakers informally discussing the new and updated features and describing how they are used. One of the speakers works from a list of questions that was used to outline the discussion prior to recording. After the recording is complete, the outline is then edited and supplemented to match the dialogue etc. The resulting transcript is then made available on the speakers website along with the audio-only file. The text alternative that identifies the audio only content reads, "Episode 42: Zap Version 12 (text transcript follows)" and the link to the transcript is provided immediately following the audio-only content.
+Related Resources
+No endorsement implied.
+Accessible Podcasting
+uiAccess list of transcription services
+Transcripts on the Web: Getting people to your podcasts and videos
+Related Techniques
+G69: Providing an alternative for time based media
+G159: Providing an alternative for time-based media for video-only content
+Tests
+Procedure
+View the audio-only content while referring to the alternative for time-based media.
+Check that the dialogue in the transcript matches the
+human language
+, dialogue, and information presented in the audio-only presentation.
+If the audio includes multiple voices, check that the transcript identifies who is speaking for all dialogue.
+Check that at least one of the following is true:
+The transcript itself can be programmatically determined from the text alternative for the audio-only content
+The transcript is referred to from the programmatically determined text alternative for the audio-only content
+If the alternate version(s) are on a separate page, check for the availability of link(s) to allow the user to get to the other versions.
+Expected Results
+All of the above checks are true.
+Test Rules
+The following are Test Rules
+related to this Technique.
+It is not necessary to use these particular Test Rules to check for conformance with WCAG, but they are defined and approved test methods.
+For information on using Test Rules, see
+Understanding Test Rules for WCAG Success Criteria
+.
+Audio element content has text alternative
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

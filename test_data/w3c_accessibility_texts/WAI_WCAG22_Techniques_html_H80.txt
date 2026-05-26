@@ -1,0 +1,362 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/html/H80#top
+Title: H80: Identifying the purpose of a link using link text combined with the preceding heading element | WAI | W3C
+================================================================================
+
+H80: Identifying the purpose of a link using link text combined with the preceding heading element | WAI | W3C
+Skip to content
+Technique H80:
+Identifying the purpose of a link using link text combined with the preceding heading element
+About this Technique
+This technique relates to
+2.4.4 Link Purpose (In Context)
+(
+Advisory
+).
+This technique applies to
+HTML
+.
+Description
+The objective of this technique is to describe the purpose of a link from the context
+provided by its heading context. The preceding heading provides context for an otherwise
+unclear link. The description lets a user distinguish this link from links in the web
+page that lead to other destinations and helps the user determine whether to follow the
+link.
+Note
+Whenever possible, provide link text that identifies the purpose of the link without needing additional context.
+Examples
+Example 1: Blocks of information on hotels
+The information for each hotel consists of the hotel name, a description and a series of links to a map, photos, directions, guest reviews and a booking form.
+<
+h2
+>
+<
+a
+href
+=
+"royal_palm_hotel.html"
+id
+=
+"royal-heading"
+>
+Royal Palm Hotel
+</
+a
+>
+</
+h2
+>
+<
+nav
+aria-labelledby
+=
+"royal-heading"
+>
+<
+ul
+>
+<
+li
+>
+<
+a
+href
+=
+"royal-palm-hotel_map.html"
+>
+Map
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"royal-palm-hotel-photos.html"
+>
+Photos
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"hroyal-palm-hotel-directions.html"
+>
+Directions
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"royal-palm-hotel-reviews.html"
+>
+Guest reviews
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"royal-palm-hotel-book.html"
+>
+Book now
+</
+a
+>
+</
+li
+>
+</
+ul
+>
+</
+nav
+>
+<
+h2
+>
+<
+a
+href
+=
+"hotel-three-rivers.html"
+id
+=
+"rivers-heading"
+>
+Hotel Three Rivers
+</
+a
+>
+</
+h2
+>
+<
+nav
+aria-labelledby
+=
+"rivers-heading"
+>
+<
+ul
+>
+<
+li
+>
+<
+a
+href
+=
+"hotel-three-rivers-map.html"
+>
+Map
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"hotel-three-rivers-photos.html"
+>
+Photos
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"hotel-three-rivers-directions.html"
+>
+Directions
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"hotel-three-rivers-reviews.html"
+>
+Guest reviews
+</
+a
+>
+</
+li
+>
+<
+li
+>
+<
+a
+href
+=
+"hotel-three-rivers-book.html"
+>
+Book now
+</
+a
+>
+</
+li
+>
+</
+ul
+>
+</
+nav
+>
+Example 2: A document provided in three formats
+<
+h2
+>
+Annual Report 2006-2007
+</
+h2
+>
+<
+p
+>
+<
+a
+href
+=
+"annual-report-0607.html"
+>
+HTML
+</
+a
+>
+<
+a
+href
+=
+"annual-report-0607.pdf"
+>
+PDF
+</
+a
+>
+<
+a
+href
+=
+"annual-report-0607.rtf"
+>
+RTF
+</
+a
+>
+</
+p
+>
+Example 3: Newspaper website
+<
+div
+class
+=
+"card-link"
+>
+<
+h2
+>
+<
+a
+href
+=
+"market-2023-09-27.html"
+>
+Stock market soars as bullishness prevails
+</
+a
+>
+</
+h2
+>
+<
+p
+>
+This week was a stellar week for the stock market as investing in gold rose 2%.
+</
+p
+>
+</
+div
+>
+A script is used to find each element with a class of
+card-link
+and append an additional paragraph with a "Read more" link at the end of the div with the class
+.card-link
+that goes to the same location as the link in the heading.
+Related Techniques
+G91: Providing link text that describes the purpose of a link
+G53: Identifying the purpose of a link using link text combined with the text of the enclosing sentence
+H33: Supplementing link text with the title attribute
+C7: Using CSS to hide a portion of the link text
+H77: Identifying the purpose of a link using link text combined with its enclosing list item
+H78: Identifying the purpose of a link using link text combined with its enclosing paragraph
+H79: Identifying the purpose of a link in a data table using the link text combined with its enclosing table cell and associated table header cells
+H81: Identifying the purpose of a link in a nested list using link text combined with
+the parent list item under which the list is nested
+Tests
+Procedure
+For each link in the content that uses this technique:
+Find the heading element that precedes the link
+Check that the text of the link combined with the text of that heading describes the purpose of the link.
+Expected Results
+#2 is true.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

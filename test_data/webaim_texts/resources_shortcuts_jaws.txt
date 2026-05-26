@@ -1,0 +1,401 @@
+URL: https://webaim.org/resources/shortcuts/jaws
+Title: WebAIM: Keyboard Shortcuts for JAWS
+================================================================================
+
+WebAIM: Keyboard Shortcuts for JAWS
+Keyboard Shortcuts for JAWS
+You are here:
+Home
+>
+Resources
+> Keyboard Shortcuts for JAWS
+Introduction
+The following list of keyboard shortcuts should be helpful to a wide array of individuals and can be used as a quick reference guide. First, this guide will help JAWS users navigate within Internet Explorer. Second, this guide will be helpful to increase the awareness of web content developers regarding keyboard shortcuts that would conflict with JAWS. Finally, programmers will find the keyboard commands typical for JAWS user a helpful reference.
+Portions of this resource are adapted from the
+Web Axe list of JAWS Keyboard Shortcuts
+.
+Reading Text
+Command
+Description
+←
+Say Prior Character
+→
+Say Next Character
+Num Pad
+5
+Say Character
+Num Pad
+5
+twice quickly
+Say Character Phonetically
+JAWS
++
+←
+Say Prior Word
+JAWS
++
+→
+Say Next Word
+JAWS
++ Num Pad
+5
+Say Word
+JAWS
++ Num Pad
+5
+twice quickly
+Spell Word
+↑
+Say Prior Line
+↓
+Say Next Line
+JAWS
++
+↑
+Say Current Line
+JAWS
++
+↑
+twice quickly
+Spell Current Line
+Alt
++
+↑
+Say Prior Sentence
+Alt
++
+↓
+Say Next Sentence
+Alt
++Num Pad
+5
+Say Current Sentence
+JAWS
++
+Home
+Say to Cursor
+JAWS
++
+Page Up
+Say from Cursor
+JAWS
++
+Home
+twice quickly
+Spell to Cursor
+JAWS
++
+Page Up
+twice quickly
+Spell from Cursor
+JAWS
++
+↓
+Say All
+→
+Fast Forward during a Say All
+←
+Rewind during a Say All
+JAWS
++
+5
+Say Color
+Num Pad
+5
+three times quickly
+Say ASCII or Hexadecimal Value
+JAWS
++
+F
+, twice quickly
+Say Font
+Ctrl
++
+JAWS
++
+↓
+Start Skim Reading
+Ctrl
++
+JAWS
++
+Shift
++
+↓
+Skim Reading dialog box
+JAWS
++
+Windows Key
++
+↓
+Display Skim Reading Summary
+Voice Rate
+Command
+Description
+Ctrl
++
+Alt
++
+Page Down
+Decrease Voice Rate
+Ctrl
++
+Alt
++
+Page Up
+Increase Voice Rate
+Page Down
+Decrease Voice Rate (when using SayAll)
+Page Up
+Increase Voice Rate (when using SayAll)
+Regions, Headings, and Lists
+Command
+Description
+R
+Regions Quick Key
+Q
+Main Content Quick Key
+H
+Headings Quick Key
+1-6
+Headings level 1-6
+JAWS
++
+F6
+List of Headings
+L
+List Quick Key
+I
+List Item Quick Key
+Tables
+Moving within tables
+Command
+Description
+T
+Table Quick Key
+Ctrl
++
+Alt
++
+→
+Cell to Right
+Ctrl
++
+Alt
++
+←
+Cell to Left
+Ctrl
++
+Alt
++
+↓
+Cell Below
+Ctrl
++
+Alt
++
+↑
+Cell Above
+Ctrl
++
+Alt
++
+Home
+First Cell
+Ctrl
++
+Alt
++
+End
+Last Cell
+Ctrl
++
+Alt
++
+Shift
++
+↑
+First Cell in Column
+Ctrl
++
+Alt
++
+Shift
++
+↓
+Last Cell in Column
+Ctrl
++
+Alt
++
+Shift
++
+←
+First Cell in Row
+Ctrl
++
+Alt
++
+Shift
++
+→
+Last Cell in Row
+Table reading
+Command
+Description
+Ctrl
++
+Alt
++Num Pad
+5
+Say Current Cell
+JAWS
++
+Shift
++
+↑
+Read Current Row
+JAWS
++
+Shift
++
+Home
+Read from Start of Row
+JAWS
++
+Shift
++
+Page Up
+Read to End of Row
+JAWS
++
+Shift
++Num Pad
+5
+Read Current Column
+JAWS
++
+Shift
++
+End
+Read from Top of Column
+JAWS
++
+Shift
++
+Page Down
+Read to Bottom of Column
+Forms
+Command
+Description
+F
+Form Quick Key
+B
+Button Quick Key
+Enter
+(in a form element)
+Enter Forms Mode
+Tab
+Navigate to Next form Control
+Shift
++
+Tab
+Navigate to Previous Form Control
+Spacebar
+Select and Deselect Checkboxes
+Alt
++
+↓
+Open Combo Box/Jump Menu
+Ctrl
++
+Shift
+or
+Ctrl
++
+Spacebar
+Select Multiple List Items
+Ctrl
++
+\
+Unselect All But Current
+↑
+/
+↓
+Select Radio Button
+↑
+/
+↓
+or the
+First letter
+Select Element in Combo Box
+Enter
+(in forms mode)
+Submit Form
++
+key
+Exit Forms Mode
+JAWS
++
+key
+Exit Forms Mode
+JAWS
++
+F5
+List of Form Elements
+Links
+Command
+Description
+Tab
+Jump from
+link/Form element next one
+Shift
++
+Tab
+Jump from
+link/Form element next previous one
+JAWS
++
+F3
+Bring up a list of links within the page
+U
+Unvisited Link Quick Key
+V
+Visited Link Quick Key
+Frames
+Command
+Description
+Ctrl
++
+Tab
+Move from one frame to the next frame within the page.
+Ctrl
++
+Shift
++
+Tab
+Move from one frame to the previous frame within the page.
+JAWS
++
+F9
+Bring up a list of frames that are present within the page
+Other Commands
+Command
+Description
+Ctrl
++
+F
+Search for a word or a phrase
+JAWS
++
+Esc
+Refresh Screen, i.e. repaints all the currently displayed items on the screen
+JAWS
++
+F5
+Reformat documents, i.e. reformats multiple column pages to be more readable with speech.
+JAWS
++
+F1
+Help with current element

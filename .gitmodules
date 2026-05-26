@@ -1,0 +1,3 @@
+[submodule "llama-dynamic-context"]
+	path = llama-dynamic-context
+	url = https://github.com/vifirsanova/llama-dynamic-context

@@ -1,0 +1,250 @@
+URL: https://webaim.org/articles/label-name/
+Title: WebAIM: Decoding Label and Name for Accessibility
+================================================================================
+
+WebAIM: Decoding Label and Name for Accessibility
+Decoding Label and Name for Accessibility
+You are here:
+Home
+>
+Articles
+> Label and Name
+"Label" and "Name" as Defined in WCAG
+The
+Web Content Accessibility Guidelines
+(WCAG) 2 require that interactive elements have a "label" and "name" (often called "accessible name"), but the way these terms are used in WCAG does not always match how they are used by developers.
+WCAG defines an element's
+label
+as: "text or other component with a text alternative that is presented to a user to identify a component within Web content." It defines
+name
+as: "text by which software can identify a component within Web content to the user". These definitions are almost identical, but there is one important difference: "label" is presented to the
+user
+and "name" is presented to
+software
+.
+In other words,
+label
+is presented visually, and
+name
+is presented to assistive technologies, like screen readers and voice control software.
+Label and Name are Usually the Same
+For most HTML elements, the WCAG name and label should be the same. For example, if a link has text of "Apply now" (
+<a href="application">Apply now<a/>
+), this text will serve as both the label (what a sighted user sees) and name (what a screen reader user would hear).
+However, finding the accessible name is not always straightforward, especially in one of these three scenarios:
+For images, you must check the alternative text to discover the accessible name.
+If an element has multiple bits of information competing for the accessible name, you must determine what rises to the top. This is especially common for form controls.
+If an element uses ARIA labels (
+aria-label
+or
+aria-labelledby
+), this will override any other contender for accessible name, sometimes with disastrous results.
+As an example of #1, a linked image presents the text "Next":
+The WCAG label for this element is the visible text of "Next", but you cannot know the accessible name provided for this image just by looking at it.
+Important
+There are two primary ways to discover the accessible name:
+Use a screen reader.
+Inspected the underlying structure of the element. This is usually done by viewing the code or using developer tools that are built into the browser, such as Chrome Developer Tools.
+The code for this image is
+<img src="nx.png" alt="Next">
+. By using one of these two methods, we discover that the accessible name for this image is "Next"—the same information that is presented visually is presented to assistive technologies.
+Note
+Not every HTML element can have an accessible name. For example,
+<span>
+,
+<div>
+, and
+<p>
+cannot (except in cases where certain ARIA roles are added to them).
+WCAG 2.1 "Label in Name"
+What if this same linked image has alternative text of "Continue":
+<img src="nx.png" alt="Continue">
+?
+WCAG 2.0 requires equivalent alternative text for images, and the word "Continue" is arguably equivalent to "Next", so you could make a case for this conforming with WCAG 2.0. But this mismatch between the visible text and alternative text still poses problems. A user of voice control software like Dragon would be unable to activate this link using the visible label. A blind user may encounter an impasse when a sighted colleague asks them to "click on Next," but they cannot find a link or button with that name. A screen reader user who is not blind might be confused when they see "Next" but hear "Continue".
+WCAG 2.1 addresses this issue with a Level A success criterion: "
+2.5.3 - Label in Name
+". Label in Name requires that the accessible
+name
+for a link or control contain the text
+label
+. An image with visible text of "Next" and alternative text of "Continue" would fail this requirement.
+The label and name do not have to match exactly. Alternative text of "Next Page" would meet the Label in Name requirement because the accessible name
+contains
+the visible label (although a perfect match of "Next" would almost certainly be better).
+Note
+This success criterion only applies when the element contains text or images of text—it would not apply to an image of an arrow with no text.
+Accessible Name Computation
+An interactive element can only present one string of information as the accessible name, but there can be numerous bits of information competing for this spot. For example, the accessible name for a textbox (
+<input type="text">
+) could come from the
+<label>
+element or the
+title
+,
+placeholder
+,
+aria-label
+,
+aria-labelledby
+—even the
+aria-placeholder
+attribute. When encountering more than one option, it is vital that different web browsers present the accessible name consistently.
+The W3C, the creators of WCAG, developed the "
+Accessible Name Computation
+" to meet this need for consistency. It is a specification that defines what can serve as an accessible name, and what "wins" if there is more than one valid option available.
+One of the most common places where this hierarchy plays out is with form controls, for example, a "First Name" text field:
+First name:
+We will go through several things that could serve as the accessible name for this field.
+<label>
+is usually best
+If a form control has a text label, then it is almost always
+best to use
+<label>
+to identify that this text is also the accessible name.
+<label for="fname">First name:</label> <input type="text" id="fname">
+Support for
+<label>
+as the accessible name is rock-solid, and it has the added benefit of making the text label clickable, meaning you can click the text and set focus to a field, or check a checkbox or radio button.
+Do not confuse the
+<label>
+element with the WCAG "label". It is usually best to use the
+<label>
+to present a visible label, but it is possible to provide a label in other ways (as the next example will demonstrate). Similarly, do not confuse the
+name
+attribute in HTML with WCAG "name"—these are not at all related.
+Important
+The examples that follow are not recommended. They are provided to demonstrate the accessible name computation. See our
+forms article
+for example of appropriate uses of
+title
+,
+aria-labelledby
+, and
+aria-label
+in forms.
+The
+title
+attribute
+If the first name field does not have an associated
+<label>
+element, but it has a
+title
+attribute value, then this will be read as the accessible name.
+First name:
+First name: <input type="text"
+title="First Name"
+>
+There is no advantage to using the
+title
+attribute instead of
+<label>
+in this example, but there are disadvantages—clicking on the visible label will not set focus to the text field, and hovering over the field with the mouse presents a tooltip that may be distracting. However, the text "First Name" will be presented to a screen reader user for the input's name.
+The
+placeholder
+attribute
+What if the visible text of "First name" is presented in a
+placeholder
+attribute?
+<input type="text" placeholder
+="First Name"
+…>
+Placeholder text will typically be read by a screen reader, so this input has an accessible name (although this is sometimes debated). The main problem is that the placeholder text does not function as a suitable
+label
+. The
+HTML specification
+for
+placeholder
+states as much: "The placeholder attribute should not be used as an alternative to a label" (meaning WCAG label, not
+<label>
+element). This is because placeholder text disappears once the user enters the field or starts typing text. Placeholder text may also have low contrast.
+Relying on
+placeholder
+to visually indicate what a field is for may also cause the form control to fail other WCAG requirements (e.g.,
+3.3.2 Labels or Instructions
+).
+ARIA Labels Always Win
+As if the difference between label and name weren't difficult enough, the introduction of
+aria-label
+and
+aria-labelledby
+makes it even more confusing.
+The most important principle to remember is that ARIA labels
+are always at the top of the accessible name hierarchy.
+aria-labelledby
+will override any other information that could serve as an accessible name, including
+aria-label
+,
+<label>
+for form controls, the
+alt
+attribute for images, button values for buttons, and link text for links.
+For example, a text field has a
+<label>
+and an
+aria-label
+:
+First Name:
+<label for="fname">First Name:</label> <input type="text" id="fname"
+aria-label="Your Name"
+>
+In this case, a screen reader would be presented with "Your Name" when they navigate into the field, and nothing will happen if a Dragon user says "Click First Name." Because the label ("First Name") is not within the accessible name ("Your Name"), this would be a WCAG Label in Name failure.
+People often assume that ARIA labels are added or appended to other information, but this is not the case. The failure to understand this principle has resulted in confusing or inaccessible interactions all over the web. If we come back to the "Apply now" link mentioned earlier and add a small "PDF"
+image using CSS, because this image conveys content, it would need alternative text.
+Apply now
+A well-meaning developer might give this link
+aria-label="PDF"
+thinking the screen reader will combine the link text and the
+aria-label
+value:
+<a href="fall-calendar.pdf" class="PDFlink"
+aria-label="PDF"
+>Apply now</a>
+Instead, the screen reader will only read "PDF". The link's purpose, "Apply now", would be completely hidden to a screen reader user-overridden by the ARIA label text. This link would also be broken for someone who tries to activate the link using voice control.
+Accessible Description
+The full name of the Accessible Name Computation is actually "
+Accessible Name and Description Computation
+". Accessible
+description
+is presented in addition to, not instead of, the accessible name. These are useful for associating additional cues, like form field requirements or error messages. The
+aria-describedby
+attribute is the best way to define descriptions.
+If there is no
+aria-describedby
+, but there is a
+title
+attribute, then the title will typically be presented as the description. Because
+title
+attribute values are usually read by screen readers, it can create a lot of duplication of content and should be used very sparingly.
+Tools to Identify the Accessible Name and Description
+The only way to be sure of an element's accessible name is to either inspect its underlying HTML structure or interact with it using a screen reader. Web accessibility evaluators should optimally have at least three types of tools to aid them in identifying the accessible name of components within the page:
+A tool that exposes accessibility information throughout the page.
+Among other things, this tool should reveal form labels, image alternative text, and the presence of
+aria-label/labelledby/describedby
+.
+WAVE
+is a free tool that provides this functionality.
+A tool to inspect the underlying HTML.
+Chrome and Firefox both include built-in tools to inspect not only the HTML, but the element's accessibility properties, including name and description. Chrome Developer Tools (DevTools) will even show the hierarchy of the accessible name computation for a specific element, and everything competing for this top spot.
+A screen reader.
+It is important to ensure information is presented to the end user as it should be, especially when evaluating elements that user ARIA.
+NVDA
+on Windows and
+VoiceOver
+on macOS are free screen readers that are both excellent for evaluation.
+Conclusion
+To recap:
+The WCAG label is the visual information, and the name (or accessible name) is the information presented to assistive technology.
+The accessible name must contain the text presented in the visible WCAG label, and the two should usually identical.
+Elements can only have one name. If there is more than one thing that can serve as the name, then the accessible name computation determines what will win.
+ARIA labels (
+aria-labelledby
+and
+aria-label
+) override all other accessible names including
+<label>
+, the
+alt
+attribute, and button and link text.
+Descriptions are presented in addition to the accessible name.
+To be sure of the name, you must inspect an element's underlying HTML or test it with a screen reader (or both).
+If you follow these principles closely, your websites will be much more screen reader and voice control friendly for users.

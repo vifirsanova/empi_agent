@@ -1,0 +1,33 @@
+URL: https://webaim.org/articles/seizure/
+Title: WebAIM: Seizure and Vestibular Disorders
+================================================================================
+
+WebAIM: Seizure and Vestibular Disorders
+Seizure and Vestibular Disorders
+You are here:
+Home
+>
+Articles
+> Seizure and Vestibular Disorders
+Overview
+Some people are susceptible to seizures caused by strobing, flickering, or flashing effects. This kind of seizure is sometimes referred to as a photoepileptic seizure because it impacts users with a form of epilepsy, called photosensitive epilepsy, and is caused by pulses of light (hence the prefix "photo") impacting with the eye's light-receptive neurons and the body's central nervous system.
+Most web content is harmless to individuals with photosensitive epilepsy. Most animations, videos, and moving text do not present any danger. However, some authors insist on dramatic effects of flashing or flickering lights and strobe-like effects, especially in video content. Science-fiction style video or animation and cheap-looking banner ads are among the worst offenders. Certain page interactions, such as highly contrasting drop-down menus could cause the screen to repeatedly flash. These are potentially dangerous. Developers should make every effort to ensure that their content does not have strobing, flickering, or flashing effects.
+What Constitutes Strobing, Flickering or Flashing?
+The
+Web Content Accessibility Guidelines
+outline specific thresholds for size, frequency (faster than three flashes per second), intensity or contrast of the flashes, and red color. In general, if the content flashes more than three times per second, is notably large (a small animating image would not cause a seizure), and has bright contrast in the flashes (especially if the color red is present), it may cause a seizure and must be avoided.
+Vestibular Disorders
+Even if an animating or moving object does not cause a seizure, it may cause nausea or dizziness in some people.
+Vestibular Disorders
+are caused by parts of the inner ear and brain that process the sensory information involved with controlling balance and eye movements. As many as 35% of adults aged 40 years or older in the United States have experienced some form of vestibular dysfunction. While not as serious of a health risk as a seizure, having users associate your web site with feelings of illness or dizziness is probably not the best design decision, at least in terms of user satisfaction and repeat visits. In some instances, an image does not even need to move to cause these effects.
+The following items can result in difficulties for users with vestibular disorders:
+High contrast graphics with tight parallel lines.
+Animated scrolling that lasts longer than perhaps 1/4 second.
+Parallax or reverse parallax—simultaneous foreground and background scrolling in different directions or at different speeds.
+Moving images beneath static text.
+If your page utilizes CSS or JavaScript for movement or animation, detection of the
+prefers-reduced-motion
+CSS features
+can allow you to disable it for users that have settings that favor limited movement.
+Conclusion
+Because of the potentially serious nature of seizures, developers should be extra careful to avoid any graphics, animations, movies, or other objects which have strobing, flickering, or flashing effects. Developers should also avoid graphics which may induce nausea or dizziness, or that may be distracting.

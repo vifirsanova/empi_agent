@@ -1,0 +1,41 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/general/G59#main
+Title: G59: Placing the interactive elements in an order that follows sequences and relationships within the content | WAI | W3C
+================================================================================
+
+G59: Placing the interactive elements in an order that follows sequences and relationships within the content | WAI | W3C
+Skip to content
+Technique G59:
+Placing the interactive elements in an order that follows sequences and relationships within the content
+About this Technique
+This technique relates to
+2.4.3 Focus Order
+(
+Sufficient
+).
+This technique applies to all technologies that contain interactive elements and define a default tab order for interactive elements.
+Description
+The objective of this technique is to ensure that interactive elements receive focus in an order that follows sequences and relationships in the content. When designing the content, the interactive elements such as links and form controls are placed in the content so that the default tab order follows the sequences and relationships in the content. Each technology defines its default tab order, so the mechanism for placing the controls in the content will depend on the technology used.
+As an example, in HTML, the default focus order follows the order in which elements appear in the content source. When the order of the HTML source matches the visual order of the web page, tabbing through the content follows the visual layout of the content. When the source order does not match the visual order, the tab order through the content must reflect the logical relationships in the content that are displayed visually.
+Examples
+A form contains two text input fields that are to be filled in sequentially. The first text input field is placed first in the content, the second input field is placed second.
+A form contains two, side-by-side sections of information. One section contains information about an applicant; the other section contains information about the applicant's spouse. All the interactive elements in the applicant section receive focus before any of the elements in the spouse section. The elements in each section receive focus in the reading order of that section.
+Related Techniques
+G57: Ordering the content in a meaningful sequence
+C27: Making the DOM order match the visual order
+SCR26: Inserting dynamic content into the Document Object Model immediately following its trigger element
+SCR27: Reordering page sections using the Document Object Model
+H102: Creating modal dialogs with the HTML dialog element
+Tests
+Procedure
+Determine the order of interactive elements in the content.
+Determine the logical order of interactive elements.
+Check that the order of the interactive elements in the content is the same as the logical order.
+Expected Results
+Check #3 is true.
+Back to Top
+Please share your ideas, suggestions, or comments via email to the publicly-archived list
+public-agwg-comments@w3.org
+or via GitHub
+Email
+Fork & Edit on GitHub
+New GitHub Issue

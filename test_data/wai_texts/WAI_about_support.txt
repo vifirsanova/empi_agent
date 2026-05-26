@@ -1,0 +1,96 @@
+URL: https://www.w3.org/WAI/about/support/
+Title: Support WAI Financially | Web Accessibility Initiative (WAI) | W3C
+================================================================================
+
+Support WAI Financially | Web Accessibility Initiative (WAI) | W3C
+About supporting WAI
+The W3C Web Accessibility Initiative (
+WAI
+) develops strategies, standards, and supporting resources to make the web accessible to people with disabilities.
+W3C greatly appreciates the support WAI receives from stakeholders committed to making digital technology accessible. Contributions such as grants, sponsorship, and support for fellows enable WAI to bring together a unique collaboration of industry, government, research, and people with disabilities in a cooperative effort to improve digital accessibility for disabled people.
+Donate
+— To donate and “become a friend of W3C”, see
+W3C Donations Program
+.
+Sponsor
+— For information on sponsoring WAI by becoming an Accessibility Champion, please explore the
+W3C Sponsorships Program
+benefits and contact
+sponsorship@w3.org
+.
+Grant
+— For information on providing grants and other opportunities to support WAI, please contact
+giving@w3.org
+.
+Participate — To learn how you can contribute to W3C accessibility work by reviewing drafts and other ways to get involved, see
+Participating in WAI
+.
+Current sponsors and funders
+Ford Foundation
+,
+Technology and Society Program
+Past supporters
+The organizations below provided financial support for W3C WAI work before W3C established as a 501(c)3 public-interest non-profit organization.
+Past grants and contracts
+European Commission
+DE
+WAI-DE Project
+; Accompanying Measure IST
+WAI-DA Project
+Horizon 2020
+—
+WAI-Guide Project
+,
+WAI-CooP Project
+,
+WAI-Tools Project
+,
+Easy Reading Project
+Information Society Technologies Programme
+—
+WAI-DEV Project
+,
+WAI-ACT Project
+,
+WAI-AGE Project
+,
+WAI-TIES Project
+Ford Foundation
+,
+Technology and Society Program
+United States government
+US Access Board
+, US Department of Interior
+US Department of Health and Human Services (HHS)
+, Administration for Community Living (
+ACL
+), National Institute for Disability, Independent Living and Rehabilitation Research (
+NIDILRR
+); US Department of Education — contract HHS75P00120P00168, HHSP23301500054, EDOSE10C0067
+US National Science Foundation
+Past sponsors
+Adobe Systems
+Assistive Devices Industry Office, Industry Canada, Government of Canada
+Bocoup
+CA
+Deque Systems
+Elisa Communications
+ETS
+Fundación ONCE
+Hewlett Packard Development Company, HP Enterprise
+IBM Corporation
+Lotus Development Corporation
+Microsoft Corporation
+SAP
+Verizon Foundation
+Wells Fargo
+Past Fellows
+W3C WAI thanks organizations that have supported
+W3C Fellows
+in WAI:
+Elisa Communications
+Knowbility, Inc
+Research Institute of Telecommunication Transmission (RITT)
+Netlify
+provides previews of the WAI website
+Back to Top

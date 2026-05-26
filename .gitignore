@@ -1,0 +1,17 @@
+build/
+cmake-build-*/
+.vscode/
+.idea/
+*.swp
+*.swo
+.venv/
+venv/
+__pycache__/
+*.pyc
+node_modules/
+package-lock.json
+config/agent_config.toml
+.DS_Store
+Thumbs.db
+output/
+*.html.tmp

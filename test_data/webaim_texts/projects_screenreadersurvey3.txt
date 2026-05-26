@@ -1,0 +1,569 @@
+URL: https://webaim.org/projects/screenreadersurvey3/
+Title: WebAIM: Screen Reader User Survey #3 Results
+================================================================================
+
+WebAIM: Screen Reader User Survey #3 Results
+Screen Reader User Survey #3 Results
+You are here:
+Home
+>
+WebAIM Projects
+> Screen Reader User Survey #3 Results
+Introduction
+In December 2010, WebAIM conducted a survey of preferences of screen reader users. We received 1245 valid responses to this survey (1049 English, 101 Spanish, 91 French, and 4 Portuguese responses). This was a follow-up survey to
+the original WebAIM Screen Reader User Survey of January 2009
+and follow-up surveys in
+October 2009
+. Follow-up surveys were conducted in
+May 2012
+,
+January 2014
+,
+July 2015
+, and
+October 2017
+.
+A few disclaimers and notices:
+Totals may not equal 100% due to rounding.
+Total responses (n) for each question may not equal 1245 due to respondents not answering that particular question.
+The sample was not controlled and may not represent all screen reader users.
+Data was analyzed using JMP Statistical Discovery Software version 8.
+We hope to conduct a survey of this nature again in the future. If you have recommendations or questions you would like asked, please
+let us know
+.
+Demographics
+Disability Reported
+Do you use a screen reader due to a disability?
+Response
+# of Respondents
+% of Respondents
+Yes
+1107
+91%
+No
+111
+9%
+Screen Reader Proficiency
+Please rate your screen reader proficiency
+Response
+# of Respondents
+% of Respondents
+Advanced
+644
+52.6%
+Intermediate
+504
+41.2%
+Beginner
+75
+6.1%
+Those who use screen readers due to a disability report themselves as being much more proficient with screen readers. 3% of those with disabilities considered their proficiency to be "Beginner" compared to 36% of those without disabilities.
+Internet Proficiency
+Please rate your proficiency using the Internet
+Response
+# of Respondents
+% of Respondents
+Advanced
+765
+62.5%
+Intermediate
+437
+35.7%
+Beginner
+22
+1.7%
+61% of those who use screen readers due to a disability reported "Advanced" Internet proficiency compared to 86% of those without disabilities.
+Primary Screen Reader
+Which of the following is your primary desktop/laptop screen reader?
+Screen Reader
+# of Respondents
+% of Respondents
+JAWS
+727
+59.2%
+Window-Eyes
+138
+11.2%
+VoiceOver
+120
+9.8%
+NVDA
+105
+8.6%
+System Access or System Access To Go
+58
+4.7%
+ZoomText
+40
+3.3%
+Other
+40
+3.3%
+Most notable is a significant decline in primary usage of JAWS - down to 59.2% from 66.4%
+as reported in October 2009
+. All other screen readers saw an increase in usage, with NVDA gaining the greatest ground with a nearly 300% increase in usage in 14 months. There was no marked difference in primary screen reader use between respondents with and without disabilities; however, those without disabilities were more likely to use NVDA (19.8% of respondents) than those with disabilities (7.6%). Those with a screen reader proficiency of "Beginner" were less likely to use JAWS and Window-Eyes and 3 times more likely to use NVDA than those with "Advanced" screen reader proficiency.
+Screen Readers Commonly Used
+Which of the following desktop/laptop screen readers do you commonly use? (select all that apply)
+Screen Reader
+# of Respondents
+% of Respondents
+JAWS
+866
+69.6%
+Window-Eyes
+236
+19.0%
+VoiceOver
+251
+20.2%
+NVDA
+433
+34.8%
+System Access or System Access To Go
+202
+16.2%
+ZoomText
+76
+6.1%
+Other
+92
+7.4%
+JAWS (75.2% to 69.6%), Window-Eyes (23.5% to 19.0%), and System Access (22.3% to 16.2%) saw decreases in usage since October 2009. VoiceOver (6% in January 2009 to 14.6% in October 2009 to 20.2% in December 2010) and NVDA (8% in January 2009 to 25.6% in October 2009 to 34.8% in December 2010) saw significant increases in usage.
+The following chart shows changes in screen reader usage over time.
+47% of respondents commonly use more than one screen reader, 20% use more than two, and 7% use more than three screen readers.
+Screen Reader Updates
+Has your primary screen reader been updated in the last year?
+Response
+# of Respondents
+% of Respondents
+Yes
+961
+80%
+No
+241
+20%
+The vast majority of respondents updated their primary screen reader within the previous year. This is slightly higher than the 75% who reported updating within a year in
+January 2009
+, but slightly lower than the 83.6% who reported the same in October 2009. It's important to note, however, that
+many users
+may still be using screen readers that are several years old.
+Browsers
+When using your primary screen reader, which browser do you use most often?
+Browser
+# of Respondents
+% of Respondents
+Internet Explorer 8
+522
+43.1%
+Firefox 3+
+285
+23.5%
+Internet Explorer 7
+151
+12.5%
+Safari
+116
+9.6%
+Internet Explorer 6
+63
+5.2%
+Internet Explorer 9
+54
+4.5%
+Others
+20
+1.7%
+Internet Explorer accounts for 65.3% of the browser share among respondents. At the time of publication, this is significantly higher than that of the general population. When compared to the October 2009 survey, Internet Explorer usage dropped from 70.9% whereas Firefox (18.8% to 23.5%) and Safari (8.3% to 9.6%) usage both increased. Those without disabilities were twice as likely as those with disabilities to use Firefox (43.7% compared to 21.8%) and much less likely to use Internet Explorer (47.6% compared to 66.5%).
+JavaScript Enabled
+Respondents with JavaScript enabled
+JavaScript Enabled
+% of Respondents
+Yes
+98.4%
+No
+1.6%
+10.4% of respondents to
+the October 2009 survey
+indicated that they have JavaScript disabled in their web browser. As respondents submitted responses to this survey we detected the presence of JavaScript. We found that very few respondents had it disabled or unavailable in their web browser. Of the 19 respondents with JavaScript disabled, 12 were using Firefox (presumably with the NoScript add-on enabled) and 5 were using Lynx with Linux.
+Free/Low-cost Screen Readers
+Do you see free or low-cost screen readers (such as NVDA or VoiceOver) as currently being viable alternatives to commercial screen readers?
+Response
+# of Respondents
+% of Respondents
+Yes
+752
+60.4%
+No
+184
+14.8%
+I Don't Know
+309
+24.8%
+47.8% answered "Yes" to this question in October 2009. The perception of free or low-cost screen readers seems to have improved.
+Perhaps not surprisingly, 54% of JAWS users and 47% of Window-Eyes users answered "Yes" compared to an overwhelming 98% of NVDA users and 95% of VoiceOver users.
+Mobile Screen Readers
+Mobile Screen Reader Usage
+Do you use a screen reader on a mobile phone or mobile handheld device?
+Response
+# of Respondents
+% of Respondents
+Yes
+796
+66.7%
+No
+398
+33.3%
+This represents a 550% increase in mobile screen reader usage in under two years (only 12% reported using a mobile screen reader in January 2009) and a significant increase over the 53% that reported using a mobile screen reader in October 2009. Mobile screen reader use among those without disabilities is also much higher at 32% compared to just 8% in October 2009. Not surprisingly, more proficient screen reader users were more likely to use a mobile screen reader (79% of advanced users compared to only 26% of beginners), though the mobile screen reader usage by beginners was only 3% in October 2009, suggesting a broader adoption across screen reader users.
+Mobile Platforms
+Which of the following is your primary mobile platform?
+Mobile Platform
+# of Respondents
+% of Respondents
+Nokia
+400
+42.4%
+Apple iPhone or iPod touch
+308
+32.6%
+Android
+38
+4.0%
+Blackberry
+10
+1.1%
+Palm
+3
+.3%
+Other
+185
+19.6%
+22% of those without disabilities use an Android device compared to only 2% of those with disabilities. Nokia usage was 3 times higher among those with disabilities than among those without disabilities. iPhone usage was largely the same among these populations.
+Mobile Screen Readers Used
+Which of the following mobile screen readers do you commonly use? (Choose all that apply)
+Mobile Platform
+# of Respondents
+% of Respondents
+Nuance Talks
+374
+30.0%
+VoiceOver for iPhone
+338
+27.1%
+Mobile Speak
+203
+16.3%
+TalkBack for Android
+31
+2.5%
+Orator/Oratio for BlackBerry
+8
+.6%
+Other
+80
+6.4%
+Magnification
+Do you commonly use screen magnification (dedicated screen enlarger, increased text sizes, page zoom, etc.)?
+Response
+# of Respondents
+% of Respondents
+Yes
+146
+12.8%
+No
+997
+87.2%
+Web Accessibility Progress
+Previous Year
+Which of the following best describes your feelings regarding the accessibility of web content over the previous year?
+Response
+# of Respondents
+% of Respondents
+Web content has become more accessible
+440
+37.2%
+Web content accessibility has not changed
+501
+42.3%
+Web content has become less accessible
+243
+20.5%
+Respondents have become less optimistic in this regard - 46.3% responded that web content had become more accessible in the previous year when asked in October 2009, but only 37.2% answered the same in December 2010. Only 4% of those without disabilities thought web content had become less accessible compared to 22% of those with disabilities.
+Next Year
+Which of the following best describes your outlook regarding the accessibility of web content over the next year?
+Response
+# of Respondents
+% of Respondents
+Web content will become more accessible
+641
+55.1%
+Web content accessibility will not change
+305
+26.2%
+Web content will become less accessible
+218
+18.7%
+Despite a rather tepid response to progress over the previous year, respondents were generally quite optimistic regarding future progress. As shown above, those without disabilities were more optimistic about future web accessibility than those with disabilities.
+Impacts on Accessibility
+Which of the following do you think would have a bigger impact on improvements to web accessibility?
+Response
+# of Respondents
+% of Respondents
+Better (more accessible) web sites
+916
+75.8%
+Better assistive technology
+293
+24.2%
+In October 2009, 68.6% of respondents answered "better web sites" to this question. This change perhaps reflects improvements to assistive technology or possibly the shift to other screen readers such as NVDA or VoiceOver. There was minimal difference between the responses based on disability, proficiency, or screen reader used.
+Social Media
+Which of the following social media sites or tools do you frequently use?
+Social Media Tool
+# of Respondents
+% of Respondents
+Blogs
+531
+42.6%
+Facebook
+650
+52.2%
+LinkedIn
+200
+16.1%
+MySpace
+46
+3.7%
+Twitter
+533
+42.8%
+YouTube
+671
+51.9%
+Music sharing sites
+109
+8.8%
+Social media usage is largely unchanged since October 2009, with Facebook seeing an increase in usage from 42% to 52.2% of respondents. MySpace saw a decrease from 9% to 3.7%. Respondents without disabilities were somewhat more likely to use all of the social media tools listed.
+Social Media Accessibility
+In general, how accessible are social media web sites to you?
+Response
+# of Respondents
+% of Respondents
+Very Accessible
+101
+9.3%
+Somewhat Accessible
+567
+52.3%
+Somewhat Inaccessible
+262
+24.1%
+Very Inaccessible
+89
+8.2%
+I Don't Know
+66
+6.1%
+HTML5
+Which of the following best describes your feelings regarding HTML5?
+Response
+# of Respondents
+% of Respondents
+HTML5 will increase web accessibility
+348
+33.7%
+HTML5 will not change web accessibility
+119
+11.5%
+HTML5 will decrease web accessibility
+55
+5.3%
+I don't know
+511
+49.5%
+Nearly half of respondents didn't know their feelings regarding HTML5. Of those that expressed opinions, the majority have a positive outlook regarding HTML5. Respondents without disabilities were more optimistic - 47% answered that it will increase web accessibility compared to 32% of those with disabilities.
+ARIA Landmarks
+ARIA (Accessible Rich Internet Applications) introduces something called landmarks. These provide quick access to page areas, such as navigation, search, and main content. Which of the following best describes your use of landmarks?
+Response
+# of Respondents
+% of Respondents
+I didn't know this functionality existed
+342
+30.9%
+I do not use landmarks for navigation
+287
+25.9%
+I sometimes use landmarks for navigation
+277
+25.0%
+I use landmarks for navigation whenever they are present
+161
+14.5%
+My screen reader does not support landmarks
+40
+3.6%
+Awareness of landmarks has increased - 42% were unaware of this functionality in October 2009. However, these data continue to show mixed levels of usage.
+Finding Information
+When trying to find information on a lengthy web page, which of the following are you most likely to do first?
+Response
+# of Respondents
+% of Respondents
+Navigate through the headings on the page
+693
+57.2%
+Use the "Find" feature
+261
+21.5%
+Navigate through the links of the page
+155
+12.8%
+Read through the page
+103
+8.5%
+The use of headings to find information has increased from 50.8% to 57.2% since October 2009, while all other methods saw decreases in use over this time period. These responses show the prevalent use of headings and underscore
+our previous findings
+which indicate that a good heading structure is a very important aspect of web accessibility and usability. Those with advanced screen reader proficiency are more likely to use headings over other methods (64% use headings) than those with beginner proficiency (44% use headings).
+"Skip" Links
+When a "skip to main content" or "skip navigation" link is available on a page, how often do you use it?
+Response
+# of Respondents
+% of Respondents
+Whenever they're available
+189
+15.2%
+Often
+202
+16.2%
+Sometimes
+363
+29.2%
+Seldom
+270
+21.7%
+Never
+169
+13.6%
+No Response
+52
+4.2%
+When compared to responses to the
+January 2009 survey
+, there has been a slight decrease in the usage of "skip" links. This may likely be due to increased usage of headings and landmarks for navigation as noted above.
+Access keys
+When access keys (keys defined by web site developers to provide page-specific shortcuts) are available on a page, how often do you use them?
+Response
+# of Respondents
+% of Respondents
+Whenever they're available
+198
+15.9%
+Often
+144
+11.6%
+Sometimes
+328
+26.3%
+Seldom
+282
+22.7%
+Never
+245
+19.7%
+No Response
+48
+3.9%
+27.5% of respondents indicate that they always or often use access keys, a decrease from 38% in the
+January 2009 survey
+.
+Mobile Versions
+If a mobile version of a web site is available, how often do you use it instead of the standard web site?
+Response
+# of Respondents
+% of Respondents
+Whenever they're available
+154
+13.9%
+Often
+223
+20.1%
+Sometimes
+340
+30.7%
+Seldom
+176
+15.9%
+Never
+214
+19.3%
+Using mobile versions of a site is more common among respondents who are less proficient with their screen reader.
+Text-only or Screen Reader Versions
+If a text-only or screen reader version of a web site is available, how often do you use it?
+Response
+# of Respondents
+% of Respondents
+Whenever they're available
+272
+21.9%
+Often
+191
+15.3%
+Sometimes
+331
+26.6%
+Seldom
+228
+18.3%
+Never
+162
+13.0%
+No Response
+61
+4.9%
+These responses are largely unchanged from responses to the
+January 2009 survey
+. Only 14% of those without disabilities reported using text-only or screen reader versions often or whenever they're available compared to 39% of those with disabilities. This may suggest that those with disabilities find greater usage in text-only or screen reader versions than those without disabilities might think or hope. Despite this, the fact that so many users seldom or never use such sites suggests that this approach to accessibility is not optimal.
+Heading Structures
+Which of the following page heading structures is easiest for you?
+Response
+# of Respondents
+% of Respondents
+One first level heading that contains the site name
+136
+12.5%
+One first level heading that contains the document title
+403
+37.1%
+Two first level headings, one for the site name and one for the document title
+546
+50.3%
+These responses are of interest as the use of two <h1>s is generally at odds with most recommendations. Of note is that a single <h1> for the site name is by far the least desired.
+Longdesc
+How useful is longdesc (a method of providing a long description for complex images) to you?
+Response
+# of Respondents
+% of Respondents
+Very useful
+286
+26.2%
+Somewhat useful
+375
+34.4%
+Not very useful
+123
+11.3%
+Not at all useful
+59
+5.4%
+I don't know
+247
+22.7%
+These responses show a strong usefulness of the longdesc attribute, which is currently under debate for omission from HTML5. Also of note is that 22.7% of respondents do not know the usefulness of longdesc, suggesting a need for better education or presentation of this functionality in screen readers.
+Conclusion
+The conclusion identified in the previous screen reader user surveys remains -
+there is no typical screen reader user
+. These results highlight significant changes and trends over a span of only 2 years, results that we hope will drive informed web accessibility practices.
+A few items of note:
+JAWS is still the primary screen reader, but usage is decreasing as usage of NVDA and VoiceOver significantly increases.
+The perception of free or low-cost screen readers is improving.
+98.4% of respondents had JavaScript enabled.
+The outlook for future web accessibility is optimistic.
+Two-thirds of the respondents use a screen reader on a mobile device, up from only 12% two years ago.
+Most respondents find longdesc useful.

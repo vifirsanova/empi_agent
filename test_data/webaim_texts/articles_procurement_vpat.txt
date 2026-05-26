@@ -1,0 +1,98 @@
+URL: https://webaim.org/articles/procurement/vpat/
+Title: WebAIM: Making VPATs and ACRs More Effective in Procurement
+================================================================================
+
+WebAIM: Making VPATs and ACRs More Effective in Procurement
+Making VPATs and ACRs More Effective in Procurement
+You are here:
+Home
+>
+Articles
+> Making VPATs and ACRs More Effective in Procurement
+StrategicA11y - WebAIM's Strategic Accessibility Virtual Workshop
+Elevate accessibility in your organization with WebAIM's help.
+Learn more about StrategicA11y
+Introduction
+The
+Voluntary Product Accessibility Template
+, or VPAT, is a standard template for documenting conformance with WCAG and other accessibility standards. Accessibility Conformance Reports are product-specific reports derived from a VPAT. ACRs are often used in technology purchase and use decisions. There is significant variation in how organizations use an ACR in their procurement processes.
+Some organizations acquire an ACR from a vendor and consider that the first and last step before moving on with their purchase decision without adequately weighing accessibility. Others perform hours of hands-on, direct accessibility evaluation, creating detailed documentation. There must be a balance between the value of information collected and the time and effort required to collect it. Organizations can make efficiency gains in many product categories by leaning on the VPAT and ACR more heavily as tools to gather and compare information about competing products and vendors.
+Early Emphasis is Key
+Organizations must first make the ACR a non-negotiable deliverable from vendors from the start. In formal procurement processes, the request for the ACR fits into the Request for Proposal or even in a Request for Information when used. This is critical to acquiring an ACR and presents an opportunity to highlight any specific areas the purchasing organization wants to emphasize. These initial requests stress the importance of accessibility to potential vendor partners. This is also a key message for decision-makers within the purchasing organization. Stating a commitment to accessibility as a critical component of the organization's decision helps internal reviewers properly account for it throughout the process.
+The request should also be phrased so the candidate vendors know that collecting the ACR is not just for show. Even in these earliest stages, one of the goals is to normalize accessibility as a requirement alongside functional, aesthetic, and security requirements that are commonly specified, graded, and scored.
+The goal is to have an ACR that is:
+Current
+Complete
+Accurate
+Thorough
+While there is some overlap between these four concepts, each brings its own unique value. Iterations of questions and responses from vendors may be needed to ensure these four traits. How many iterations will depend on the organization's willingness and ability to return to candidate vendors for clarification and more details.
+The purchasing organization must perform a comparative exercise throughout purchasing and use decisions. It is important to implement some means to score vendor products on various requirements. This helps to create a more repeatable and uniform process. ACR reviews often provide an apparent separation between candidate products.
+Many product categories will have vendors in the pool that deliver an excellent ACR upon initial request. ACRs will lack critical information across the vendor pool in other product categories. Purchasing organizations must determine whether to give vendors another opportunity to provide details through a second round of questioning.
+Vetting the ACR
+The VPAT is typically completed by the vendor. The validity and accuracy of an ACR will vary based on several factors. In many cases, reliability can be improved without adding significant time and effort to the process.
+Within the VPAT are several opportunities to make deeper inquiries about technical conformance and a vendor's practice around accessibility. The immediate objective is often only to evaluate the functional accessibility of one product and compare it to others in the candidate pool. Collecting information about the vendor's accessibility practice, or lack thereof, provides significant additional value to the decision-making process.
+Non-technical Details
+Sections that precede the technical information requested on the VPAT lend themselves to this analysis. Sections that deserve scrutiny are:
+Name of Product/Version
+Report Date
+Contact Information
+Notes
+Evaluation Methods Used
+Any place where details are sparse, purchasing organizations must press vendors to provide more. When a vendor offers minimal helpful information, they will naturally fall behind those that provide greater detail in these areas.
+Name of Product/Version and Report Date
+These give us insight into whether the ACR is current and applies to the software version we seek to purchase. When cloud-based platforms don't have a version number per se, the report's date becomes much more important. Ideally, a vendor provides an ACR that is within a few months to a year of the product purchase date and/or that applies to a release version that is at least the same major version number as the product under consideration. Otherwise, the purchaser must ask "What has changed in the product since this ACR was created that has a material impact on accessibility?" This is one area where less technical staff can begin vetting the ACR, potentially making the process more efficient.
+Contact Information
+Having a contact that is from UX design, web development, or accessibility is critical to collecting more technical information if required. Some vendors will provide contact information for a sales or product role because they always place someone between potential clients and more technical staff. When this is the case, purchasing organizations should make sure that expectations are clear regarding the expected turnaround for responses, as well as the nature of the roles that the vendor has in place to respond.
+Notes
+The instructions for vendors in the VPAT indicate that vendors can provide "Any details or further explanation about the product or the report. This section may be left blank." The VPAT, "Best Practices for Authors," suggests more (Information Technology Industry Council, 2022):
+Additional information about the product version that the document references
+Any revisions to the document
+Links to any related documents
+Additional information describing the product
+Additional information about what the document does or does not cover
+Etc.
+This is a section where purchasing organizations can discover more about the candidate vendor, the candidate product, and the vendor's accessibility practice. The purchasing organization may require vendors to provide insight into how they integrate accessibility into product management and design in Notes, often making the request in an RFP. This is the only space in the VPAT where a vendor can provide this kind of information.
+Knowing that a candidate vendor has a more mature internal accessibility program gives the purchasing organization more peace of mind. It is one thing for a current version of a product to be strong in accessibility relative to other products in the candidate pool. Knowing that a candidate vendor has made accessibility a part of its operations upstream from quality assurance and even development suggests that the product will remain more accessible over time.
+An indication that accessibility is a part of a vendor's core mission and values, including stated
+commitment and vision
+from senior leadership, is ideal. A sign that vendors have at least embraced accessibility at the product level, including insight into professional development provided, UX design practice that includes accessibility, and similar demonstrates at least a more holistic and desirable approach.
+Evaluation Methods Used
+The VPAT's instructions for vendors are a bit narrow, stating, "Include a description of evaluation methods used to complete the VPAT for the product under test." Best practices suggested in the VPAT include testing based on knowledge of general product functionality, testing with assistive technologies, published test methods, a vendor proprietary test method, or other test methods.
+This opens the door for a vendor to enter "General product knowledge" or similar, which is relatively common. When purchasing organizations see this claim in isolation, they should ask for more specific information. This is true when the response does not provide detailed insight.
+An ideal response from a vendor will include details such as tools and processes used to evaluate the product. When specific tools are referenced, they should be referenced by name, whether "WAVE" or the name of a particular assistive technology. Testing using only a keyboard is also a positive indicator.
+Insight into who performs testing is also a key focus area. Vendors that indicate that they have engaged people with disabilities in testing may be further ahead of other candidate vendors.
+Technical Details
+This is often the primary focus for purchasing organizations, with good reason. The VPAT allows candidate vendors to self-assess the accessibility of a product using different accessibility standards. Regardless of the standard set used by the purchasing organization, a high level of scrutiny of the information about conformance to standards reveals needed information without dedicating as much time as direct accessibility evaluation.
+For WCAG 2.2, for example, the VPAT places each of the WCAG Success Criteria into a table row. The name of each Success Criteria is in the first cell of the row. The vendor then states how well they meet the requirement in the second cell using one of the following terms:
+Supports: The functionality of the product has at least one method that meets the criterion without known defects or meets with equivalent facilitation.
+Partially Supports: Some functionality of the product does not meet the criterion.
+Does Not Support: The majority of product functionality does not meet the criterion.
+Not Applicable: The criterion is not relevant to the product.
+Not Evaluated: The product has not been evaluated against the criterion.
+Then, vendors are prompted to provide "Remarks and Explanations" in the last cell in the row. This cell cannot be empty, even if the vendor states a conformance level of "Supports." All this information is vital to understanding the claimed level of conformance and discovering where there are gaps in accessibility and even when to expect those gaps to be filled.
+We will examine common responses, including red flags and opportunities to relay specific questions to vendors.
+Supports
+Purchasing organizations want to see "Supports" for as many criteria as possible. In practice, though, this is a nuanced response, and it requires details to ensure that such a claim is not erroneous.
+When a vendor claims "Supports," look for specific details about how the product supports the criteria. The more technical, the better. For example, the first Criteria is "Non-text Content." Stated simply, this means meaningful and active images must have text alternatives. Good questions to discover more about the implementation are:
+What elements and attributes are used to provide text alternatives? Please provide example code snippets.
+How are designers and developers supported to ensure that text alternatives provide the information required, such as the function of a linked image?
+Partially Supports
+This designation leads the purchasing organization down a few paths. There is a need to:
+Discover details about how supported criteria are implemented.
+Learn where the Success Criteria is and is not supported.
+Web applications may have multiple workflows and features. Other web properties may have patterns or components with varying accessibility.
+Learn when areas that are not supported will become so.
+A product roadmap that includes, or is specific to, accessibility will provide necessary details.
+Most organizations understand that products do not become accessible overnight. However, these three details are crucial to getting a more holistic picture of where accessibility stands in the product and where it will be in the future.
+Not Supported
+This designation takes the three points addressed above in "Partially Supports" and effectively narrows them down to when and how the vendor will implement support. A roadmap, including the scope and technical details, is the desired response.
+Scoring
+Having a scoring system is helpful when deciding on technology purchases. This helps to bring more consistency to the process, particularly when the scoring system considers all variables considered during decision-making.
+Including accessibility in a scoring system ensures it is considered alongside functional and business requirements. This is an excellent way to normalize accessibility as a critical component in the decision-making process. It also helps to ensure that a product owner cannot push a purchase through when the product is demonstrably less accessible than others in the product pool.
+The management of scoring an ACR also ties into organizational capacity. More nuanced or complex scoring strategies require more in-depth accessibility knowledge and more effort. However, this may not be to the detriment of a more intensive scoring system relative to the time spent performing direct testing.
+Scoring for elements of the vendor information (Notes and Evaluation Methods Used) and for each technical Criteria may consist of assigning a score to each item in the ACR. A score of 0 means that the vendor did not provide needed information, that the information is not helpful, or for technical criteria, that the Criteria is not supported at all. Points may increase as information on the ACR indicates more helpful information and disclosure of indicators of a more mature accessibility program. For technical criteria, more thorough information demonstrating a product's conformance to a Criteria may result in 4 points.
+The goal is to make the scoring process fair, consistent, and objective while appropriately balancing the variables involved.
+Caveats
+There are product categories that are small or narrow, and vendors in these spaces may not yet address accessibility well at all. When all the options in a product space lack accessibility, the purchasing organization must determine how to provide equivalent and independent access to the purchased product's interactions. It is important to remember that purchasing organizations are generally responsible for protecting people with disabilities from discrimination when participating in a service, program, or activity.
+There are still plenty of times when a purchasing organization must perform manual testing to collect the data needed to make an informed decision. As a step between being able to vet an ACR and performing manual testing, consider an accessibility-focused demo and meeting with the vendor.
+The ACR is just one tool available for organizations to use to evaluate the accessibility of a product. A diverse set of tools will help organizations adapt to third-party marketplace realities. Accessibility-focused product demonstrations and direct testing are other methods that provide insight into candidate products' accessibility.

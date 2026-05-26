@@ -1,0 +1,51 @@
+URL: https://www.w3.org/WAI/WCAG22/Techniques/failures/F25
+Title: F25: Failure of Success Criterion 2.4.2 due to the title of a web page not identifying the
+                    contents | WAI | W3C
+================================================================================
+
+F25: Failure of Success Criterion 2.4.2 due to the title of a web page not identifying the
+contents | WAI | W3C
+Skip to content
+Technique F25:
+Failure of Success Criterion 2.4.2 due to the title of a web page not identifying the
+contents
+About this Technique
+This technique relates to
+2.4.2: Page Titled
+(
+Failure
+).
+This failure applies to all technologies.
+Description
+This describes a failure condition when the web page has a title, but the
+title does not identify the contents or purpose of the web page.
+Examples
+Example 1
+Examples of text that are not titles include:
+Authoring tool default titles, such as
+"Enter the title of your HTML document here,"
+"Untitled Document"
+"No Title"
+"Untitled Page"
+"New Page 1"
+Filenames that are not descriptive in their own right, such
+as
+report.html
+or
+spk12.html
+Empty text
+Filler or placeholder text
+Example 2
+A site generated using templates includes the same title for each
+page on the site. So the title cannot be used to distinguish among
+the pages.
+Related Techniques
+H25: Providing a title using the title element
+Tests
+Procedure
+Check whether the title of each web page identifies the contents
+or purpose of the web page .
+Expected Results
+If check #1 is false, then this failure condition applies and the
+content fails this Success Criterion.
+Back to Top

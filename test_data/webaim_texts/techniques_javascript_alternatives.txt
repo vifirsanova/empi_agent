@@ -1,0 +1,48 @@
+URL: https://webaim.org/techniques/javascript/alternatives
+Title: WebAIM: Accessible JavaScript - JavaScript Alternatives
+================================================================================
+
+WebAIM: Accessible JavaScript - JavaScript Alternatives
+Accessible JavaScript
+JavaScript Alternatives
+You are here:
+Home
+>
+Articles
+>
+JavaScript
+> Page 4: JavaScript Alternatives
+Introduction
+Whenever JavaScript-enabled content or interactions cannot be made directly accessible, an accessible alternative must be provided. There are several ways you can provide accessible alternatives when the scripting cannot be made accessible or when the end user does not have JavaScript enabled.
+Server-side Processing
+In many cases, the functionality provided by JavaScript can or should be duplicated by server-side scripting. For example, JavaScript is often used to validate form elements before a form is posted. Instead of or in addition to implementing such JavaScript programming and its accompanying accessibility techniques, you could use a server-side script to validate the form elements. Because scripting can always be disabled or modified by the end user, it should never be relied on for critical form validation or other functions. JavaScript is often used to write dynamic information to a web page, such as the current date and/or time. Again, using a server script negates the need for additional accessibility implementation.
+Progressive Enhancement
+Progressive enhancement
+is the technique of using scripting to enhance the functionality or behavior of content and functionality that is already sufficient without scripting. An example might be adding client-side
+form validation and error recovery
+to a form that already has server-side validation. The form still functions fine without scripting, but the scripting progressively enhances the form to make it more usable and accessible. This is an excellent approach to developing accessible scripted interfaces—first start with accessible markup and core HTML (and perhaps server-side) functionality, then add accessible scripting to make it more efficient, friendly, and accessible.
+<noscript>
+Making JavaScript natively accessible is very important. However, in some cases, the end user may not have JavaScript enabled or may be using technologies that do not support JavaScript. In such cases, you can provide non-JavaScript alternatives to user's who cannot or choose not to view JavaScript content.
+When JavaScript is used within a Web page, the most straightforward way to provide an alternative for the JavaScript-generated content is to provide content within the
+<noscript>
+element. The
+<noscript>
+element can be used within your page to display content in browsers that do not support or have disabled JavaScript. However, if JavaScript IS enabled the
+<noscript>
+element is ignored.
+Important
+Providing an accessible alternative within the
+<noscript>
+element for an inaccessible script will not make the page accessible or compliant. The
+<noscript>
+content will only display if JavaScript is disabled. Most screen reader users have JavaScript enabled, and will thus encounter your inaccessible script and not the
+<noscript>
+content.
+In other words,
+<noscript>
+is an alternative to
+scripting
+, NOT an alternative for inaccessibility.
+Optimally, the
+<noscript>
+element would contain equivalent or alternative content or functionality to the scripted content or functionality. You may, for example, provide a link to an accessible HTML alternative or to a page that utilizes server-side scripting instead. However, this is often not possible, especially for highly complex applications that cannot be duplicated without scripting. In these cases you may choose to simply indicate "Your browser does not support JavaScript." or similar. This does nothing to make the content accessible or usable, but at least conveys why it is not accessible or usable.
