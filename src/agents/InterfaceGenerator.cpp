@@ -1,18 +1,11 @@
-/**
- * @file InterfaceGenerator.cpp
- * @brief Implementation of InterfaceGenerator for HTML generation
- */
-
 #include "InterfaceGenerator.hpp"
 #include <string>
 #include <vector>
 #include <memory>
 #include <stdexcept>
 #include <filesystem>
-#include <fstream>
 #include <sstream>
 #include <thread>
-
 #include "llama.h"
 
 namespace fs = std::filesystem;
@@ -23,41 +16,30 @@ namespace EMPI {
 class InterfaceGenerator::LlamaImpl {
 public:
     LlamaImpl(const std::string& model_path)
-        : model_(nullptr)
-        , ctx_(nullptr)
-        , sampler_(nullptr)
-        , vocab_(nullptr)
-        , is_available_(false)
+        : model_(nullptr), ctx_(nullptr), sampler_(nullptr), vocab_(nullptr), is_available_(false)
     {
-        if (fs::exists(model_path)) {
-            try {
-                load_model(model_path);
-            } catch (const std::exception& e) {
-                last_error_ = e.what();
-            }
-        } else {
-            last_error_ = "Model not found: " + model_path;
+        if (!model_path.empty() && fs::exists(model_path)) {
+            try { load_model(model_path); }
+            catch (const std::exception& e) { last_error_ = e.what(); }
         }
     }
-    
+
     ~LlamaImpl() {
         if (sampler_) llama_sampler_free(sampler_);
         if (ctx_) llama_free(ctx_);
         if (model_) llama_model_free(model_);
     }
-    
+
     bool is_available() const { return is_available_; }
     std::string get_last_error() const { return last_error_; }
-    
-    std::string generate_interface(const json& text_metrics, const json& feedback_analysis, const std::string&original_text) {
-        if (!is_available_) {
-            throw std::runtime_error("Model not available: " + last_error_);
-        }
-        
-        std::string prompt = construct_prompt(text_metrics, feedback_analysis, original_text);
-        return generate_html(prompt);
+
+    std::string generate_interface(const json& text_metrics,
+                                   const json& feedback_analysis,
+                                   const std::string& original_text) {
+        if (!is_available_) throw std::runtime_error("Local model not available");
+        return generate_html(construct_prompt(text_metrics, feedback_analysis, original_text));
     }
-    
+
 private:
     llama_model* model_;
     llama_context* ctx_;
@@ -65,224 +47,176 @@ private:
     const llama_vocab* vocab_;
     bool is_available_;
     std::string last_error_;
-    
+
     void load_model(const std::string& model_path) {
         llama_backend_init();
-        
         llama_model_params model_params = llama_model_default_params();
         model_params.n_gpu_layers = 99;
-        
         model_ = llama_model_load_from_file(model_path.c_str(), model_params);
-        if (!model_) {
-            throw std::runtime_error("Failed to load model: " + model_path);
-        }
-        
+        if (!model_) throw std::runtime_error("Failed to load model");
+
         vocab_ = llama_model_get_vocab(model_);
-        
         llama_context_params ctx_params = llama_context_default_params();
         ctx_params.n_ctx = 4096;
         ctx_params.n_batch = 2048;
         ctx_params.n_threads = std::thread::hardware_concurrency();
-        
         ctx_ = llama_init_from_model(model_, ctx_params);
-        if (!ctx_) {
-            llama_model_free(model_);
-            throw std::runtime_error("Failed to create context");
-        }
-        
+        if (!ctx_) { llama_model_free(model_); throw std::runtime_error("Failed to create context"); }
+
         llama_sampler_chain_params sampler_params = llama_sampler_chain_default_params();
         sampler_ = llama_sampler_chain_init(sampler_params);
         llama_sampler_chain_add(sampler_, llama_sampler_init_min_p(0.05f, 1));
         llama_sampler_chain_add(sampler_, llama_sampler_init_temp(0.8f));
         llama_sampler_chain_add(sampler_, llama_sampler_init_dist(LLAMA_DEFAULT_SEED));
-        
         is_available_ = true;
     }
-   
-    std::string construct_prompt(const json& text_metrics, const json& user_profile, const std::string& original_text) { 
-    std::stringstream ss;
-    
-    ss << "[INST] You are an accessibility assistant. Adapt the following text for a user with specific needs.\n\n";
-    
-    ss << "ORIGINAL TEXT:\n";
-    ss << original_text << "\n\n";
 
-    ss << "ORIGINAL TEXT METRICS:\n";
-    ss << text_metrics.dump(2) << "\n\n";
-    
-    ss << "USER PROFILE:\n";
-    ss << user_profile.dump(2) << "\n\n";
-    
-    ss << "TASK:\n";
-    ss << "1. Analyze the user's profile (age, ADHD, dyslexia, special needs)\n";
-    ss << "2. Rewrite/adapt the original text to match their needs\n";
-    ss << "3. Generate a complete HTML page with the ADAPTED text\n";
-    ss << "4. Use appropriate formatting based on their needs:\n";
-    ss << "   - For dyslexia: Use OpenDyslexic font, larger spacing, cream background\n";
-    ss << "   - For ADHD: Short paragraphs, clear headings, highlighted key points\n";
-    ss << "   - For low vision: High contrast, large text\n";
-    ss << "   - For autism: Clear structure, literal language, avoid idioms\n";
-    ss << "   - For children: Simpler words, colorful, engaging\n";
-    ss << "   - For seniors: Larger text, simple navigation\n\n";
-    
-    ss << "OUTPUT FORMAT:\n";
-    ss << "- Complete HTML5 page with inline CSS\n";
-    ss << "- Show both original metrics and adapted version\n";
-    ss << "- Explain what adaptations were made for this user\n";
-    ss << "- Make it practical and usable\n\n";
-    
-    ss << "ADAPTED HTML:\n";
-    ss << "[/INST]\n";
-    
-    return ss.str();
-}
-    
+    std::string construct_prompt(const json& metrics, const json& profile, const std::string& text) {
+        std::stringstream ss;
+        ss << "[INST] You are an accessibility assistant. Adapt the following text for a user with specific needs.\n\n";
+        ss << "ORIGINAL TEXT:\n" << text << "\n\n";
+        ss << "TEXT METRICS:\n" << metrics.dump(2) << "\n\n";
+        ss << "USER PROFILE:\n" << profile.dump(2) << "\n\n";
+        ss << "TASK:\n";
+        ss << "1. Analyze the user profile (ADHD, dyslexia, low vision, etc.)\n";
+        ss << "2. Adapt the text: simplify, restructure, format\n";
+        ss << "3. Generate a complete HTML5 page with inline CSS\n";
+        ss << "4. Use appropriate fonts, spacing, contrast for their needs\n";
+        ss << "5. Return ONLY the HTML starting with <!DOCTYPE html>\n\n";
+        ss << "ADAPTED HTML:\n[/INST]\n";
+        return ss.str();
+    }
+
     std::string generate_html(const std::string& prompt) {
         std::string result;
         std::vector<llama_token> tokens;
-        
-        // Токенизация с add_bos=true как в command-inference.cpp
-        int n_tokens = llama_tokenize(vocab_, prompt.c_str(), prompt.length(), nullptr, 0, true, true);
-        if (n_tokens < 0) {
-            tokens.resize(-n_tokens);
-            llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
-        } else {
-            tokens.resize(n_tokens);
-            llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
-        }
-        
+
+        int n = llama_tokenize(vocab_, prompt.c_str(), prompt.length(), nullptr, 0, true, true);
+        tokens.resize(std::abs(n));
+        llama_tokenize(vocab_, prompt.c_str(), prompt.length(), tokens.data(), tokens.size(), true, true);
+
         llama_batch batch = llama_batch_get_one(tokens.data(), tokens.size());
-        if (llama_decode(ctx_, batch) != 0) {
-            throw std::runtime_error("Failed to decode prompt");
-        }
-        
-        // Генерация как в command-inference.cpp
+        if (llama_decode(ctx_, batch) != 0) throw std::runtime_error("Decode failed");
+
         for (int i = 0; i < 500; i++) {
             llama_token new_token = llama_sampler_sample(sampler_, ctx_, -1);
-            
-            if (llama_vocab_is_eog(vocab_, new_token)) {
-                break;
-            }
-            
+            if (llama_vocab_is_eog(vocab_, new_token)) break;
+
             char buf[256];
-            int n = llama_token_to_piece(vocab_, new_token, buf, sizeof(buf), 0, true);
-            if (n <= 0) {
-                break;
-            }
-            
-            std::string piece(buf, n);
-            
-            // Останавливаемся на маркере конца
-            if (piece.find("</html>") != std::string::npos) {
-                result += piece;
-                break;
-            }
-            
+            int len = llama_token_to_piece(vocab_, new_token, buf, sizeof(buf), 0, true);
+            if (len <= 0) break;
+
+            std::string piece(buf, len);
             result += piece;
-            
+            if (result.find("</html>") != std::string::npos) break;
+
             batch = llama_batch_get_one(&new_token, 1);
-            if (llama_decode(ctx_, batch) != 0) {
-                break;
-            }
+            if (llama_decode(ctx_, batch) != 0) break;
         }
-        
         return result;
     }
 };
 
-InterfaceGenerator::InterfaceGenerator(const std::string& model_path)
+InterfaceGenerator::InterfaceGenerator(std::shared_ptr<LLMClient> llm_client,
+                                       const std::string& local_model_path)
     : UniversalAgent("interface_generator", "html_generation")
+    , llm_client_(std::move(llm_client))
+    , local_model_path_(local_model_path)
 {
-    try {
-        llama_impl_ = std::make_unique<LlamaImpl>(model_path);
-    } catch (const std::exception& e) {
-        last_error_ = e.what();
-        llama_impl_ = nullptr;
+    if (!local_model_path_.empty()) {
+        try { llama_impl_ = std::make_unique<LlamaImpl>(local_model_path_); }
+        catch (...) { llama_impl_ = nullptr; }
     }
-    
     register_handlers();
 }
 
 InterfaceGenerator::~InterfaceGenerator() = default;
 
 bool InterfaceGenerator::is_available() const {
-    return llama_impl_ && llama_impl_->is_available();
+    return (llm_client_ && llm_client_->is_available()) ||
+           (llama_impl_ && llama_impl_->is_available());
 }
 
-std::string InterfaceGenerator::get_last_error() const {
-    return last_error_;
+std::string InterfaceGenerator::get_last_error() const { return last_error_; }
+
+std::string InterfaceGenerator::fallback_html(const json& metrics, const json& feedback) const {
+    std::stringstream ss;
+    ss << "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n"
+       << "<meta charset=\"UTF-8\">\n"
+       << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+       << "<title>Adapted Material</title>\n"
+       << "<style>\n"
+       << "  body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; "
+       << "padding: 20px; line-height: 1.8; background: #fafafa; color: #222; }\n"
+       << "  h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px; }\n"
+       << "  .card { background: #fff; padding: 20px; border-radius: 8px; "
+       << "box-shadow: 0 1px 4px rgba(0,0,0,0.1); margin: 16px 0; }\n"
+       << "  .note { background: #fff3cd; padding: 12px; border-left: 4px solid #ffc107; "
+       << "border-radius: 4px; margin: 16px 0; }\n"
+       << "</style>\n</head>\n<body>\n"
+       << "<h1>Adapted Learning Material</h1>\n"
+       << "<div class=\"note\">Fallback mode: no LLM backend available. "
+       << "Configure API key or local model in agent_config.toml.</div>\n"
+       << "<div class=\"card\"><h2>Text Metrics</h2><pre>"
+       << metrics.dump(2) << "</pre></div>\n"
+       << "<div class=\"card\"><h2>User Profile</h2><pre>"
+       << feedback.dump(2) << "</pre></div>\n"
+       << "</body>\n</html>";
+    return ss.str();
 }
 
 void InterfaceGenerator::register_handlers() {
     register_handler("html_generation",
-        // φ-function
-        [](const json& input, const json& context, json& state) -> json {
-            json extracted_info;
-            
-            if (input.contains("text_metrics")) {
-                extracted_info["text_metrics"] = input["text_metrics"];
-            }
-            if (input.contains("feedback_analysis")) {
-                extracted_info["feedback_analysis"] = input["feedback_analysis"];
-            }
-            if (input.contains("original_text")) {
-                extracted_info["original_text"] = input["original_text"];
-            } 
- 
-            if (!extracted_info.contains("text_metrics")) {
-                extracted_info["error"] = "Missing text_metrics";
-                return extracted_info;
-            }
-            if (!extracted_info.contains("feedback_analysis")) {
-                extracted_info["error"] = "Missing feedback_analysis";
-                return extracted_info;
-            }
+        [](const json& input, const json&, json& state) -> json {
+            json ext;
+            if (input.contains("text_metrics"))  ext["text_metrics"] = input["text_metrics"];
+            if (input.contains("feedback_analysis")) ext["feedback_analysis"] = input["feedback_analysis"];
+            if (input.contains("original_text")) ext["original_text"] = input["original_text"];
+            if (!ext.contains("text_metrics")) { ext["error"] = "Missing text_metrics"; return ext; }
+            if (!ext.contains("feedback_analysis")) { ext["error"] = "Missing feedback_analysis"; return ext; }
             state["total_generations"] = state.value("total_generations", 0) + 1;
-            
-            return extracted_info;
+            return ext;
         },
-        
-        // ψ-function
-        [this](const json& extracted_info, const json& context, json& state) -> json {
-            json data_field;
-            
-            if (extracted_info.contains("error")) {
-                data_field["status"] = "error";
-                data_field["message"] = extracted_info["error"];
-                return data_field;
+        [this](const json& ext, const json&, json& state) -> json {
+            json out;
+            if (ext.contains("error")) {
+                out["status"] = "error";
+                out["message"] = ext["error"];
+                return out;
             }
-            
             try {
                 std::string html;
-                if (llama_impl_ && is_available()) {
-                    html = llama_impl_->generate_interface(
-                        extracted_info["text_metrics"],
-                        extracted_info["feedback_analysis"],
-			extracted_info.value("original_text", "")
-                    );
-                } else {
-                    // Fallback HTML template
-                    html = R"(<!DOCTYPE html>
-<html>
-<head><title>Analysis Results</title>
-<style>body{font-family:Arial;margin:0;padding:20px;background:#f5f5f5}.container{max-width:800px;margin:0 auto;background:white;padding:20px;border-radius:5px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}h1{color:#2c3e50}.section{margin:20px 0;padding:15px;background:#ecf0f1;border-radius:3px}</style>
-</head>
-<body><div class="container"><h1>Analysis Results</h1><div class="section"><h3>Text Metrics</h3><pre>)" + extracted_info["text_metrics"].dump(2) + R"(</pre></div><div class="section"><h3>Feedback Analysis</h3><pre>)" + extracted_info["feedback_analysis"].dump(2) + R"(</pre></div></div></body>
-</html>)";
+                if (llm_client_ && llm_client_->is_available()) {
+                    std::stringstream prompt;
+                    prompt << "You are an accessibility assistant. Adapt this text for a user.\n\n";
+                    prompt << "ORIGINAL TEXT:\n" << ext.value("original_text", "") << "\n\n";
+                    prompt << "TEXT METRICS:\n" << ext["text_metrics"].dump(2) << "\n\n";
+                    prompt << "USER PROFILE:\n" << ext["feedback_analysis"].dump(2) << "\n\n";
+                    prompt << "Generate a complete HTML5 page with inline CSS adapted to their needs. ";
+                    prompt << "Return ONLY the HTML starting with <!DOCTYPE html>.";
+                    json resp = llm_client_->generate_json(prompt.str());
+                    html = resp.value("text", "");
                 }
-                
-                data_field["status"] = "success";
-                data_field["generation_id"] = "gen_" + std::to_string(state.value("total_generations", 0));
-                data_field["html"] = html;
-                data_field["html_size"] = html.length();
-                
+                else if (llama_impl_ && llama_impl_->is_available()) {
+                    html = llama_impl_->generate_interface(
+                        ext["text_metrics"],
+                        ext["feedback_analysis"],
+                        ext.value("original_text", "")
+                    );
+                }
+                else {
+                    html = fallback_html(ext["text_metrics"], ext["feedback_analysis"]);
+                }
+                out["status"] = "success";
+                out["generation_id"] = "gen_" + std::to_string(state.value("total_generations", 0));
+                out["html"] = html;
+                out["html_size"] = html.length();
             } catch (const std::exception& e) {
-                data_field["status"] = "error";
-                data_field["message"] = std::string("Generation failed: ") + e.what();
-                last_error_ = data_field["message"];
+                out["status"] = "error";
+                out["message"] = std::string("Generation failed: ") + e.what();
+                last_error_ = out["message"];
             }
-            
-            return data_field;
+            return out;
         }
     );
 }

@@ -100,3 +100,9 @@ add_custom_command(
         ${CMAKE_BINARY_DIR}/config/agent_config.toml
     COMMENT "Copying config to build directory"
 )
+
+add_executable(test_interface_generator tests/test_interface_generator.cpp)
+target_link_libraries(test_interface_generator PRIVATE empi_core)
+
+add_executable(test_pipeline tests/test_pipeline.cpp)
+target_link_libraries(test_pipeline PRIVATE empi_core)

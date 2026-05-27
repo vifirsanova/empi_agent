@@ -1,39 +1,32 @@
 #pragma once
-
 #include "../core/UniversalAgent.hpp"
+#include "../core/LLMClient.hpp"
 #include <string>
 #include <memory>
+#include "llama.h"
 
 namespace EMPI {
 
-/**
- * @class InterfaceGenerator
- * @brief EMPI agent that generates interface HTML based on analysis results.
- * 
- * Uses φ-ψ handler architecture:
- * - φ-function: Extracts text metrics and feedback analysis
- * - ψ-function: Calls LLM to generate personalized HTML interface
- */
 class InterfaceGenerator : public UniversalAgent {
 public:
-    /**
-     * @brief Constructs an interface generator agent.
-     * 
-     * @param model_path Path to model file in models/ directory
-     */
-    explicit InterfaceGenerator(const std::string& model_path = "models/Phi-3-mini-4k-instruct-q4.gguf");
-    
-    ~InterfaceGenerator();
-    
+    InterfaceGenerator(std::shared_ptr<LLMClient> llm_client,
+                       const std::string& local_model_path = "");
+    ~InterfaceGenerator() override;
+
     bool is_available() const;
     std::string get_last_error() const;
 
 private:
     void register_handlers();
-    
+    std::string fallback_html(const nlohmann::json& metrics,
+                              const nlohmann::json& feedback) const;
+
+    std::shared_ptr<LLMClient> llm_client_;
+    std::string local_model_path_;
+    std::string last_error_;
+
     class LlamaImpl;
     std::unique_ptr<LlamaImpl> llama_impl_;
-    std::string last_error_;
 };
 
 } // namespace EMPI
