@@ -78,7 +78,7 @@ GUI:
 
 <img width="566" height="497" alt="image" src="https://github.com/user-attachments/assets/e1bf641b-4b16-498e-bfa5-80ede1ca51ac" />
 
-Example usage video: https://rutube.ru/play/embed/ba1eb3575cdf653072884ce9e4631ddd
+[See example usage video (in Russian)](https://rutube.ru/video/private/1aed219bc7195d647ee1c0f14ab8b27b/?p=zoZ1pfYuOz2soGRDt-q5UQ)
 
 ---
 
