@@ -2,29 +2,18 @@
 
 EMPI is a multi-agent framework for inclusive education. The framework takes any learning material (textbooks, supplementaries, scientific papers) and adapts it for neurodivergent students, like magic
 
-# Novel Model Context Protocol for Inclusive Education Apps
+## NEW!!! 
 
-Implementation of multi-agent system for personalized educational interfaces for neurodivergent learners.
+Examples of generated interfaces: 
 
-## Quick Start
-```bash
-# Clone repository
-git clone https://github.com/Anonimous-Submission/anonymous-submission-xyz.git
-cd anonymous-submission-xyz
+<img width="396" height="506" alt="image" src="https://github.com/user-attachments/assets/93d8cf23-9196-41d6-a6d3-18fe103c43c2" />
+<img width="390" height="640" alt="image" src="https://github.com/user-attachments/assets/a9f50455-002c-43dc-8e15-07cc00aa5757" />
 
-# Create virtual environment (Python 3.11 required for textstat)
-uv venv --python 3.11 .venv
-source .venv/bin/activate
+GUI:
 
-# Install requirements
-uv pip install -r requirements.txt
+<img width="566" height="497" alt="image" src="https://github.com/user-attachments/assets/e1bf641b-4b16-498e-bfa5-80ede1ca51ac" />
 
-# Build and run
-mkdir build && cd build
-cmake ..
-make -j4
-./test_orchestration -m ../models/Phi-3-mini-4k-instruct-q4.gguf
-```
+Example usage video: https://rutube.ru/play/embed/ba1eb3575cdf653072884ce9e4631ddd
 
 ## Test Data
 The `tests/` folder contains two JSON files used for evaluation:
