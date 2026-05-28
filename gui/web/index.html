@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>EMPI — Adaptive Learning</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="gradient-container">
+    <canvas id="canvas-bg"></canvas>
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo"><i class="fas fa-book-open"></i></div>
+      <div class="header-text">
+        <h1 data-i18n="title">EMPI Agent</h1>
+        <span data-i18n="subtitle">Adaptive learning for everyone</span>
+      </div>
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+        <span data-i18n="langLabel">RU</span>
+      </button>
+    </div>
+
+    <div class="main-card">
+      <div class="upload-area" id="uploadArea">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p data-i18n="uploadTitle">Drop your text here or click to browse</p>
+        <span data-i18n="uploadHint">.txt, .pdf, .docx</span>
+        <input type="file" id="fileInput" accept=".txt,.pdf,.docx" hidden>
+      </div>
+      <div id="fileInfo"></div>
+
+      <div class="prompt-area">
+        <label for="promptInput" data-i18n="promptLabel">Your needs (optional)</label>
+        <textarea id="promptInput" data-i18n-placeholder="promptPlaceholder"
+          placeholder="e.g. I have ADHD, use short paragraphs and clear headings..."></textarea>
+      </div>
+
+      <button class="adapt-btn" id="adaptBtn">
+        <i class="fas fa-wand-magic-sparkles"></i>
+        <span data-i18n="adaptBtn">Adapt and Render</span>
+      </button>
+
+      <div class="status" id="status"></div>
+      <div class="preview-area" id="previewArea">
+        <iframe id="previewFrame"></iframe>
+      </div>
+    </div>
+    <footer class="footer">
+      <span data-i18n="footerLine1">EMPI Agent | Trajectory of Growth | 2026</span>
+      <span data-i18n="footerLine2">Made by <a href="https://github.com/vifirsanova" target="_blank">Missvector</a>    </span>
+    </footer>
+  </div>
+  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

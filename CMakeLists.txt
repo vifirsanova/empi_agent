@@ -51,24 +51,6 @@ add_executable(orchestrate_agents
 )
 target_link_libraries(orchestrate_agents PRIVATE empi_core)
 
-option(BUILD_GUI "Build Qt GUI application" OFF)
-if(BUILD_GUI)
-    find_package(Qt6 REQUIRED COMPONENTS Widgets WebEngineWidgets)
-    find_package(toml11 REQUIRED)
-
-    add_executable(empi_gui
-        gui/main.cpp
-        gui/MainWindow.cpp
-    )
-    target_link_libraries(empi_gui PRIVATE
-        empi_core
-        Qt6::Widgets
-        Qt6::WebEngineWidgets
-        toml11::toml11
-    )
-    target_include_directories(empi_gui PRIVATE ${CMAKE_SOURCE_DIR}/src)
-endif()
-
 add_executable(test_llm_client tests/test_llm_client.cpp)
 target_link_libraries(test_llm_client PRIVATE empi_core)
 
@@ -99,6 +81,24 @@ add_custom_command(
         ${CMAKE_SOURCE_DIR}/config/agent_config.toml
         ${CMAKE_BINARY_DIR}/config/agent_config.toml
     COMMENT "Copying config to build directory"
+)
+
+option(BUILD_GUI "Build Qt GUI application" OFF)
+
+if(BUILD_GUI)
+    find_package(Qt6 REQUIRED COMPONENTS WebEngineWidgets WebChannel)
+    set(CMAKE_AUTOMOC ON)
+    add_executable(empi_gui gui/main.cpp)
+    target_link_libraries(empi_gui PRIVATE empi_core Qt6::WebEngineWidgets Qt6::WebChannel)
+    target_include_directories(empi_gui PRIVATE ${CMAKE_SOURCE_DIR}/src)
+endif()
+
+add_custom_command(
+    TARGET empi_gui POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/gui/web
+        ${CMAKE_BINARY_DIR}/gui/web
+    COMMENT "Copying web frontend to build directory"
 )
 
 add_executable(test_interface_generator tests/test_interface_generator.cpp)
