@@ -1,8 +1,73 @@
 # EMPI Agent Framework
 
-EMPI is a multi-agent framework for inclusive education. The framework takes any learning material (textbooks, supplementaries, scientific papers) and adapts it for neurodivergent students, like magic
+EMPI is a multi-agent framework for inclusive education. The framework adapts learning materials to neurodivergent students.
 
-## NEW!!! 
+Takes any text - analyzes complexity + user needs = generates adapted HTML page.
+
+## Quick Start
+
+```bash
+# 1. Clone & install everything
+git clone https://github.com/vifirsanova/empi_agent
+cd empi_agent
+chmod +x run.sh && ./run.sh
+
+# 2. Edit config (optional — works in mock mode without it)
+nano config/agent_config.toml
+```
+
+## Usage
+
+### CLI
+
+```bash
+# Basic: adapt a text file
+./build/orchestrate_agents -i data/sample.txt
+
+# With accessibility prompt
+./build/orchestrate_agents -i data/sample.txt \
+  -p "I have ADHD, use short paragraphs and highlight key points" \
+  -o adapted.html
+
+# Read prompt from file
+./build/orchestrate_agents -i data/paper.txt --prompt-file my_needs.txt
+```
+
+### GUI
+
+```bash
+cd build && cmake .. -DBUILD_GUI=ON && make
+./empi_gui
+```
+
+Drag & drop a `.txt` file, optionally describe your needs, click **Adapt & Render**.
+
+## Config
+
+`config/agent_config.toml`:
+
+```toml
+[llm]
+# Cloud API (Yandex Cloud / OpenAI-compatible)
+api_base = "https://ai.api.cloud.yandex.net/v1"
+api_key = ""        # leave empty → auto fallback
+folder_id = ""
+model = "yandexgpu/latest"
+
+# Local model (llama.cpp)
+local_model_path = "models/Phi-3-mini-4k-instruct-q4.gguf"
+```
+
+**Fallback order:** Cloud > Local > Mock (always works, no keys needed).
+
+## Requirements
+
+- C++17, CMake 3.14+
+- Python 3.8+ (`spacy`, `textstat`, `openai`)
+- Node.js (`jsdom`, `html-validator` — for accessibility checks)
+- Qt6 (optional, for GUI)
+
+---
 
 Examples of generated interfaces: 
 
@@ -14,6 +79,8 @@ GUI:
 <img width="566" height="497" alt="image" src="https://github.com/user-attachments/assets/e1bf641b-4b16-498e-bfa5-80ede1ca51ac" />
 
 Example usage video: https://rutube.ru/play/embed/ba1eb3575cdf653072884ce9e4631ddd
+
+---
 
 ## Test Data
 The `tests/` folder contains two JSON files used for evaluation:
@@ -37,21 +104,6 @@ The `tests/` folder contains two JSON files used for evaluation:
   ```
 
 These files are used by `test_orchestration.cpp` to generate all 10,000 text-dialogue combinations (100×100) for evaluation, as described in the paper.
-
-## Hardware Requirements
-- 8GB+ VRAM (for 4-bit quantized models)
-
-### Output Examples
-
-The frameworks analyzed your chat history with LLM and generates accessible HTML-page based on the contents complexity and your accessibility preferences
-
-This is how it looks:
-
-<img width="1179" height="280" alt="image" src="https://github.com/user-attachments/assets/88670ad3-d115-4deb-b3c8-60ab92b07779" />
-
-<img width="1075" height="425" alt="image" src="https://github.com/user-attachments/assets/f4cf46c2-572f-484f-8800-2d640fa9eb31" />
-
-To make it real, we built a multi-agent architecture, and an orchestration pattern 
 
 ## φ-ψ Handler Architecture
 
@@ -381,80 +433,3 @@ The test data in `tests/texts.json` and `tests/dialogs.json` is curated syntheti
 ## License
 
 MIT
-
----
-
-Multi-agent framework for adapting learning materials to neurodivergent students.
-
-Takes any text → analyzes complexity + user needs → generates adapted HTML page.
-
-## Quick Start
-
-```bash
-# 1. Clone & install everything
-git clone https://github.com/vifirsanova/empi_agent
-cd empi_agent
-chmod +x run.sh && ./run.sh
-
-# 2. Edit config (optional — works in mock mode without it)
-nano config/agent_config.toml
-```
-
-## Usage
-
-### CLI
-
-```bash
-# Basic: adapt a text file
-./build/orchestrate_agents -i data/sample.txt
-
-# With accessibility prompt
-./build/orchestrate_agents -i data/sample.txt \
-  -p "I have ADHD, use short paragraphs and highlight key points" \
-  -o adapted.html
-
-# Read prompt from file
-./build/orchestrate_agents -i data/paper.txt --prompt-file my_needs.txt
-```
-
-### GUI
-
-```bash
-cd build && cmake .. -DBUILD_GUI=ON && make
-./empi_gui
-```
-
-Drag & drop a `.txt` file, optionally describe your needs, click **Adapt & Render**.
-
-## Config
-
-`config/agent_config.toml`:
-
-```toml
-[llm]
-# Cloud API (Yandex Cloud / OpenAI-compatible)
-api_base = "https://ai.api.cloud.yandex.net/v1"
-api_key = ""        # leave empty → auto fallback
-folder_id = ""
-model = "yandexgpu/latest"
-
-# Local model (llama.cpp)
-local_model_path = "models/Phi-3-mini-4k-instruct-q4.gguf"
-```
-
-**Fallback order:** Cloud → Local → Mock (always works, no keys needed).
-
-## How It Works
-
-```
-Input text ──┬── TextAnalyzer (readability metrics) ──┐
-             │                                         ├── InterfaceGenerator ──► HTML
-User prompt ─┴── FeedbackAgent (needs analysis) ───────┘
-```
-
-## Requirements
-
-- C++17, CMake 3.14+
-- Python 3.8+ (`spacy`, `textstat`, `openai`)
-- Node.js (`jsdom`, `html-validator` — for accessibility checks)
-- Qt6 (optional, for GUI)
