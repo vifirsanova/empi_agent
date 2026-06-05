@@ -214,8 +214,133 @@ node test_accessibility.js
 
 ## Test Data
 
-- `texts.json`: 100 educational texts (water cycle, photosynthesis, Pythagorean theorem, cell theory, Industrial Revolution, Newton's laws, plate tectonics, periodic table, American Civil War, DNA)
-- `dialogs.json`: 100 dialogues with accessibility needs (ADHD, dyslexia, autism, low vision, combinations)
+Test corpus consists of real accessibility documentation from three authoritative sources:
+
+- **W3C WAI** (`w3c_accessibility_texts/`): WCAG 2.1/2.2 guidelines, techniques (HTML, CSS, ARIA, client-side script), failures, and understanding documents
+- **WAI** (`wai_texts/`): Tutorials, business cases, fundamentals, planning resources, and role-specific guides
+- **WebAIM** (`webaim_texts/`): Articles on screen readers (JAWS, NVDA, VoiceOver), cognitive/visual/motor disabilities, contrast, forms, tables, and strategic implementation
+
+All files are plain text extracts from official accessibility standards and educational materials, used for testing text adaptation across diverse real-world content.
+
+## Testing Suite
+
+EMPI includes comprehensive testing across multiple levels: unit tests, integration tests, pipeline tests, accessibility validation, and user profile simulation.
+
+### Test Structure
+
+```
+tests/
+├── test_llm_client.cpp          # LLM connectivity and script availability
+├── test_interface_generator.cpp # HTML generation with local/cloud LLM
+├── test_pipeline.cpp             # End-to-end agent orchestration
+├── test_accessibility.js         # WCAG 2.1 compliance checker
+└── user_profiles.json            # 100 synthetic user profiles for simulation
+```
+
+### Unit Tests
+
+#### LLMClient Test (`test_llm_client.cpp`)
+
+Validates LLM availability and basic generation:
+
+```cpp
+EMPI::LLMClient client("python3");
+if (!client.is_available()) return 1;
+
+std::string result = client.generate("Say hello in exactly one word.");
+json parsed = client.generate_json("Say hello in exactly one word.");
+```
+
+**Checks:** Python script exists, JSON parsing, text extraction.
+
+#### InterfaceGenerator Test (`test_interface_generator.cpp`)
+
+Tests HTML generation with mock metrics and feedback:
+
+```cpp
+json metrics = {{"flesch_kincaid_grade", 10.5}, {"complexity_label", "moderate"}};
+json feedback = {{"sentiment", "neutral"}, {"complaints", {"long paragraphs"}}};
+
+json input = {{"text_metrics", metrics}, {"feedback_analysis", feedback}, {"original_text", text}};
+json result = gen.process_raw(input);
+```
+
+**Output:** `build/index.html`
+
+### Pipeline Test (`test_pipeline.cpp`)
+
+End-to-end orchestration:
+
+1. **TextAnalyzer** processes sample text → complexity metrics
+2. **FeedbackAgent** analyzes dialog → user profile
+3. **InterfaceGenerator** combines both → adaptive HTML
+
+```cpp
+json ta_result = text_agent.process_raw({{"text", sample_text}});
+json fa_result = feedback_agent.process_raw({{"dialog_history", dialog}});
+json ig_result = interface_gen.process_raw({{"text_metrics", metrics}, {"feedback_analysis", feedback}});
+```
+
+**Output:** `build/test_output.html`
+
+### Accessibility Validation (`test_accessibility.js`)
+
+WCAG 2.1 compliance checker (Levels A, AA):
+
+| Criterion | Check | Level |
+|-----------|-------|-------|
+| 1.1.1 | Images have alt text | A |
+| 1.3.1 | Heading hierarchy | A |
+| 1.4.3 | Text contrast | AA |
+| 2.4.4 | Link purpose | A |
+| 2.4.7 | Focus visible | AA |
+| 4.1.1 | No duplicate IDs | A |
+
+```bash
+npm install jsdom html-validator
+node test_accessibility.js --json
+```
+
+### User Profiles (`user_profiles.json`)
+
+100 synthetic profiles for simulation testing, covering:
+
+**Single conditions:**
+- Dyslexia (mild/moderate/marked) — font preferences, overlays, spacing
+- ADHD (mild/moderate/marked) — chunking, progress indicators, animations
+- ASD (mild/moderate/marked) — literal language, predictable navigation
+
+**Comorbid conditions:**
+- ASD + ADHD — overstimulation risk, ultra-chunked content
+- Dyslexia + ADHD — OpenDyslexic, progress tracking
+- ASD + Dyslexia — literal language + font adaptations
+- Triple (ASD + ADHD + Dyslexia) — all combined settings
+
+**Additional features:**
+- Light sensitivity > dark mode
+- Auditory sensitivity > text-only
+- Scotopic sensitivity > colored overlays
+
+Each profile includes:
+- `natural_language_prompt` — user's own words
+- `cognitive_profile` — condition, severity, deficits
+- `accessibility_settings` — actionable CSS/layout rules
+
+### Build & Run Tests
+
+```bash
+cd build
+cmake .. -DBUILD_TESTS=ON
+make
+
+# Run individual tests
+./test_llm_client
+./test_interface_generator
+./test_pipeline
+
+# Run all tests
+ctest --output-on-failure
+```
 
 ## Requirements
 
