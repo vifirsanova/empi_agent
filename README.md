@@ -1,6 +1,6 @@
 # EMPI Agent Framework
 
-Multi-agent framework for adaptive educational content. Analyzes text + user needs -> generates accessible HTML.
+Multi-agent framework for adaptive educational content. Analyzes text + user needs → generates accessible HTML.
 
 <img width="2555" height="1519" alt="image" src="https://github.com/user-attachments/assets/152b3a2e-1bca-42dc-aa82-465b21c69c14" />
 
@@ -10,7 +10,7 @@ Multi-agent framework for adaptive educational content. Analyzes text + user nee
 git clone https://github.com/vifirsanova/empi_agent
 cd empi_agent
 
-# Install Python dependencies
+# Install dependencies
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 
@@ -33,29 +33,20 @@ cmake .. -DBUILD_GUI=ON && make
 
 ```toml
 [llm]
-# Cloud API (OpenAI-compatible)
 api_base = "https://api.openai.com/v1"
 api_key = ""                    # Empty → fallback to local/mock
 model = "gpt-4o-mini"
 max_tokens = 8000
 temperature = 0.7
-
-# Local model (llama.cpp .gguf)
 local_model_path = "models/Phi-3-mini-4k-instruct-q4.gguf"
 ```
 
-**Fallback chain:** Cloud API -> Local model -> Mock HTML (always works).
+**Fallback chain:** Cloud API → Local model → Mock HTML (always works).
 
 ## CLI Usage
 
 ```bash
 ./orchestrate_agents -i input.txt [-o output.html] [-p "prompt"] [-c config.toml]
-
-# Options:
-#   -i, --input     Input text file (required)
-#   -o, --output    Output HTML path (default: output/index.html)
-#   -p, --prompt    User prompt for adaptation
-#   -c, --config    Config file path
 ```
 
 ## Architecture
@@ -74,7 +65,7 @@ flowchart LR
     State --> PSI
 ```
 
-### EMPI Message Structure
+### Message Structure
 
 ```json
 {
@@ -83,17 +74,16 @@ flowchart LR
     "message_id": "msg_1234567890_text_analyzer",
     "timestamp": "1234567890",
     "agent_id": "text_analyzer",
-    "task_type": "text_metrics",
-    "version": "1.0"
+    "task_type": "text_metrics"
   },
   "payload": {
-    "metadata": {"source": "text_analyzer", "processing_start": "1234567890"},
+    "metadata": {"source": "text_analyzer"},
     "data": {}
   }
 }
 ```
 
-### Orchestration Pattern
+### Orchestration
 
 TextAnalyzer and FeedbackAgent run in parallel, then InterfaceGenerator executes:
 
@@ -103,7 +93,6 @@ flowchart TD
     Start --> Dialog[User dialogue]
     
     subgraph Parallel[Parallel execution]
-        direction TB
         Input --> TA[TextAnalyzer]
         Dialog --> FA[FeedbackAgent]
         
@@ -121,15 +110,9 @@ flowchart TD
 ## Agents
 
 ### TextAnalyzer
-
 Computes 20+ readability metrics via Python (`textstat` + `spaCy`).
 
-**Input:**
-```json
-{"text": "The water cycle describes the movement of water on Earth."}
-```
-
-**Output:**
+**Sample output:**
 ```json
 {
   "status": "success",
@@ -147,19 +130,9 @@ Computes 20+ readability metrics via Python (`textstat` + `spaCy`).
 ```
 
 ### FeedbackAgent
-
 Analyzes dialog history via LLM to extract user needs.
 
-**Input:**
-```json
-{
-  "dialog_history": [
-    {"role": "user", "content": "I have ADHD and struggle with long paragraphs."}
-  ]
-}
-```
-
-**Output:**
+**Sample output:**
 ```json
 {
   "status": "success",
@@ -174,21 +147,38 @@ Analyzes dialog history via LLM to extract user needs.
 ```
 
 ### InterfaceGenerator
+Generates HTML using local LLM or cloud API.
 
-Generates HTML using local LLM (llama.cpp) or cloud API.
+## GUI Features
+- Drag & drop file upload (PDF, txt, plain input)
+- Preset adaptation prompts (ADHD-friendly, Dyslexia-friendly, For children, Beginner)
+- Split view: chat + live preview
+- Language toggle (EN/RU)
+- Download/export HTML
 
-**Output:**
-```json
-{
-  "status": "success",
-  "html": "<!DOCTYPE html>...",
-  "html_size": 2048
-}
+## Testing Suite
+
+### Test Structure
+```
+tests/
+├── test_llm_client.cpp
+├── test_interface_generator.cpp
+├── test_pipeline.cpp
+├── test_accessibility.js
+└── user_profiles.json
 ```
 
-## Validation
+### Unit & Integration Tests
 
-Accessibility validation against WCAG 2.1 (Levels A, AA):
+| Test | Purpose |
+|------|---------|
+| `test_llm_client.cpp` | Validates LLM availability and JSON parsing |
+| `test_interface_generator.cpp` | Tests HTML generation with mock metrics |
+| `test_pipeline.cpp` | End-to-end orchestration of all agents |
+
+### Accessibility Validation (`test_accessibility.js`)
+
+WCAG 2.1 compliance checker:
 
 | Criterion | Description | Level |
 |-----------|-------------|-------|
@@ -201,146 +191,43 @@ Accessibility validation against WCAG 2.1 (Levels A, AA):
 
 ```bash
 npm install jsdom html-validator
-node test_accessibility.js
-```
-
-## GUI Features
-
-- Drag & drop file upload (supports PDF, txt, plain input)
-- Preset adaptation prompts (ADHD-friendly, Dyslexia-friendly, For children, Beginner)
-- Split view: chat + live preview
-- Language toggle (EN/RU)
-- Download/export HTML
-
-## Test Data
-
-Test corpus consists of real accessibility documentation from three authoritative sources:
-
-- **W3C WAI** (`w3c_accessibility_texts/`): WCAG 2.1/2.2 guidelines, techniques (HTML, CSS, ARIA, client-side script), failures, and understanding documents
-- **WAI** (`wai_texts/`): Tutorials, business cases, fundamentals, planning resources, and role-specific guides
-- **WebAIM** (`webaim_texts/`): Articles on screen readers (JAWS, NVDA, VoiceOver), cognitive/visual/motor disabilities, contrast, forms, tables, and strategic implementation
-
-All files are plain text extracts from official accessibility standards and educational materials, used for testing text adaptation across diverse real-world content.
-
-## Testing Suite
-
-EMPI includes comprehensive testing across multiple levels: unit tests, integration tests, pipeline tests, accessibility validation, and user profile simulation.
-
-### Test Structure
-
-```
-tests/
-├── test_llm_client.cpp          # LLM connectivity and script availability
-├── test_interface_generator.cpp # HTML generation with local/cloud LLM
-├── test_pipeline.cpp             # End-to-end agent orchestration
-├── test_accessibility.js         # WCAG 2.1 compliance checker
-└── user_profiles.json            # 100 synthetic user profiles for simulation
-```
-
-### Unit Tests
-
-#### LLMClient Test (`test_llm_client.cpp`)
-
-Validates LLM availability and basic generation:
-
-```cpp
-EMPI::LLMClient client("python3");
-if (!client.is_available()) return 1;
-
-std::string result = client.generate("Say hello in exactly one word.");
-json parsed = client.generate_json("Say hello in exactly one word.");
-```
-
-**Checks:** Python script exists, JSON parsing, text extraction.
-
-#### InterfaceGenerator Test (`test_interface_generator.cpp`)
-
-Tests HTML generation with mock metrics and feedback:
-
-```cpp
-json metrics = {{"flesch_kincaid_grade", 10.5}, {"complexity_label", "moderate"}};
-json feedback = {{"sentiment", "neutral"}, {"complaints", {"long paragraphs"}}};
-
-json input = {{"text_metrics", metrics}, {"feedback_analysis", feedback}, {"original_text", text}};
-json result = gen.process_raw(input);
-```
-
-**Output:** `build/index.html`
-
-### Pipeline Test (`test_pipeline.cpp`)
-
-End-to-end orchestration:
-
-1. **TextAnalyzer** processes sample text → complexity metrics
-2. **FeedbackAgent** analyzes dialog → user profile
-3. **InterfaceGenerator** combines both → adaptive HTML
-
-```cpp
-json ta_result = text_agent.process_raw({{"text", sample_text}});
-json fa_result = feedback_agent.process_raw({{"dialog_history", dialog}});
-json ig_result = interface_gen.process_raw({{"text_metrics", metrics}, {"feedback_analysis", feedback}});
-```
-
-**Output:** `build/test_output.html`
-
-### Accessibility Validation (`test_accessibility.js`)
-
-WCAG 2.1 compliance checker (Levels A, AA):
-
-| Criterion | Check | Level |
-|-----------|-------|-------|
-| 1.1.1 | Images have alt text | A |
-| 1.3.1 | Heading hierarchy | A |
-| 1.4.3 | Text contrast | AA |
-| 2.4.4 | Link purpose | A |
-| 2.4.7 | Focus visible | AA |
-| 4.1.1 | No duplicate IDs | A |
-
-```bash
-npm install jsdom html-validator
 node test_accessibility.js --json
 ```
 
 ### User Profiles (`user_profiles.json`)
 
-100 synthetic profiles for simulation testing, covering:
+100 synthetic profiles covering:
 
-**Single conditions:**
-- Dyslexia (mild/moderate/marked) — font preferences, overlays, spacing
-- ADHD (mild/moderate/marked) — chunking, progress indicators, animations
-- ASD (mild/moderate/marked) — literal language, predictable navigation
+**Single conditions:** Dyslexia, ADHD, ASD (mild/moderate/marked)
 
-**Comorbid conditions:**
-- ASD + ADHD — overstimulation risk, ultra-chunked content
-- Dyslexia + ADHD — OpenDyslexic, progress tracking
-- ASD + Dyslexia — literal language + font adaptations
-- Triple (ASD + ADHD + Dyslexia) — all combined settings
+**Comorbid:** ASD+ADHD, Dyslexia+ADHD, ASD+Dyslexia, Triple condition
 
-**Additional features:**
-- Light sensitivity > dark mode
-- Auditory sensitivity > text-only
-- Scotopic sensitivity > colored overlays
+**Additional:** Light sensitivity, auditory sensitivity, scotopic sensitivity
 
 Each profile includes:
 - `natural_language_prompt` — user's own words
 - `cognitive_profile` — condition, severity, deficits
 - `accessibility_settings` — actionable CSS/layout rules
 
-### Build & Run Tests
+### Running Tests
 
 ```bash
 cd build
 cmake .. -DBUILD_TESTS=ON
 make
 
-# Run individual tests
+# Individual tests
 ./test_llm_client
 ./test_interface_generator
 ./test_pipeline
 
-# Run all tests
+# All tests
 ctest --output-on-failure
 ```
+
+## Test Data
+
+Real accessibility documentation from W3C WAI, WAI tutorials, and WebAIM — used for testing text adaptation across diverse content types.
 
 ## Requirements
 
@@ -352,4 +239,3 @@ ctest --output-on-failure
 ## License
 
 MIT
-

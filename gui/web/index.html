@@ -2,7 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <script>
+  // Enable zoom with Ctrl+ / Ctrl- in Qt
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
+      e.preventDefault();
+      if (e.key === '+' || e.key === '=') {
+        document.body.style.zoom = (parseFloat(document.body.style.zoom) || 1) + 0.1;
+      } else if (e.key === '-') {
+        document.body.style.zoom = (parseFloat(document.body.style.zoom) || 1) - 0.1;
+      } else if (e.key === '0') {
+        document.body.style.zoom = 1;
+      }
+    }
+  });
+  </script>
   <title>EMPI — Adaptive Learning</title>
   <link rel="stylesheet" href="fonts/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">

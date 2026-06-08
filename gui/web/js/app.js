@@ -1,11 +1,92 @@
 let backend = null;
+let isLoading = false;
+let pendingResolve = null;
+let pendingReject = null;
+let timeoutId = null;
 
-try {
-  new QWebChannel(qt.webChannelTransport, function(channel) {
+// Initialize QWebChannel
+new QWebChannel(qt.webChannelTransport, function(channel) {
     backend = channel.objects.backend;
-  });
-} catch(e) {
-  console.warn('QWebChannel not available');
+    
+    if (backend && backend.adaptationComplete) {
+        backend.adaptationComplete.connect(function(html) {
+            if (pendingResolve) {
+                pendingResolve(html);
+                pendingResolve = null;
+                pendingReject = null;
+                if (timeoutId) clearTimeout(timeoutId);
+                timeoutId = null;
+            }
+            hideCog();
+        });
+    }
+});
+
+function adaptAsync(text, prompt) {
+    return new Promise((resolve, reject) => {
+        if (!backend) {
+            reject(new Error('Backend not connected'));
+            return;
+        }
+        
+        pendingResolve = resolve;
+        pendingReject = reject;
+        
+        timeoutId = setTimeout(() => {
+            if (pendingReject) {
+                pendingReject(new Error('Timeout waiting for adaptation'));
+                pendingResolve = null;
+                pendingReject = null;
+            }
+            hideCog();
+        }, 300000);
+        
+        backend.adapt(text, prompt);
+    });
+}
+
+function showCog() {
+    const adaptedPane = document.getElementById('adaptedPane');
+    if (!adaptedPane) return;
+    
+    const existingCog = document.getElementById('loadingCog');
+    if (existingCog) existingCog.remove();
+    
+    const cogDiv = document.createElement('div');
+    cogDiv.id = 'loadingCog';
+    cogDiv.style.cssText = `
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        background: rgba(255,255,255,0.95);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        text-align: center;
+    `;
+    cogDiv.innerHTML = `
+        <i class="fas fa-cog fa-spin" style="font-size: 48px; color: #e0aaa0;"></i>
+        <div style="margin-top: 8px; font-size: 12px; color: #666;">Generating...</div>
+    `;
+    
+    if (getComputedStyle(adaptedPane).position === 'static') {
+        adaptedPane.style.position = 'relative';
+    }
+    adaptedPane.appendChild(cogDiv);
+}
+
+function hideCog() {
+    const cog = document.getElementById('loadingCog');
+    if (cog) cog.remove();
+}
+
+function cleanHtmlResponse(html) {
+    if (!html) return html;
+    let cleaned = html.replace(/^```html\s*\n?/i, '');
+    cleaned = cleaned.replace(/\n?```\s*$/i, '');
+    return cleaned;
 }
 
 const canvas = document.getElementById("canvas-bg");
@@ -375,7 +456,6 @@ urlInput.addEventListener('keypress', function(e) {
 });
 
 async function handleUrlFetch(url) {
-  // Check if backend has fetchUrl method
   if (backend && typeof backend.fetchUrl === 'function') {
     addUrlBubble(url);
     statusBar.textContent = 'Fetching URL...';
@@ -401,7 +481,6 @@ async function handleUrlFetch(url) {
       statusBar.className = 'status-bar error';
     }
   } else {
-    // Show alert that feature is under development
     alert(t('alertInDevelopment'));
     addChatText('assistant', t('alertInDevelopment'));
   }
@@ -426,33 +505,31 @@ async function doAdapt(promptText) {
     statusBar.className = 'status-bar error';
     return;
   }
-  if (!backend) {
-    currentPrompt = promptText.trim();
-    addChatText('assistant', t('msgAdapting'));
-    statusBar.textContent = t('msgAdapting');
-    statusBar.className = 'status-bar';
-    adaptToggleBar.classList.add('show');
-    await new Promise(function(r) { setTimeout(r, 800); });
-    var sourceText = originalText || stripHtml(originalHtml || '');
-    adaptedHtml = generateDemoAdaptation(sourceText, currentPrompt);
-    adaptedEmpty.style.display = 'none';
-    previewFrame.style.display = 'block';
-    previewFrame.srcdoc = adaptedHtml;
-    adaptedBadge.style.display = 'inline';
-    switchToPane('adaptedPane');
-    addChatText('assistant', t('msgAdapted'));
-    statusBar.textContent = t('msgAdapted');
-    statusBar.className = 'status-bar success';
-    return;
-  }
+  
+  if (isLoading) return;
+  isLoading = true;
+  
   currentPrompt = promptText.trim();
   addChatText('assistant', t('msgAdapting'));
   statusBar.textContent = t('msgAdapting');
   statusBar.className = 'status-bar';
   adaptToggleBar.classList.add('show');
+  
+  showCog();
+  
   try {
     var textToAdapt = originalText || stripHtml(originalHtml);
-    var html = await backend.adapt(textToAdapt, currentPrompt);
+    var html;
+    
+    if (backend) {
+      html = await adaptAsync(textToAdapt, currentPrompt);
+    } else {
+      await new Promise(function(r) { setTimeout(r, 800); });
+      html = generateDemoAdaptation(textToAdapt, currentPrompt);
+    }
+    
+    html = cleanHtmlResponse(html);
+    
     adaptedHtml = html;
     adaptedEmpty.style.display = 'none';
     previewFrame.style.display = 'block';
@@ -466,6 +543,9 @@ async function doAdapt(promptText) {
     addChatText('assistant', 'Error: ' + e.message);
     statusBar.textContent = e.message;
     statusBar.className = 'status-bar error';
+  } finally {
+    hideCog();
+    isLoading = false;
   }
 }
 
@@ -519,12 +599,12 @@ document.querySelectorAll('.preset-chip').forEach(function(chip) {
   });
 });
 
-reapplyAdaptBtn.addEventListener('click', function() {
+reapplyAdaptBtn.addEventListener('click', async function() {
   if (!currentPrompt) return;
   addChatText('user', currentPrompt);
   statusBar.textContent = t('msgReadapting');
   statusBar.className = 'status-bar';
-  doAdapt(currentPrompt);
+  await doAdapt(currentPrompt);
 });
 
 adaptToggle.addEventListener('change', function() {

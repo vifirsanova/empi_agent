@@ -17,13 +17,16 @@ public:
     std::string get_last_error() const;
 
 private:
-    void register_handlers();
+    void register_handlers(); 
+    void conditional_llama_init();
+    std::string strip_markdown_code_blocks(const std::string& html);  
     std::string fallback_html(const nlohmann::json& metrics,
                               const nlohmann::json& feedback) const;
 
     std::shared_ptr<LLMClient> llm_client_;
     std::string local_model_path_;
-    std::string last_error_;
+    mutable std::string last_error_;      
+    bool llama_initialized_ = false;
 
     class LlamaImpl;
     std::unique_ptr<LlamaImpl> llama_impl_;

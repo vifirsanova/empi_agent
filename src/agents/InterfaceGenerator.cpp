@@ -7,6 +7,7 @@
 #include <sstream>
 #include <thread>
 #include "llama.h"
+#include <iostream>
 
 namespace fs = std::filesystem;
 using json = nlohmann::json;
@@ -122,11 +123,9 @@ InterfaceGenerator::InterfaceGenerator(std::shared_ptr<LLMClient> llm_client,
     : UniversalAgent("interface_generator", "html_generation")
     , llm_client_(std::move(llm_client))
     , local_model_path_(local_model_path)
+    , llama_impl_(nullptr)
+    , llama_initialized_(false)
 {
-    if (!local_model_path_.empty()) {
-        try { llama_impl_ = std::make_unique<LlamaImpl>(local_model_path_); }
-        catch (...) { llama_impl_ = nullptr; }
-    }
     register_handlers();
 }
 
@@ -137,7 +136,57 @@ bool InterfaceGenerator::is_available() const {
            (llama_impl_ && llama_impl_->is_available());
 }
 
-std::string InterfaceGenerator::get_last_error() const { return last_error_; }
+void InterfaceGenerator::conditional_llama_init() {
+    if (llama_initialized_ || local_model_path_.empty()) return;
+    
+    if (llm_client_ && llm_client_->is_available()) return;
+    
+    try {
+        llama_impl_ = std::make_unique<LlamaImpl>(local_model_path_);
+        llama_initialized_ = true;
+        if (llama_impl_->is_available()) {
+            std::cout << "[InterfaceGenerator] Lazy-loaded llama.cpp model" << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "[InterfaceGenerator] Failed to load llama: " << e.what() << std::endl;
+        llama_impl_ = nullptr;
+    }
+}
+
+std::string InterfaceGenerator::strip_markdown_code_blocks(const std::string& html) {
+    std::string result = html;
+    
+    // Remove ```html at beginning
+    const std::string open_block = "```html";
+    const std::string close_block = "```";
+    
+    size_t start = result.find(open_block);
+    if (start != std::string::npos) {
+        result.erase(start, open_block.length());
+    }
+    
+    // Also check for just ```
+    start = result.find("```");
+    if (start != std::string::npos && start < 50) {  // Only near beginning
+        result.erase(start, 3);
+    }
+    
+    // Remove closing ```
+    size_t end = result.rfind(close_block);
+    if (end != std::string::npos && end + 3 >= result.length() - 5) {
+        result.erase(end, close_block.length());
+    }
+    
+    // Trim whitespace
+    while (!result.empty() && (result.front() == '\n' || result.front() == '\r' || result.front() == ' ')) {
+        result.erase(0, 1);
+    }
+    while (!result.empty() && (result.back() == '\n' || result.back() == '\r' || result.back() == ' ')) {
+        result.pop_back();
+    }
+    
+    return result;
+}
 
 std::string InterfaceGenerator::fallback_html(const json& metrics, const json& feedback) const {
     std::stringstream ss;
@@ -167,6 +216,7 @@ std::string InterfaceGenerator::fallback_html(const json& metrics, const json& f
 
 void InterfaceGenerator::register_handlers() {
     register_handler("html_generation",
+        // φ-function: Extract data from input
         [](const json& input, const json&, json& state) -> json {
             json ext;
             if (input.contains("text_metrics"))  ext["text_metrics"] = input["text_metrics"];
@@ -177,6 +227,7 @@ void InterfaceGenerator::register_handlers() {
             state["total_generations"] = state.value("total_generations", 0) + 1;
             return ext;
         },
+        // ψ-function: Process with LLM/llama
         [this](const json& ext, const json&, json& state) -> json {
             json out;
             if (ext.contains("error")) {
@@ -186,6 +237,8 @@ void InterfaceGenerator::register_handlers() {
             }
             try {
                 std::string html;
+                
+                // First try cloud API
                 if (llm_client_ && llm_client_->is_available()) {
                     std::stringstream prompt;
                     prompt << "You are an accessibility assistant. Adapt this text for a user.\n\n";
@@ -193,20 +246,30 @@ void InterfaceGenerator::register_handlers() {
                     prompt << "TEXT METRICS:\n" << ext["text_metrics"].dump(2) << "\n\n";
                     prompt << "USER PROFILE:\n" << ext["feedback_analysis"].dump(2) << "\n\n";
                     prompt << "Generate a complete HTML5 page with inline CSS adapted to their needs. ";
-                    prompt << "Return ONLY the HTML starting with <!DOCTYPE html>.";
+                    prompt << "Return ONLY the HTML starting with <!DOCTYPE html>. ";
+                    prompt << "Do NOT wrap in markdown code blocks.";
+                    
                     json resp = llm_client_->generate_json(prompt.str());
                     html = resp.value("text", "");
                 }
-                else if (llama_impl_ && llama_impl_->is_available()) {
-                    html = llama_impl_->generate_interface(
-                        ext["text_metrics"],
-                        ext["feedback_analysis"],
-                        ext.value("original_text", "")
-                    );
+                
+                // Fall back to llama if API failed
+                if (html.empty()) {
+                    conditional_llama_init();
+                    if (llama_impl_ && llama_impl_->is_available()) {
+                        html = llama_impl_->generate_interface(
+                            ext["text_metrics"],
+                            ext["feedback_analysis"],
+                            ext.value("original_text", "")
+                        );
+                    } else {
+                        html = fallback_html(ext["text_metrics"], ext["feedback_analysis"]);
+                    }
                 }
-                else {
-                    html = fallback_html(ext["text_metrics"], ext["feedback_analysis"]);
-                }
+                
+                // Post-Processing
+                html = strip_markdown_code_blocks(html);
+                
                 out["status"] = "success";
                 out["generation_id"] = "gen_" + std::to_string(state.value("total_generations", 0));
                 out["html"] = html;

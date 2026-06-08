@@ -8,6 +8,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(nlohmann_json REQUIRED)
 find_package(Threads REQUIRED)
 
+find_package(Qt6 REQUIRED COMPONENTS Core Concurrent)
+
 if(EXISTS "${CMAKE_SOURCE_DIR}/llama-dynamic-context/CMakeLists.txt")
     set(LLAMA_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
     set(LLAMA_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -40,32 +42,15 @@ target_include_directories(empi_core PUBLIC
 target_link_libraries(empi_core PUBLIC
     nlohmann_json::nlohmann_json
     Threads::Threads
+    Qt6::Core          
+    Qt6::Concurrent 
 )
 
 if(LLAMA_LIBRARY)
     target_link_libraries(empi_core PUBLIC ${LLAMA_LIBRARY})
 endif()
 
-add_executable(orchestrate_agents
-    src/orchestrate/orchestrate_agents.cpp
-)
-target_link_libraries(orchestrate_agents PRIVATE empi_core)
-
-add_executable(test_llm_client tests/test_llm_client.cpp)
-target_link_libraries(test_llm_client PRIVATE empi_core)
-
-option(BUILD_TESTS "Build all tests" OFF)
-if(BUILD_TESTS)
-    enable_testing()
-    add_executable(test_default tests/test_default.cpp)
-    target_link_libraries(test_default PRIVATE empi_core)
-    add_test(NAME DefaultTest COMMAND test_default)
-
-    add_executable(test_orchestration tests/test_orchestration.cpp)
-    target_link_libraries(test_orchestration PRIVATE empi_core)
-    add_test(NAME OrchestrationTest COMMAND test_orchestration)
-endif()
-
+# Copy integrations and config for core library
 add_custom_command(
     TARGET empi_core POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -83,26 +68,56 @@ add_custom_command(
     COMMENT "Copying config to build directory"
 )
 
-option(BUILD_GUI "Build Qt GUI application" OFF)
-
-if(BUILD_GUI)
-    find_package(Qt6 REQUIRED COMPONENTS WebEngineWidgets WebChannel)
-    set(CMAKE_AUTOMOC ON)
-    add_executable(empi_gui gui/main.cpp)
-    target_link_libraries(empi_gui PRIVATE empi_core Qt6::WebEngineWidgets Qt6::WebChannel)
-    target_include_directories(empi_gui PRIVATE ${CMAKE_SOURCE_DIR}/src)
-endif()
-
-add_custom_command(
-    TARGET empi_gui POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/gui/web
-        ${CMAKE_BINARY_DIR}/gui/web
-    COMMENT "Copying web frontend to build directory"
+# Executables that depend on empi_core
+add_executable(orchestrate_agents
+    src/orchestrate/orchestrate_agents.cpp
 )
+target_link_libraries(orchestrate_agents PRIVATE empi_core)
+
+add_executable(test_llm_client tests/test_llm_client.cpp)
+target_link_libraries(test_llm_client PRIVATE empi_core)
 
 add_executable(test_interface_generator tests/test_interface_generator.cpp)
 target_link_libraries(test_interface_generator PRIVATE empi_core)
 
 add_executable(test_pipeline tests/test_pipeline.cpp)
 target_link_libraries(test_pipeline PRIVATE empi_core)
+
+# Tests option
+option(BUILD_TESTS "Build all tests" OFF)
+if(BUILD_TESTS)
+    enable_testing()
+    add_executable(test_default tests/test_default.cpp)
+    target_link_libraries(test_default PRIVATE empi_core)
+    add_test(NAME DefaultTest COMMAND test_default)
+
+    add_executable(test_orchestration tests/test_orchestration.cpp)
+    target_link_libraries(test_orchestration PRIVATE empi_core)
+    add_test(NAME OrchestrationTest COMMAND test_orchestration)
+endif()
+
+# GUI option
+option(BUILD_GUI "Build Qt GUI application" OFF)
+if(BUILD_GUI)
+    set(CMAKE_AUTOMOC ON)
+    
+    # Find additional Qt components for GUI
+    find_package(Qt6 REQUIRED COMPONENTS WebEngineWidgets WebChannel Widgets)
+    
+    add_executable(empi_gui gui/main.cpp)
+    target_link_libraries(empi_gui PRIVATE 
+        empi_core 
+        Qt6::WebEngineWidgets 
+        Qt6::WebChannel
+        Qt6::Widgets
+    )
+    target_include_directories(empi_gui PRIVATE ${CMAKE_SOURCE_DIR}/src)
+    
+    add_custom_command(
+        TARGET empi_gui POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/gui/web
+            ${CMAKE_BINARY_DIR}/gui/web
+        COMMENT "Copying web frontend to build directory"
+    )
+endif()
