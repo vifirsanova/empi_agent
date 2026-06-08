@@ -414,15 +414,6 @@ node test_accessibility.js
 - Python 3.8+ with spacy and textstat
 - Node.js with jsdom and html-validator
 
-## Build
-
-```bash
-mkdir build
-cd build
-cmake ..
-make -j4
-```
-
 ## Test Data
 
 The test data in `tests/texts.json` and `tests/dialogs.json` is curated synthetic data designed for testing agent functionality
