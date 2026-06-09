@@ -27,6 +27,36 @@ cmake .. -DBUILD_GUI=ON && make
 ./empi_gui
 ```
 
+## Platform-Specific Dependencies
+
+Before building, install required system packages:
+
+**Ubuntu/Debian**
+```bash
+sudo apt install qt6-base-dev qt6-webengine-dev libpoppler-qt5-dev libreoffice nlohmann-json3-dev
+```
+
+**Arch Linux / Manjaro**
+```bash
+sudo pacman -S qt6-base qt6-webengine poppler-qt5 libreoffice-fresh nlohmann-json
+```
+
+**Fedora**
+```bash
+sudo dnf install qt6-qtbase-devel qt6-qtwebengine-devel poppler-qt5-devel libreoffice nlohmann-json-devel
+```
+
+**macOS**
+```bash
+brew install qt6 poppler libreoffice nlohmann-json
+```
+
+**Windows (MSYS2)**
+```bash
+pacman -S mingw-w64-x86_64-qt6-base mingw-w64-x86_64-qt6-webengine mingw-w64-x86_64-poppler mingw-w64-x86_64-nlohmann-json
+# Also install LibreOffice from https://www.libreoffice.org/
+```
+
 ## Configuration
 
 `config/agent_config.toml`:
@@ -150,7 +180,8 @@ Analyzes dialog history via LLM to extract user needs.
 Generates HTML using local LLM or cloud API.
 
 ## GUI Features
-- Drag & drop file upload (PDF, txt, plain input)
+- Drag & drop file upload (PDF, DOCX, TXT, HTML)
+- URL fetching from web pages
 - Preset adaptation prompts (ADHD-friendly, Dyslexia-friendly, For children, Beginner)
 - Split view: chat + live preview
 - Language toggle (EN/RU)
@@ -235,7 +266,10 @@ Real accessibility documentation from W3C WAI, WAI tutorials, and WebAIM — use
 - Python 3.8+ with `spacy`, `textstat`, `openai`, `tomli`
 - Node.js with `jsdom`, `html-validator` (optional)
 - Qt6 (optional, for GUI)
+- Poppler (for PDF support)
+- LibreOffice (for DOCX/DOC support)
 
 ## License
 
 MIT
+

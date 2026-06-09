@@ -34,7 +34,7 @@ function adaptAsync(text, prompt) {
         
         timeoutId = setTimeout(() => {
             if (pendingReject) {
-                pendingReject(new Error('Timeout waiting for adaptation'));
+                pendingReject(new Error('Timeout waiting for adaptation (5 minutes)'));
                 pendingResolve = null;
                 pendingReject = null;
             }
@@ -89,6 +89,142 @@ function cleanHtmlResponse(html) {
     return cleaned;
 }
 
+function sanitizeHtml(html) {
+    if (!html) return html;
+    
+    // Create temporary container
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+    
+    // Remove dangerous elements
+    temp.querySelectorAll('script, iframe, object, embed, form, input, button').forEach(el => el.remove());
+    
+    // Process all links
+    temp.querySelectorAll('a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href) {
+            // Block file:// and javascript: protocols
+            if (href.startsWith('file://') || href.toLowerCase().startsWith('javascript:')) {
+                link.removeAttribute('href');
+                link.style.cursor = 'not-allowed';
+                link.style.opacity = '0.6';
+                link.style.textDecoration = 'line-through';
+                link.title = 'Access denied for security reasons';
+            }
+            // Handle external web links
+            else if (href.startsWith('http://') || href.startsWith('https://')) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+                // Add click handler to ensure external opening
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (backend && backend.openExternalUrl) {
+                        backend.openExternalUrl(href);
+                    } else if (window.parent && window.parent.backend) {
+                        window.parent.backend.openExternalUrl(href);
+                    } else {
+                        window.open(href, '_blank', 'noopener,noreferrer');
+                    }
+                });
+            }
+            // Internal anchors - keep as is
+            else if (href.startsWith('#')) {
+                // Keep internal navigation
+            }
+            // Everything else - disable
+            else {
+                link.removeAttribute('href');
+                link.style.cursor = 'not-allowed';
+                link.style.opacity = '0.6';
+                link.title = 'Only HTTP/HTTPS links are allowed';
+            }
+        }
+    });
+    
+    // Remove event handlers
+    temp.querySelectorAll('*').forEach(el => {
+        const attributes = el.attributes;
+        for (let i = attributes.length - 1; i >= 0; i--) {
+            const attrName = attributes[i].name;
+            if (attrName.toLowerCase().startsWith('on')) {
+                el.removeAttribute(attrName);
+            }
+        }
+    });
+    
+    return temp.innerHTML;
+}
+
+function showAdaptedHtml(html) {
+    const safeHtml = sanitizeHtml(html);
+    const framedHtml = `<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data:; script-src 'none'; style-src 'unsafe-inline' https:; img-src https: data:;">
+        <meta name="referrer" content="no-referrer">
+        <base target="_blank">
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                line-height: 1.6;
+                padding: 20px;
+                max-width: 900px;
+                margin: 0 auto;
+                background: #fffef9;
+                color: #2c2c2c;
+            }
+            a {
+                color: #e0aaa0;
+                text-decoration: none;
+                border-bottom: 1px solid rgba(224,170,160,0.3);
+            }
+            a:hover {
+                border-bottom-color: #e0aaa0;
+            }
+            a[href^="http"]::after {
+                content: " 🔗";
+                font-size: 0.8em;
+                opacity: 0.6;
+            }
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            pre, code {
+                background: #f5f5f5;
+                padding: 2px 6px;
+                border-radius: 4px;
+                overflow-x: auto;
+            }
+            blockquote {
+                border-left: 3px solid #e0aaa0;
+                margin: 16px 0;
+                padding-left: 16px;
+                color: #666;
+            }
+            .note, .warning, .info {
+                padding: 12px 16px;
+                border-radius: 8px;
+                margin: 16px 0;
+            }
+            .note {
+                background: rgba(224,170,160,0.1);
+                border-left: 3px solid #e0aaa0;
+            }
+        </style>
+    </head>
+    <body>
+        ${safeHtml}
+    </body>
+    </html>`;
+    
+    previewFrame.srcdoc = framedHtml;
+    adaptedEmpty.style.display = 'none';
+    previewFrame.style.display = 'block';
+    adaptedBadge.style.display = 'inline';
+}
+
 const canvas = document.getElementById("canvas-bg");
 const ctx = canvas.getContext("2d");
 let w, h, particles = [];
@@ -133,7 +269,7 @@ const translations = {
     langLabel: "RU",
     downloadBtn: "Download",
     copyBtn: "Copy",
-    welcomeMsg: "Upload a file, paste a URL, or type your needs. I'll adapt content for you.",
+    welcomeMsg: "Upload a file (PDF, DOCX, TXT, HTML), paste a URL, or type your needs. I'll adapt content for you.",
     chatPlaceholder: "Describe your learning needs...",
     urlPlaceholder: "https://example.com/article...",
     fetchBtn: "Fetch",
@@ -159,10 +295,12 @@ const translations = {
     msgNeedPrompt: "Please describe your needs in the input field.",
     msgBackendNotReady: "Backend not ready, please wait...",
     msgErrorFetch: "Failed to fetch URL content.",
-    msgCopied: "Copied.",
-    msgDownloaded: "Downloaded.",
+    msgCopied: "Copied!",
+    msgDownloaded: "Downloaded!",
     msgReadapting: "Re-adapting...",
-    alertInDevelopment: "This feature (URL fetch) is under development. Please upload a file instead."
+    msgParsing: "Parsing document...",
+    msgParseError: "Failed to parse document",
+    supportedFormats: "Supported: PDF, DOCX, DOC, TXT, HTML, MD"
   },
   ru: {
     title: "EMPI Agent",
@@ -170,7 +308,7 @@ const translations = {
     langLabel: "EN",
     downloadBtn: "Скачать",
     copyBtn: "Копировать",
-    welcomeMsg: "Загрузите файл, вставьте URL или опишите ваши потребности. Я адаптирую материал.",
+    welcomeMsg: "Загрузите файл (PDF, DOCX, TXT, HTML), вставьте URL или опишите ваши потребности. Я адаптирую материал.",
     chatPlaceholder: "Опишите ваши учебные потребности...",
     urlPlaceholder: "https://example.com/статья...",
     fetchBtn: "Загрузить",
@@ -196,10 +334,12 @@ const translations = {
     msgNeedPrompt: "Опишите ваши потребности в поле ввода.",
     msgBackendNotReady: "Бэкенд не готов, подождите...",
     msgErrorFetch: "Не удалось загрузить содержимое по ссылке.",
-    msgCopied: "Скопировано.",
-    msgDownloaded: "Скачано.",
+    msgCopied: "Скопировано!",
+    msgDownloaded: "Скачано!",
     msgReadapting: "Повторная адаптация...",
-    alertInDevelopment: "Эта функция (загрузка по URL) в разработке. Пожалуйста, загрузите файл."
+    msgParsing: "Разбор документа...",
+    msgParseError: "Ошибка разбора документа",
+    supportedFormats: "Поддерживается: PDF, DOCX, DOC, TXT, HTML, MD"
   }
 };
 
@@ -363,46 +503,99 @@ function showOriginalText(text) {
 }
 
 function showOriginalHtml(html) {
+  const safeHtml = sanitizeHtml(html);
   originalEmpty.style.display = 'none';
   originalTextPreview.style.display = 'none';
   originalFrame.style.display = 'block';
-  originalFrame.srcdoc = html;
+  originalFrame.srcdoc = safeHtml;
   originalPane.classList.add('active');
 }
 
-function readFileAsText(file) {
-  return new Promise(function(resolve, reject) {
-    var reader = new FileReader();
-    reader.onload = function() { resolve(reader.result); };
-    reader.onerror = reject;
-    reader.readAsText(file);
-  });
+async function parseDocument(file) {
+    if (!backend || typeof backend.parseDocumentFromContent !== 'function') {
+        throw new Error('Document parsing not available');
+    }
+    
+    return new Promise((resolve, reject) => {
+        const timeoutId = setTimeout(() => {
+            reject(new Error('Document parsing timeout'));
+        }, 30000);
+        
+        const onDocumentParsed = (result) => {
+            clearTimeout(timeoutId);
+            backend.documentParsed.disconnect(onDocumentParsed);
+            resolve(result);
+        };
+        
+        backend.documentParsed.connect(onDocumentParsed);
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const arrayBuffer = e.target.result;
+            const uint8Array = new Uint8Array(arrayBuffer);
+            let binary = '';
+            for (let i = 0; i < uint8Array.length; i++) {
+                binary += String.fromCharCode(uint8Array[i]);
+            }
+            const base64 = btoa(binary);
+            backend.parseDocumentFromContent(file.name, base64);
+        };
+        reader.onerror = function() {
+            clearTimeout(timeoutId);
+            reject(new Error('Failed to read file'));
+        };
+        reader.readAsArrayBuffer(file);
+    });
 }
 
 attachBtn.addEventListener('click', function() {
   fileInput.click();
 });
 
-fileInput.addEventListener('change', function() {
+fileInput.addEventListener('change', async function() {
   if (fileInput.files.length) {
     selectedFile = fileInput.files[0];
     addFileBubble(selectedFile);
-    readFileAsText(selectedFile).then(function(text) {
-      originalText = text;
+    
+    showCog();
+    statusBar.textContent = t('msgParsing');
+    statusBar.className = 'status-bar';
+    
+    try {
+      const extractedText = await parseDocument(selectedFile);
+      hideCog();
+      
+      if (extractedText.startsWith('Error:') || extractedText.startsWith('Warning:')) {
+        addChatText('assistant', extractedText);
+        statusBar.textContent = extractedText;
+        statusBar.className = 'status-bar error';
+        return;
+      }
+      
+      originalText = extractedText;
       originalHtml = null;
-      showOriginalText(text.substring(0, 5000));
+      showOriginalText(extractedText.substring(0, 10000) + (extractedText.length > 10000 ? '\n\n... (truncated)' : ''));
+      
       statusBar.textContent = t('msgFileAttached') + ': ' + selectedFile.name;
       statusBar.className = 'status-bar success';
-    }).catch(function(e) {
-      statusBar.textContent = e.message;
+      
+      // Auto-adapt if prompt exists
+      if (chatPromptInput.value.trim()) {
+        setTimeout(() => doAdapt(chatPromptInput.value.trim()), 500);
+      }
+      
+    } catch (e) {
+      hideCog();
+      addChatText('assistant', t('msgParseError') + ': ' + e.message);
+      statusBar.textContent = t('msgParseError');
       statusBar.className = 'status-bar error';
-    });
+    }
   }
 });
 
 var chatPanel = document.getElementById('chatPanel');
 chatPanel.addEventListener('dragover', function(e) { e.preventDefault(); });
-chatPanel.addEventListener('drop', function(e) {
+chatPanel.addEventListener('drop', async function(e) {
   e.preventDefault();
   if (e.dataTransfer.files.length) {
     selectedFile = e.dataTransfer.files[0];
@@ -410,17 +603,32 @@ chatPanel.addEventListener('drop', function(e) {
     dt.items.add(selectedFile);
     fileInput.files = dt.files;
     addFileBubble(selectedFile);
-    readFileAsText(selectedFile).then(function(text) {
-      originalText = text;
+    
+    showCog();
+    statusBar.textContent = t('msgParsing');
+    
+    try {
+      const extractedText = await parseDocument(selectedFile);
+      hideCog();
+      
+      if (extractedText.startsWith('Error:')) {
+        addChatText('assistant', extractedText);
+        statusBar.textContent = extractedText;
+        statusBar.className = 'status-bar error';
+        return;
+      }
+      
+      originalText = extractedText;
       originalHtml = null;
-      showOriginalText(text.substring(0, 5000));
+      showOriginalText(extractedText.substring(0, 10000));
       statusBar.textContent = t('msgFileAttached') + ': ' + selectedFile.name;
       statusBar.className = 'status-bar success';
-    }).catch(function(e) {
-      statusBar.textContent = e.message;
-      statusBar.className = 'status-bar error';
-    });
+    } catch (e) {
+      hideCog();
+      addChatText('assistant', t('msgParseError') + ': ' + e.message);
+    }
   }
+  
   var urlData = e.dataTransfer.getData('text/plain');
   if (urlData && (urlData.indexOf('http://') === 0 || urlData.indexOf('https://') === 0)) {
     handleUrlFetch(urlData);
@@ -456,33 +664,67 @@ urlInput.addEventListener('keypress', function(e) {
 });
 
 async function handleUrlFetch(url) {
-  if (backend && typeof backend.fetchUrl === 'function') {
-    addUrlBubble(url);
-    statusBar.textContent = 'Fetching URL...';
-    statusBar.className = 'status-bar';
-    try {
-      var content = await backend.fetchUrl(url);
-      if (content && content.trim().charAt(0) === '<' && content.indexOf('<') !== -1) {
-        originalHtml = content;
-        originalText = stripHtml(content);
-        showOriginalHtml(content);
-      } else {
-        originalHtml = null;
-        originalText = content;
-        showOriginalText(content);
-      }
-      addChatText('assistant', t('msgUrlFetched'));
-      statusBar.textContent = t('msgUrlFetched');
-      statusBar.className = 'status-bar success';
-      selectedFile = null;
-    } catch (e) {
-      addChatText('assistant', t('msgErrorFetch') + ': ' + e.message);
-      statusBar.textContent = t('msgErrorFetch');
+  if (!backend || typeof backend.fetchUrl !== 'function') {
+    addChatText('assistant', 'URL fetching not available');
+    return;
+  }
+  
+  let validatedUrl = url.trim();
+  if (!validatedUrl.startsWith('http://') && !validatedUrl.startsWith('https://')) {
+    validatedUrl = 'https://' + validatedUrl;
+  }
+  
+  try {
+    new URL(validatedUrl);
+  } catch(e) {
+    addChatText('assistant', 'Invalid URL format');
+    return;
+  }
+  
+  addUrlBubble(validatedUrl);
+  statusBar.textContent = 'Fetching URL...';
+  statusBar.className = 'status-bar';
+  showCog();
+  
+  try {
+    const content = await backend.fetchUrl(validatedUrl);
+    hideCog();
+    
+    if (content.startsWith('Error:')) {
+      addChatText('assistant', t('msgErrorFetch') + ': ' + content);
+      statusBar.textContent = content;
       statusBar.className = 'status-bar error';
+      return;
     }
-  } else {
-    alert(t('alertInDevelopment'));
-    addChatText('assistant', t('alertInDevelopment'));
+    
+    const isHtml = content.trim().startsWith('<') || 
+                  content.toLowerCase().includes('<!doctype') ||
+                  (content.includes('<html') && content.includes('</html>'));
+    
+    if (isHtml) {
+      originalHtml = content;
+      originalText = stripHtml(content);
+      showOriginalHtml(sanitizeHtml(content));
+    } else {
+      originalHtml = null;
+      originalText = content;
+      showOriginalText(content.substring(0, 10000));
+    }
+    
+    addChatText('assistant', t('msgUrlFetched'));
+    statusBar.textContent = t('msgUrlFetched');
+    statusBar.className = 'status-bar success';
+    selectedFile = null;
+    
+    if (chatPromptInput.value.trim()) {
+      setTimeout(() => doAdapt(chatPromptInput.value.trim()), 500);
+    }
+    
+  } catch(e) {
+    hideCog();
+    addChatText('assistant', t('msgErrorFetch') + ': ' + e.message);
+    statusBar.textContent = t('msgErrorFetch');
+    statusBar.className = 'status-bar error';
   }
 }
 
@@ -499,6 +741,7 @@ async function doAdapt(promptText) {
     statusBar.className = 'status-bar error';
     return;
   }
+  
   if (!promptText || !promptText.trim()) {
     addChatText('assistant', t('msgNeedPrompt'));
     statusBar.textContent = t('msgNeedPrompt');
@@ -529,12 +772,9 @@ async function doAdapt(promptText) {
     }
     
     html = cleanHtmlResponse(html);
-    
     adaptedHtml = html;
-    adaptedEmpty.style.display = 'none';
-    previewFrame.style.display = 'block';
-    previewFrame.srcdoc = html;
-    adaptedBadge.style.display = 'inline';
+    showAdaptedHtml(html);
+    
     switchToPane('adaptedPane');
     addChatText('assistant', t('msgAdapted'));
     statusBar.textContent = t('msgAdapted');
@@ -636,15 +876,16 @@ previewTabs.forEach(function(tab) {
 
 downloadBtn.addEventListener('click', function() {
   var activePane = document.querySelector('.preview-pane.active');
-  var html = '';
+  var content = '';
   if (activePane && activePane.id === 'adaptedPane' && adaptedHtml) {
-    html = adaptedHtml;
+    content = adaptedHtml;
   } else if (activePane && activePane.id === 'originalPane' && originalHtml) {
-    html = originalHtml;
+    content = originalHtml;
   } else {
-    html = originalText || '';
+    content = originalText || '';
   }
-  var blob = new Blob([html], { type: 'text/html' });
+  
+  var blob = new Blob([content], { type: 'text/html' });
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
   a.href = url;
@@ -668,6 +909,14 @@ copyBtn.addEventListener('click', function() {
   } else {
     content = originalText || '';
   }
+  
+  // For HTML content, copy plain text version
+  if (content.includes('<') && content.includes('>')) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = content;
+    content = tempDiv.textContent || tempDiv.innerText;
+  }
+  
   navigator.clipboard.writeText(content).then(function() {
     statusBar.textContent = t('msgCopied');
     statusBar.className = 'status-bar success';
@@ -701,5 +950,12 @@ function resizeStop() {
   document.removeEventListener('mouseup', resizeStop);
   document.body.style.userSelect = '';
 }
+
+// Add supported formats hint
+const supportedFormatsHint = document.createElement('div');
+supportedFormatsHint.className = 'supported-formats-hint';
+supportedFormatsHint.style.cssText = 'font-size: 11px; color: #999; margin-top: 8px; text-align: center;';
+supportedFormatsHint.textContent = t('supportedFormats');
+document.querySelector('.chat-input-area')?.appendChild(supportedFormatsHint);
 
 applyLang(currentLang);

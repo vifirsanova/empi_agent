@@ -1,15 +1,69 @@
 cmake_minimum_required(VERSION 3.14)
 project(empi_agent VERSION 1.0.0 LANGUAGES CXX)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+option(BUILD_TESTS "Build all tests" OFF)
+option(BUILD_GUI "Build Qt GUI application" ON)
+
 find_package(nlohmann_json REQUIRED)
 find_package(Threads REQUIRED)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Concurrent)
+# Find Poppler - try multiple names and paths
+find_path(POPPLER_INCLUDE_DIR
+    NAMES 
+        poppler-qt6.h
+        poppler/qt6/poppler-qt6.h
+        qt6/poppler-qt6.h
+        poppler-qt5.h
+        poppler/qt5/poppler-qt5.h
+        qt5/poppler-qt5.h
+    PATHS
+        /usr/include
+        /usr/local/include
+        /opt/homebrew/include
+)
 
+find_library(POPPLER_LIBRARY
+    NAMES 
+        poppler-qt6
+        poppler-qt5
+        poppler
+    PATHS
+        /usr/lib
+        /usr/local/lib
+        /opt/homebrew/lib
+)
+
+if(POPPLER_INCLUDE_DIR AND POPPLER_LIBRARY)
+    set(POPPLER_FOUND TRUE)
+    set(POPPLER_INCLUDE_DIRS ${POPPLER_INCLUDE_DIR})
+    set(POPPLER_LIBRARIES ${POPPLER_LIBRARY})
+    message(STATUS "Found Poppler: ${POPPLER_LIBRARY}")
+    
+    if(${POPPLER_INCLUDE_DIR} MATCHES "qt6")
+        set(POPPLER_QT_VERSION "6")
+    elseif(${POPPLER_INCLUDE_DIR} MATCHES "qt5")
+        set(POPPLER_QT_VERSION "5")
+    else()
+        set(POPPLER_QT_VERSION "unknown")
+    endif()
+else()
+    set(POPPLER_FOUND FALSE)
+    message(WARNING "Poppler not found. PDF support will be disabled. Install poppler-qt6 (Arch) or libpoppler-qt6-dev (Ubuntu)")
+endif()
+
+# Find Qt components
+if(BUILD_GUI)
+    find_package(Qt6 REQUIRED COMPONENTS Core Concurrent WebEngineWidgets WebChannel Widgets)
+else()
+    find_package(Qt6 REQUIRED COMPONENTS Core Concurrent)
+endif()
+
+# Llama integration
 if(EXISTS "${CMAKE_SOURCE_DIR}/llama-dynamic-context/CMakeLists.txt")
     set(LLAMA_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
     set(LLAMA_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -26,6 +80,7 @@ else()
     set(LLAMA_LIBRARY "")
 endif()
 
+# Core library
 add_library(empi_core STATIC
     src/core/UniversalAgent.cpp
     src/core/LLMClient.cpp
@@ -37,6 +92,7 @@ add_library(empi_core STATIC
 target_include_directories(empi_core PUBLIC
     ${CMAKE_SOURCE_DIR}/src
     ${LLAMA_INCLUDE_DIR}
+    ${POPPLER_INCLUDE_DIRS}
 )
 
 target_link_libraries(empi_core PUBLIC
@@ -46,11 +102,15 @@ target_link_libraries(empi_core PUBLIC
     Qt6::Concurrent 
 )
 
+if(POPPLER_FOUND)
+    target_link_libraries(empi_core PUBLIC ${POPPLER_LIBRARIES})
+endif()
+
 if(LLAMA_LIBRARY)
     target_link_libraries(empi_core PUBLIC ${LLAMA_LIBRARY})
 endif()
 
-# Copy integrations and config for core library
+# Copy integrations and config
 add_custom_command(
     TARGET empi_core POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -68,7 +128,7 @@ add_custom_command(
     COMMENT "Copying config to build directory"
 )
 
-# Executables that depend on empi_core
+# CLI executables
 add_executable(orchestrate_agents
     src/orchestrate/orchestrate_agents.cpp
 )
@@ -83,8 +143,7 @@ target_link_libraries(test_interface_generator PRIVATE empi_core)
 add_executable(test_pipeline tests/test_pipeline.cpp)
 target_link_libraries(test_pipeline PRIVATE empi_core)
 
-# Tests option
-option(BUILD_TESTS "Build all tests" OFF)
+# Tests
 if(BUILD_TESTS)
     enable_testing()
     add_executable(test_default tests/test_default.cpp)
@@ -96,23 +155,34 @@ if(BUILD_TESTS)
     add_test(NAME OrchestrationTest COMMAND test_orchestration)
 endif()
 
-# GUI option
-option(BUILD_GUI "Build Qt GUI application" OFF)
+# GUI application
 if(BUILD_GUI)
     set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
     
-    # Find additional Qt components for GUI
-    find_package(Qt6 REQUIRED COMPONENTS WebEngineWidgets WebChannel Widgets)
+    add_executable(empi_gui
+        gui/main.cpp
+        gui/DocumentParser.cpp
+    )
     
-    add_executable(empi_gui gui/main.cpp)
     target_link_libraries(empi_gui PRIVATE 
         empi_core 
         Qt6::WebEngineWidgets 
         Qt6::WebChannel
         Qt6::Widgets
+        Qt6::Core
     )
-    target_include_directories(empi_gui PRIVATE ${CMAKE_SOURCE_DIR}/src)
     
+    if(POPPLER_FOUND)
+        target_link_libraries(empi_gui PRIVATE ${POPPLER_LIBRARIES})
+        target_include_directories(empi_gui PRIVATE ${POPPLER_INCLUDE_DIRS})
+    endif()
+    
+    target_include_directories(empi_gui PRIVATE 
+        ${CMAKE_SOURCE_DIR}/src
+    )
+    
+    # Copy web frontend
     add_custom_command(
         TARGET empi_gui POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -120,4 +190,49 @@ if(BUILD_GUI)
             ${CMAKE_BINARY_DIR}/gui/web
         COMMENT "Copying web frontend to build directory"
     )
+    
+    # Copy CSS files if they exist
+    add_custom_command(
+        TARGET empi_gui POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/gui/web/css
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${CMAKE_SOURCE_DIR}/gui/web/css/style.css
+            ${CMAKE_BINARY_DIR}/gui/web/css/style.css
+        COMMENT "Copying CSS files"
+    )
+    
+    # macOS bundle
+    if(APPLE)
+        set_target_properties(empi_gui PROPERTIES
+            MACOSX_BUNDLE TRUE
+        )
+    endif()
+    
+    # Windows GUI
+    if(WIN32)
+        set_target_properties(empi_gui PROPERTIES
+            WIN32_EXECUTABLE TRUE
+        )
+    endif()
+    
+    # Installation
+    install(TARGETS empi_gui
+        RUNTIME DESTINATION bin
+        BUNDLE DESTINATION .
+    )
+    
+    install(DIRECTORY ${CMAKE_BINARY_DIR}/gui/web
+        DESTINATION share/empi_agent
+    )
+    
+    install(DIRECTORY ${CMAKE_BINARY_DIR}/config
+        DESTINATION share/empi_agent
+    )
 endif()
+
+# Installation for core library
+install(TARGETS empi_core 
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+)
+
