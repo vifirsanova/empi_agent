@@ -46,6 +46,7 @@ RUN cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_GUI=ON \
     -DBUILD_TESTS=OFF \
+    -DCMAKE_CXX_FLAGS="-DEMPI_NO_LLAMA" \
     -G Ninja \
     && cmake --build build --target empi_gui -- -j$(nproc)
 

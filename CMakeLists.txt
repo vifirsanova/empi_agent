@@ -134,16 +134,17 @@ add_executable(orchestrate_agents
 )
 target_link_libraries(orchestrate_agents PRIVATE empi_core)
 
-add_executable(test_llm_client tests/test_llm_client.cpp)
-target_link_libraries(test_llm_client PRIVATE empi_core)
+if(BUILD_TESTS)
+    add_executable(test_llm_client tests/test_llm_client.cpp)
+    target_link_libraries(test_llm_client PRIVATE empi_core)
 
-add_executable(test_interface_generator tests/test_interface_generator.cpp)
-target_link_libraries(test_interface_generator PRIVATE empi_core)
+    add_executable(test_interface_generator tests/test_interface_generator.cpp)
+    target_link_libraries(test_interface_generator PRIVATE empi_core)
 
-add_executable(test_pipeline tests/test_pipeline.cpp)
-target_link_libraries(test_pipeline PRIVATE empi_core)
+    add_executable(test_pipeline tests/test_pipeline.cpp)
+    target_link_libraries(test_pipeline PRIVATE empi_core)
+endif()
 
-# Tests
 if(BUILD_TESTS)
     enable_testing()
     add_executable(test_default tests/test_default.cpp)

@@ -6,7 +6,9 @@
 #include <filesystem>
 #include <sstream>
 #include <thread>
+#ifndef EMPI_NO_LLAMA
 #include "llama.h"
+#endif
 #include <iostream>
 
 namespace fs = std::filesystem;
@@ -14,6 +16,7 @@ using json = nlohmann::json;
 
 namespace EMPI {
 
+#ifndef EMPI_NO_LLAMA
 class InterfaceGenerator::LlamaImpl {
 public:
     LlamaImpl(const std::string& model_path)
@@ -117,6 +120,7 @@ private:
         return result;
     }
 };
+#endif
 
 InterfaceGenerator::InterfaceGenerator(std::shared_ptr<LLMClient> llm_client,
                                        const std::string& local_model_path)
@@ -255,6 +259,7 @@ void InterfaceGenerator::register_handlers() {
                 
                 // Fall back to llama if API failed
                 if (html.empty()) {
+		#ifndef EMPI_NO_LLAMA
                     conditional_llama_init();
                     if (llama_impl_ && llama_impl_->is_available()) {
                         html = llama_impl_->generate_interface(
@@ -265,6 +270,7 @@ void InterfaceGenerator::register_handlers() {
                     } else {
                         html = fallback_html(ext["text_metrics"], ext["feedback_analysis"]);
                     }
+		#endif
                 }
                 
                 // Post-Processing

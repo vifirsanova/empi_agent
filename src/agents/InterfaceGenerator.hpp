@@ -3,7 +3,9 @@
 #include "../core/LLMClient.hpp"
 #include <string>
 #include <memory>
+#ifndef EMPI_NO_LLAMA
 #include "llama.h"
+#endif
 
 namespace EMPI {
 
