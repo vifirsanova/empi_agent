@@ -127,7 +127,9 @@ InterfaceGenerator::InterfaceGenerator(std::shared_ptr<LLMClient> llm_client,
     : UniversalAgent("interface_generator", "html_generation")
     , llm_client_(std::move(llm_client))
     , local_model_path_(local_model_path)
+#ifndef EMPI_NO_LLAMA
     , llama_impl_(nullptr)
+#endif
     , llama_initialized_(false)
 {
     register_handlers();
@@ -136,11 +138,15 @@ InterfaceGenerator::InterfaceGenerator(std::shared_ptr<LLMClient> llm_client,
 InterfaceGenerator::~InterfaceGenerator() = default;
 
 bool InterfaceGenerator::is_available() const {
-    return (llm_client_ && llm_client_->is_available()) ||
-           (llama_impl_ && llama_impl_->is_available());
+    bool available = (llm_client_ && llm_client_->is_available());
+#ifndef EMPI_NO_LLAMA
+    available = available || (llama_impl_ && llama_impl_->is_available());
+#endif
+    return available;
 }
 
 void InterfaceGenerator::conditional_llama_init() {
+#ifndef EMPI_NO_LLAMA
     if (llama_initialized_ || local_model_path_.empty()) return;
     
     if (llm_client_ && llm_client_->is_available()) return;
@@ -155,6 +161,7 @@ void InterfaceGenerator::conditional_llama_init() {
         std::cerr << "[InterfaceGenerator] Failed to load llama: " << e.what() << std::endl;
         llama_impl_ = nullptr;
     }
+#endif
 }
 
 std::string InterfaceGenerator::strip_markdown_code_blocks(const std::string& html) {

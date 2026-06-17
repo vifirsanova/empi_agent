@@ -2,9 +2,10 @@ FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     DISPLAY=:99 \
-    QT_QPA_PLATFORM=offscreen
+    QT_QPA_PLATFORM=xcb
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    software-properties-common \
     build-essential \
     cmake \
     ninja-build \
@@ -23,9 +24,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
     x11vnc \
     novnc \
+    strace \
     fonts-noto-core \
     fonts-noto-cjk \
     fonts-noto-color-emoji \
+    && add-apt-repository universe \
+    && apt-get update \
+    && apt-get install -y openbox \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/requirements.txt

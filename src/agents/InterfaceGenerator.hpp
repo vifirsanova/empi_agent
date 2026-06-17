@@ -31,7 +31,9 @@ private:
     bool llama_initialized_ = false;
 
     class LlamaImpl;
+#ifndef EMPI_NO_LLAMA
     std::unique_ptr<LlamaImpl> llama_impl_;
+#endif
 };
 
 } // namespace EMPI
