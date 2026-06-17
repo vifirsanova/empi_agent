@@ -15,3 +15,4 @@ config/agent_config.toml
 Thumbs.db
 output/
 *.html.tmp
+*.log

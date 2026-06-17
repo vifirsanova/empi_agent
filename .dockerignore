@@ -1,0 +1,8 @@
+build/
+llama-dynamic-context/
+models/
+test_data/
+img/
+logs/
+*.md
+.git/
