@@ -7,35 +7,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(BUILD_TESTS "Build all tests" OFF)
-option(BUILD_GUI "Build Qt GUI application" ON)
+option(BUILD_GUI "Build Qt GUI application" OFF)
+option(BUILD_HTTP "Build HTTP server" ON)
 
 find_package(nlohmann_json REQUIRED)
 find_package(Threads REQUIRED)
 
-# Find Poppler - try multiple names and paths
+# Find Poppler
 find_path(POPPLER_INCLUDE_DIR
-    NAMES 
-        poppler-qt6.h
-        poppler/qt6/poppler-qt6.h
-        qt6/poppler-qt6.h
-        poppler-qt5.h
-        poppler/qt5/poppler-qt5.h
-        qt5/poppler-qt5.h
-    PATHS
-        /usr/include
-        /usr/local/include
-        /opt/homebrew/include
+    NAMES poppler-qt6.h poppler/qt6/poppler-qt6.h
+    PATHS /usr/include /usr/local/include /opt/homebrew/include
 )
 
 find_library(POPPLER_LIBRARY
-    NAMES 
-        poppler-qt6
-        poppler-qt5
-        poppler
-    PATHS
-        /usr/lib
-        /usr/local/lib
-        /opt/homebrew/lib
+    NAMES poppler-qt6 poppler-qt5 poppler
+    PATHS /usr/lib /usr/local/lib /opt/homebrew/lib
 )
 
 if(POPPLER_INCLUDE_DIR AND POPPLER_LIBRARY)
@@ -43,21 +29,15 @@ if(POPPLER_INCLUDE_DIR AND POPPLER_LIBRARY)
     set(POPPLER_INCLUDE_DIRS ${POPPLER_INCLUDE_DIR})
     set(POPPLER_LIBRARIES ${POPPLER_LIBRARY})
     message(STATUS "Found Poppler: ${POPPLER_LIBRARY}")
-    
-    if(${POPPLER_INCLUDE_DIR} MATCHES "qt6")
-        set(POPPLER_QT_VERSION "6")
-    elseif(${POPPLER_INCLUDE_DIR} MATCHES "qt5")
-        set(POPPLER_QT_VERSION "5")
-    else()
-        set(POPPLER_QT_VERSION "unknown")
-    endif()
 else()
     set(POPPLER_FOUND FALSE)
-    message(WARNING "Poppler not found. PDF support will be disabled. Install poppler-qt6 (Arch) or libpoppler-qt6-dev (Ubuntu)")
+    message(WARNING "Poppler not found. PDF support will be disabled.")
 endif()
 
-# Find Qt components
-if(BUILD_GUI)
+# Qt components
+if(BUILD_HTTP)
+    find_package(Qt6 REQUIRED COMPONENTS Core Concurrent HttpServer)
+elseif(BUILD_GUI)
     find_package(Qt6 REQUIRED COMPONENTS Core Concurrent WebEngineWidgets WebChannel Widgets)
 else()
     find_package(Qt6 REQUIRED COMPONENTS Core Concurrent)
@@ -80,7 +60,10 @@ else()
     set(LLAMA_LIBRARY "")
 endif()
 
-# Core library
+# ============================================================================
+# CORE LIBRARY
+# ============================================================================
+
 add_library(empi_core STATIC
     src/core/UniversalAgent.cpp
     src/core/LLMClient.cpp
@@ -128,25 +111,34 @@ add_custom_command(
     COMMENT "Copying config to build directory"
 )
 
-# CLI executables
+# ============================================================================
+# CLI
+# ============================================================================
+
 add_executable(orchestrate_agents
     src/orchestrate/orchestrate_agents.cpp
 )
 target_link_libraries(orchestrate_agents PRIVATE empi_core)
 
-if(BUILD_TESTS)
-    add_executable(test_llm_client tests/test_llm_client.cpp)
-    target_link_libraries(test_llm_client PRIVATE empi_core)
-
-    add_executable(test_interface_generator tests/test_interface_generator.cpp)
-    target_link_libraries(test_interface_generator PRIVATE empi_core)
-
-    add_executable(test_pipeline tests/test_pipeline.cpp)
-    target_link_libraries(test_pipeline PRIVATE empi_core)
-endif()
+# ============================================================================
+# TESTS
+# ============================================================================
 
 if(BUILD_TESTS)
     enable_testing()
+    
+    add_executable(test_llm_client tests/test_llm_client.cpp)
+    target_link_libraries(test_llm_client PRIVATE empi_core)
+    add_test(NAME TestLLMClient COMMAND test_llm_client)
+
+    add_executable(test_interface_generator tests/test_interface_generator.cpp)
+    target_link_libraries(test_interface_generator PRIVATE empi_core)
+    add_test(NAME TestInterfaceGenerator COMMAND test_interface_generator)
+
+    add_executable(test_pipeline tests/test_pipeline.cpp)
+    target_link_libraries(test_pipeline PRIVATE empi_core)
+    add_test(NAME TestPipeline COMMAND test_pipeline)
+    
     add_executable(test_default tests/test_default.cpp)
     target_link_libraries(test_default PRIVATE empi_core)
     add_test(NAME DefaultTest COMMAND test_default)
@@ -156,13 +148,78 @@ if(BUILD_TESTS)
     add_test(NAME OrchestrationTest COMMAND test_orchestration)
 endif()
 
-# GUI application
+# ============================================================================
+# HTTP SERVER
+# ============================================================================
+
+if(BUILD_HTTP)
+    set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
+    
+    add_executable(empi_http
+        gui/main.cpp
+        gui/DocumentParser.cpp
+    )
+    
+    target_link_libraries(empi_http PRIVATE 
+        empi_core 
+        Qt6::HttpServer
+        Qt6::Core
+        Qt6::Concurrent
+    )
+    
+    if(POPPLER_FOUND)
+        target_link_libraries(empi_http PRIVATE ${POPPLER_LIBRARIES})
+        target_include_directories(empi_http PRIVATE ${POPPLER_INCLUDE_DIRS})
+    endif()
+    
+    target_include_directories(empi_http PRIVATE 
+        ${CMAKE_SOURCE_DIR}/src
+    )
+    
+    # Copy web frontend
+    add_custom_command(
+        TARGET empi_http POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/gui/web
+            ${CMAKE_BINARY_DIR}/gui/web
+        COMMENT "Copying web frontend to build directory"
+    )
+    
+    # Copy CSS
+    add_custom_command(
+        TARGET empi_http POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/gui/web/css
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            ${CMAKE_SOURCE_DIR}/gui/web/css/style.css
+            ${CMAKE_BINARY_DIR}/gui/web/css/style.css
+        COMMENT "Copying CSS files"
+    )
+    
+    # Installation
+    install(TARGETS empi_http
+        RUNTIME DESTINATION bin
+    )
+    
+    install(DIRECTORY ${CMAKE_BINARY_DIR}/gui/web
+        DESTINATION share/empi_agent
+    )
+    
+    install(DIRECTORY ${CMAKE_BINARY_DIR}/config
+        DESTINATION share/empi_agent
+    )
+endif()
+
+# ============================================================================
+# GUI (optional)
+# ============================================================================
+
 if(BUILD_GUI)
     set(CMAKE_AUTOMOC ON)
     set(CMAKE_AUTORCC ON)
     
     add_executable(empi_gui
-        gui/main.cpp
+        gui/main_gui.cpp
         gui/DocumentParser.cpp
     )
     
@@ -192,31 +249,18 @@ if(BUILD_GUI)
         COMMENT "Copying web frontend to build directory"
     )
     
-    # Copy CSS files if they exist
-    add_custom_command(
-        TARGET empi_gui POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/gui/web/css
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            ${CMAKE_SOURCE_DIR}/gui/web/css/style.css
-            ${CMAKE_BINARY_DIR}/gui/web/css/style.css
-        COMMENT "Copying CSS files"
-    )
-    
-    # macOS bundle
     if(APPLE)
         set_target_properties(empi_gui PROPERTIES
             MACOSX_BUNDLE TRUE
         )
     endif()
     
-    # Windows GUI
     if(WIN32)
         set_target_properties(empi_gui PROPERTIES
             WIN32_EXECUTABLE TRUE
         )
     endif()
     
-    # Installation
     install(TARGETS empi_gui
         RUNTIME DESTINATION bin
         BUNDLE DESTINATION .
@@ -231,9 +275,15 @@ if(BUILD_GUI)
     )
 endif()
 
-# Installation for core library
+# ============================================================================
+# INSTALL
+# ============================================================================
+
 install(TARGETS empi_core 
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
 )
 
+install(TARGETS orchestrate_agents
+    RUNTIME DESTINATION bin
+)

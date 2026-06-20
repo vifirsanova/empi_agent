@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  empi-http:
+    build: .
+    container_name: empi-agent
+    ports:
+      - "8080:8080"
+    environment:
+      - QT_QPA_PLATFORM=offscreen
+      - QT_LOGGING_RULES=*.debug=false
+    volumes:
+      - ./config:/app/config:ro
+      - ./models:/app/models:ro
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

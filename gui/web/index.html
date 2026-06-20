@@ -120,8 +120,9 @@
       <span data-i18n="footerLine2">Made by <a href="https://github.com/vifirsanova" target="_blank">Missvector</a></span>
     </footer>
   </div>
-
-  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+  <script>
+    window.QWebChannel = function() {};
+  </script>
   <script src="js/app.js"></script>
 </body>
 </html>
