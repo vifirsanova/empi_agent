@@ -29,6 +29,8 @@
 #include <memory>
 #include <sstream>
 
+#include <jwt-cpp/jwt.h>
+
 #include "core/LLMClient.hpp"
 #include "agents/TextAnalyzer.hpp"
 #include "agents/FeedbackAgent.hpp"
@@ -48,6 +50,10 @@ struct Config {
     std::string folder_id;
     std::string cloud_model;
     std::string local_model_path;
+    std::string jwt_secret;
+    std::string access_code_hash;
+    int max_attempts = 3;
+    int block_duration_seconds = 300;
 };
 
 Config load_config(const std::string& path) {
@@ -65,7 +71,7 @@ Config load_config(const std::string& path) {
             section = line.substr(1, line.find(']') - 1);
             continue;
         }
-        if (section != "llm") continue;
+        if (section != "llm" && section != "security") continue;
         
         auto eq = line.find('=');
         if (eq == std::string::npos) continue;
@@ -84,12 +90,131 @@ Config load_config(const std::string& path) {
         else if (key == "folder_id") cfg.folder_id = val;
         else if (key == "model") cfg.cloud_model = val;
         else if (key == "local_model_path") cfg.local_model_path = val;
+        else if (key == "jwt_secret") cfg.jwt_secret = val;
+        else if (key == "access_code_hash") cfg.access_code_hash = val;
+        else if (key == "max_attempts") cfg.max_attempts = std::stoi(val);
+        else if (key == "block_duration_seconds") cfg.block_duration_seconds = std::stoi(val);
     }
     return cfg;
 }
 
 // ============================================================================
-// HTTP PARSER HELPERS
+// JWT HELPERS
+// ============================================================================
+
+class JwtAuth {
+public:
+    JwtAuth(const std::string& secret) : m_secret(secret) {}
+    
+    std::string generateToken(const std::string& userId) {
+        auto now = std::chrono::system_clock::now();
+        auto token = jwt::create()
+            .set_issuer("empi-agent")
+            .set_type("JWS")
+            .set_id(generateId())
+            .set_issued_at(now)
+            .set_expires_at(now + std::chrono::hours(24))
+            .set_subject(userId)
+            .sign(jwt::algorithm::hs256{m_secret});
+        return token;
+    }
+    
+    bool validateToken(const std::string& token, std::string& userId) {
+        try {
+            auto decoded = jwt::decode(token);
+            auto verifier = jwt::verify()
+                .allow_algorithm(jwt::algorithm::hs256{m_secret})
+                .with_issuer("empi-agent");
+            verifier.verify(decoded);
+            userId = decoded.get_subject();
+            return true;
+        } catch (const std::exception& e) {
+            qWarning() << "JWT validation failed:" << e.what();
+            return false;
+        }
+    }
+    
+private:
+    std::string generateId() {
+        return QUuid::createUuid().toString(QUuid::WithoutBraces).toStdString();
+    }
+    std::string m_secret;
+};
+
+// ============================================================================
+// AUTH BLOCKER
+// ============================================================================
+
+class AuthBlocker {
+public:
+    AuthBlocker(int maxAttempts, int blockSeconds)
+        : m_maxAttempts(maxAttempts), m_blockSeconds(blockSeconds) {}
+    
+    bool isBlocked(const QString& ip) {
+        QMutexLocker locker(&m_mutex);
+        auto it = m_blocks.find(ip);
+        if (it == m_blocks.end()) return false;
+        
+        qint64 now = QDateTime::currentSecsSinceEpoch();
+        if (now - it.value().blockedUntil > 0) {
+            m_blocks.remove(ip);
+            return false;
+        }
+        return true;
+    }
+    
+    void recordAttempt(const QString& ip, bool success) {
+        QMutexLocker locker(&m_mutex);
+        
+        if (success) {
+            m_blocks.remove(ip);
+            return;
+        }
+        
+        BlockInfo& block = m_blocks[ip];
+        block.attempts++;
+        
+        if (block.attempts >= m_maxAttempts) {
+            block.blockedUntil = QDateTime::currentSecsSinceEpoch() + m_blockSeconds;
+            qDebug() << "IP blocked:" << ip << "until" << block.blockedUntil;
+        }
+    }
+    
+    int getRemainingAttempts(const QString& ip) {
+        QMutexLocker locker(&m_mutex);
+        auto it = m_blocks.find(ip);
+        if (it == m_blocks.end()) return m_maxAttempts;
+        
+        qint64 now = QDateTime::currentSecsSinceEpoch();
+        if (now - it.value().blockedUntil > 0) {
+            m_blocks.remove(ip);
+            return m_maxAttempts;
+        }
+        
+        return m_maxAttempts - it.value().attempts;
+    }
+    
+    int getBlockedUntil(const QString& ip) {
+        QMutexLocker locker(&m_mutex);
+        auto it = m_blocks.find(ip);
+        if (it == m_blocks.end()) return 0;
+        return it.value().blockedUntil;
+    }
+
+private:
+    struct BlockInfo {
+        int attempts = 0;
+        qint64 blockedUntil = 0;
+    };
+    
+    QMap<QString, BlockInfo> m_blocks;
+    QMutex m_mutex;
+    int m_maxAttempts;
+    int m_blockSeconds;
+};
+
+// ============================================================================
+// HTTP PARSER
 // ============================================================================
 
 struct HttpRequest {
@@ -107,13 +232,11 @@ HttpRequest parseHttpRequest(const QByteArray& data) {
     
     if (lines.isEmpty()) return req;
     
-    // Parse request line
     QStringList parts = lines[0].split(" ");
     if (parts.size() >= 3) {
         req.method = parts[0];
         req.path = parts[1];
         
-        // Parse query params
         if (req.path.contains("?")) {
             QStringList pathParts = req.path.split("?");
             req.path = pathParts[0];
@@ -127,7 +250,6 @@ HttpRequest parseHttpRequest(const QByteArray& data) {
         }
     }
     
-    // Parse headers and find body
     bool bodyStarted = false;
     for (int i = 1; i < lines.size(); ++i) {
         if (lines[i].isEmpty()) {
@@ -158,7 +280,7 @@ QByteArray buildHttpResponse(int statusCode, const QString& statusText,
     response += "Content-Length: " + QString::number(body.size()) + "\r\n";
     response += "Access-Control-Allow-Origin: *\r\n";
     response += "Access-Control-Allow-Methods: GET, POST, OPTIONS\r\n";
-    response += "Access-Control-Allow-Headers: Content-Type\r\n";
+    response += "Access-Control-Allow-Headers: Content-Type, Authorization\r\n";
     response += "\r\n";
     return response.toUtf8() + body;
 }
@@ -294,7 +416,7 @@ private:
 };
 
 // ============================================================================
-// HTTP SERVER (Qt5 version)
+// HTTP SERVER
 // ============================================================================
 
 class HttpServer : public QObject {
@@ -312,6 +434,10 @@ public:
         m_docParser = std::make_shared<DocumentParser>();
         m_networkManager = new QNetworkAccessManager(this);
         
+        m_jwtAuth = std::make_unique<JwtAuth>(cfg.jwt_secret);
+        m_accessCodeHash = QString::fromStdString(cfg.access_code_hash);
+        m_blocker = std::make_unique<AuthBlocker>(cfg.max_attempts, cfg.block_duration_seconds);
+        
         QThreadPool::globalInstance()->setMaxThreadCount(
             std::max(1, QThread::idealThreadCount())
         );
@@ -319,6 +445,8 @@ public:
         qDebug() << "HTTP Server initialized with" 
                  << QThreadPool::globalInstance()->maxThreadCount() 
                  << "threads";
+        qDebug() << "Auth: max_attempts=" << cfg.max_attempts 
+                 << ", block_duration=" << cfg.block_duration_seconds << "s";
     }
 
     void start(int port = 8080) {
@@ -332,18 +460,19 @@ public:
         }
         
         qDebug() << "========================================";
-        qDebug() << "EMPI Agent HTTP Server started (Qt5)";
+        qDebug() << "EMPI Agent HTTP Server (Qt5 + JWT + Block)";
         qDebug() << "========================================";
         qDebug() << "Port:" << port;
         qDebug() << "Threads:" << QThreadPool::globalInstance()->maxThreadCount();
         qDebug() << "----------------------------------------";
         qDebug() << "Endpoints:";
-        qDebug() << "  GET  /api/health         - Health check";
-        qDebug() << "  GET  /api/status         - Server status";
-        qDebug() << "  POST /api/adapt          - Adapt text (async)";
-        qDebug() << "  GET  /api/result/<id>    - Get result";
-        qDebug() << "  POST /api/fetch          - Fetch URL";
-        qDebug() << "  POST /api/parse          - Parse document";
+        qDebug() << "  POST /api/auth            - Login with code";
+        qDebug() << "  GET  /api/health          - Health check (public)";
+        qDebug() << "  GET  /api/status          - Server status (auth)";
+        qDebug() << "  POST /api/adapt           - Adapt text (auth)";
+        qDebug() << "  GET  /api/result/<id>     - Get result (auth)";
+        qDebug() << "  POST /api/fetch           - Fetch URL (auth)";
+        qDebug() << "  POST /api/parse           - Parse document (auth)";
         qDebug() << "========================================";
     }
 
@@ -360,15 +489,49 @@ private slots:
     }
 
 private:
+    QString getClientIP(QTcpSocket* client) {
+        return client->peerAddress().toString();
+    }
+    
+    bool extractToken(const HttpRequest& req, QString& token) {
+        auto it = req.headers.find("Authorization");
+        if (it != req.headers.end()) {
+            QString auth = it.value();
+            if (auth.startsWith("Bearer ", Qt::CaseInsensitive)) {
+                token = auth.mid(7).trimmed();
+                return !token.isEmpty();
+            }
+        }
+        return false;
+    }
+    
+    bool validateRequest(const HttpRequest& req, QString& userId) {
+        if (req.path == "/api/health" || req.path == "/api/auth") {
+            return true;
+        }
+
+        QString token;
+        if (!extractToken(req, token)) {
+            return false;
+        }
+
+        std::string userIdStd;
+        if (!m_jwtAuth->validateToken(token.toStdString(), userIdStd)) {
+            return false;
+        }
+        userId = QString::fromStdString(userIdStd);
+        return true;
+    }
+    
     void handleClient(QTcpSocket* client) {
         QByteArray data = client->readAll();
         if (data.isEmpty()) return;
         
         HttpRequest req = parseHttpRequest(data);
+        QString clientIP = getClientIP(client);
         
-        qDebug() << "Request:" << req.method << req.path;
+        qDebug() << "Request:" << req.method << req.path << "from" << clientIP;
         
-        // Handle OPTIONS (CORS preflight)
         if (req.method == "OPTIONS") {
             client->write(buildHttpResponse(204, "No Content", "text/plain", QByteArray()));
             client->flush();
@@ -376,10 +539,34 @@ private:
             return;
         }
         
-        // Routes
-        if (req.path == "/api/health") {
+        if (m_blocker->isBlocked(clientIP)) {
+            QJsonObject error;
+            error["error"] = "Too many failed attempts";
+            error["message"] = "Your IP is blocked. Try again later.";
+            error["blocked_until"] = m_blocker->getBlockedUntil(clientIP);
+            QByteArray body = QJsonDocument(error).toJson();
+            client->write(buildHttpResponse(429, "Too Many Requests", "application/json", body));
+            client->flush();
+            client->disconnectFromHost();
+            return;
+        }
+        
+        if (req.path == "/api/auth" && req.method == "POST") {
+            handleAuth(client, req, clientIP);
+        } else if (req.path == "/api/health") {
             handleHealth(client);
         } else if (req.path == "/api/status") {
+            // Status требует аутентификации
+            QString userId;
+            if (!validateRequest(req, userId)) {
+                QJsonObject error;
+                error["error"] = "Unauthorized";
+                QByteArray body = QJsonDocument(error).toJson();
+                client->write(buildHttpResponse(401, "Unauthorized", "application/json", body));
+                client->flush();
+                client->disconnectFromHost();
+                return;
+            }
             handleStatus(client);
         } else if (req.path == "/api/adapt" && req.method == "POST") {
             handleAdapt(client, req);
@@ -391,9 +578,78 @@ private:
         } else if (req.path == "/api/parse" && req.method == "POST") {
             handleParse(client, req);
         } else {
-            // Static files
+            // Статические файлы — без аутентификации
             handleStaticFile(client, req.path);
         }
+    }
+    
+    void handleAuth(QTcpSocket* client, const HttpRequest& req, const QString& clientIP) {
+        QJsonDocument doc = QJsonDocument::fromJson(req.body.toUtf8());
+        if (doc.isNull() || !doc.isObject()) {
+            QJsonObject error;
+            error["error"] = "Invalid JSON";
+            QByteArray body = QJsonDocument(error).toJson();
+            client->write(buildHttpResponse(400, "Bad Request", "application/json", body));
+            client->flush();
+            client->disconnectFromHost();
+            return;
+        }
+        
+        QJsonObject obj = doc.object();
+        QString code = obj["code"].toString();
+        
+        if (code.isEmpty()) {
+            QJsonObject error;
+            error["error"] = "Code is required";
+            QByteArray body = QJsonDocument(error).toJson();
+            client->write(buildHttpResponse(400, "Bad Request", "application/json", body));
+            client->flush();
+            client->disconnectFromHost();
+            m_blocker->recordAttempt(clientIP, false);
+            return;
+        }
+        
+        QString codeHash = QString::fromUtf8(
+            QCryptographicHash::hash(code.toUtf8(), QCryptographicHash::Sha256).toHex()
+        );
+        
+        bool isValid = (codeHash == m_accessCodeHash);
+        
+        if (!isValid) {
+            m_blocker->recordAttempt(clientIP, false);
+            
+            int remaining = m_blocker->getRemainingAttempts(clientIP);
+            QJsonObject error;
+            error["error"] = "Invalid code";
+            error["remaining_attempts"] = remaining;
+            error["is_blocked"] = m_blocker->isBlocked(clientIP);
+            
+            if (m_blocker->isBlocked(clientIP)) {
+                error["blocked_until"] = m_blocker->getBlockedUntil(clientIP);
+                error["message"] = "Too many failed attempts. IP blocked for 5 minutes.";
+            }
+            
+            QByteArray body = QJsonDocument(error).toJson();
+            client->write(buildHttpResponse(401, "Unauthorized", "application/json", body));
+            client->flush();
+            client->disconnectFromHost();
+            return;
+        }
+        
+        m_blocker->recordAttempt(clientIP, true);
+        
+        std::string userId = QUuid::createUuid().toString(QUuid::WithoutBraces).toStdString();
+        std::string token = m_jwtAuth->generateToken(userId);
+        
+        QJsonObject response;
+        response["success"] = true;
+        response["token"] = QString::fromStdString(token);
+        response["expires_in"] = 86400;
+        
+        QByteArray body = QJsonDocument(response).toJson();
+        client->write(buildHttpResponse(200, "OK", "application/json", body));
+        client->flush();
+        client->disconnectFromHost();
     }
     
     void handleHealth(QTcpSocket* client) {
@@ -425,6 +681,17 @@ private:
     }
     
     void handleAdapt(QTcpSocket* client, const HttpRequest& req) {
+        QString userId;
+        if (!validateRequest(req, userId)) {
+            QJsonObject error;
+            error["error"] = "Unauthorized";
+            QByteArray body = QJsonDocument(error).toJson();
+            client->write(buildHttpResponse(401, "Unauthorized", "application/json", body));
+            client->flush();
+            client->disconnectFromHost();
+            return;
+        }
+        
         QJsonDocument doc = QJsonDocument::fromJson(req.body.toUtf8());
         if (doc.isNull() || !doc.isObject()) {
             QJsonObject error;
@@ -527,6 +794,17 @@ private:
     }
     
     void handleFetch(QTcpSocket* client, const HttpRequest& req) {
+        QString userId;
+        if (!validateRequest(req, userId)) {
+            QJsonObject error;
+            error["error"] = "Unauthorized";
+            QByteArray body = QJsonDocument(error).toJson();
+            client->write(buildHttpResponse(401, "Unauthorized", "application/json", body));
+            client->flush();
+            client->disconnectFromHost();
+            return;
+        }
+        
         QJsonDocument doc = QJsonDocument::fromJson(req.body.toUtf8());
         if (doc.isNull() || !doc.isObject()) {
             QJsonObject error;
@@ -563,6 +841,17 @@ private:
     }
     
     void handleParse(QTcpSocket* client, const HttpRequest& req) {
+        QString userId;
+        if (!validateRequest(req, userId)) {
+            QJsonObject error;
+            error["error"] = "Unauthorized";
+            QByteArray body = QJsonDocument(error).toJson();
+            client->write(buildHttpResponse(401, "Unauthorized", "application/json", body));
+            client->flush();
+            client->disconnectFromHost();
+            return;
+        }
+        
         QJsonDocument doc = QJsonDocument::fromJson(req.body.toUtf8());
         if (doc.isNull() || !doc.isObject()) {
             QJsonObject error;
@@ -629,10 +918,6 @@ private:
         client->flush();
         client->disconnectFromHost();
     }
-    
-    // ========================================================================
-    // HELPERS
-    // ========================================================================
     
     QString fetchUrl(const QString& url) {
         QUrl qurl(url);
@@ -714,10 +999,6 @@ private:
         }
     }
     
-    // ========================================================================
-    // MEMBERS
-    // ========================================================================
-    
     std::shared_ptr<EMPI::LLMClient> m_llm;
     std::shared_ptr<EMPI::TextAnalyzer> m_textAgent;
     std::shared_ptr<EMPI::FeedbackAgent> m_feedbackAgent;
@@ -725,6 +1006,10 @@ private:
     std::shared_ptr<DocumentParser> m_docParser;
     QNetworkAccessManager* m_networkManager;
     QTcpServer* m_server = nullptr;
+    
+    std::unique_ptr<JwtAuth> m_jwtAuth;
+    std::unique_ptr<AuthBlocker> m_blocker;
+    QString m_accessCodeHash;
     
     QMutex m_mutex;
     QSet<QString> m_pendingTasks;
@@ -752,7 +1037,7 @@ int main(int argc, char* argv[]) {
                 port = std::stoi(argv[++i]);
             }
         } else if (arg == "-h" || arg == "--help") {
-            qDebug() << "EMPI Agent HTTP Server (Qt5)";
+            qDebug() << "EMPI Agent HTTP Server (Qt5 + JWT + Block)";
             qDebug() << "Usage: ./empi_http [options]";
             qDebug() << "  -c, --config <path>  Config file path (default: config/agent_config.toml)";
             qDebug() << "  -p, --port <port>    HTTP port (default: 8080)";
@@ -761,7 +1046,7 @@ int main(int argc, char* argv[]) {
         }
     }
     
-    qDebug() << "Starting EMPI Agent HTTP Server (Qt5)...";
+    qDebug() << "Starting EMPI Agent HTTP Server (Qt5 + JWT + Block)...";
     qDebug() << "Config:" << configPath.c_str();
     qDebug() << "Port:" << port;
     

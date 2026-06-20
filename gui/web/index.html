@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <script>
-  // Enable zoom with Ctrl+ / Ctrl- in Qt
   document.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
       e.preventDefault();
@@ -26,11 +25,36 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="gradient-container">
-    <canvas id="canvas-bg"></canvas>
-  </div>
 
-  <div class="container">
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" style="display:flex; align-items:center; justify-content:center; height:100vh; background:linear-gradient(135deg, #fbe9e7 0%, #f5e0dd 100%); position:fixed; top:0; left:0; right:0; bottom:0; z-index:1000;">
+    <div style="background:white; padding:48px; border-radius:20px; box-shadow:0 8px 40px rgba(0,0,0,0.12); width:400px; max-width:90%; text-align:center;">
+        <div style="width:64px; height:64px; background:#e0aaa0; border-radius:16px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+            <i class="fas fa-book-open" style="font-size:28px; color:white;"></i>
+        </div>
+        <h2 style="color:#2d3748; margin-bottom:4px;">EMPI Agent</h2>
+        <p style="color:#718096; font-size:14px; margin-bottom:24px;">Enter access code</p>
+        
+        <input id="tokenInput" type="password" placeholder="Access code" 
+               style="width:100%; padding:12px 16px; border:2px solid #e2e8f0; border-radius:10px; font-size:16px; margin-bottom:8px; outline:none; transition:border-color 0.2s;">
+               
+        <div id="loginAttempts" style="font-size:12px; color:#718096; margin-bottom:12px; text-align:left;"></div>
+               
+        <button id="loginBtn" style="width:100%; padding:12px; background:#e0aaa0; color:white; border:none; border-radius:10px; font-size:16px; font-weight:600; cursor:pointer; transition:background 0.2s;">
+            Login
+        </button>
+        
+        <div id="loginError" style="color:#e53e3e; font-size:13px; margin-top:12px; display:none;"></div>
+        <div id="loginInfo" style="color:#718096; font-size:12px; margin-top:12px;">Contact the organizer for access code</div>
+    </div>
+</div>
+
+<!-- MAIN APP -->
+<div class="gradient-container">
+    <canvas id="canvas-bg"></canvas>
+</div>
+
+<div class="container" style="display:none;">
     <div class="app-header">
       <div class="logo"><i class="fas fa-book-open"></i></div>
       <div class="header-text">
@@ -120,6 +144,7 @@
       <span data-i18n="footerLine2">Made by <a href="https://github.com/vifirsanova" target="_blank">Missvector</a></span>
     </footer>
   </div>
+
   <script>
     window.QWebChannel = function() {};
   </script>

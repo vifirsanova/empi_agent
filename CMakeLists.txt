@@ -12,6 +12,7 @@ option(BUILD_HTTP "Build HTTP server" ON)
 
 find_package(nlohmann_json REQUIRED)
 find_package(Threads REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 # Find Poppler
 find_path(POPPLER_INCLUDE_DIR
@@ -36,7 +37,7 @@ endif()
 
 # Qt components
 if(BUILD_HTTP)
-    find_package(Qt6 REQUIRED COMPONENTS Core Concurrent HttpServer)
+    find_package(Qt6 REQUIRED COMPONENTS Core Concurrent Network)
 elseif(BUILD_GUI)
     find_package(Qt6 REQUIRED COMPONENTS Core Concurrent WebEngineWidgets WebChannel Widgets)
 else()
@@ -163,9 +164,10 @@ if(BUILD_HTTP)
     
     target_link_libraries(empi_http PRIVATE 
         empi_core 
-        Qt6::HttpServer
         Qt6::Core
         Qt6::Concurrent
+        Qt6::Network
+        OpenSSL::Crypto
     )
     
     if(POPPLER_FOUND)
@@ -177,7 +179,17 @@ if(BUILD_HTTP)
         ${CMAKE_SOURCE_DIR}/src
     )
     
-    # Copy web frontend
+    # === КОПИРОВАНИЕ WEB ФРОНТЕНДА (гарантированное) ===
+    # Копируем при каждой конфигурации CMake
+    file(COPY ${CMAKE_SOURCE_DIR}/gui/web DESTINATION ${CMAKE_BINARY_DIR}/gui)
+    
+    # Создаем директорию для CSS
+    file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/gui/web/css)
+    
+    # Копируем CSS файл
+    file(COPY ${CMAKE_SOURCE_DIR}/gui/web/css/style.css DESTINATION ${CMAKE_BINARY_DIR}/gui/web/css)
+    
+    # Copy web frontend (post-build - дублируем для надежности)
     add_custom_command(
         TARGET empi_http POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -186,7 +198,7 @@ if(BUILD_HTTP)
         COMMENT "Copying web frontend to build directory"
     )
     
-    # Copy CSS
+    # Copy CSS (post-build)
     add_custom_command(
         TARGET empi_http POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/gui/web/css
@@ -240,7 +252,7 @@ if(BUILD_GUI)
         ${CMAKE_SOURCE_DIR}/src
     )
     
-    # Copy web frontend
+    # Copy web frontend for GUI
     add_custom_command(
         TARGET empi_gui POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory

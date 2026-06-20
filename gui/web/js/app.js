@@ -1,69 +1,71 @@
+// ============================================================
+// JWT AUTH
+// ============================================================
+
+let authToken = null;
+let isAuthenticated = false;
 let isLoading = false;
 let pendingResolve = null;
 let pendingReject = null;
 let timeoutId = null;
 
-// ============================================================
-// HTTP BACKEND (заменяет QWebChannel)
-// ============================================================
+function getAuthHeaders() {
+    return {
+        'Authorization': 'Bearer ' + authToken,
+        'Content-Type': 'application/json'
+    };
+}
 
-const backend = {
-    adapt: function(text, prompt) {
-        return fetch('/api/adapt', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ text: text, prompt: prompt })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Server error: ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.status === 'processing') {
-                return pollResult(data.task_id);
-            }
-            throw new Error('Unexpected response: ' + JSON.stringify(data));
-        });
-    },
+function checkStoredToken() {
+    const token = localStorage.getItem('empi_token');
+    const expires = parseInt(localStorage.getItem('empi_token_expires') || '0');
     
-    fetchUrl: function(url) {
-        return fetch('/api/fetch', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ url: url })
-        })
-        .then(response => response.json())
-        .then(data => data.content);
-    },
-    
-    parseDocumentFromContent: function(filename, base64Content) {
-        return fetch('/api/parse', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                filename: filename, 
-                content: base64Content 
-            })
-        })
-        .then(response => response.json())
-        .then(data => data.content);
-    },
-    
-    openExternalUrl: function(url) {
-        window.open(url, '_blank', 'noopener,noreferrer');
+    if (token && expires > Date.now()) {
+        authToken = token;
+        isAuthenticated = true;
         return true;
     }
-};
+    
+    localStorage.removeItem('empi_token');
+    localStorage.removeItem('empi_token_expires');
+    return false;
+}
 
-// Эмуляция сигналов для совместимости со старым кодом
-backend.adaptationComplete = {
-    _callback: null,
-    connect: function(callback) {
-        this._callback = callback;
+// ============================================================
+// LOGIN LOGIC
+// ============================================================
+
+async function loginWithCode(code) {
+    try {
+        const response = await fetch('/api/auth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: code })
+        });
+        
+        const data = await response.json();
+        
+        if (response.status === 200 && data.success) {
+            authToken = data.token;
+            isAuthenticated = true;
+            
+            localStorage.setItem('empi_token', authToken);
+            localStorage.setItem('empi_token_expires', Date.now() + data.expires_in * 1000);
+            
+            return { success: true };
+        } else {
+            return { 
+                success: false, 
+                error: data.error || 'Invalid code',
+                remaining: data.remaining_attempts,
+                blocked: data.is_blocked,
+                blockedUntil: data.blocked_until
+            };
+        }
+    } catch (e) {
+        return { success: false, error: 'Connection error: ' + e.message };
     }
-};
+}
 
 // ============================================================
 // POLLING RESULT
@@ -72,11 +74,13 @@ backend.adaptationComplete = {
 function pollResult(taskId) {
     return new Promise((resolve, reject) => {
         let attempts = 0;
-        const maxAttempts = 120; // 120 * 2s = 4 min
+        const maxAttempts = 120;
         
         function check() {
             attempts++;
-            fetch('/api/result/' + taskId)
+            fetch('/api/result/' + taskId, {
+                headers: getAuthHeaders()
+            })
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('HTTP ' + response.status);
@@ -85,7 +89,7 @@ function pollResult(taskId) {
                 })
                 .then(data => {
                     if (data.status === 'completed') {
-                        if (backend.adaptationComplete._callback) {
+                        if (backend.adaptationComplete && backend.adaptationComplete._callback) {
                             backend.adaptationComplete._callback(data.html);
                         }
                         resolve(data.html);
@@ -106,8 +110,78 @@ function pollResult(taskId) {
 }
 
 // ============================================================
-// ADAPT ASYNC (единственная версия)
+// BACKEND
 // ============================================================
+
+const backend = {
+    adapt: function(text, prompt) {
+        return fetch('/api/adapt', {
+            method: 'POST',
+            headers: getAuthHeaders(),
+            body: JSON.stringify({ text: text, prompt: prompt })
+        })
+        .then(response => {
+            if (response.status === 401) {
+                throw new Error('Session expired, please login again');
+            }
+            if (!response.ok) {
+                throw new Error('Server error: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'processing') {
+                return pollResult(data.task_id);
+            }
+            throw new Error('Unexpected response');
+        });
+    },
+    
+    fetchUrl: function(url) {
+        return fetch('/api/fetch', {
+            method: 'POST',
+            headers: getAuthHeaders(),
+            body: JSON.stringify({ url: url })
+        })
+        .then(response => {
+            if (response.status === 401) {
+                throw new Error('Session expired, please login again');
+            }
+            return response.json();
+        })
+        .then(data => data.content);
+    },
+    
+    parseDocumentFromContent: function(filename, base64Content) {
+        return fetch('/api/parse', {
+            method: 'POST',
+            headers: getAuthHeaders(),
+            body: JSON.stringify({ 
+                filename: filename, 
+                content: base64Content 
+            })
+        })
+        .then(response => {
+            if (response.status === 401) {
+                throw new Error('Session expired, please login again');
+            }
+            return response.json();
+        })
+        .then(data => data.content);
+    },
+    
+    openExternalUrl: function(url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+        return true;
+    }
+};
+
+backend.adaptationComplete = {
+    _callback: null,
+    connect: function(callback) {
+        this._callback = callback;
+    }
+};
 
 function adaptAsync(text, prompt) {
     return new Promise((resolve, reject) => {
@@ -148,7 +222,7 @@ function adaptAsync(text, prompt) {
 }
 
 // ============================================================
-// SHOW/HIDE COG
+// UI HELPERS
 // ============================================================
 
 function showCog() {
@@ -187,57 +261,6 @@ function hideCog() {
     const cog = document.getElementById('loadingCog');
     if (cog) cog.remove();
 }
-
-// ============================================================
-// PARSE DOCUMENT (исправленный)
-// ============================================================
-
-async function parseDocument(file) {
-    if (!backend || typeof backend.parseDocumentFromContent !== 'function') {
-        throw new Error('Document parsing not available');
-    }
-    
-    return new Promise((resolve, reject) => {
-        const timeoutId = setTimeout(() => {
-            reject(new Error('Document parsing timeout'));
-        }, 30000);
-        
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            try {
-                const arrayBuffer = e.target.result;
-                const uint8Array = new Uint8Array(arrayBuffer);
-                let binary = '';
-                for (let i = 0; i < uint8Array.length; i++) {
-                    binary += String.fromCharCode(uint8Array[i]);
-                }
-                const base64 = btoa(binary);
-                
-                backend.parseDocumentFromContent(file.name, base64)
-                    .then(result => {
-                        clearTimeout(timeoutId);
-                        resolve(result);
-                    })
-                    .catch(error => {
-                        clearTimeout(timeoutId);
-                        reject(error);
-                    });
-            } catch (error) {
-                clearTimeout(timeoutId);
-                reject(error);
-            }
-        };
-        reader.onerror = function() {
-            clearTimeout(timeoutId);
-            reject(new Error('Failed to read file'));
-        };
-        reader.readAsArrayBuffer(file);
-    });
-}
-
-// ============================================================
-// ОСТАЛЬНОЙ КОД (без изменений - ваша логика)
-// ============================================================
 
 function cleanHtmlResponse(html) {
     if (!html) return html;
@@ -279,7 +302,7 @@ function sanitizeHtml(html) {
                 });
             }
             else if (href.startsWith('#')) {
-                // Keep internal navigation
+                // keep internal navigation
             }
             else {
                 link.removeAttribute('href');
@@ -331,7 +354,7 @@ function showAdaptedHtml(html) {
                 border-bottom-color: #e0aaa0;
             }
             a[href^="http"]::after {
-                content: " 🔗";
+                content: " " + String.fromCharCode(128279);
                 font-size: 0.8em;
                 opacity: 0.6;
             }
@@ -377,8 +400,114 @@ function showAdaptedHtml(html) {
     adaptedBadge.style.display = 'inline';
 }
 
+function showOriginalText(text) {
+    const originalEmpty = document.getElementById('originalEmpty');
+    const originalFrame = document.getElementById('originalFrame');
+    const originalTextPreview = document.getElementById('originalTextPreview');
+    const originalPane = document.getElementById('originalPane');
+    
+    originalEmpty.style.display = 'none';
+    originalFrame.style.display = 'none';
+    originalTextPreview.style.display = 'block';
+    originalTextPreview.textContent = text;
+    originalPane.classList.add('active');
+}
+
+function showOriginalHtml(html) {
+    const safeHtml = sanitizeHtml(html);
+    const originalEmpty = document.getElementById('originalEmpty');
+    const originalTextPreview = document.getElementById('originalTextPreview');
+    const originalFrame = document.getElementById('originalFrame');
+    const originalPane = document.getElementById('originalPane');
+    
+    originalEmpty.style.display = 'none';
+    originalTextPreview.style.display = 'none';
+    originalFrame.style.display = 'block';
+    originalFrame.srcdoc = safeHtml;
+    originalPane.classList.add('active');
+}
+
+function resetPreviews() {
+    const adaptedHtml = null;
+    const originalPane = document.getElementById('originalPane');
+    const adaptedPane = document.getElementById('adaptedPane');
+    const previewTabs = document.querySelectorAll('.preview-tab');
+    const originalEmpty = document.getElementById('originalEmpty');
+    const originalTextPreview = document.getElementById('originalTextPreview');
+    const originalFrame = document.getElementById('originalFrame');
+    const adaptedEmpty = document.getElementById('adaptedEmpty');
+    const previewFrame = document.getElementById('previewFrame');
+    const adaptedBadge = document.getElementById('adaptedBadge');
+    const adaptToggleBar = document.getElementById('adaptToggleBar');
+    const adaptToggle = document.getElementById('adaptToggle');
+    
+    originalPane.classList.add('active');
+    adaptedPane.classList.remove('active');
+    previewTabs.forEach(function(t) { t.classList.remove('active'); });
+    var t0 = document.querySelector('.preview-tab[data-pane="originalPane"]');
+    if (t0) t0.classList.add('active');
+    originalEmpty.style.display = '';
+    originalTextPreview.style.display = 'none';
+    originalFrame.style.display = 'none';
+    originalFrame.srcdoc = '';
+    adaptedEmpty.style.display = '';
+    previewFrame.style.display = 'none';
+    previewFrame.srcdoc = '';
+    adaptedBadge.style.display = 'none';
+    adaptToggleBar.classList.remove('show');
+    adaptToggle.checked = true;
+    updateToggleText();
+}
+
 // ============================================================
-// Canvas Background
+// PARSE DOCUMENT
+// ============================================================
+
+async function parseDocument(file) {
+    if (!backend || typeof backend.parseDocumentFromContent !== 'function') {
+        throw new Error('Document parsing not available');
+    }
+    
+    return new Promise((resolve, reject) => {
+        const timeoutId = setTimeout(() => {
+            reject(new Error('Document parsing timeout'));
+        }, 30000);
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const arrayBuffer = e.target.result;
+                const uint8Array = new Uint8Array(arrayBuffer);
+                let binary = '';
+                for (let i = 0; i < uint8Array.length; i++) {
+                    binary += String.fromCharCode(uint8Array[i]);
+                }
+                const base64 = btoa(binary);
+                
+                backend.parseDocumentFromContent(file.name, base64)
+                    .then(result => {
+                        clearTimeout(timeoutId);
+                        resolve(result);
+                    })
+                    .catch(error => {
+                        clearTimeout(timeoutId);
+                        reject(error);
+                    });
+            } catch (error) {
+                clearTimeout(timeoutId);
+                reject(error);
+            }
+        };
+        reader.onerror = function() {
+            clearTimeout(timeoutId);
+            reject(new Error('Failed to read file'));
+        };
+        reader.readAsArrayBuffer(file);
+    });
+}
+
+// ============================================================
+// CANVAS BACKGROUND
 // ============================================================
 
 const canvas = document.getElementById("canvas-bg");
@@ -386,28 +515,34 @@ const ctx = canvas.getContext("2d");
 let w, h, particles = [];
 
 function resizeCanvas() {
-    w = window.innerWidth; h = window.innerHeight;
-    canvas.width = w; canvas.height = h;
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
     particles = [];
     const count = Math.floor(Math.min(w, h) / 22);
     for (let i = 0; i < count; i++) {
         const r = Math.random() * 90 + 30;
         particles.push({
-            x: Math.random() * w, y: Math.random() * h,
-            dx: (Math.random() - 0.5) * 0.12, dy: (Math.random() - 0.5) * 0.12,
-            r, alpha: Math.random() * 0.1 + 0.03
+            x: Math.random() * w,
+            y: Math.random() * h,
+            dx: (Math.random() - 0.5) * 0.12,
+            dy: (Math.random() - 0.5) * 0.12,
+            r: r,
+            alpha: Math.random() * 0.1 + 0.03
         });
     }
 }
 
 function drawCanvas() {
     ctx.clearRect(0, 0, w, h);
-    particles.forEach(p => {
+    particles.forEach(function(p) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(224, 170, 160, ${p.alpha})`;
+        ctx.fillStyle = 'rgba(224, 170, 160, ' + p.alpha + ')';
         ctx.fill();
-        p.x += p.dx; p.y += p.dy;
+        p.x += p.dx;
+        p.y += p.dy;
         if (p.x + p.r > w || p.x - p.r < 0) p.dx *= -1;
         if (p.y + p.r > h || p.y - p.r < 0) p.dy *= -1;
     });
@@ -419,7 +554,7 @@ window.addEventListener('resize', resizeCanvas);
 drawCanvas();
 
 // ============================================================
-// TRANSLATIONS (ваши, без изменений)
+// TRANSLATIONS
 // ============================================================
 
 const translations = {
@@ -464,42 +599,42 @@ const translations = {
     },
     ru: {
         title: "EMPI Agent",
-        subtitle: "Адаптивное обучение для каждого",
+        subtitle: "Adaptive learning for everyone",
         langLabel: "EN",
-        downloadBtn: "Скачать",
-        copyBtn: "Копировать",
-        welcomeMsg: "Загрузите файл (PDF, DOCX, TXT, HTML), вставьте URL или опишите ваши потребности. Я адаптирую материал.",
-        chatPlaceholder: "Опишите ваши учебные потребности...",
-        urlPlaceholder: "https://example.com/статья...",
-        fetchBtn: "Загрузить",
-        presetAdhd: "Для СДВГ",
-        presetDyslexia: "Для дислексии",
-        presetChild: "Для детей",
-        presetBeginner: "Начинающим",
-        tabOriginal: "Оригинал",
-        tabAdapted: "Адаптация",
-        emptyOriginal: "Загрузите файл или вставьте URL, чтобы увидеть оригинал",
-        emptyAdapted: "Опишите потребности и создайте адаптированную версию",
-        toggleLabel: "Адаптация:",
-        toggleOn: "Вкл",
-        toggleOff: "Выкл",
-        reapplyBtn: "Повторить",
-        footerLine1: "EMPI Agent | Траектория роста | 2026",
-        footerLine2: "Создано Missvector",
-        msgFileAttached: "Файл прикреплён",
-        msgUrlFetched: "Материал загружен по ссылке",
-        msgAdapting: "Адаптирую материал...",
-        msgAdapted: "Готово! Смотрите во вкладке Адаптация.",
-        msgNeedSource: "Сначала загрузите файл или вставьте URL.",
-        msgNeedPrompt: "Опишите ваши потребности в поле ввода.",
-        msgBackendNotReady: "Бэкенд не готов, подождите...",
-        msgErrorFetch: "Не удалось загрузить содержимое по ссылке.",
-        msgCopied: "Скопировано!",
-        msgDownloaded: "Скачано!",
-        msgReadapting: "Повторная адаптация...",
-        msgParsing: "Разбор документа...",
-        msgParseError: "Ошибка разбора документа",
-        supportedFormats: "Поддерживается: PDF, DOCX, DOC, TXT, HTML, MD"
+        downloadBtn: "Download",
+        copyBtn: "Copy",
+        welcomeMsg: "Upload a file (PDF, DOCX, TXT, HTML), paste a URL, or type your needs. I'll adapt content for you.",
+        chatPlaceholder: "Describe your learning needs...",
+        urlPlaceholder: "https://example.com/article...",
+        fetchBtn: "Fetch",
+        presetAdhd: "ADHD-friendly",
+        presetDyslexia: "Dyslexia-friendly",
+        presetChild: "For children",
+        presetBeginner: "Beginner",
+        tabOriginal: "Original",
+        tabAdapted: "Adapted",
+        emptyOriginal: "Upload a file or paste a URL to see the original content here",
+        emptyAdapted: "Describe your needs and generate to see adapted content here",
+        toggleLabel: "Adaptation:",
+        toggleOn: "On",
+        toggleOff: "Off",
+        reapplyBtn: "Re-adapt",
+        footerLine1: "EMPI Agent | Trajectory of Growth | 2026",
+        footerLine2: "Made by Missvector",
+        msgFileAttached: "File attached",
+        msgUrlFetched: "Content fetched from URL",
+        msgAdapting: "Adapting content...",
+        msgAdapted: "Content adapted. View in the Adapted tab.",
+        msgNeedSource: "Please upload a file or paste a URL first.",
+        msgNeedPrompt: "Please describe your needs in the input field.",
+        msgBackendNotReady: "Backend not ready, please wait...",
+        msgErrorFetch: "Failed to fetch URL content.",
+        msgCopied: "Copied!",
+        msgDownloaded: "Downloaded!",
+        msgReadapting: "Re-adapting...",
+        msgParsing: "Parsing document...",
+        msgParseError: "Failed to parse document",
+        supportedFormats: "Supported: PDF, DOCX, DOC, TXT, HTML, MD"
     }
 };
 
@@ -536,7 +671,7 @@ function updateToggleText() {
 }
 
 // ============================================================
-// DOM REFERENCES и ОСТАЛЬНАЯ ЛОГИКА (ваша, без изменений)
+// DOM REFERENCES
 // ============================================================
 
 var selectedFile = null;
@@ -643,49 +778,119 @@ function addUrlBubble(url) {
 }
 
 // ============================================================
-// PREVIEW FUNCTIONS
+// LOGIN HANDLER
 // ============================================================
 
-function resetPreviews() {
-    adaptedHtml = null;
-    originalPane.classList.add('active');
-    adaptedPane.classList.remove('active');
-    previewTabs.forEach(function(t) { t.classList.remove('active'); });
-    var t0 = document.querySelector('.preview-tab[data-pane="originalPane"]');
-    if (t0) t0.classList.add('active');
-    originalEmpty.style.display = '';
-    originalTextPreview.style.display = 'none';
-    originalFrame.style.display = 'none';
-    originalFrame.srcdoc = '';
-    adaptedEmpty.style.display = '';
-    previewFrame.style.display = 'none';
-    previewFrame.srcdoc = '';
-    adaptedBadge.style.display = 'none';
-    adaptToggleBar.classList.remove('show');
-    adaptToggle.checked = true;
-    updateToggleText();
+const loginScreen = document.getElementById('loginScreen');
+const container = document.querySelector('.container');
+const tokenInput = document.getElementById('tokenInput');
+const loginBtn = document.getElementById('loginBtn');
+const loginError = document.getElementById('loginError');
+const loginAttempts = document.getElementById('loginAttempts');
+
+let attempts = 0;
+const maxAttempts = 3;
+
+async function handleLogin() {
+    const code = tokenInput.value.trim();
+    
+    if (!code) {
+        showLoginError('Enter access code');
+        return;
+    }
+    
+    loginBtn.disabled = true;
+    loginBtn.textContent = 'Checking...';
+    hideLoginError();
+    
+    try {
+        const result = await loginWithCode(code);
+        
+        if (result.success) {
+            loginScreen.style.display = 'none';
+            container.style.display = 'flex';
+            applyLang(currentLang);
+            return;
+        }
+        
+        if (result.blocked) {
+            const blockedUntil = new Date(result.blockedUntil * 1000);
+            showLoginError(
+                'Too many attempts. IP blocked until ' + blockedUntil.toLocaleTimeString(),
+                true
+            );
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Blocked';
+            return;
+        }
+        
+        attempts++;
+        const remaining = maxAttempts - attempts;
+        
+        if (remaining > 0) {
+            showLoginError('Invalid code. Attempts remaining: ' + remaining);
+            loginAttempts.textContent = 'Attempts: ' + attempts + '/' + maxAttempts;
+        } else {
+            showLoginError('Maximum attempts exceeded. Please wait 5 minutes.');
+            loginAttempts.textContent = 'Blocked for 5 minutes';
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Blocked';
+            
+            setTimeout(function() {
+                attempts = 0;
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Login';
+                loginAttempts.textContent = '';
+                hideLoginError();
+                tokenInput.value = '';
+                tokenInput.focus();
+            }, 300000);
+        }
+        
+        tokenInput.value = '';
+        tokenInput.focus();
+        
+    } catch (e) {
+        showLoginError('Connection error');
+    } finally {
+        if (!loginBtn.disabled) {
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'Login';
+        }
+    }
 }
 
-function showOriginalText(text) {
-    originalEmpty.style.display = 'none';
-    originalFrame.style.display = 'none';
-    originalTextPreview.style.display = 'block';
-    originalTextPreview.textContent = text;
-    originalPane.classList.add('active');
+function showLoginError(message, isBlocked) {
+    loginError.textContent = message;
+    loginError.style.display = 'block';
+    if (isBlocked) {
+        loginError.style.color = '#e53e3e';
+        loginError.style.fontWeight = 'bold';
+    } else {
+        loginError.style.color = '#e53e3e';
+        loginError.style.fontWeight = 'normal';
+    }
 }
 
-function showOriginalHtml(html) {
-    const safeHtml = sanitizeHtml(html);
-    originalEmpty.style.display = 'none';
-    originalTextPreview.style.display = 'none';
-    originalFrame.style.display = 'block';
-    originalFrame.srcdoc = safeHtml;
-    originalPane.classList.add('active');
+function hideLoginError() {
+    loginError.style.display = 'none';
 }
 
 // ============================================================
 // EVENT LISTENERS
 // ============================================================
+
+loginBtn.addEventListener('click', handleLogin);
+
+tokenInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        handleLogin();
+    }
+});
+
+tokenInput.addEventListener('focus', function() {
+    this.select();
+});
 
 attachBtn.addEventListener('click', function() {
     fileInput.click();
@@ -719,7 +924,9 @@ fileInput.addEventListener('change', async function() {
             statusBar.className = 'status-bar success';
             
             if (chatPromptInput.value.trim()) {
-                setTimeout(() => doAdapt(chatPromptInput.value.trim()), 500);
+                setTimeout(function() {
+                    doAdapt(chatPromptInput.value.trim());
+                }, 500);
             }
             
         } catch (e) {
@@ -801,6 +1008,10 @@ urlInput.addEventListener('keypress', function(e) {
     }
 });
 
+// ============================================================
+// URL FETCH
+// ============================================================
+
 async function handleUrlFetch(url) {
     if (!backend || typeof backend.fetchUrl !== 'function') {
         addChatText('assistant', 'URL fetching not available');
@@ -855,7 +1066,9 @@ async function handleUrlFetch(url) {
         selectedFile = null;
         
         if (chatPromptInput.value.trim()) {
-            setTimeout(() => doAdapt(chatPromptInput.value.trim()), 500);
+            setTimeout(function() {
+                doAdapt(chatPromptInput.value.trim());
+            }, 500);
         }
         
     } catch(e) {
@@ -873,7 +1086,7 @@ function stripHtml(html) {
 }
 
 // ============================================================
-// DO ADAPT (главная функция)
+// ADAPT
 // ============================================================
 
 async function doAdapt(promptText) {
@@ -1092,10 +1305,23 @@ function resizeStop() {
     document.body.style.userSelect = '';
 }
 
-const supportedFormatsHint = document.createElement('div');
+var supportedFormatsHint = document.createElement('div');
 supportedFormatsHint.className = 'supported-formats-hint';
 supportedFormatsHint.style.cssText = 'font-size: 11px; color: #999; margin-top: 8px; text-align: center;';
 supportedFormatsHint.textContent = t('supportedFormats');
-document.querySelector('.chat-input-area')?.appendChild(supportedFormatsHint);
+var chatInputArea = document.querySelector('.chat-input-area');
+if (chatInputArea) chatInputArea.appendChild(supportedFormatsHint);
 
-applyLang(currentLang);
+// ============================================================
+// INIT
+// ============================================================
+
+if (checkStoredToken()) {
+    loginScreen.style.display = 'none';
+    container.style.display = 'flex';
+    applyLang(currentLang);
+} else {
+    loginScreen.style.display = 'flex';
+    container.style.display = 'none';
+    tokenInput.focus();
+}
