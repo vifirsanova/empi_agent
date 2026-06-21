@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install dependencies (no GUI, no X11, no VNC)
+# Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     cmake \
@@ -12,18 +12,31 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     qt6-base-dev \
     libpoppler-qt6-dev \
+    poppler-utils \
+    libreoffice-core \
+    libreoffice-writer \
     nlohmann-json3-dev \
+    libssl-dev \
     python3 \
     python3-pip \
     python3-venv \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Python dependencies
+# Install jwt-cpp from source
+RUN git clone https://github.com/Thalhammer/jwt-cpp.git /tmp/jwt-cpp && \
+    cd /tmp/jwt-cpp && \
+    mkdir -p build && cd build && \
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && \
+    make -j$(nproc) && \
+    make install && \
+    rm -rf /tmp/jwt-cpp
+
+# Python dependencies + spaCy model
 COPY requirements.txt /tmp/requirements.txt
 RUN python3 -m venv /opt/venv && \
     /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt && \
-    /opt/venv/bin/python -m spacy download en_core_web_sm
+    /opt/venv/bin/python -m spacy download en_core_web_sm --default-timeout=600
 
 ENV PATH="/opt/venv/bin:$PATH"
 
@@ -56,5 +69,8 @@ EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
     CMD curl -f http://localhost:8080/api/health || exit 1
 
-# Run
-CMD ["/app/build/empi_http", "-c", "/app/config/agent_config.toml", "-p", "8080"]
+# Entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

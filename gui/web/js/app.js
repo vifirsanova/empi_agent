@@ -149,7 +149,15 @@ const backend = {
             }
             return response.json();
         })
-        .then(data => data.content);
+        .then(data => {
+            if (!data || typeof data.content === 'undefined') {
+                throw new Error('Empty response from server');
+            }
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            return data.content || '';
+        });
     },
     
     parseDocumentFromContent: function(filename, base64Content) {
@@ -167,7 +175,15 @@ const backend = {
             }
             return response.json();
         })
-        .then(data => data.content);
+        .then(data => {
+            if (!data || typeof data.content === 'undefined') {
+                throw new Error('Empty response from server');
+            }
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            return data.content || '';
+        });
     },
     
     openExternalUrl: function(url) {
@@ -564,7 +580,7 @@ const translations = {
         langLabel: "RU",
         downloadBtn: "Download",
         copyBtn: "Copy",
-        welcomeMsg: "Upload a file (PDF, DOCX, TXT, HTML), paste a URL, or type your needs. I'll adapt content for you.",
+        welcomeMsg: "Upload a file (PDF, DOCX, TXT, HTML), paste a URL, or type your needs. I will adapt content for you.",
         chatPlaceholder: "Describe your learning needs...",
         urlPlaceholder: "https://example.com/article...",
         fetchBtn: "Fetch",
@@ -599,46 +615,46 @@ const translations = {
     },
     ru: {
         title: "EMPI Agent",
-        subtitle: "Adaptive learning for everyone",
+        subtitle: "Адаптивное обучение для каждого",
         langLabel: "EN",
-        downloadBtn: "Download",
-        copyBtn: "Copy",
-        welcomeMsg: "Upload a file (PDF, DOCX, TXT, HTML), paste a URL, or type your needs. I'll adapt content for you.",
-        chatPlaceholder: "Describe your learning needs...",
+        downloadBtn: "Скачать",
+        copyBtn: "Копировать",
+        welcomeMsg: "Загрузите файл (PDF, DOCX, TXT, HTML), вставьте ссылку или опишите свои потребности. Я адаптирую контент под вас.",
+        chatPlaceholder: "Опишите свои потребности в обучении...",
         urlPlaceholder: "https://example.com/article...",
-        fetchBtn: "Fetch",
-        presetAdhd: "ADHD-friendly",
-        presetDyslexia: "Dyslexia-friendly",
-        presetChild: "For children",
-        presetBeginner: "Beginner",
-        tabOriginal: "Original",
-        tabAdapted: "Adapted",
-        emptyOriginal: "Upload a file or paste a URL to see the original content here",
-        emptyAdapted: "Describe your needs and generate to see adapted content here",
-        toggleLabel: "Adaptation:",
-        toggleOn: "On",
-        toggleOff: "Off",
-        reapplyBtn: "Re-adapt",
-        footerLine1: "EMPI Agent | Trajectory of Growth | 2026",
-        footerLine2: "Made by Missvector",
-        msgFileAttached: "File attached",
-        msgUrlFetched: "Content fetched from URL",
-        msgAdapting: "Adapting content...",
-        msgAdapted: "Content adapted. View in the Adapted tab.",
-        msgNeedSource: "Please upload a file or paste a URL first.",
-        msgNeedPrompt: "Please describe your needs in the input field.",
-        msgBackendNotReady: "Backend not ready, please wait...",
-        msgErrorFetch: "Failed to fetch URL content.",
-        msgCopied: "Copied!",
-        msgDownloaded: "Downloaded!",
-        msgReadapting: "Re-adapting...",
-        msgParsing: "Parsing document...",
-        msgParseError: "Failed to parse document",
-        supportedFormats: "Supported: PDF, DOCX, DOC, TXT, HTML, MD"
+        fetchBtn: "Загрузить",
+        presetAdhd: "Для СДВГ",
+        presetDyslexia: "Для дислексии",
+        presetChild: "Для детей",
+        presetBeginner: "Для начинающих",
+        tabOriginal: "Оригинал",
+        tabAdapted: "Адаптировано",
+        emptyOriginal: "Загрузите файл или вставьте ссылку, чтобы увидеть оригинальный контент",
+        emptyAdapted: "Опишите свои потребности и нажмите Отправить, чтобы увидеть адаптированный контент здесь",
+        toggleLabel: "Адаптация:",
+        toggleOn: "Вкл",
+        toggleOff: "Выкл",
+        reapplyBtn: "Переадаптировать",
+        footerLine1: "EMPI Agent | Траектория Роста | 2026",
+        footerLine2: "Сделано Missvector",
+        msgFileAttached: "Файл прикреплён",
+        msgUrlFetched: "Контент загружен по ссылке",
+        msgAdapting: "Адаптация...",
+        msgAdapted: "Контент адаптирован. Смотрите на вкладке Адаптировано.",
+        msgNeedSource: "Сначала загрузите файл или вставьте ссылку.",
+        msgNeedPrompt: "Опишите свои потребности в поле ввода.",
+        msgBackendNotReady: "Бэкенд не готов, подождите...",
+        msgErrorFetch: "Не удалось загрузить содержимое ссылки.",
+        msgCopied: "Скопировано!",
+        msgDownloaded: "Скачано!",
+        msgReadapting: "Переадаптация...",
+        msgParsing: "Обработка документа...",
+        msgParseError: "Не удалось обработать документ",
+        supportedFormats: "Поддерживается: PDF, DOCX, DOC, TXT, HTML, MD"
     }
 };
 
-let currentLang = (navigator.language || navigator.userLanguage || 'en').startsWith('ru') ? 'ru' : 'en';
+let currentLang = 'ru';
 
 function applyLang(lang) {
     currentLang = lang;
@@ -656,6 +672,17 @@ function applyLang(lang) {
     });
     document.documentElement.lang = lang;
     updateToggleText();
+    updateLangButton();
+}
+
+function updateLangButton() {
+    var btn = document.getElementById('langToggle');
+    if (btn) {
+        var span = btn.querySelector('span');
+        if (span) {
+            span.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+        }
+    }
 }
 
 function t(key) {
@@ -909,6 +936,13 @@ fileInput.addEventListener('change', async function() {
             const extractedText = await parseDocument(selectedFile);
             hideCog();
             
+            if (typeof extractedText !== 'string') {
+                addChatText('assistant', 'Error: Could not extract text from document');
+                statusBar.textContent = 'Parse error: empty result';
+                statusBar.className = 'status-bar error';
+                return;
+            }
+            
             if (extractedText.startsWith('Error:') || extractedText.startsWith('Warning:')) {
                 addChatText('assistant', extractedText);
                 statusBar.textContent = extractedText;
@@ -955,6 +989,13 @@ chatPanel.addEventListener('drop', async function(e) {
         try {
             const extractedText = await parseDocument(selectedFile);
             hideCog();
+            
+            if (typeof extractedText !== 'string') {
+                addChatText('assistant', 'Error: Could not extract text from document');
+                statusBar.textContent = 'Parse error: empty result';
+                statusBar.className = 'status-bar error';
+                return;
+            }
             
             if (extractedText.startsWith('Error:')) {
                 addChatText('assistant', extractedText);
@@ -1038,6 +1079,13 @@ async function handleUrlFetch(url) {
     try {
         const content = await backend.fetchUrl(validatedUrl);
         hideCog();
+        
+        if (typeof content !== 'string') {
+            addChatText('assistant', t('msgErrorFetch') + ': Empty response');
+            statusBar.textContent = 'Error: empty response';
+            statusBar.className = 'status-bar error';
+            return;
+        }
         
         if (content.startsWith('Error:')) {
             addChatText('assistant', t('msgErrorFetch') + ': ' + content);
@@ -1282,7 +1330,7 @@ copyBtn.addEventListener('click', function() {
 });
 
 langToggle.addEventListener('click', function() {
-    applyLang(currentLang === 'en' ? 'ru' : 'en');
+    applyLang(currentLang === 'ru' ? 'en' : 'ru');
 });
 
 var panelResizer = document.getElementById('panelResizer');
@@ -1319,9 +1367,14 @@ if (chatInputArea) chatInputArea.appendChild(supportedFormatsHint);
 if (checkStoredToken()) {
     loginScreen.style.display = 'none';
     container.style.display = 'flex';
-    applyLang(currentLang);
+    applyLang('ru');
 } else {
     loginScreen.style.display = 'flex';
     container.style.display = 'none';
     tokenInput.focus();
+    document.querySelector('#loginScreen h2').textContent = 'EMPI Agent';
+    document.querySelector('#loginScreen p:first-of-type').textContent = 'Введите код доступа';
+    document.querySelector('#loginScreen input[type="password"]').placeholder = 'Код доступа';
+    document.querySelector('#loginScreen button').textContent = 'Войти';
+    document.querySelector('#loginInfo').textContent = 'Обратитесь к организатору для получения кода доступа';
 }
