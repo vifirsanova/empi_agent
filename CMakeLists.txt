@@ -44,23 +44,6 @@ else()
     find_package(Qt6 REQUIRED COMPONENTS Core Concurrent)
 endif()
 
-# Llama integration
-if(EXISTS "${CMAKE_SOURCE_DIR}/llama-dynamic-context/CMakeLists.txt")
-    set(LLAMA_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-    set(LLAMA_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-    set(LLAMA_BUILD_TOOLS OFF CACHE BOOL "" FORCE)
-    set(LLAMA_BUILD_SERVER OFF CACHE BOOL "" FORCE)
-    set(LLAMA_BUILD_COMMON OFF CACHE BOOL "" FORCE)
-    add_subdirectory(llama-dynamic-context llama_build)
-    set(LLAMA_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/llama-dynamic-context/include")
-    set(LLAMA_LIBRARY llama)
-    message(STATUS "Llama integration enabled")
-else()
-    message(WARNING "llama-dynamic-context not found — run: git submodule update --init")
-    set(LLAMA_INCLUDE_DIR "")
-    set(LLAMA_LIBRARY "")
-endif()
-
 # ============================================================================
 # CORE LIBRARY
 # ============================================================================
@@ -75,7 +58,6 @@ add_library(empi_core STATIC
 
 target_include_directories(empi_core PUBLIC
     ${CMAKE_SOURCE_DIR}/src
-    ${LLAMA_INCLUDE_DIR}
     ${POPPLER_INCLUDE_DIRS}
 )
 
@@ -88,10 +70,6 @@ target_link_libraries(empi_core PUBLIC
 
 if(POPPLER_FOUND)
     target_link_libraries(empi_core PUBLIC ${POPPLER_LIBRARIES})
-endif()
-
-if(LLAMA_LIBRARY)
-    target_link_libraries(empi_core PUBLIC ${LLAMA_LIBRARY})
 endif()
 
 # Copy integrations and config
@@ -179,17 +157,11 @@ if(BUILD_HTTP)
         ${CMAKE_SOURCE_DIR}/src
     )
     
-    # === КОПИРОВАНИЕ WEB ФРОНТЕНДА (гарантированное) ===
-    # Копируем при каждой конфигурации CMake
+    # Copy web frontend
     file(COPY ${CMAKE_SOURCE_DIR}/gui/web DESTINATION ${CMAKE_BINARY_DIR}/gui)
-    
-    # Создаем директорию для CSS
     file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/gui/web/css)
-    
-    # Копируем CSS файл
     file(COPY ${CMAKE_SOURCE_DIR}/gui/web/css/style.css DESTINATION ${CMAKE_BINARY_DIR}/gui/web/css)
     
-    # Copy web frontend (post-build - дублируем для надежности)
     add_custom_command(
         TARGET empi_http POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -198,7 +170,6 @@ if(BUILD_HTTP)
         COMMENT "Copying web frontend to build directory"
     )
     
-    # Copy CSS (post-build)
     add_custom_command(
         TARGET empi_http POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/gui/web/css
@@ -208,7 +179,6 @@ if(BUILD_HTTP)
         COMMENT "Copying CSS files"
     )
     
-    # Installation
     install(TARGETS empi_http
         RUNTIME DESTINATION bin
     )
@@ -252,7 +222,6 @@ if(BUILD_GUI)
         ${CMAKE_SOURCE_DIR}/src
     )
     
-    # Copy web frontend for GUI
     add_custom_command(
         TARGET empi_gui POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory

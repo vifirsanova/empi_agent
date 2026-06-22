@@ -10,8 +10,7 @@ cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_HTTP=ON \
     -DBUILD_GUI=OFF \
-    -DBUILD_TESTS=OFF \
-    -DCMAKE_CXX_FLAGS="-DEMPI_NO_LLAMA"
+    -DBUILD_TESTS=OFF
 make -j$(nproc)
 
 echo "Build complete!"

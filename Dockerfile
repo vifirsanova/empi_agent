@@ -32,11 +32,10 @@ RUN git clone https://github.com/Thalhammer/jwt-cpp.git /tmp/jwt-cpp && \
     make install && \
     rm -rf /tmp/jwt-cpp
 
-# Python dependencies + spaCy model
+# Python dependencies (lightweight — no spacy, torch, transformers)
 COPY requirements.txt /tmp/requirements.txt
 RUN python3 -m venv /opt/venv && \
-    /opt/venv/bin/pip install --no-cache-dir -r /tmp/requirements.txt && \
-    /opt/venv/bin/python -m spacy download en_core_web_sm --default-timeout=600
+    /opt/venv/bin/pip install --no-cache-dir --timeout=600 --retries=5 -r /tmp/requirements.txt
 
 ENV PATH="/opt/venv/bin:$PATH"
 
@@ -50,13 +49,12 @@ COPY gui/ gui/
 COPY integrations/ integrations/
 COPY config/ config/
 
-# Build HTTP server
+# Build HTTP server (without llama)
 RUN cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_HTTP=ON \
     -DBUILD_GUI=OFF \
     -DBUILD_TESTS=OFF \
-    -DCMAKE_CXX_FLAGS="-DEMPI_NO_LLAMA" \
     -G Ninja \
     && cmake --build build --target empi_http -- -j$(nproc)
 
