@@ -60,7 +60,7 @@ Config load_config(const std::string& path) {
     Config cfg;
     std::ifstream f(path);
     if (!f.is_open()) {
-        qWarning() << "Config file not found:" << path.c_str();
+        qWarning() << "[Config] File not found:" << path.c_str();
         return cfg;
     }
     
@@ -95,6 +95,9 @@ Config load_config(const std::string& path) {
         else if (key == "max_attempts") cfg.max_attempts = std::stoi(val);
         else if (key == "block_duration_seconds") cfg.block_duration_seconds = std::stoi(val);
     }
+    
+    qDebug() << "[Config] jwt_secret loaded, length:" << cfg.jwt_secret.length();
+    qDebug() << "[Config] access_code_hash loaded, length:" << cfg.access_code_hash.length();
     return cfg;
 }
 
@@ -104,7 +107,9 @@ Config load_config(const std::string& path) {
 
 class JwtAuth {
 public:
-    JwtAuth(const std::string& secret) : m_secret(secret) {}
+    JwtAuth(const std::string& secret) : m_secret(secret) {
+        qDebug() << "[JwtAuth] Initialized with secret length:" << secret.length();
+    }
     
     std::string generateToken(const std::string& userId) {
         auto now = std::chrono::system_clock::now();
@@ -120,6 +125,13 @@ public:
     }
     
     bool validateToken(const std::string& token, std::string& userId) {
+        qDebug() << "[JwtAuth] Validating token, length:" << token.length();
+        
+        if (m_secret.empty()) {
+            qWarning() << "[JwtAuth] Secret is empty! Cannot validate.";
+            return false;
+        }
+        
         try {
             auto decoded = jwt::decode(token);
             auto verifier = jwt::verify()
@@ -127,9 +139,10 @@ public:
                 .with_issuer("empi-agent");
             verifier.verify(decoded);
             userId = decoded.get_subject();
+            qDebug() << "[JwtAuth] Token valid, subject:" << userId.c_str();
             return true;
         } catch (const std::exception& e) {
-            qWarning() << "JWT validation failed:" << e.what();
+            qWarning() << "[JwtAuth] Validation failed:" << e.what();
             return false;
         }
     }
@@ -176,7 +189,7 @@ public:
         
         if (block.attempts >= m_maxAttempts) {
             block.blockedUntil = QDateTime::currentSecsSinceEpoch() + m_blockSeconds;
-            qDebug() << "IP blocked:" << ip << "until" << block.blockedUntil;
+            qDebug() << "[AuthBlocker] IP blocked:" << ip << "until" << block.blockedUntil;
         }
     }
     
@@ -439,6 +452,10 @@ public:
         qDebug() << "[HttpServer] Initializing...";
         Config cfg = load_config(configPath);
         
+        if (cfg.jwt_secret.empty()) {
+            qWarning() << "[HttpServer] JWT_SECRET IS EMPTY! Authentication will fail.";
+        }
+        
         m_llm = std::make_shared<EMPI::LLMClient>("python3");
         m_textAgent = std::make_shared<EMPI::TextAnalyzer>();
         m_feedbackAgent = std::make_shared<EMPI::FeedbackAgent>(m_llm);
@@ -514,9 +531,11 @@ private:
             QString auth = it.value();
             if (auth.startsWith("Bearer ", Qt::CaseInsensitive)) {
                 token = auth.mid(7).trimmed();
+                qDebug() << "[extractToken] Token extracted, length:" << token.length();
                 return !token.isEmpty();
             }
         }
+        qDebug() << "[extractToken] No Authorization header found";
         return false;
     }
     
@@ -527,16 +546,18 @@ private:
 
         QString token;
         if (!extractToken(req, token)) {
-            qDebug() << "[HttpServer] No token in request:" << req.path;
+            qDebug() << "[validateRequest] No token for:" << req.path;
             return false;
         }
 
         std::string userIdStd;
-        if (!m_jwtAuth->validateToken(token.toStdString(), userIdStd)) {
-            qDebug() << "[HttpServer] Invalid token for:" << req.path;
+        bool valid = m_jwtAuth->validateToken(token.toStdString(), userIdStd);
+        if (!valid) {
+            qDebug() << "[validateRequest] Invalid token for:" << req.path;
             return false;
         }
         userId = QString::fromStdString(userIdStd);
+        qDebug() << "[validateRequest] Token valid for:" << userId;
         return true;
     }
     
@@ -663,6 +684,8 @@ private:
         
         std::string userId = QUuid::createUuid().toString(QUuid::WithoutBraces).toStdString();
         std::string token = m_jwtAuth->generateToken(userId);
+        
+        qDebug() << "[handleAuth] Generated token, length:" << token.length();
         
         QJsonObject response;
         response["success"] = true;
