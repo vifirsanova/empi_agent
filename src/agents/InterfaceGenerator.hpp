@@ -3,9 +3,6 @@
 #include "../core/LLMClient.hpp"
 #include <string>
 #include <memory>
-#ifndef EMPI_NO_LLAMA
-#include "llama.h"
-#endif
 
 namespace EMPI {
 
@@ -19,21 +16,14 @@ public:
     std::string get_last_error() const;
 
 private:
-    void register_handlers(); 
-    void conditional_llama_init();
-    std::string strip_markdown_code_blocks(const std::string& html);  
+    void register_handlers();
+    std::string strip_markdown_code_blocks(const std::string& html);
     std::string fallback_html(const nlohmann::json& metrics,
                               const nlohmann::json& feedback) const;
 
     std::shared_ptr<LLMClient> llm_client_;
     std::string local_model_path_;
-    mutable std::string last_error_;      
-    bool llama_initialized_ = false;
-
-    class LlamaImpl;
-#ifndef EMPI_NO_LLAMA
-    std::unique_ptr<LlamaImpl> llama_impl_;
-#endif
+    mutable std::string last_error_;
 };
 
 } // namespace EMPI
